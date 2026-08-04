@@ -417,8 +417,35 @@
     </div>
 
     <script>
-        // DOM Elements
+        // Cache DOM elements
         const inputs = document.querySelectorAll('input, select');
+        const elements = {
+            ageError: document.getElementById('age-error'),
+            ageInput: document.getElementById('inp-age'),
+            immunoWarning: document.getElementById('immuno-warning'),
+            
+            curbVal: document.getElementById('val-curb'),
+            curbBadge: document.getElementById('badge-curb'),
+            curbDesc: document.getElementById('desc-curb'),
+            curbCard: document.getElementById('card-curb'),
+            
+            psiVal: document.getElementById('val-psi'),
+            psiBadge: document.getElementById('badge-psi'),
+            psiDesc: document.getElementById('desc-psi'),
+            psiCard: document.getElementById('card-psi'),
+            
+            atsVal: document.getElementById('val-ats'),
+            atsBadge: document.getElementById('badge-ats'),
+            atsCard: document.getElementById('card-ats'),
+            atsMajorCount: document.getElementById('ats-major-count'),
+            atsMinorCount: document.getElementById('ats-minor-count')
+        };
+        
+        // Cache ATS items to avoid querying every time
+        const atsItems = {
+            m: [document.getElementById('ats-m1'), document.getElementById('ats-m2')],
+            mi: Array.from({length: 9}, (_, i) => document.getElementById(`ats-mi${i+1}`))
+        };
         
         function getVal(id, type = 'num') {
             const el = document.getElementById(id);
@@ -431,36 +458,40 @@
             return document.getElementById(id).value !== "";
         }
 
+        function updateCard(type, value, stateClass, badgeText, descText) {
+            elements[`${type}Val`].innerText = value;
+            elements[`${type}Card`].className = `score-card ${stateClass}`;
+            elements[`${type}Badge`].className = `badge ${stateClass}`;
+            elements[`${type}Badge`].innerText = badgeText;
+            if (descText) {
+                elements[`${type}Desc`].innerText = descText;
+            }
+        }
+
         function updateScores() {
             // Read Inputs
             let age = getVal('inp-age');
-            const ageInput = document.getElementById('inp-age');
-            const ageError = document.getElementById('age-error');
             
             // Age validation
             if (hasVal('inp-age')) {
                 if (age < 0 || age > 120) {
-                    ageError.style.display = 'inline-block';
-                    ageInput.style.borderColor = 'var(--danger)';
+                    elements.ageError.style.display = 'inline-block';
+                    elements.ageInput.style.borderColor = 'var(--danger)';
                     age = Math.max(0, Math.min(120, age));
                 } else {
-                    ageError.style.display = 'none';
-                    ageInput.style.borderColor = 'var(--border)';
+                    elements.ageError.style.display = 'none';
+                    elements.ageInput.style.borderColor = 'var(--border)';
                 }
             } else {
-                ageError.style.display = 'none';
-                ageInput.style.borderColor = 'var(--border)';
+                elements.ageError.style.display = 'none';
+                elements.ageInput.style.borderColor = 'var(--border)';
             }
+            
             const sex = getVal('inp-sex', 'str');
             const nh = getVal('inp-nh', 'chk');
-            
             const immuno = getVal('inp-immuno', 'chk');
-            const elImmunoWarning = document.getElementById('immuno-warning');
-            if (immuno) {
-                elImmunoWarning.style.display = 'block';
-            } else {
-                elImmunoWarning.style.display = 'none';
-            }
+            
+            elements.immunoWarning.style.display = immuno ? 'block' : 'none';
 
             const cCancer = getVal('inp-cancer', 'chk');
             const cLiver = getVal('inp-liver', 'chk');
@@ -479,8 +510,6 @@
             const hr = getVal('inp-hr');
             const spo2 = getVal('inp-spo2');
 
-            // --- Note: FINE uses BUN >= 20 (approx 11 mmol/L? The markdown says BUN >= 20 -> +20, and Glucose >= 14 -> +10)
-            // But ATS says BUN >= 11 mmol/L. Let's stick strictly to markdown numbers.
             const bun = getVal('inp-bun');
             const ure = getVal('inp-ure');
             const na = getVal('inp-na');
@@ -498,39 +527,19 @@
             let curb = 0;
             if (ams) curb += 1;
             if (ure > 7 && hasVal('inp-ure')) curb += 1;
-            if (rr > 30 && hasVal('inp-rr')) curb += 1; // Markdown: > 30 lần/phút
+            if (rr > 30 && hasVal('inp-rr')) curb += 1;
             if (sbp < 90 && hasVal('inp-sbp')) curb += 1; 
-            if (age > 65 && hasVal('inp-age')) curb += 1; // Markdown: > 65 tuổi
+            if (age > 65 && hasVal('inp-age')) curb += 1;
 
-            const elValCurb = document.getElementById('val-curb');
-            const elBadgeCurb = document.getElementById('badge-curb');
-            const elDescCurb = document.getElementById('desc-curb');
-            const elCardCurb = document.getElementById('card-curb');
-
-            elValCurb.innerText = curb;
-            elCardCurb.className = 'score-card';
             if (curb <= 1) {
-                elBadgeCurb.innerText = '0 - 1 yếu tố';
-                elBadgeCurb.className = 'badge success';
-                elCardCurb.classList.add('success');
-                elDescCurb.innerText = 'Khuyến cáo: Điều trị ngoại trú';
+                updateCard('curb', curb, 'success', '0 - 1 yếu tố', 'Khuyến cáo: Điều trị ngoại trú');
             } else if (curb === 2) {
-                elBadgeCurb.innerText = '2 yếu tố';
-                elBadgeCurb.className = 'badge warning';
-                elCardCurb.classList.add('warning');
-                elDescCurb.innerText = 'Khuyến cáo: Điều trị nội trú ngắn hạn';
+                updateCard('curb', curb, 'warning', '2 yếu tố', 'Khuyến cáo: Điều trị nội trú ngắn hạn');
             } else if (curb === 3) {
-                elBadgeCurb.innerText = '3 yếu tố';
-                elBadgeCurb.className = 'badge danger';
-                elCardCurb.classList.add('danger');
-                elDescCurb.innerText = 'Khuyến cáo: Điều trị nội trú';
+                updateCard('curb', curb, 'danger', '3 yếu tố', 'Khuyến cáo: Điều trị nội trú');
             } else {
-                elBadgeCurb.innerText = `${curb} yếu tố`;
-                elBadgeCurb.className = 'badge danger';
-                elCardCurb.classList.add('danger');
-                elDescCurb.innerText = 'Khuyến cáo: Nhập ICU (Hồi sức tích cực)';
+                updateCard('curb', curb, 'danger', `${curb} yếu tố`, 'Khuyến cáo: Nhập ICU (Hồi sức tích cực)');
             }
-
 
             // --- 2. PSI (FINE) Calculation ---
             let psi = 0;
@@ -543,10 +552,10 @@
             if (cLiver) psi += 20;
             if (cChf) psi += 10;
             if (cCvd) psi += 10;
-            if (cRenal) psi += 19; // Markdown specifically mentions: "Bệnh thận: 19 điểm (trong sơ đồ ghi 19, chuẩn FINE là +10)"
+            if (cRenal) psi += 19;
 
             if (ams) psi += 20;
-            if (rr > 30 && hasVal('inp-rr')) psi += 20; // Markdown: > 30 lần/phút -> +20 điểm (FINE)
+            if (rr > 30 && hasVal('inp-rr')) psi += 20;
             if (sbp < 90 && hasVal('inp-sbp')) psi += 20;
             if (hasVal('inp-temp') && (temp < 35 || temp >= 40)) psi += 15;
             if (hr > 125 && hasVal('inp-hr')) psi += 10;
@@ -555,94 +564,61 @@
             if (pleural) psi += 10;
             if (bun >= 20 && hasVal('inp-bun')) psi += 20;
             if (na < 130 && hasVal('inp-na')) psi += 20;
-            if (glc >= 14 && hasVal('inp-glc')) psi += 10; // Markdown: Đường máu >= 14 mmol/L
-            if (hct < 0.3 && hasVal('inp-hct')) psi += 10; // Markdown: Hematocrit < 0.3 -> +10 điểm
-            else if (hct >= 0.3 && hct < 30 && hasVal('inp-hct')) psi += 10; // Fallback if user enters % instead of decimal
+            if (glc >= 14 && hasVal('inp-glc')) psi += 10;
+            if (hct < 0.3 && hasVal('inp-hct')) psi += 10;
+            else if (hct >= 0.3 && hct < 30 && hasVal('inp-hct')) psi += 10;
             if (ph < 7.35 && hasVal('inp-ph')) psi += 30;
             if (pao2 < 60 && hasVal('inp-pao2')) psi += 10;
 
-            const elValPsi = document.getElementById('val-psi');
-            const elBadgePsi = document.getElementById('badge-psi');
-            const elDescPsi = document.getElementById('desc-psi');
-            const elCardPsi = document.getElementById('card-psi');
-
-            elValPsi.innerText = psi;
-            elCardPsi.className = 'score-card';
-            
             if (psi <= 70) {
-                elBadgePsi.innerText = 'Độ I-II (≤70)';
-                elBadgePsi.className = 'badge success';
-                elCardPsi.classList.add('success');
-                elDescPsi.innerText = 'Khuyến cáo: Điều trị ngoại trú';
+                updateCard('psi', psi, 'success', 'Độ I-II (≤70)', 'Khuyến cáo: Điều trị ngoại trú');
             } else if (psi <= 90) {
-                elBadgePsi.innerText = 'Độ III (71-90)';
-                elBadgePsi.className = 'badge warning';
-                elCardPsi.classList.add('warning');
-                elDescPsi.innerText = 'Khuyến cáo: Điều trị nội trú ngắn hạn';
+                updateCard('psi', psi, 'warning', 'Độ III (71-90)', 'Khuyến cáo: Điều trị nội trú ngắn hạn');
             } else if (psi <= 130) {
-                elBadgePsi.innerText = 'Độ IV (91-130)';
-                elBadgePsi.className = 'badge danger';
-                elCardPsi.classList.add('danger');
-                elDescPsi.innerText = 'Khuyến cáo: Điều trị nội trú';
+                updateCard('psi', psi, 'danger', 'Độ IV (91-130)', 'Khuyến cáo: Điều trị nội trú');
             } else {
-                elBadgePsi.innerText = 'Độ V (>130)';
-                elBadgePsi.className = 'badge danger';
-                elCardPsi.classList.add('danger');
-                elDescPsi.innerText = 'Khuyến cáo: Nhập ICU (Hồi sức tích cực)';
+                updateCard('psi', psi, 'danger', 'Độ V (>130)', 'Khuyến cáo: Nhập ICU (Hồi sức tích cực)');
             }
 
             // --- 3. ATS Criteria Calculation ---
-            // Majors
-            const atsM1 = isVent;
-            const atsM2 = isShock;
-            const majorCount = (atsM1 ? 1 : 0) + (atsM2 ? 1 : 0);
+            const majors = [
+                isVent, 
+                isShock
+            ];
+            
+            const minors = [
+                rr > 30 && hasVal('inp-rr'),
+                (sbp < 90 && hasVal('inp-sbp')) || isFluids,
+                ams,
+                temp < 36 && hasVal('inp-temp'),
+                multilobe,
+                bun >= 11 && hasVal('inp-bun'),
+                wbc < 4 && hasVal('inp-wbc'),
+                plt < 100 && hasVal('inp-plt'),
+                pf < 250 && hasVal('inp-pf')
+            ];
 
-            document.getElementById('ats-m1').className = atsM1 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-m2').className = atsM2 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-major-count').innerText = majorCount;
+            // Update major items UI and count
+            const majorCount = majors.filter(Boolean).length;
+            majors.forEach((isMet, index) => {
+                atsItems.m[index].className = isMet ? 'ats-item active' : 'ats-item';
+            });
+            elements.atsMajorCount.innerText = majorCount;
 
-            // Minors
-            const atsMi1 = rr > 30 && hasVal('inp-rr');
-            const atsMi2 = (sbp < 90 && hasVal('inp-sbp')) || isFluids;
-            const atsMi3 = ams;
-            const atsMi4 = temp < 36 && hasVal('inp-temp');
-            const atsMi5 = multilobe;
-            const atsMi6 = bun >= 11 && hasVal('inp-bun');
-            const atsMi7 = wbc < 4 && hasVal('inp-wbc');
-            const atsMi8 = plt < 100 && hasVal('inp-plt');
-            const atsMi9 = pf < 250 && hasVal('inp-pf');
-
-            const minors = [atsMi1, atsMi2, atsMi3, atsMi4, atsMi5, atsMi6, atsMi7, atsMi8, atsMi9];
+            // Update minor items UI and count
             const minorCount = minors.filter(Boolean).length;
+            minors.forEach((isMet, index) => {
+                atsItems.mi[index].className = isMet ? 'ats-item active' : 'ats-item';
+            });
+            elements.atsMinorCount.innerText = minorCount;
 
-            document.getElementById('ats-mi1').className = atsMi1 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-mi2').className = atsMi2 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-mi3').className = atsMi3 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-mi4').className = atsMi4 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-mi5').className = atsMi5 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-mi6').className = atsMi6 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-mi7').className = atsMi7 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-mi8').className = atsMi8 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-mi9').className = atsMi9 ? 'ats-item active' : 'ats-item';
-            document.getElementById('ats-minor-count').innerText = minorCount;
-
-            const elValAts = document.getElementById('val-ats');
-            const elBadgeAts = document.getElementById('badge-ats');
-            const elCardAts = document.getElementById('card-ats');
-
-            elCardAts.className = 'score-card';
+            // Overall ATS result
             if (majorCount >= 1 || minorCount >= 3) {
-                elValAts.innerText = 'ĐẠT TIÊU CHUẨN ICU';
-                elValAts.style.color = 'var(--danger)';
-                elBadgeAts.innerText = 'Khuyến cáo: Nhập ICU';
-                elBadgeAts.className = 'badge danger';
-                elCardAts.classList.add('danger');
+                updateCard('ats', 'ĐẠT TIÊU CHUẨN ICU', 'danger', 'Khuyến cáo: Nhập ICU');
+                elements.atsVal.style.color = 'var(--danger)';
             } else {
-                elValAts.innerText = 'Không đạt ICU';
-                elValAts.style.color = 'var(--text-main)';
-                elBadgeAts.innerText = 'Điều trị thường / Ngoại trú';
-                elBadgeAts.className = 'badge success';
-                elCardAts.classList.add('success');
+                updateCard('ats', 'Không đạt ICU', 'success', 'Điều trị thường / Ngoại trú');
+                elements.atsVal.style.color = 'var(--text-main)';
             }
         }
 
@@ -654,7 +630,6 @@
 
         // Initialize empty state
         updateScores();
-
     </script>
 </body>
 </html>
