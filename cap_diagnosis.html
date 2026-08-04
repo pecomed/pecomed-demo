@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chẩn Đoán Mức Độ Nặng Viêm Phổi (CAP)</title>
+    <title>Chẩn Đoán & Phân Loại Mức Độ Nặng Viêm Phổi (CAP)</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -272,15 +272,55 @@
 <body>
 
     <header class="app-header">
-        <h1>Phân loại mức độ nặng Viêm phổi (CAP)</h1>
+        <h1>Chẩn đoán & Phân loại mức độ nặng Viêm phổi (CAP)</h1>
     </header>
 
     <div class="container">
         <!-- Input Form -->
         <div class="input-panel">
+
+            <div class="card">
+                <div class="card-header">1. Triệu chứng lâm sàng (Chẩn đoán sơ bộ)</div>
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label>Sốt</label>
+                        <select id="inp-fever">
+                            <option value="0">Không rõ / Không</option>
+                            <option value="1">Sốt nhẹ</option>
+                            <option value="2">> 39°C</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ho</label>
+                        <select id="inp-cough">
+                            <option value="0">Không rõ / Không</option>
+                            <option value="1">Ho khan</option>
+                            <option value="2">Ho có đờm</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hội chứng đông đặc</label>
+                        <select id="inp-consolidation">
+                            <option value="0">Không có</option>
+                            <option value="1">Một vị trí</option>
+                            <option value="2">Nhiều vị trí</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid-2" style="margin-top: 0.75rem;">
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="inp-chestpain">
+                        <span>Đau ngực kiểu màng phổi</span>
+                    </label>
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="inp-infection_syndrome">
+                        <span>HC Nhiễm trùng (Môi khô, lưỡi bẩn, hơi thở hôi)</span>
+                    </label>
+                </div>
+            </div>
             
             <div class="card">
-                <div class="card-header">1. Hành chính & Bệnh đồng mắc</div>
+                <div class="card-header">2. Hành chính & Bệnh đồng mắc</div>
                 <div class="grid-2">
                     <div class="form-group">
                         <label>Tuổi <span id="age-error" style="color: var(--danger); font-size: 0.75rem; display: none;">(Bắt buộc 18-120 tuổi)</span></label>
@@ -316,7 +356,7 @@
             </div>
 
             <div class="card">
-                <div class="card-header">2. Tình trạng cấp cứu (Tiêu chuẩn chính ATS)</div>
+                <div class="card-header">3. Tình trạng cấp cứu (Tiêu chuẩn chính ATS)</div>
                 <div class="form-group">
                     <label class="checkbox-group">
                         <input type="checkbox" id="inp-vent">
@@ -330,7 +370,7 @@
             </div>
 
             <div class="card">
-                <div class="card-header">3. Khám lâm sàng</div>
+                <div class="card-header">4. Khám lâm sàng (Chỉ số sinh tồn)</div>
                 <div class="grid-3">
                     <div class="form-group"><label>Tri giác</label><select id="inp-ams"><option value="0">Bình thường</option><option value="1">Thay đổi tri giác</option></select></div>
                     <div class="form-group"><label>Nhịp thở (lần/p)</label><input type="number" id="inp-rr" placeholder="VD: 32"></div>
@@ -347,7 +387,7 @@
             </div>
 
             <div class="card">
-                <div class="card-header">4. Cận lâm sàng</div>
+                <div class="card-header">5. Cận lâm sàng</div>
                 <div class="grid-3">
                     <div class="form-group"><label>BUN (mmol/L) <span style="font-size: 0.65rem; color: var(--text-muted);">(≥7 ATS, ≥11 FINE)</span></label><input type="number" id="inp-bun" placeholder="VD: 21" step="0.1"></div>
                     <div class="form-group"><label>Ure (mmol/L) <span style="font-size: 0.65rem; color: var(--text-muted);">(>7 CURB)</span></label><input type="number" id="inp-ure" placeholder="VD: 8" step="0.1"></div>
@@ -371,6 +411,15 @@
         <!-- Results Panel -->
         <div class="results-panel">
             
+            <!-- Chẩn đoán sơ bộ -->
+            <div class="score-card" id="card-diag">
+                <div class="score-title">Chẩn đoán sơ bộ</div>
+                <div class="score-value" style="font-size: 1.25rem; white-space: pre-wrap; margin-bottom: 0;" id="val-diag">Chưa đủ dữ kiện</div>
+                <div class="score-desc" id="desc-diag">
+                    Nhập triệu chứng lâm sàng để gợi ý chẩn đoán.
+                </div>
+            </div>
+
             <!-- PSI (FINE) Score -->
             <div class="score-card" id="card-psi">
                 <div class="score-title">Điểm PSI (FINE)</div>
@@ -410,7 +459,7 @@
                     <div class="ats-item" id="ats-mi6">Ure > 7 mmol/L / BUN ≥ 7 mmol/L</div>
                     <div class="ats-item" id="ats-mi7">Bạch cầu < 4 G/L</div>
                     <div class="ats-item" id="ats-mi8">Tiểu cầu < 100 G/L</div>
-                    <div class="ats-item" id="ats-mi9">PaO2/FiO2 < 250</div>
+                    <div class="ats-item" id="ats-mi9">PaO2/FiO2 ≤ 250</div>
                 </div>
             </div>
 
@@ -426,6 +475,10 @@
             nhInput: document.getElementById('inp-nh'),
             nhLabel: document.getElementById('label-nh'),
             immunoWarning: document.getElementById('immuno-warning'),
+            
+            diagVal: document.getElementById('val-diag'),
+            diagDesc: document.getElementById('desc-diag'),
+            diagCard: document.getElementById('card-diag'),
             
             curbVal: document.getElementById('val-curb'),
             curbBadge: document.getElementById('badge-curb'),
@@ -472,6 +525,42 @@
         }
 
         function updateScores() {
+            // --- 0. Chẩn đoán sơ bộ ---
+            const fever = getVal('inp-fever', 'str');
+            const cough = getVal('inp-cough', 'str');
+            const consolidation = getVal('inp-consolidation', 'str');
+            const chestpain = getVal('inp-chestpain', 'chk');
+            const infectionSyndrome = getVal('inp-infection_syndrome', 'chk');
+            
+            let isPneumoniaLikely = (fever !== '0' || cough !== '0' || consolidation !== '0' || chestpain || infectionSyndrome);
+
+            if (isPneumoniaLikely) {
+                let mainDiag = "Viêm phổi";
+                if (consolidation === '1') mainDiag = "Viêm phổi thùy";
+                else if (consolidation === '2') mainDiag = "Phế quản phế viêm";
+                
+                let details = [];
+                if (fever === '1') details.push("Nghi ngờ vi khuẩn không điển hình (sốt nhẹ)");
+                if (fever === '2') details.push("Hướng tới vi khuẩn điển hình (> 39°C)");
+                if (chestpain) details.push("Nghĩ đến viêm phổi cận màng phổi (Parapleural pneumonia)");
+                if (infectionSyndrome) details.push("Có hội chứng nhiễm trùng");
+                
+                elements.diagVal.innerText = mainDiag;
+                elements.diagVal.style.color = 'var(--primary)';
+                elements.diagCard.className = 'score-card'; 
+                
+                if (details.length > 0) {
+                    elements.diagDesc.innerHTML = `<ul style="padding-left: 1.2rem; margin-top: 0.5rem; color: var(--text-main);"><li>${details.join('</li><li>')}</li></ul>`;
+                } else {
+                    elements.diagDesc.innerHTML = "Chẩn đoán sơ bộ dựa trên lâm sàng.";
+                }
+            } else {
+                elements.diagVal.innerText = "Chưa đủ dữ kiện";
+                elements.diagVal.style.color = 'var(--text-main)';
+                elements.diagCard.className = 'score-card'; 
+                elements.diagDesc.innerHTML = "Nhập triệu chứng lâm sàng để gợi ý chẩn đoán.";
+            }
+
             // Read Inputs
             let age = getVal('inp-age');
             
@@ -509,6 +598,17 @@
             const immuno = getVal('inp-immuno', 'chk');
             
             elements.immunoWarning.style.display = immuno ? 'block' : 'none';
+
+            // Disable preliminary diagnosis inputs if immuno is true
+            const diagInputs = ['inp-fever', 'inp-cough', 'inp-consolidation', 'inp-chestpain', 'inp-infection_syndrome'];
+            diagInputs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.disabled = immuno;
+                    if (immuno && el.type === 'checkbox') el.checked = false;
+                    if (immuno && el.tagName === 'SELECT') el.value = '0';
+                }
+            });
 
             const cCancer = getVal('inp-cancer', 'chk');
             const cLiver = getVal('inp-liver', 'chk');
@@ -606,14 +706,14 @@
             
             const minors = [
                 rr >= 30 && hasVal('inp-rr'),
-                (sbp < 90 && hasVal('inp-sbp')) || (dbp <= 60 && hasVal('inp-dbp')) || isFluids,
+                (sbp < 90 && hasVal('inp-sbp')) || isFluids,
                 ams,
                 temp < 36 && hasVal('inp-temp'),
                 multilobe,
                 (bun >= 7 && hasVal('inp-bun')) || (ure > 7 && hasVal('inp-ure')),
                 wbc < 4 && hasVal('inp-wbc'),
                 plt < 100 && hasVal('inp-plt'),
-                pf < 250 && hasVal('inp-pf')
+                pf <= 250 && hasVal('inp-pf')
             ];
 
             // Update major items UI and count
