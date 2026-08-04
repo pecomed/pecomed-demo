@@ -4,7 +4,7 @@ Dưới đây là các bước phân tích và chẩn đoán được trích xu�
 
 ## 1. Hỏi bệnh
 *   **Tuổi:**
-    *   > 65 tuổi: Ghi nhận yếu tố cho *CURB-65*
+    *   ≥ 65 tuổi: Ghi nhận yếu tố cho *CURB-65*
     *   Nam: Tính theo số tuổi *(Cộng điểm vào thang điểm FINE)*
     *   Nữ: Tuổi - 10 *(Cộng điểm vào thang điểm FINE)*
 *   **Nơi sinh sống:**
@@ -15,13 +15,13 @@ Dưới đây là các bước phân tích và chẩn đoán được trích xu�
     *   Bệnh gan: +20 điểm *(thang điểm FINE)*
     *   Suy tim ứ huyết: +10 điểm *(thang điểm FINE)*
     *   Bệnh mạch máu não: +10 điểm *(thang điểm FINE)*
-    *   Bệnh thận: 19 điểm *(trong sơ đồ ghi 19, chuẩn FINE là +10)*
+    *   Bệnh thận: +10 điểm *(thang điểm FINE)*
     *   Suy hô hấp cần thông khí cơ học (Thở máy, đặt nội khí quản): Đạt **1/2 tiêu chuẩn chính** của ATS -> Nhập viện Hồi sức tích cực (ICU)
     *   Sốc nhiễm khuẩn đang dùng vận mạch (Dobutamin, Noradrenalin): Đạt **1/2 tiêu chuẩn chính** của ATS -> Nhập viện Hồi sức tích cực (ICU)
 
 ## 2. Khám lâm sàng
 ### 2.1. Chỉ số sinh tồn
-*   **Nhịp thở:** > 30 lần/phút -> +20 điểm *(FINE)*, ghi nhận yếu tố cho *CURB-65*, và là tiêu chuẩn phụ *(ATS)*
+*   **Nhịp thở:** ≥ 30 lần/phút -> +20 điểm *(FINE)*, ghi nhận yếu tố cho *CURB-65*, và là tiêu chuẩn phụ *(ATS)*
 *   **Huyết áp:**
     *   Tâm thu < 90 mmHg -> +20 điểm *(FINE)*, ghi nhận yếu tố cho *CURB-65*, và là tiêu chuẩn phụ *(ATS)*
     *   Đang bù dịch tích cực -> Tiêu chuẩn phụ *(ATS)*
@@ -29,7 +29,7 @@ Dưới đây là các bước phân tích và chẩn đoán được trích xu�
 *   **Thân nhiệt:**
     *   < 35°C hoặc >= 40°C -> +15 điểm *(FINE)*
     *   < 36°C -> Tiêu chuẩn phụ *(ATS)*
-*   **Mạch:** > 125 lần/phút -> +10 điểm *(FINE)*
+*   **Mạch:** ≥ 125 lần/phút -> +10 điểm *(FINE)*
 *   **SpO2:** < 90% -> +10 điểm *(FINE)*
 
 ### 2.2. Triệu chứng cơ năng
@@ -59,8 +59,8 @@ Dưới đây là các bước phân tích và chẩn đoán được trích xu�
 *   **Xét nghiệm máu:**
     *   **Hóa sinh máu:**
         *   Ure > 7 mmol/L -> Ghi nhận yếu tố cho *CURB-65*
-        *   BUN >= 11 mmol/L -> Tiêu chuẩn phụ *(ATS)*
-        *   BUN >= 20 -> +20 điểm *(FINE)*
+        *   BUN ≥ 7 mmol/L (hoặc ≥ 20 mg/dL) -> Tiêu chuẩn phụ *(ATS)*
+        *   BUN ≥ 11 mmol/L (hoặc ≥ 30 mg/dL) -> +20 điểm *(FINE)*
         *   Na+ < 130 mmol/L -> +20 điểm *(FINE)*
         *   Đường máu >= 14 mmol/L -> +10 điểm *(FINE)*
     *   **Công thức máu:**
@@ -68,7 +68,7 @@ Dưới đây là các bước phân tích và chẩn đoán được trích xu�
         *   Bạch cầu (WBC) < 4 G/L -> Tiêu chuẩn phụ *(ATS)*
         *   Hematocrit < 0.3 -> +10 điểm *(FINE)*
     *   **Khí máu:**
-        *   PaO2/FiO2 < 250 -> Tiêu chuẩn phụ *(ATS)*
+        *   PaO2/FiO2 ≤ 250 -> Tiêu chuẩn phụ *(ATS)*
         *   pH < 7.35 (Nhiễm toan) -> +30 điểm *(FINE)*
         *   PaO2 < 60 mmHg -> +10 điểm *(FINE)*
 
@@ -97,12 +97,12 @@ Dưới đây là các bước phân tích và chẩn đoán được trích xu�
         1. Suy hô hấp cần thông khí cơ học (thở máy, đặt nội khí quản)
         2. Sốc nhiễm khuẩn đang dùng vận mạch (Dobutamin, Noradrenalin)
     *   HOẶC đạt **3/9 tiêu chuẩn phụ**:
-        1. Nhịp thở > 30 lần/phút
+        1. Nhịp thở ≥ 30 lần/phút
         2. Huyết áp tâm thu < 90 mmHg (hoặc đang bù dịch tích cực)
         3. Thay đổi tri giác
         4. Thân nhiệt < 36°C
         5. X-quang ngực: Tổn thương nhiều thùy phổi
-        6. BUN >= 11 mmol/L
+        6. BUN ≥ 7 mmol/L (hoặc ≥ 20 mg/dL)
         7. Bạch cầu (WBC) < 4 G/L
         8. Tiểu cầu (PLT) < 100 G/L
-        9. PaO2/FiO2 < 250
+        9. PaO2/FiO2 ≤ 250

@@ -349,7 +349,7 @@
             <div class="card">
                 <div class="card-header">4. Cận lâm sàng</div>
                 <div class="grid-3">
-                    <div class="form-group"><label>BUN (mmol/L) <span style="font-size: 0.65rem; color: var(--text-muted);">(≥11 ATS, ≥20 FINE)</span></label><input type="number" id="inp-bun" placeholder="VD: 21" step="0.1"></div>
+                    <div class="form-group"><label>BUN (mmol/L) <span style="font-size: 0.65rem; color: var(--text-muted);">(≥7 ATS, ≥11 FINE)</span></label><input type="number" id="inp-bun" placeholder="VD: 21" step="0.1"></div>
                     <div class="form-group"><label>Ure (mmol/L) <span style="font-size: 0.65rem; color: var(--text-muted);">(>7 CURB)</span></label><input type="number" id="inp-ure" placeholder="VD: 8" step="0.1"></div>
                     <div class="form-group"><label>Na+ (mmol/L)</label><input type="number" id="inp-na" placeholder="VD: 125"></div>
                     <div class="form-group"><label>Đường máu (mmol/L)</label><input type="number" id="inp-glc" placeholder="VD: 15" step="0.1"></div>
@@ -570,7 +570,7 @@
             if (cLiver) psi += 20;
             if (cChf) psi += 10;
             if (cCvd) psi += 10;
-            if (cRenal) psi += 19;
+            if (cRenal) psi += 10;
 
             if (ams) psi += 20;
             if (rr >= 30 && hasVal('inp-rr')) psi += 20;
