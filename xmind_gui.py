@@ -178,10 +178,24 @@ class XmindExplorerGUI(tk.Tk):
                     direction: "LR",
                     sortMethod: "directed",
                     levelSeparation: 300,
-                    nodeSpacing: 100
+                    nodeSpacing: 150,
+                    treeSpacing: 250,
+                    blockShifting: true,
+                    edgeMinimization: true,
+                    parentCentralization: true
                 }}
             }},
-            physics: false,
+            physics: {{
+                enabled: true,
+                hierarchicalRepulsion: {{
+                    nodeDistance: 150,
+                    springLength: 150
+                }},
+                solver: 'hierarchicalRepulsion',
+                stabilization: {{
+                    iterations: 150
+                }}
+            }},
             nodes: {{
                 shape: 'box',
                 margin: 10,
