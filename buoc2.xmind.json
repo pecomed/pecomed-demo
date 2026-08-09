@@ -69,6 +69,13 @@
           {
             "id": "387713ad-b279-45be-a1ce-bc99113b3a60",
             "title": "XQUANG",
+            "summaries": [
+              {
+                "id": "4555c608-6b75-4ee2-8dbf-4927b48f1d8d",
+                "range": "(0,0)",
+                "topicId": "cf6be074-a5bd-4cd2-ba06-fa76da85b8fd"
+              }
+            ],
             "topics": [
               {
                 "id": "549bf01b-3f17-4057-a293-c70c79a4cd01",
@@ -107,6 +114,13 @@
                       {
                         "id": "0590a176-5cde-4bf5-b8d3-a2592dac2d89",
                         "title": "2 CHECK bệnh đồng mắc",
+                        "summaries": [
+                          {
+                            "id": "8993ab3a-d719-43b0-8130-27ed40248a9b",
+                            "range": "(5,6)",
+                            "topicId": "c1069b2c-05cc-42e1-a607-0813fad1fc5e"
+                          }
+                        ],
                         "topics": [
                           {
                             "id": "3b363fc6-7218-4667-a0d9-5abfb3017ce0",
@@ -287,6 +301,13 @@
                           {
                             "id": "32215781-ab4d-4884-998c-d0bd030b0657",
                             "title": "BỆNH PHỔI MẠN TÍNH",
+                            "summaries": [
+                              {
+                                "id": "3565f284-d05e-4701-8c35-665b932aba5d",
+                                "range": "(1,4)",
+                                "topicId": "8eb73a92-6408-4ce0-a56d-872789de51cb"
+                              }
+                            ],
                             "topics": [
                               {
                                 "id": "22e1247b-2e3f-4eae-b14e-cc589d115d08",
@@ -457,6 +478,13 @@
               {
                 "id": "9a3a227b-9f75-47a3-ac69-0d5bb7ff0659",
                 "title": "Bệnh nhân có X quang mới",
+                "summaries": [
+                  {
+                    "id": "0500249f-d51a-4c23-a9db-acdc52f89790",
+                    "range": "(0,4)",
+                    "topicId": "57233dc0-2c06-48a3-9bac-9b1cfede4eec"
+                  }
+                ],
                 "topics": [
                   {
                     "id": "64a281b3-aa64-416a-9be7-6aa3ff4da00d",
@@ -501,6 +529,23 @@
           {
             "id": "785d4db4-4009-4e17-aab0-3e9af4cced30",
             "title": "chỉ định xét nghiệm đặc hiệu tương ứng theo vi khuẩn virut nghi ngờ",
+            "summaries": [
+              {
+                "id": "af520c22-4bf1-4dd6-a06f-3dcd9972dd43",
+                "range": "(8,13)",
+                "topicId": "012f9043-0476-4bad-87b5-19ee1face9b0"
+              },
+              {
+                "id": "5cc8151f-9a61-4018-bd21-bb5262976e13",
+                "range": "(4,6)",
+                "topicId": "72811c46-ff93-4e3e-b1d4-caf4756f9cbc"
+              },
+              {
+                "id": "c9585cdb-4052-4f62-9252-20132aa6cce5",
+                "range": "(14,17)",
+                "topicId": "27e4920e-6bf6-4df9-bf61-c4403aff417f"
+              }
+            ],
             "topics": [
               {
                 "id": "b52c552e-bda7-4478-91bc-3ee5ffa56cf5",
