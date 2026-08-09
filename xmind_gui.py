@@ -190,7 +190,7 @@ class XmindExplorerGUI(tk.Tk):
             }},
             edges: {{
                 arrows: 'to',
-                smooth: {{ type: 'cubicBezier', forceDirection: 'horizontal' }},
+                smooth: false,
                 font: {{ align: 'middle' }}
             }},
             interaction: {{
