@@ -1,0 +1,257 @@
+[
+  {
+    "title": "Mind Map",
+    "topic": {
+      "title": "bước 1 chẩn đoán sơ bộ , chỉ định thương quy + phân loại mức độ nặng của bệnh",
+      "id": "a81aaf27-912e-45dd-ae58-e1afe91a4a62"
+    },
+    "id": "a34d7a6d-c43e-4e19-ac74-b42e8dadaa63",
+    "structure": "org.xmind.ui.map.clockwise",
+    "relationships": [
+      {
+        "id": "d3c17c2e-7b4d-4587-a93c-f34ac8afab63",
+        "end1Id": "acd093de-c92c-4184-bd2c-e637b2683d2f",
+        "end2Id": "37051bde-b8cc-4aa9-9067-f172586cc27d",
+        "end1Title": "0-1 yếu tố",
+        "end2Title": "Điều trị ngoại trú"
+      },
+      {
+        "id": "56a1e090-30ed-4bfe-9a47-b953e00f41d2",
+        "end1Id": "b8b14a9c-5c13-4363-aaeb-77e5672b2efa",
+        "end2Id": "2ff870ee-a15b-494f-8afa-2f3c19125cd7",
+        "end1Title": "2 điểm",
+        "end2Title": "điều trị nội trú ngắn hạn"
+      },
+      {
+        "id": "a36d9c72-6a67-4bfe-826f-3410fe48403e",
+        "end1Id": "b2c971e0-2a41-4c8f-b826-1c343c62c76e",
+        "end2Id": "2634a5e1-c5b9-4818-a81e-c4c2c6f2da17",
+        "end1Title": "3 điểm",
+        "end2Title": "nội trú"
+      },
+      {
+        "id": "a8407950-1481-45e1-a330-1bb8176207a7",
+        "end1Id": "636e8b6a-627e-4aa1-82f9-7dc0cabdad0e",
+        "end2Id": "4a05860b-ab46-4feb-9e13-fb893168421c",
+        "end1Title": "4-5 điểm",
+        "end2Title": "ICU"
+      },
+      {
+        "id": "45d10929-4119-40ba-9781-641cfc840524",
+        "end1Id": "63323f46-5390-48e2-8eec-fedbc0ada3fa",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": "ure >7",
+        "end2Title": "curb 65"
+      },
+      {
+        "id": "45b49ef2-d8c5-4f9b-a359-1f5a0d1414c9",
+        "end1Id": "e121de2e-b6ae-47ed-ae91-85d6f8edd483",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": ">30",
+        "end2Title": "curb 65"
+      },
+      {
+        "id": "8c5c730c-b1e5-46b8-81e5-0d32f35942d0",
+        "end1Id": "007530aa-a025-42b3-bfbd-8e0aacbac9fd",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": "TÂM THU<90",
+        "end2Title": "curb 65"
+      },
+      {
+        "id": "2498571e-167b-4fc9-a54a-0bf41f988cdd",
+        "end1Id": "1972f56a-dcf3-42f1-afc8-ee669ba17659",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": ">65",
+        "end2Title": "curb 65"
+      },
+      {
+        "id": "f3696dee-4c56-4576-82be-6c42c5f45656",
+        "end1Id": "523948f7-8ee0-4fff-83f9-5252c75748d8",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": "thay đổi tri giác",
+        "end2Title": "curb 65"
+      },
+      {
+        "id": "f946408f-2f44-4d55-80d6-bf86228736be",
+        "end1Id": "847f7bb8-f2c4-4072-8393-5565392ea602",
+        "end2Id": "9affc82c-cc08-4184-bb7e-a4089189858b",
+        "end1Title": "cộng điểm",
+        "end2Title": "nơi sinh sống "
+      },
+      {
+        "id": "a1ce886c-8e2e-4f76-a857-00f569851c68",
+        "end1Id": "918d4f70-4771-40d2-9164-832771742f27",
+        "end2Id": "9affc82c-cc08-4184-bb7e-a4089189858b",
+        "end1Title": "cộng điểm",
+        "end2Title": "nơi sinh sống "
+      },
+      {
+        "id": "7c7310ea-1ef8-4d53-a639-c58d252ef0ad",
+        "end1Id": "0a9412aa-87b1-4eec-8009-79c4657044a2",
+        "end2Id": "9affc82c-cc08-4184-bb7e-a4089189858b",
+        "end1Title": "cộng điểm",
+        "end2Title": "nơi sinh sống "
+      },
+      {
+        "id": "6ab78740-328e-43e7-9a13-f337ec261e05",
+        "end1Id": "48d56fe3-ac45-46ee-bd6c-b5b58863b627",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "cộng điểm",
+        "end2Title": "fine"
+      },
+      {
+        "id": "fabf72a5-0204-483c-94e9-c24d385d52aa",
+        "end1Id": "0d82c0e2-7579-4792-a7e5-9c97ab7e8b8d",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "+10",
+        "end2Title": "fine"
+      },
+      {
+        "id": "123b383e-283d-42a2-9ba0-0f07ff828050",
+        "end1Id": "6fc27b60-92d1-443f-a2e3-64707f0d2ad0",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "cộng điểm",
+        "end2Title": "fine"
+      },
+      {
+        "id": "e0fc33e4-bda4-4f64-89bd-daef52f0c0e0",
+        "end1Id": "63d18e02-507f-43ff-8bd9-33888c88f123",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "+10",
+        "end2Title": "fine"
+      },
+      {
+        "id": "4d845195-2262-4926-94dd-d66f4437590d",
+        "end1Id": "e4e0ec1e-65c6-4d63-938f-124aa8dd8fb8",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "cộng điểm",
+        "end2Title": "fine"
+      },
+      {
+        "id": "88be4e5b-621f-437a-8133-29762cad0711",
+        "end1Id": "08f8c45a-5471-46de-a66a-bdfad6fcf6d5",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "PLT <100",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "8074d190-c67d-461b-bac5-ca661f9d5b7b",
+        "end1Id": "cbb51573-191f-4c0c-a306-7dfe49b3dbbb",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "wbc <4 g/l",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "cbc9f452-0437-4678-9e07-f0712326654d",
+        "end1Id": "55b7305e-2ab0-4b1f-8b64-b71b14beac02",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "PaO2/FIO2<250",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "8dee7977-a509-445a-87d5-ac18ed9532d8",
+        "end1Id": "f133c09a-7011-46a6-90c1-33575ba6f30d",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "tổn thương nhiều thùy phổi",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "86371208-5822-492c-9f15-1a7adc4f4d0d",
+        "end1Id": "e121de2e-b6ae-47ed-ae91-85d6f8edd483",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": ">30",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "0330d86a-1d09-411b-9e64-ce06545f5d35",
+        "end1Id": "523948f7-8ee0-4fff-83f9-5252c75748d8",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "thay đổi tri giác",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "68ed21d8-f783-45a0-a28d-c93e79cc1b7f",
+        "end1Id": "f5a667a5-b0d7-4afe-8b84-3bca930a8b43",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "<36",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "9b7b1f04-50fe-4d09-bc32-deb148b2c411",
+        "end1Id": "60a27172-b079-4d54-9438-85bcf50e976d",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "đang bù dịch tích cực",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "5a87f4c6-526a-4d7f-a9f9-c3f30cb7466e",
+        "end1Id": "aa238d7e-2b25-40b8-913e-11934b3d2475",
+        "end2Id": "fe8be591-0476-40d8-8690-8dc4e28cc953",
+        "lineEndPoints": {
+          "1": {
+            "x": -0.9751296178746998,
+            "y": 19
+          }
+        },
+        "end1Title": "1/2 tiêu chuẩn chính",
+        "end2Title": "ATS"
+      },
+      {
+        "id": "0566ef59-778d-4ff9-854c-7de3fc317523",
+        "end1Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end2Id": "fe8be591-0476-40d8-8690-8dc4e28cc953",
+        "end1Title": "3/9TIÊU CHUẨN PHỤ",
+        "end2Title": "ATS"
+      },
+      {
+        "id": "5b53f9c0-207f-405b-ac94-ad1ab9350983",
+        "end1Id": "89d198a5-d8dd-4c9e-82b5-a03fe0e16bcc",
+        "end2Id": "22c6c570-41fb-47cb-ba38-f6603dc29451",
+        "end1Title": "Hỏi bệnh",
+        "end2Title": "tuổi"
+      },
+      {
+        "id": "3352ec70-b126-4f88-ae47-f2d861056e76",
+        "end1Id": "89d198a5-d8dd-4c9e-82b5-a03fe0e16bcc",
+        "end2Id": "01552e21-240b-4196-8f7b-eed133f540a6",
+        "end1Title": "Hỏi bệnh",
+        "end2Title": "bệnh đồng mắc"
+      },
+      {
+        "id": "d6fdb6dd-970c-49bf-b13d-826102bbcaea",
+        "end1Id": "fe8be591-0476-40d8-8690-8dc4e28cc953",
+        "end2Id": "4a05860b-ab46-4feb-9e13-fb893168421c",
+        "end1Title": "ATS",
+        "end2Title": "ICU"
+      },
+      {
+        "id": "4ab331f2-afbc-4bcc-a050-d1bb42619e2c",
+        "end1Id": "6a835f7c-7fb2-47cb-bfda-1b6f20f6901e",
+        "end2Id": "37051bde-b8cc-4aa9-9067-f172586cc27d",
+        "end1Title": "I-II",
+        "end2Title": "Điều trị ngoại trú"
+      },
+      {
+        "id": "d0ee259b-a338-4c9a-98db-772ca9f2d526",
+        "end1Id": "6991f703-6a5b-45ff-9c69-e82f492c70c4",
+        "end2Id": "2ff870ee-a15b-494f-8afa-2f3c19125cd7",
+        "end1Title": "III",
+        "end2Title": "điều trị nội trú ngắn hạn"
+      },
+      {
+        "id": "ef22e3bd-4657-4533-aebb-487a58f10dab",
+        "end1Id": "054aa428-fab3-4bfb-a80a-514ba7d20be6",
+        "end2Id": "2634a5e1-c5b9-4818-a81e-c4c2c6f2da17",
+        "end1Title": "IV",
+        "end2Title": "nội trú"
+      },
+      {
+        "id": "b664ff11-4bbc-4906-9558-2a6761135369",
+        "end1Id": "7daf63ce-2d55-4fd2-b80a-cdb722695761",
+        "end2Id": "4a05860b-ab46-4feb-9e13-fb893168421c",
+        "end1Title": "V",
+        "end2Title": "ICU"
+      }
+    ]
+  }
+]

@@ -1,0 +1,174 @@
+[
+  {
+    "title": "Org Chart",
+    "topic": {
+      "title": "chẩn đoán nguyên nhân , chỉ định cận lâm sàng ",
+      "topics": [
+        {
+          "title": "luôn hiện: Streptococcus pneumoniae,\nMycoplasma pneumoniae, virut hô hấp\n",
+          "id": "e6399661-4b0d-4e1d-9473-47af07669f7f"
+        },
+        {
+          "title": "lọc bước 1 = phân loại mức độ nặng",
+          "topics": [
+            {
+              "title": "điều trị ngoại trú ( nhẹ)",
+              "topics": [
+                {
+                  "title": "loại legion, gram âm đường ruột",
+                  "id": "43d30fbb-8c67-4a5e-b858-7a7730340f03"
+                }
+              ],
+              "id": "f5c8d853-5d62-46d4-8486-6359d99110f3"
+            },
+            {
+              "title": "điều trị nội trú ( tb, nặng)",
+              "topics": [
+                {
+                  "title": "thêm vi khuẩn kỵ khí , nhiễm trùng phối hợp , bordetella pertussis",
+                  "id": "f91ef425-90c2-4714-bdaf-fc46241ede1b"
+                }
+              ],
+              "id": "7a31c718-bfd1-45b7-b203-6711daeb08a5"
+            },
+            {
+              "title": "điều trị icu( nặng)",
+              "topics": [
+                {
+                  "title": "thêm pseudomonas aeruginosa , staphylococus aureus",
+                  "id": "a8898b97-e5f4-4090-aa97-bca0a8772949"
+                }
+              ],
+              "id": "9f486a5c-d818-4e87-8022-caa1aa7eb019"
+            }
+          ],
+          "id": "852bf232-9de0-49da-a351-3235174cb74f"
+        }
+      ],
+      "id": "3b1d3a81-c964-4b43-93de-0107de5409df"
+    },
+    "id": "1b3abd14-4e51-44b8-b15c-28f85b48087d",
+    "structure": "org.xmind.ui.org-chart.down",
+    "relationships": [
+      {
+        "id": "6b28ad71-37c2-4605-a1ac-a0ed3345183a",
+        "end1Id": "6735a494-69f3-4b68-9dec-b3b63277d219",
+        "end2Id": "e6399661-4b0d-4e1d-9473-47af07669f7f",
+        "end1Title": "hiện  sẵn :Streptococcus pneumoniae\nMycoplasma pneumoniae\nChlamydia pneumoniae\nHaemophilus influenzae\nVi khuẩn gram âm đường ruột\nLegionella spp.\nVirus hô hấp\n",
+        "end2Title": "luôn hiện: Streptococcus pneumoniae,\nMycoplasma pneumoniae, virut hô hấp\n"
+      },
+      {
+        "id": "9e17792e-a124-48f1-aef1-42b5b581d4ea",
+        "end1Id": "e6399661-4b0d-4e1d-9473-47af07669f7f",
+        "end2Id": "852bf232-9de0-49da-a351-3235174cb74f",
+        "end1Title": "luôn hiện: Streptococcus pneumoniae,\nMycoplasma pneumoniae, virut hô hấp\n",
+        "end2Title": "lọc bước 1 = phân loại mức độ nặng"
+      },
+      {
+        "id": "f0db7259-2a15-4c63-83e7-255fc6ce4cf4",
+        "end1Id": "f91ef425-90c2-4714-bdaf-fc46241ede1b",
+        "end2Id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "end1Title": "thêm vi khuẩn kỵ khí , nhiễm trùng phối hợp , bordetella pertussis",
+        "end2Title": "tệp vi khuẩn vi rút nghi ngờ A"
+      },
+      {
+        "id": "d6429799-bf1c-44ee-a591-06df649970e7",
+        "end1Id": "a8898b97-e5f4-4090-aa97-bca0a8772949",
+        "end2Id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "end1Title": "thêm pseudomonas aeruginosa , staphylococus aureus",
+        "end2Title": "tệp vi khuẩn vi rút nghi ngờ A"
+      },
+      {
+        "id": "e2dc1f1f-072c-4778-8d0f-b523db8e1d82",
+        "end1Id": "43d30fbb-8c67-4a5e-b858-7a7730340f03",
+        "end2Id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "end1Title": "loại legion, gram âm đường ruột",
+        "end2Title": "tệp vi khuẩn vi rút nghi ngờ A"
+      },
+      {
+        "id": "1f72b6eb-7351-479e-ae41-414b76b8e3e9",
+        "end1Id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "end2Id": "c63b1542-0757-4433-9002-c3287b895d96",
+        "end1Title": "tệp vi khuẩn vi rút nghi ngờ A",
+        "end2Title": "lọc bước 2"
+      },
+      {
+        "id": "ebffbb5f-0d1d-4801-aedf-fad31920dc30",
+        "end1Id": "cf6be074-a5bd-4cd2-ba06-fa76da85b8fd",
+        "end2Id": "dc29e1ef-81f8-4129-b216-998d6fda0d9b",
+        "end1Title": "GHI HẾT NHỮNG VI KHUẨN VI RÚT ĐÁP ỨNG ĐIỀU KIỆN , XẾP THỨ TỰ THEO SỐ YẾU TỐ TRÙNG LẶP",
+        "end2Title": "Tệp vi khuẩn virut B"
+      },
+      {
+        "id": "dbbc3d57-dbb3-4661-8d4e-e3ca8b4ab0e6",
+        "end1Id": "de2f4102-a44b-446b-b1d7-34cc33c49cdd",
+        "end2Id": "dc29e1ef-81f8-4129-b216-998d6fda0d9b",
+        "end1Title": "tổng hợp lại vi khuẩn vi rut theo key word",
+        "end2Title": "Tệp vi khuẩn virut B"
+      },
+      {
+        "id": "c1e47d2e-7051-4d47-b6d2-1edcd6c7c9fc",
+        "end1Id": "02a5b18d-99cc-4d8c-b2ed-a402596a8289",
+        "end2Id": "3d0a7886-a217-4210-a725-072af1e303e1",
+        "end1Title": "bệnh nhân điều trị nội trú",
+        "end2Title": "NHUỘM GRAM"
+      },
+      {
+        "id": "42cad207-4437-4dbe-95da-f57df8d11053",
+        "end1Id": "b52c552e-bda7-4478-91bc-3ee5ffa56cf5",
+        "end2Id": "88ed02cc-348c-442b-bddd-b22e7679c44b",
+        "end1Title": "tràn dịch màng phổi",
+        "end2Title": "NUÔI CẤY"
+      },
+      {
+        "id": "1fd635a3-7247-4b94-9e2e-f12f242906fd",
+        "end1Id": "d17581ad-39f9-4dd9-84ea-371cf7f7a053",
+        "end2Id": "5dcc5d3e-2873-4ae4-8f4d-19f19e16c95b",
+        "end1Title": "legionella",
+        "end2Title": "PHÁT HIỆN KHÁNG NGUYÊN NƯỚC TIỂU"
+      },
+      {
+        "id": "55bda8f8-cb1a-40b0-b741-81c198bb9436",
+        "end1Id": "d17581ad-39f9-4dd9-84ea-371cf7f7a053",
+        "end2Id": "88ed02cc-348c-442b-bddd-b22e7679c44b",
+        "end1Title": "legionella",
+        "end2Title": "NUÔI CẤY"
+      },
+      {
+        "id": "12564435-607b-4235-8953-30361cb6f531",
+        "end1Id": "d17581ad-39f9-4dd9-84ea-371cf7f7a053",
+        "end2Id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "end1Title": "legionella",
+        "end2Title": "PCR "
+      },
+      {
+        "id": "f9b20232-71e7-4770-a485-b187db1e314c",
+        "end1Id": "520aeb26-f3e3-4570-8c2a-205d7382aae3",
+        "end2Id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "end1Title": "M.pneu C pneu",
+        "end2Title": "PCR "
+      },
+      {
+        "id": "89403304-0b7c-4ceb-83de-d51115073ecd",
+        "end1Id": "520aeb26-f3e3-4570-8c2a-205d7382aae3",
+        "end2Id": "cbbfe846-b313-415a-a951-4d2ff8472472",
+        "end1Title": "M.pneu C pneu",
+        "end2Title": "TÌM HIỆU GIÁ IGM , IGG HUYẾT THANH"
+      },
+      {
+        "id": "3f5776a2-2e49-4742-93a9-d62bc01e4293",
+        "end1Id": "012f9043-0476-4bad-87b5-19ee1face9b0",
+        "end2Id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "end1Title": "Summary",
+        "end2Title": "PCR "
+      },
+      {
+        "id": "57436290-5007-4051-95fd-5a1ad700a25e",
+        "end1Id": "27e4920e-6bf6-4df9-bf61-c4403aff417f",
+        "end2Id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "end1Title": "Summary",
+        "end2Title": "PCR "
+      }
+    ]
+  }
+]
