@@ -666,7 +666,22 @@
         }
 
         // Initialize on load
-        window.onload = runEngine;
+        window.onload = function() {
+            // Catch care setting from Step 1 URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const passedCareSetting = urlParams.get('care_setting');
+            
+            if (passedCareSetting) {
+                const selectEl = document.getElementById("care_setting");
+                const validOptions = Array.from(selectEl.options).map(opt => opt.value);
+                const normalizedVal = passedCareSetting.toUpperCase();
+                
+                if (validOptions.includes(normalizedVal)) {
+                    selectEl.value = normalizedVal;
+                }
+            }
+            runEngine();
+        };
     </script>
 </body>
 </html>

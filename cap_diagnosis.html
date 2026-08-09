@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chẩn Đoán & Phân Loại Mức Độ Nặng Viêm Phổi (CAP)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f3f4f6;
+            --surface: #ffffff;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+            --warning: #f59e0b;
+            --warning-bg: #fffbeb;
+            --success: #10b981;
+            --success-bg: #ecfdf5;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .card-header {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        input[type="number"], select {
+            padding: 0.35rem 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            background: #f9fafb;
+        }
+
+        input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background: var(--surface);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .checkbox-group:hover {
+            background-color: var(--bg-color);
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .checkbox-group span {
+            font-size: 0.85rem;
+            user-select: none;
+        }
+
+        /* Results Panel */
+        .results-panel {
+            position: sticky;
+            top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .score-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .score-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+        
+        .score-card.danger::before { background: var(--danger); }
+        .score-card.warning::before { background: var(--warning); }
+        .score-card.success::before { background: var(--success); }
+
+        .score-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .score-value small {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge.danger { background: var(--danger-bg); color: var(--danger); }
+        .badge.warning { background: var(--warning-bg); color: var(--warning); }
+        .badge.success { background: var(--success-bg); color: var(--success); }
+
+        .score-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border);
+        }
+
+        .ats-criteria-list {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .ats-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ats-item.active {
+            color: var(--danger);
+            font-weight: 600;
+        }
+        
+        .ats-item::before {
+            content: '•';
+            color: var(--text-muted);
+        }
+        .ats-item.active::before {
+            color: var(--danger);
+        }
+
+        /* Title banner */
+        .app-header {
+            background: linear-gradient(135deg, var(--primary), #4f46e5);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        
+        .app-header h1 {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>Chẩn đoán & Phân loại mức độ nặng Viêm phổi (CAP)</h1>
+    </header>
+
+    <div class="container">
+        <!-- Input Form -->
+        <div class="input-panel">
+
+            <div class="card">
+                <div class="card-header">1. Triệu chứng lâm sàng (Chẩn đoán sơ bộ)</div>
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label>Sốt</label>
+                        <select id="inp-fever">
+                            <option value="0">Không rõ / Không</option>
+                            <option value="1">Sốt nhẹ</option>
+                            <option value="2">> 39°C</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ho</label>
+                        <select id="inp-cough">
+                            <option value="0">Không rõ / Không</option>
+                            <option value="1">Ho khan</option>
+                            <option value="2">Ho có đờm</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hội chứng đông đặc</label>
+                        <select id="inp-consolidation">
+                            <option value="0">Không có</option>
+                            <option value="1">Một vị trí</option>
+                            <option value="2">Nhiều vị trí</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid-2" style="margin-top: 0.75rem;">
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="inp-chestpain">
+                        <span>Đau ngực kiểu màng phổi</span>
+                    </label>
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="inp-infection_syndrome">
+                        <span>HC Nhiễm trùng (Môi khô, lưỡi bẩn, hơi thở hôi)</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">2. Hành chính & Bệnh đồng mắc</div>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Tuổi <span id="age-error" style="color: var(--danger); font-size: 0.75rem; display: none;">(Bắt buộc 18-120 tuổi)</span></label>
+                        <input type="number" id="inp-age" placeholder="VD: 65" min="18" max="120">
+                    </div>
+                    <div class="form-group">
+                        <label>Giới tính</label>
+                        <select id="inp-sex">
+                            <option value="M">Nam</option>
+                            <option value="F">Nữ</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid-2" style="margin-top: 0.75rem;">
+                    <label class="checkbox-group" id="label-nh">
+                        <input type="checkbox" id="inp-nh">
+                        <span>Viện dưỡng lão / Nhà điều dưỡng (≥ 60 tuổi)</span>
+                    </label>
+                </div>
+                
+                <label style="display: block; margin-top: 0.75rem; margin-bottom: 0.25rem;">Bệnh đồng mắc</label>
+                <div class="grid-2">
+                    <label class="checkbox-group"><input type="checkbox" id="inp-immuno"><span>Suy giảm miễn dịch</span></label>
+                    <label class="checkbox-group"><input type="checkbox" id="inp-cancer"><span>Ung thư</span></label>
+                    <label class="checkbox-group"><input type="checkbox" id="inp-liver"><span>Bệnh gan</span></label>
+                    <label class="checkbox-group"><input type="checkbox" id="inp-chf"><span>Suy tim ứ huyết</span></label>
+                    <label class="checkbox-group"><input type="checkbox" id="inp-cvd"><span>Bệnh mạch máu não</span></label>
+                    <label class="checkbox-group"><input type="checkbox" id="inp-renal"><span>Bệnh thận</span></label>
+                </div>
+                <div id="immuno-warning" style="display: none; margin-top: 0.5rem; padding: 0.5rem; background: var(--warning-bg); border-left: 3px solid var(--warning); border-radius: 4px; font-size: 0.8rem; color: #b45309;">
+                    ⚠️ <b>Lưu ý:</b> Bệnh nhân suy giảm miễn dịch, bỏ qua khám triệu chứng cơ năng.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">3. Tình trạng cấp cứu (Tiêu chuẩn chính ATS)</div>
+                <div class="form-group">
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="inp-vent">
+                        <span>Suy hô hấp cần thông khí cơ học (Thở máy, đặt NKQ)</span>
+                    </label>
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="inp-shock">
+                        <span>Sốc nhiễm khuẩn đang dùng vận mạch (Dobutamin, Noradrenalin...)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">4. Khám lâm sàng (Chỉ số sinh tồn)</div>
+                <div class="grid-3">
+                    <div class="form-group"><label>Tri giác</label><select id="inp-ams"><option value="0">Bình thường</option><option value="1">Thay đổi tri giác</option></select></div>
+                    <div class="form-group"><label>Nhịp thở (lần/p)</label><input type="number" id="inp-rr" placeholder="VD: 32"></div>
+                    <div class="form-group"><label>HA Tâm thu (mmHg)</label><input type="number" id="inp-sbp" placeholder="VD: 85"></div>
+                    <div class="form-group"><label>HA Tâm trương (mmHg)</label><input type="number" id="inp-dbp" placeholder="VD: 60"></div>
+                    <div class="form-group"><label>Nhiệt độ (°C)</label><input type="number" id="inp-temp" placeholder="VD: 34" step="0.1"></div>
+                    <div class="form-group"><label>Mạch (lần/p)</label><input type="number" id="inp-hr" placeholder="VD: 130"></div>
+                    <div class="form-group"><label>SpO2 (%)</label><input type="number" id="inp-spo2" placeholder="VD: 88"></div>
+                </div>
+                <label class="checkbox-group" style="margin-top: 0.75rem;">
+                    <input type="checkbox" id="inp-fluids">
+                    <span>Đang bù dịch tích cực (Tiêu chuẩn ATS)</span>
+                </label>
+            </div>
+
+            <div class="card">
+                <div class="card-header">5. Cận lâm sàng</div>
+                <div class="grid-3">
+                    <div class="form-group"><label>BUN (mmol/L) <span style="font-size: 0.65rem; color: var(--text-muted);">(≥7 ATS, ≥11 FINE)</span></label><input type="number" id="inp-bun" placeholder="VD: 21" step="0.1"></div>
+                    <div class="form-group"><label>Ure (mmol/L) <span style="font-size: 0.65rem; color: var(--text-muted);">(>7 CURB)</span></label><input type="number" id="inp-ure" placeholder="VD: 8" step="0.1"></div>
+                    <div class="form-group"><label>Na+ (mmol/L)</label><input type="number" id="inp-na" placeholder="VD: 125"></div>
+                    <div class="form-group"><label>Đường máu (mmol/L)</label><input type="number" id="inp-glc" placeholder="VD: 15" step="0.1"></div>
+                    <div class="form-group"><label>Hct (tỷ lệ)</label><input type="number" id="inp-hct" placeholder="VD: 0.28" step="0.01"></div>
+                    <div class="form-group"><label>pH Khí máu</label><input type="number" id="inp-ph" placeholder="VD: 7.3" step="0.01"></div>
+                    <div class="form-group"><label>PaO2 (mmHg)</label><input type="number" id="inp-pao2" placeholder="VD: 55"></div>
+                    <div class="form-group"><label>PaO2/FiO2</label><input type="number" id="inp-pf" placeholder="VD: 200"></div>
+                    <div class="form-group"><label>Bạch cầu (G/L)</label><input type="number" id="inp-wbc" placeholder="VD: 3.5" step="0.1"></div>
+                    <div class="form-group"><label>Tiểu cầu (G/L)</label><input type="number" id="inp-plt" placeholder="VD: 80"></div>
+                </div>
+                <div class="grid-2" style="margin-top: 0.75rem;">
+                    <label class="checkbox-group"><input type="checkbox" id="inp-pleural"><span>Tràn dịch màng phổi (Siêu âm)</span></label>
+                    <label class="checkbox-group"><input type="checkbox" id="inp-multilobe"><span>Tổn thương nhiều thùy (X-quang)</span></label>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Results Panel -->
+        <div class="results-panel">
+            
+            <!-- Chẩn đoán sơ bộ -->
+            <div class="score-card" id="card-diag">
+                <div class="score-title">Chẩn đoán sơ bộ</div>
+                <div class="score-value" style="font-size: 1.25rem; white-space: pre-wrap; margin-bottom: 0;" id="val-diag">Chưa đủ dữ kiện</div>
+                <div class="score-desc" id="desc-diag">
+                    Nhập triệu chứng lâm sàng để gợi ý chẩn đoán.
+                </div>
+            </div>
+
+            <!-- PSI (FINE) Score -->
+            <div class="score-card" id="card-psi">
+                <div class="score-title">Điểm PSI (FINE)</div>
+                <div class="score-value"><span id="val-psi">0</span> <small>điểm</small></div>
+                <div class="badge" id="badge-psi">Độ I-II</div>
+                <div class="score-desc" id="desc-psi">
+                    Khuyến cáo: Điều trị ngoại trú
+                </div>
+            </div>
+
+            <!-- CURB-65 Score -->
+            <div class="score-card" id="card-curb">
+                <div class="score-title">Điểm CURB-65</div>
+                <div class="score-value"><span id="val-curb">0</span> <small>/ 5</small></div>
+                <div class="badge" id="badge-curb">0-1 yếu tố</div>
+                <div class="score-desc" id="desc-curb">
+                    Khuyến cáo: Điều trị ngoại trú
+                </div>
+            </div>
+
+            <!-- ATS/IDSA Criteria -->
+            <div class="score-card" id="card-ats">
+                <div class="score-title">Tiêu chuẩn ATS/IDSA</div>
+                <div class="score-value" style="font-size: 1.5rem;" id="val-ats">Không đạt chuẩn ICU</div>
+                <div class="badge" id="badge-ats">Nội trú thường</div>
+                <div class="ats-criteria-list">
+                    <div style="font-weight:600; margin-bottom: 2px;">Tiêu chuẩn chính (Đạt <span id="ats-major-count">0</span>/2):</div>
+                    <div class="ats-item" id="ats-m1">Thở máy/Nội khí quản</div>
+                    <div class="ats-item" id="ats-m2">Sốc nhiễm khuẩn cần vận mạch</div>
+                    
+                    <div style="font-weight:600; margin-top: 8px; margin-bottom: 2px;">Tiêu chuẩn phụ (Đạt <span id="ats-minor-count">0</span>/9):</div>
+                    <div class="ats-item" id="ats-mi1">Nhịp thở > 30 lần/phút</div>
+                    <div class="ats-item" id="ats-mi2">HA tâm thu < 90 mmHg / Bù dịch</div>
+                    <div class="ats-item" id="ats-mi3">Thay đổi tri giác</div>
+                    <div class="ats-item" id="ats-mi4">Thân nhiệt < 36°C</div>
+                    <div class="ats-item" id="ats-mi5">Tổn thương nhiều thùy phổi</div>
+                    <div class="ats-item" id="ats-mi6">Ure > 7 mmol/L / BUN ≥ 7 mmol/L</div>
+                    <div class="ats-item" id="ats-mi7">Bạch cầu < 4 G/L</div>
+                    <div class="ats-item" id="ats-mi8">Tiểu cầu < 100 G/L</div>
+                    <div class="ats-item" id="ats-mi9">PaO2/FiO2 ≤ 250</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Cache DOM elements
+        const inputs = document.querySelectorAll('input, select');
+        const elements = {
+            ageError: document.getElementById('age-error'),
+            ageInput: document.getElementById('inp-age'),
+            nhInput: document.getElementById('inp-nh'),
+            nhLabel: document.getElementById('label-nh'),
+            immunoWarning: document.getElementById('immuno-warning'),
+            
+            diagVal: document.getElementById('val-diag'),
+            diagDesc: document.getElementById('desc-diag'),
+            diagCard: document.getElementById('card-diag'),
+            
+            curbVal: document.getElementById('val-curb'),
+            curbBadge: document.getElementById('badge-curb'),
+            curbDesc: document.getElementById('desc-curb'),
+            curbCard: document.getElementById('card-curb'),
+            
+            psiVal: document.getElementById('val-psi'),
+            psiBadge: document.getElementById('badge-psi'),
+            psiDesc: document.getElementById('desc-psi'),
+            psiCard: document.getElementById('card-psi'),
+            
+            atsVal: document.getElementById('val-ats'),
+            atsBadge: document.getElementById('badge-ats'),
+            atsCard: document.getElementById('card-ats'),
+            atsMajorCount: document.getElementById('ats-major-count'),
+            atsMinorCount: document.getElementById('ats-minor-count')
+        };
+        
+        // Cache ATS items to avoid querying every time
+        const atsItems = {
+            m: [document.getElementById('ats-m1'), document.getElementById('ats-m2')],
+            mi: Array.from({length: 9}, (_, i) => document.getElementById(`ats-mi${i+1}`))
+        };
+        
+        function getVal(id, type = 'num') {
+            const el = document.getElementById(id);
+            if(type === 'chk') return el.checked;
+            if(type === 'str') return el.value;
+            return parseFloat(el.value) || 0;
+        }
+
+        function hasVal(id) {
+            return document.getElementById(id).value !== "";
+        }
+
+        function updateCard(type, value, stateClass, badgeText, descText) {
+            elements[`${type}Val`].innerText = value;
+            elements[`${type}Card`].className = `score-card ${stateClass}`;
+            elements[`${type}Badge`].className = `badge ${stateClass}`;
+            elements[`${type}Badge`].innerText = badgeText;
+            if (descText) {
+                elements[`${type}Desc`].innerText = descText;
+            }
+        }
+
+        function updateScores() {
+            // --- 0. Chẩn đoán sơ bộ ---
+            const fever = getVal('inp-fever', 'str');
+            const cough = getVal('inp-cough', 'str');
+            const consolidation = getVal('inp-consolidation', 'str');
+            const chestpain = getVal('inp-chestpain', 'chk');
+            const infectionSyndrome = getVal('inp-infection_syndrome', 'chk');
+            
+            let isPneumoniaLikely = (fever !== '0' || cough !== '0' || consolidation !== '0' || chestpain || infectionSyndrome);
+
+            if (isPneumoniaLikely) {
+                let mainDiag = "Viêm phổi";
+                if (consolidation === '1') mainDiag = "Viêm phổi thùy";
+                else if (consolidation === '2') mainDiag = "Phế quản phế viêm";
+                
+                let details = [];
+                if (fever === '1') details.push("Nghi ngờ vi khuẩn không điển hình (sốt nhẹ)");
+                if (fever === '2') details.push("Hướng tới vi khuẩn điển hình (> 39°C)");
+                if (chestpain) details.push("Nghĩ đến viêm phổi cận màng phổi (Parapleural pneumonia)");
+                if (infectionSyndrome) details.push("Có hội chứng nhiễm trùng");
+                
+                elements.diagVal.innerText = mainDiag;
+                elements.diagVal.style.color = 'var(--primary)';
+                elements.diagCard.className = 'score-card'; 
+                
+                if (details.length > 0) {
+                    elements.diagDesc.innerHTML = `<ul style="padding-left: 1.2rem; margin-top: 0.5rem; color: var(--text-main);"><li>${details.join('</li><li>')}</li></ul>`;
+                } else {
+                    elements.diagDesc.innerHTML = "Chẩn đoán sơ bộ dựa trên lâm sàng.";
+                }
+            } else {
+                elements.diagVal.innerText = "Chưa đủ dữ kiện";
+                elements.diagVal.style.color = 'var(--text-main)';
+                elements.diagCard.className = 'score-card'; 
+                elements.diagDesc.innerHTML = "Nhập triệu chứng lâm sàng để gợi ý chẩn đoán.";
+            }
+
+            // Read Inputs
+            let age = getVal('inp-age');
+            
+            // Age validation
+            let isAgeValid = false;
+            if (hasVal('inp-age')) {
+                if (age < 18 || age > 120) {
+                    elements.ageError.innerText = '(Vui lòng nhập tuổi từ 18-120)';
+                    elements.ageError.style.display = 'inline-block';
+                    elements.ageInput.style.borderColor = 'var(--danger)';
+                    age = Math.max(18, Math.min(120, age));
+                } else {
+                    elements.ageError.style.display = 'none';
+                    elements.ageInput.style.borderColor = 'var(--border)';
+                    isAgeValid = true;
+                }
+            } else {
+                elements.ageError.innerText = '(Bắt buộc 18-120 tuổi)';
+                elements.ageError.style.display = 'inline-block';
+                elements.ageInput.style.borderColor = 'var(--danger)';
+            }
+            
+            // Nursing home validation
+            if (!isAgeValid || age < 60) {
+                elements.nhInput.checked = false;
+                elements.nhInput.disabled = true;
+                if (elements.nhLabel) elements.nhLabel.style.opacity = '0.5';
+            } else {
+                elements.nhInput.disabled = false;
+                if (elements.nhLabel) elements.nhLabel.style.opacity = '1';
+            }
+            
+            const sex = getVal('inp-sex', 'str');
+            const nh = elements.nhInput.checked;
+            const immuno = getVal('inp-immuno', 'chk');
+            
+            elements.immunoWarning.style.display = immuno ? 'block' : 'none';
+
+            // Disable preliminary diagnosis inputs if immuno is true
+            const diagInputs = ['inp-fever', 'inp-cough', 'inp-consolidation', 'inp-chestpain', 'inp-infection_syndrome'];
+            diagInputs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.disabled = immuno;
+                    if (immuno && el.type === 'checkbox') el.checked = false;
+                    if (immuno && el.tagName === 'SELECT') el.value = '0';
+                }
+            });
+
+            const cCancer = getVal('inp-cancer', 'chk');
+            const cLiver = getVal('inp-liver', 'chk');
+            const cChf = getVal('inp-chf', 'chk');
+            const cCvd = getVal('inp-cvd', 'chk');
+            const cRenal = getVal('inp-renal', 'chk');
+
+            const isVent = getVal('inp-vent', 'chk');
+            const isShock = getVal('inp-shock', 'chk');
+            const isFluids = getVal('inp-fluids', 'chk');
+
+            const ams = getVal('inp-ams') === 1;
+            const rr = getVal('inp-rr');
+            const sbp = getVal('inp-sbp');
+            const dbp = getVal('inp-dbp');
+            const temp = getVal('inp-temp');
+            const hr = getVal('inp-hr');
+            const spo2 = getVal('inp-spo2');
+
+            const bun = getVal('inp-bun');
+            const ure = getVal('inp-ure');
+            const na = getVal('inp-na');
+            const glc = getVal('inp-glc');
+            const hct = getVal('inp-hct');
+            const ph = getVal('inp-ph');
+            const pao2 = getVal('inp-pao2');
+            const pf = getVal('inp-pf');
+            const wbc = getVal('inp-wbc');
+            const plt = getVal('inp-plt');
+            const pleural = getVal('inp-pleural', 'chk');
+            const multilobe = getVal('inp-multilobe', 'chk');
+
+            // --- 1. CURB-65 Calculation ---
+            let curb = 0;
+            if (ams) curb += 1;
+            if (ure > 7 && hasVal('inp-ure')) curb += 1;
+            if (rr >= 30 && hasVal('inp-rr')) curb += 1;
+            if (((sbp < 90 && hasVal('inp-sbp')) || (dbp <= 60 && hasVal('inp-dbp')))) curb += 1; 
+            if (age >= 65 && hasVal('inp-age')) curb += 1;
+
+            if (curb <= 1) {
+                updateCard('curb', curb, 'success', '0 - 1 yếu tố', 'Khuyến cáo: Điều trị ngoại trú');
+            } else if (curb === 2) {
+                updateCard('curb', curb, 'warning', '2 yếu tố', 'Khuyến cáo: Điều trị nội trú ngắn hạn');
+            } else if (curb === 3) {
+                updateCard('curb', curb, 'danger', '3 yếu tố', 'Khuyến cáo: Điều trị nội trú');
+            } else {
+                updateCard('curb', curb, 'danger', `${curb} yếu tố`, 'Khuyến cáo: Nhập ICU (Hồi sức tích cực)');
+            }
+
+            // --- 2. PSI (FINE) Calculation ---
+            let psi = 0;
+            if (hasVal('inp-age')) {
+                psi += (sex === 'M') ? age : (age - 10);
+            }
+            if (nh) psi += 10;
+            
+            if (cCancer) psi += 30;
+            if (cLiver) psi += 20;
+            if (cChf) psi += 10;
+            if (cCvd) psi += 10;
+            if (cRenal) psi += 10;
+
+            if (ams) psi += 20;
+            if (rr >= 30 && hasVal('inp-rr')) psi += 20;
+            if (sbp < 90 && hasVal('inp-sbp')) psi += 20;
+            if (hasVal('inp-temp') && (temp < 35 || temp >= 40)) psi += 15;
+            if (hr >= 125 && hasVal('inp-hr')) psi += 10;
+            // Hypoxia: PaO2 < 60 mmHg OR SpO2 < 90% (adds +10 points max)
+            if ((pao2 < 60 && hasVal('inp-pao2')) || (spo2 < 90 && hasVal('inp-spo2'))) psi += 10;
+
+            if (pleural) psi += 10;
+            if (bun >= 11 && hasVal('inp-bun')) psi += 20;
+            if (na < 130 && hasVal('inp-na')) psi += 20;
+            if (glc >= 14 && hasVal('inp-glc')) psi += 10;
+            if (hct < 0.3 && hasVal('inp-hct')) psi += 10;
+            else if (hct >= 0.3 && hct < 30 && hasVal('inp-hct')) psi += 10;
+            if (ph < 7.35 && hasVal('inp-ph')) psi += 30;
+
+            if (psi <= 70) {
+                updateCard('psi', psi, 'success', 'Độ I-II (≤70)', 'Khuyến cáo: Điều trị ngoại trú');
+            } else if (psi <= 90) {
+                updateCard('psi', psi, 'warning', 'Độ III (71-90)', 'Khuyến cáo: Điều trị nội trú ngắn hạn');
+            } else if (psi <= 130) {
+                updateCard('psi', psi, 'danger', 'Độ IV (91-130)', 'Khuyến cáo: Điều trị nội trú');
+            } else {
+                updateCard('psi', psi, 'danger', 'Độ V (>130)', 'Khuyến cáo: Nhập ICU (Hồi sức tích cực)');
+            }
+
+            // --- 3. ATS Criteria Calculation ---
+            const majors = [
+                isVent, 
+                isShock
+            ];
+            
+            const minors = [
+                rr >= 30 && hasVal('inp-rr'),
+                (sbp < 90 && hasVal('inp-sbp')) || isFluids,
+                ams,
+                temp < 36 && hasVal('inp-temp'),
+                multilobe,
+                (bun >= 7 && hasVal('inp-bun')) || (ure > 7 && hasVal('inp-ure')),
+                wbc < 4 && hasVal('inp-wbc'),
+                plt < 100 && hasVal('inp-plt'),
+                pf <= 250 && hasVal('inp-pf')
+            ];
+
+            // Update major items UI and count
+            const majorCount = majors.filter(Boolean).length;
+            majors.forEach((isMet, index) => {
+                atsItems.m[index].className = isMet ? 'ats-item active' : 'ats-item';
+            });
+            elements.atsMajorCount.innerText = majorCount;
+
+            // Update minor items UI and count
+            const minorCount = minors.filter(Boolean).length;
+            minors.forEach((isMet, index) => {
+                atsItems.mi[index].className = isMet ? 'ats-item active' : 'ats-item';
+            });
+            elements.atsMinorCount.innerText = minorCount;
+
+            // Overall ATS result
+            if (majorCount >= 1 || minorCount >= 3) {
+                updateCard('ats', 'ĐẠT TIÊU CHUẨN ICU', 'danger', 'Khuyến cáo: Nhập ICU');
+                elements.atsVal.style.color = 'var(--danger)';
+            } else {
+                updateCard('ats', 'Không đạt ICU', 'success', 'Điều trị thường / Ngoại trú');
+                elements.atsVal.style.color = 'var(--text-main)';
+            }
+        }
+
+        // Attach event listeners
+        inputs.forEach(input => {
+            input.addEventListener('input', updateScores);
+            input.addEventListener('change', updateScores);
+        });
+
+        // Initialize empty state
+        updateScores();
+    </script>
+</body>
+</html>
