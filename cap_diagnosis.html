@@ -463,6 +463,21 @@
                 </div>
             </div>
 
+            <!-- Link to Step 2 -->
+            <a href="cap_diagnosis_step2.html?care_setting=OUTPATIENT" id="btn-step2" style="
+                display: block;
+                text-align: center;
+                background: var(--primary);
+                color: white;
+                padding: 1rem;
+                border-radius: var(--radius);
+                text-decoration: none;
+                font-weight: 600;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                margin-top: 1rem;
+            ">Tiếp tục Bước 2 (Chỉ định vi sinh) ➔</a>
+
         </div>
     </div>
 
@@ -737,6 +752,19 @@
             } else {
                 updateCard('ats', 'Không đạt ICU', 'success', 'Điều trị thường / Ngoại trú');
                 elements.atsVal.style.color = 'var(--text-main)';
+            }
+
+            // --- 4. Determine Final Care Setting for Step 2 ---
+            let finalCareSetting = "OUTPATIENT";
+            if (majorCount >= 1 || minorCount >= 3 || curb >= 4 || psi > 130) {
+                finalCareSetting = "ICU";
+            } else if (curb >= 2 || psi > 70) {
+                finalCareSetting = "INPATIENT";
+            }
+            
+            const btnStep2 = document.getElementById('btn-step2');
+            if (btnStep2) {
+                btnStep2.href = `cap_diagnosis_step2.html?care_setting=${finalCareSetting}`;
             }
         }
 
