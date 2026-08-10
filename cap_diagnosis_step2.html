@@ -324,7 +324,16 @@
                 </svg>
                 Quay lại Bước 1
             </a>
-            <h2 class="card-title" style="margin-top: 1rem;">Thông tin bệnh nhân (Bộ lọc)</h2>
+            <h2 class="card-title" style="margin-top: 1rem;">Đánh giá Lâm sàng & Hình ảnh (Bước 2)</h2>
+            
+            <div class="form-group">
+                <label class="form-label">Kết quả X-Quang ngực</label>
+                <select id="xray_result" onchange="runEngine()">
+                    <option value="UNCLEAR">Không rõ tổn thương / Không đặc hiệu (Tiếp tục thuật toán)</option>
+                    <option value="TYPICAL">Tổn thương điển hình (Viêm phổi nặng, tạo hang...)</option>
+                    <option value="OTHER">Nghi ngờ bệnh lý khác (U phổi, lao phổi, dị vật...)</option>
+                </select>
+            </div>
             
             <div class="form-group">
                 <label class="form-label">Nơi điều trị (Theo đánh giá Bước 1)</label>
@@ -341,6 +350,8 @@
                     <label class="checkbox-label"><input type="checkbox" value="smoking" class="risk_factor" onchange="runEngine()"> Hút thuốc lá</label>
                     <label class="checkbox-label"><input type="checkbox" value="alcoholism" class="risk_factor" onchange="runEngine()"> Nghiện rượu</label>
                     <label class="checkbox-label"><input type="checkbox" value="rainy_season" class="risk_factor" onchange="runEngine()"> Mùa mưa / Tiếp xúc đất nước bẩn</label>
+                    <label class="checkbox-label"><input type="checkbox" value="winter" class="risk_factor" onchange="runEngine()"> Mùa đông</label>
+                    <label class="checkbox-label"><input type="checkbox" value="age_extremes" class="risk_factor" onchange="runEngine()"> Tuổi > 65 hoặc < 10</label>
                 </div>
             </div>
 
@@ -349,10 +360,12 @@
                 <div class="checkbox-group">
                     <label class="checkbox-label"><input type="checkbox" value="hiv" class="comorbidity" onchange="runEngine()"> Nhiễm HIV / CD4 < 200</label>
                     <label class="checkbox-label"><input type="checkbox" value="neutropenia" class="comorbidity" onchange="runEngine()"> Giảm bạch cầu trung tính</label>
-                    <label class="checkbox-label"><input type="checkbox" value="copd_structural_lung" class="comorbidity" onchange="runEngine()"> Bệnh phổi cấu trúc (COPD FEV1<30%, Giãn phế quản)</label>
+                    <label class="checkbox-label"><input type="checkbox" value="copd_structural_lung" class="comorbidity" onchange="runEngine()"> Bệnh phổi cấu trúc (COPD FEV1<30%, Giãn phế quản, Xơ/bụi phổi, Hen mạn)</label>
                     <label class="checkbox-label"><input type="checkbox" value="severe_lung_aspiration" class="comorbidity" onchange="runEngine()"> Viêm phổi hít / Bệnh phổi nặng</label>
                     <label class="checkbox-label"><input type="checkbox" value="diabetes" class="comorbidity" onchange="runEngine()"> Đái tháo đường</label>
                     <label class="checkbox-label"><input type="checkbox" value="chronic_kidney_disease" class="comorbidity" onchange="runEngine()"> Bệnh thận mạn</label>
+                    <label class="checkbox-label"><input type="checkbox" value="stroke_psychiatric" class="comorbidity" onchange="runEngine()"> Tai biến mạch máu não / Tâm thần (Nguy cơ sặc)</label>
+                    <label class="checkbox-label"><input type="checkbox" value="malnutrition" class="comorbidity" onchange="runEngine()"> Suy dinh dưỡng</label>
                 </div>
             </div>
 
@@ -363,7 +376,10 @@
                     <label class="checkbox-label"><input type="checkbox" value="skin_infection" class="history" onchange="runEngine()"> Tiêm chích / Nhiễm trùng da</label>
                     <label class="checkbox-label"><input type="checkbox" value="prior_mrsa" class="history" onchange="runEngine()"> Tiền sử nhiễm MRSA</label>
                     <label class="checkbox-label"><input type="checkbox" value="prior_antibiotics" class="history" onchange="runEngine()"> Tiền sử dùng kháng sinh / Can thiệp xâm lấn / Đặt NKQ</label>
-                    <label class="checkbox-label"><input type="checkbox" value="post_influenza" class="history" onchange="runEngine()"> Hậu nhiễm cúm</label>
+                    <label class="checkbox-label"><input type="checkbox" value="iv_drugs_90_days" class="history" onchange="runEngine()"> Dùng kháng sinh đường tĩnh mạch > 90 ngày</label>
+                    <label class="checkbox-label"><input type="checkbox" value="anesthesia" class="history" onchange="runEngine()"> Tiền sử gây mê</label>
+                    <label class="checkbox-label"><input type="checkbox" value="post_influenza" class="history" onchange="runEngine()"> Hậu nhiễm cúm / Sởi</label>
+                    <label class="checkbox-label"><input type="checkbox" value="rapid_test_positive" class="history" onchange="runEngine()"> Dùng kit test nhanh dương tính (COVID-19)</label>
                     <label class="checkbox-label"><input type="checkbox" value="non_responsive_to_empiric" class="history" onchange="runEngine()"> Không đáp ứng điều trị ban đầu (nghi ngờ nấm)</label>
                 </div>
             </div>
@@ -460,6 +476,23 @@
         }
 
         function runEngine() {
+            const xray_result = document.getElementById("xray_result").value;
+            
+            // X-Ray Bypass Logic
+            if (xray_result === "TYPICAL") {
+                document.getElementById("pathogen_results").innerHTML = 
+                    "<div class='pathogen-item' style='border-color: var(--primary); background: #eff6ff;'><div class='pathogen-info'><h4 style='color: var(--primary-dark);'>Gợi ý chẩn đoán xác định từ X-Quang</h4><p>Viêm phổi có tổn thương điển hình (Tạo hang, áp xe...). Ưu tiên dựa vào hình ảnh. Vui lòng chỉ định cấy đờm/máu để xác nhận.</p></div></div>";
+                document.getElementById("general_lab_results").innerHTML = "<li>Cấy đờm/dịch rửa phế quản (BAL) + Nhuộm Gram</li><li>Cấy máu trước khi dùng kháng sinh</li>";
+                document.getElementById("specific_lab_results").innerHTML = "<li>Chụp CT ngực (CLVT) nếu cần đánh giá sâu hơn</li>";
+                return;
+            } else if (xray_result === "OTHER") {
+                document.getElementById("pathogen_results").innerHTML = 
+                    "<div class='pathogen-item' style='border-color: #ef4444; background: #fef2f2;'><div class='pathogen-info'><h4 style='color: #b91c1c;'>Nghi ngờ bệnh lý khác</h4><p>X-Quang gợi ý U phổi, Lao phổi, Dị vật đường thở, hoặc Nhồi máu phổi. Ngừng thuật toán viêm phổi cộng đồng.</p></div></div>";
+                document.getElementById("general_lab_results").innerHTML = "<li>Chuyển chuyên khoa phù hợp (Hô hấp, Ung bướu, Lao...)</li>";
+                document.getElementById("specific_lab_results").innerHTML = "<li>Nội soi phế quản (Nghi ngờ u/dị vật)</li><li>XN Lao (AFB đờm, Xpert MTB/RIF)</li>";
+                return;
+            }
+
             const care_setting = document.getElementById("care_setting").value;
             const risk_factors = new Set(getSelectedCheckboxes("risk_factor"));
             const comorbidities = new Set(getSelectedCheckboxes("comorbidity"));
@@ -550,9 +583,19 @@
                 addFactor("KLEBSIELLA", "Đặt nội khí quản / Dùng kháng sinh trước đó", 2, "Klebsiella pneumoniae", "Vi khuẩn Klebsiella");
                 addFactor("P_AERUGINOSA", "Tiền sử dùng kháng sinh / Can thiệp xâm lấn", 2, "Pseudomonas aeruginosa", "Trực khuẩn mủ xanh");
             }
+            if (history.has("iv_drugs_90_days")) {
+                addFactor("P_AERUGINOSA", "Dùng KS tĩnh mạch > 90 ngày", 1, "Pseudomonas aeruginosa", "Trực khuẩn mủ xanh");
+                addFactor("S_AUREUS", "Dùng KS tĩnh mạch > 90 ngày", 1, "Staphylococcus aureus", "Tụ cầu vàng");
+            }
+            if (history.has("anesthesia")) {
+                addFactor("KLEBSIELLA", "Tiền sử gây mê", 1, "Klebsiella pneumoniae", "Vi khuẩn Klebsiella");
+            }
             if (history.has("post_influenza")) {
                 addFactor("S_AUREUS", "Tụ cầu sau nhiễm cúm", 3, "Staphylococcus aureus", "Tụ cầu vàng sau cúm");
-                addFactor("S_PNEUMONIAE", "Bội nhiễm sau cúm", 2);
+                addFactor("S_PNEUMONIAE", "Bội nhiễm sau cúm/sởi", 2);
+            }
+            if (history.has("rapid_test_positive")) {
+                addFactor("SARS_COV_2", "Kit test nhanh dương tính", 5);
             }
             if (history.has("non_responsive_to_empiric")) {
                 addFactor("FUNGI", "Không đáp ứng điều trị ban đầu", 3, "Fungal Pathogens (Aspergillus, Candida...)", "Căn nguyên nấm", PathogenCategory.FUNGI);
@@ -563,6 +606,19 @@
             if (symptoms.has("dry_cough_extra_pulmonary")) {
                 addFactor("M_PNEUMONIAE", "Ho khan + Dấu hiệu ngoài phổi (đau đầu, tiêu chảy, phát ban)", 2);
                 addFactor("C_PNEUMONIAE", "Ho khan kéo dài", 1);
+            }
+            if (risk_factors.has("winter")) {
+                addFactor("INFLUENZA", "Mùa đông", 1);
+                addFactor("RSV", "Mùa đông", 1);
+            }
+            if (risk_factors.has("age_extremes")) {
+                addFactor("HMPV", "Tuổi > 65 hoặc < 10", 1);
+            }
+            if (comorbidities.has("stroke_psychiatric")) {
+                addFactor("KLEBSIELLA", "Tai biến mạch máu não / Tâm thần", 1, "Klebsiella pneumoniae", "Vi khuẩn Klebsiella");
+            }
+            if (comorbidities.has("malnutrition")) {
+                addFactor("S_PNEUMONIAE", "Suy dinh dưỡng", 1);
             }
 
             // Sort logic

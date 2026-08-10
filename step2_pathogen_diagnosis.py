@@ -171,9 +171,19 @@ class Step2DiagnosisEngine:
             add_factor("KLEBSIELLA", "Đặt nội khí quản / Dùng kháng sinh trước đó", 2, "Klebsiella pneumoniae", "Vi khuẩn Klebsiella")
             add_factor("P_AERUGINOSA", "Tiền sử dùng kháng sinh / Can thiệp xâm lấn", 2, "Pseudomonas aeruginosa", "Trực khuẩn mủ xanh")
 
+        if "iv_drugs_90_days" in history:
+            add_factor("P_AERUGINOSA", "Dùng KS tĩnh mạch > 90 ngày", 1, "Pseudomonas aeruginosa", "Trực khuẩn mủ xanh")
+            add_factor("S_AUREUS", "Dùng KS tĩnh mạch > 90 ngày", 1, "Staphylococcus aureus", "Tụ cầu vàng")
+
+        if "anesthesia" in history:
+            add_factor("KLEBSIELLA", "Tiền sử gây mê", 1, "Klebsiella pneumoniae", "Vi khuẩn Klebsiella")
+
         if "post_influenza" in history:
             add_factor("S_AUREUS", "Tụ cầu sau nhiễm cúm", 3, "Staphylococcus aureus", "Tụ cầu vàng sau cúm")
-            add_factor("S_PNEUMONIAE", "Bội nhiễm sau cúm", 2)
+            add_factor("S_PNEUMONIAE", "Bội nhiễm sau cúm/sởi", 2)
+
+        if "rapid_test_positive" in history:
+            add_factor("SARS_COV_2", "Kit test nhanh dương tính", 5)
 
         # 3. Triệu chứng cơ năng
         if "high_fever_rusty_sputum" in symptoms:
@@ -182,6 +192,19 @@ class Step2DiagnosisEngine:
         if "dry_cough_extra_pulmonary" in symptoms:
             add_factor("M_PNEUMONIAE", "Ho khan + Dấu hiệu ngoài phổi (đau đầu, tiêu chảy, phát ban)", 2)
             add_factor("C_PNEUMONIAE", "Ho khan kéo dài", 1)
+
+        if "winter" in risk_factors:
+            add_factor("INFLUENZA", "Mùa đông", 1)
+            add_factor("RSV", "Mùa đông", 1)
+
+        if "age_extremes" in risk_factors:
+            add_factor("HMPV", "Tuổi > 65 hoặc < 10", 1)
+
+        if "stroke_psychiatric" in comorbidities:
+            add_factor("KLEBSIELLA", "Tai biến mạch máu não / Tâm thần", 1, "Klebsiella pneumoniae", "Vi khuẩn Klebsiella")
+
+        if "malnutrition" in comorbidities:
+            add_factor("S_PNEUMONIAE", "Suy dinh dưỡng", 1)
 
         # Trả về danh sách được sắp xếp theo điểm ưu tiên giảm dần
         ranked_list = list(candidates.values())
@@ -241,11 +264,35 @@ class Step2DiagnosisEngine:
         risk_factors: Set[str],
         comorbidities: Set[str],
         symptoms: Set[str],
-        history: Set[str]
+        history: Set[str],
+        xray_result: str = "UNCLEAR"
     ) -> Dict[str, Any]:
         """
         Quy trình đánh giá đầy đủ Bước 2
         """
+        if xray_result == "TYPICAL":
+            return {
+                "care_setting": care_setting.value,
+                "xray_bypass": True,
+                "message": "Gợi ý chẩn đoán xác định từ X-Quang. Viêm phổi có tổn thương điển hình.",
+                "candidate_set_b": [],
+                "lab_orders": {
+                    "general_lab_orders": ["Cấy đờm/dịch rửa phế quản (BAL) + Nhuộm Gram", "Cấy máu trước khi dùng kháng sinh"],
+                    "specific_lab_orders": ["Chụp CT ngực (CLVT) nếu cần đánh giá sâu hơn"]
+                }
+            }
+        elif xray_result == "OTHER":
+            return {
+                "care_setting": care_setting.value,
+                "xray_bypass": True,
+                "message": "Nghi ngờ bệnh lý khác (U phổi, Lao phổi, Dị vật...). Ngừng thuật toán viêm phổi cộng đồng.",
+                "candidate_set_b": [],
+                "lab_orders": {
+                    "general_lab_orders": ["Chuyển chuyên khoa phù hợp (Hô hấp, Ung bướu, Lao...)"],
+                    "specific_lab_orders": ["Nội soi phế quản (Nghi ngờ u/dị vật)", "XN Lao (AFB đờm, Xpert MTB/RIF)"]
+                }
+            }
+
         set_a = self.run_filter_1(care_setting)
         set_b = self.run_filter_2(set_a, risk_factors, comorbidities, symptoms, history)
         lab_orders = self.generate_lab_orders(care_setting, set_b, symptoms)
