@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "PECOMED Community-Acquired Pneumonia Clinical Decision Support System in 100% TypeScript",
   "type": "module",
-  "main": "dist/server/server.js",
+  "main": "dist/server.bundle.js",
+  "bin": "dist/server.bundle.js",
   "scripts": {
     "dev:server": "tsx watch src/server.ts",
     "dev:frontend": "cd frontend && npm run dev",
@@ -27,5 +28,10 @@
     "tsx": "^4.19.2",
     "typescript": "^5.7.3",
     "vitest": "^3.0.5"
+  },
+  "pkg": {
+    "assets": [
+      "src/main/resources/static/**/*"
+    ]
   }
 }

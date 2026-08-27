@@ -6,8 +6,8 @@ import { fileURLToPath } from 'url';
 import { PecomedCdssMaster } from './engine/PecomedCdssMaster.js';
 import { PatientCase } from './models/types.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const currentFilename = typeof __filename !== 'undefined' ? __filename : fileURLToPath((import.meta as any).url);
+const currentDirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(currentFilename);
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -199,10 +199,12 @@ app.post('/api/cdss/step5/72h-response', (req: Request, res: Response) => {
 // Static Frontend Serving (SPA fallback)
 // -------------------------------------------------------------
 const staticDirs = [
-  path.resolve(__dirname, '../src/main/resources/static'),
-  path.resolve(__dirname, '../../src/main/resources/static'),
-  path.resolve(__dirname, '../frontend/dist'),
-  path.resolve(__dirname, '../../frontend/dist')
+  path.resolve(process.cwd(), 'src/main/resources/static'),
+  path.resolve(process.cwd(), 'static'),
+  path.resolve(currentDirname, '../src/main/resources/static'),
+  path.resolve(currentDirname, '../../src/main/resources/static'),
+  path.resolve(currentDirname, '../frontend/dist'),
+  path.resolve(currentDirname, '../../frontend/dist')
 ];
 
 let foundStaticDir: string | null = null;
