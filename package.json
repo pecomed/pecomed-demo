@@ -1,0 +1,31 @@
+{
+  "name": "pecomed-cap-cdss",
+  "version": "1.0.0",
+  "description": "PECOMED Community-Acquired Pneumonia Clinical Decision Support System in 100% TypeScript",
+  "type": "module",
+  "main": "dist/server/server.js",
+  "scripts": {
+    "dev:server": "tsx watch src/server.ts",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "tsx watch src/server.ts",
+    "build:frontend": "cd frontend && npm run build",
+    "build:server": "tsc -p tsconfig.server.json",
+    "build": "npm run build:frontend && npm run build:server",
+    "start": "node dist/server.js",
+    "test": "vitest run",
+    "cli": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

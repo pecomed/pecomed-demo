@@ -37,3 +37,4 @@ Thumbs.db
 *.log
 dist/
 *.zip
+node_modules/

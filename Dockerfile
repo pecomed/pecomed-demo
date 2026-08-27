@@ -1,26 +1,40 @@
-# Build Stage
-FROM maven:3.9.9-eclipse-temurin-17-alpine AS builder
+# Multi-stage Dockerfile for 100% Pure TypeScript PECOMED CAP CDSS
+FROM node:22-alpine AS builder
+
 WORKDIR /app
 
-# Cache dependencies
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+# Copy root and frontend dependencies
+COPY package*.json ./
+COPY frontend/package*.json ./frontend/
 
-# Copy source and build jar
-COPY src ./src
-RUN mvn clean package -DskipTests
+# Install dependencies
+RUN npm install && cd frontend && npm install
 
-# Runtime Stage
-FROM eclipse-temurin:17-jre-alpine
+# Copy source files
+COPY . .
+
+# Build frontend and server
+RUN npm run build
+
+# Production Runner stage
+FROM node:22-alpine AS runner
+
 WORKDIR /app
 
-# Security: run as non-root
-RUN addgroup -S pecomed && adduser -S pecomed -G pecomed
-USER pecomed:pecomed
-
-COPY --from=builder /app/target/pecomed-cap-cdss-1.0.0.jar app.jar
-
+ENV NODE_ENV=production
 ENV PORT=8080
-EXPOSE ${PORT}
 
-ENTRYPOINT ["java", "--enable-native-access=ALL-UNNAMED", "-Dfile.encoding=UTF-8", "-jar", "app.jar"]
+# Install production dependencies only
+COPY package*.json ./
+RUN npm install --omit=dev
+
+# Copy compiled artifacts
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/src/main/resources/static ./src/main/resources/static
+
+# Run as non-root user for security
+USER node
+
+EXPOSE 8080
+
+CMD ["node", "dist/server.js"]

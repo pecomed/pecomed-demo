@@ -1,0 +1,29 @@
+name: Build & Test (100% TypeScript)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Root Dependencies
+        run: npm ci
+
+      - name: Run Test Suite (Vitest)
+        run: npm test
+
+      - name: Build Full Project (Frontend + Server)
+        run: npm run build
