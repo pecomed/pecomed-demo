@@ -26,7 +26,7 @@ export class Step4EmpiricalEngine {
     const stepDown: AntibioticInfo[] = [];
     const monitoringPlan: string[] = [
       'Đánh giá lại lâm sàng sau 48-72 giờ (sốt, ho, khó thở, khả năng ăn uống).',
-      'Hướng dẫn bệnh nhân tái khám ngay nếu có dấu hiệu cảnh báo: Sốt cao liên tục, khó thở tăng, lú lẫn, nôn không uống được.'
+      'Hướng dẫn bệnh nhân tái khám ngay nếu có dấu hiệu cảnh báo: Sốt cao liên tục > 48h, khó thở tăng, lú lẫn, nôn không uống được.'
     ];
 
     let targetPatientGroup: string;
@@ -140,39 +140,59 @@ export class Step4EmpiricalEngine {
     const addOns: AntibioticInfo[] = [];
     const stepDown: AntibioticInfo[] = [];
     const monitoringPlan: string[] = [
+      'Bắt buộc chỉ định xét nghiệm đờm tìm AFB / GeneXpert MTB loại trừ Lao phổi tại khoa Nội trú.',
       'Đánh giá lại đáp ứng lâm sàng, SpO2, thân nhiệt, công thức máu và Procalcitonin sau 48-72 giờ.',
-      'Xem xét chuyển từ kháng sinh tiêm truyền sang kháng sinh đường uống (Oral Step-down) khi bệnh nhân ổn định lâm sàng.'
+      'Xem xét chuyển từ kháng sinh tiêm truyền sang kháng sinh đường uống (Oral Step-down) khi đạt 7/7 tiêu chuẩn ổn định lâm sàng.'
     ];
 
     const targetPatientGroup = 'Điều trị Nội trú Khoa Nội Hô hấp / Nội Tổng hợp (CAP mức độ trung bình, không có chỉ định ICU)';
-    const regimenTitle = 'Phác đồ Nội trú Khoa Nội (Beta-lactam IV + Macrolide HOẶC Quinolone hô hấp)';
+    let regimenTitle = 'Phác đồ Nội trú Khoa Nội (Beta-lactam IV + Macrolide HOẶC Quinolone hô hấp)';
 
-    primary.push({
-      name: 'Ampicillin / Sulbactam (hoặc Ceftriaxone / Cefotaxime)',
-      dose: 'Ampicillin/Sulbactam 1.5g - 3g tiêm TM mỗi 6h HOẶC Ceftriaxone 1g - 2g tiêm TM mỗi 24h',
-      route: 'IV',
-      role: 'Phối hợp thuốc (Thành phần Beta-lactam chính IV)',
-      drugClass: 'Beta-lactam / Cephalosporin 3rd gen'
-    });
-    primary.push({
-      name: 'Azithromycin (hoặc Clarithromycin / Doxycycline)',
-      dose: 'Azithromycin 500mg tiêm TM hoặc uống mỗi 24h trong 3-5 ngày',
-      route: 'IV / ORAL',
-      role: 'Phối hợp thuốc (Thành phần Macrolide bao phủ vi khuẩn không điển hình)',
-      drugClass: 'Macrolide'
-    });
+    if (inputs.suspectPseudomonas) {
+      regimenTitle = 'Phác đồ Nội trú (Nghi ngờ Trực khuẩn Gram âm / P. aeruginosa)';
 
-    alternative.push({
-      name: 'Levofloxacin (hoặc Moxifloxacin)',
-      dose: 'Levofloxacin 750mg tiêm TM/uống mỗi 24h HOẶC Moxifloxacin 400mg tiêm TM/uống mỗi 24h',
-      route: 'IV / ORAL',
-      role: 'Đơn trị liệu Quinolone hô hấp (Ưu tiên khi dị ứng Beta-lactam)',
-      drugClass: 'Respiratory Fluoroquinolone'
-    });
+      primary.push({
+        name: 'Piperacillin / Tazobactam (hoặc Ceftazidime / Cefepime)',
+        dose: 'Pip/Tazo 3.375g - 4.5g TTM liều nạp trong 30 phút, sau đó mỗi 6h HOẶC Ceftazidime 2g TTM mỗi 8h HOẶC Cefepime 2g TTM mỗi 8h',
+        route: 'IV',
+        role: 'Kháng sinh Beta-lactam phổ rộng kháng trực khuẩn mủ xanh',
+        drugClass: 'Antipseudomonal Beta-lactam'
+      });
+      primary.push({
+        name: 'Levofloxacin (hoặc Ciprofloxacin / Azithromycin)',
+        dose: 'Levofloxacin 750mg TTM mỗi 24h (hoặc Ciprofloxacin 500mg TTM mỗi 12h / Azithromycin 500mg IV)',
+        route: 'IV',
+        role: 'Kháng sinh phối hợp bao phủ vi khuẩn không điển hình',
+        drugClass: 'Fluoroquinolone / Macrolide'
+      });
+    } else {
+      primary.push({
+        name: 'Ampicillin / Sulbactam (hoặc Ceftriaxone / Cefotaxime / Ampicillin IV)',
+        dose: 'Ampicillin/Sulbactam 1.5g - 3g tiêm TM mỗi 6h HOẶC Ceftriaxone 1g - 2g tiêm TM mỗi 24h HOẶC Ampicillin 2g tiêm TM mỗi 6h',
+        route: 'IV',
+        role: 'Phối hợp thuốc (Thành phần Beta-lactam chính IV)',
+        drugClass: 'Beta-lactam / Cephalosporin 3rd gen'
+      });
+      primary.push({
+        name: 'Azithromycin (hoặc Clarithromycin / Doxycycline)',
+        dose: 'Azithromycin 500mg tiêm TM hoặc uống mỗi 24h trong 3-5 ngày',
+        route: 'IV / ORAL',
+        role: 'Phối hợp thuốc (Thành phần Macrolide bao phủ vi khuẩn không điển hình)',
+        drugClass: 'Macrolide'
+      });
+
+      alternative.push({
+        name: 'Levofloxacin (hoặc Moxifloxacin)',
+        dose: 'Levofloxacin 750mg tiêm TM/uống mỗi 24h (hoặc 500mg mỗi 12h) HOẶC Moxifloxacin 400mg tiêm TM/uống mỗi 24h',
+        route: 'IV / ORAL',
+        role: 'Đơn trị liệu Quinolone hô hấp (Ưu tiên khi dị ứng Beta-lactam)',
+        drugClass: 'Respiratory Fluoroquinolone'
+      });
+    }
 
     stepDown.push({
-      name: 'Amoxicillin / Acid Clavulanic (hoặc Levofloxacin / Moxifloxacin)',
-      dose: 'Amox/Clav 875/125mg uống 2 lần/ngày HOẶC Levo 750mg uống 1 lần/ngày',
+      name: 'Amoxicillin 1000mg mỗi 8h HOẶC Amoxicillin / Acid Clavulanic 875/125mg mỗi 8-12h',
+      dose: 'Uống sau ăn khi bệnh nhân hết sốt ≥ 24h và ổn định huyết động',
       route: 'ORAL',
       role: 'Kháng sinh chuyển tiếp đường uống khi xuất viện',
       drugClass: 'Oral Step-down'
@@ -203,8 +223,9 @@ export class Step4EmpiricalEngine {
     const stepDown: AntibioticInfo[] = [];
     const monitoringPlan: string[] = [
       'Bắt đầu kháng sinh tĩnh mạch trong vòng 1 GIỜ ĐẦU (Golden Hour).',
+      'Nếu chưa có xét nghiệm Procalcitonin: Đánh giá ngay thời gian đổ đầy mao mạch (CRT - Capillary Refill Time).',
       'Định lượng nồng độ đáy Vancomycin (trough level mục tiêu 15-20 mcg/mL) trước liều thứ 4.',
-      'Đánh giá động học Procalcitonin (D0, D3, D5-D7) và chụp CT ngực nếu lâm sàng không cải thiện sau 72 giờ.'
+      'Đánh giá động học Procalcitonin (D0, D3, D5-D7) và chụp CT ngực cản quang nếu lâm sàng không cải thiện sau 72 giờ.'
     ];
 
     const targetPatientGroup = 'Điều trị Hồi sức Tích cực (ICU / HDU) - Viêm phổi nặng / Sốc nhiễm khuẩn / Suy hô hấp cấp';
@@ -214,55 +235,57 @@ export class Step4EmpiricalEngine {
       regimenTitle = 'Phác đồ ICU (Bao phủ Pseudomonas aeruginosa)';
 
       primary.push({
-        name: 'Piperacillin / Tazobactam (hoặc Cefepime / Meropenem)',
-        dose: 'Pip/Tazo 4.5g TTM mỗi 6h (truyền kéo dài 3-4h) HOẶC Cefepime 2g TTM mỗi 8h HOẶC Meropenem 1g TTM mỗi 8h',
+        name: 'Piperacillin / Tazobactam (hoặc Cefepime / Ceftazidime / Meropenem)',
+        dose: 'Pip/Tazo 3.375g - 4.5g liều nạp trong 30 phút, sau đó mỗi 6h (truyền kéo dài 3-4h) HOẶC Cefepime 2g TTM mỗi 8h HOẶC Ceftazidime 2g TTM mỗi 8h HOẶC Meropenem 1-2g TTM mỗi 8h',
         route: 'IV',
         role: 'Kháng sinh Beta-lactam kháng Trực khuẩn mủ xanh (Antipseudomonal)',
         drugClass: 'Antipseudomonal Beta-lactam'
       });
       primary.push({
-        name: 'Levofloxacin (hoặc Ciprofloxacin / Amikacin)',
-        dose: 'Levofloxacin 750mg TTM mỗi 24h (hoặc Ciprofloxacin 400mg TTM mỗi 8h / Amikacin 15-20mg/kg TTM mỗi 24h)',
+        name: 'Ciprofloxacin (hoặc Levofloxacin / Amikacin)',
+        dose: 'Ciprofloxacin 500mg TTM mỗi 12h HOẶC Levofloxacin 750mg TTM mỗi 24h (hoặc 500mg mỗi 12h) HOẶC Amikacin 15-20mg/kg TTM mỗi 24h',
         route: 'IV',
-        role: 'Thuốc thứ 2 kháng Pseudomonas & bao phủ vi khuẩn không điển hình',
+        role: 'Thuốc thứ 2 kháng Pseudomonas & bao phủ vi khuẩn không điển hình / Legionella',
         drugClass: 'Fluoroquinolone / Aminoglycoside'
       });
     } else {
-      regimenTitle = 'Phác đồ ICU chuẩn (Beta-lactam IV liều cao + Quinolone hô hấp / Macrolide)';
+      regimenTitle = 'Phác đồ ICU tuyến tỉnh (Đã loại trừ P. aeruginosa)';
 
       primary.push({
-        name: 'Ceftriaxone (hoặc Cefotaxime / Ampicillin-Sulbactam)',
-        dose: 'Ceftriaxone 2g TTM mỗi 24h HOẶC Cefotaxime 2g TTM mỗi 8h HOẶC Ampicillin/Sulbactam 3g TTM mỗi 6h',
+        name: 'Imipenem / Cilastatin HOẶC Ertapenem (hoặc Ceftriaxone 2g / Cefotaxime 2g / Amp-Sul 3g)',
+        dose: 'Imipenem 500mg TTM mỗi 6h (nặng dùng 1g mỗi 8h, tối đa 1g mỗi 6h) HOẶC Ertapenem 1g TTM mỗi 24h HOẶC Ceftriaxone 2g TTM mỗi 24h',
         route: 'IV',
-        role: 'Beta-lactam phổ rộng diệt khuẩn đường tĩnh mạch',
-        drugClass: 'Cephalosporin 3rd gen / Aminopenicillin+BLI'
+        role: 'Carbapenem / Beta-lactam phổ rộng diệt khuẩn đường tĩnh mạch',
+        drugClass: 'Carbapenem nhóm 1 / Cephalosporin 3rd gen'
       });
       primary.push({
         name: 'Levofloxacin (hoặc Moxifloxacin / Azithromycin)',
         dose: 'Levofloxacin 750mg TTM mỗi 24h HOẶC Moxifloxacin 400mg TTM mỗi 24h HOẶC Azithromycin 500mg TTM mỗi 24h',
         route: 'IV',
-        role: 'Kháng sinh phối hợp bao phủ Legionella và hiệp đồng diệt khuẩn',
+        role: 'Kháng sinh phối hợp bao phủ Legionella pneumophila và hiệp đồng diệt khuẩn',
         drugClass: 'Respiratory Fluoroquinolone / Macrolide'
       });
     }
 
+    // MRSA Coverage (Vancomycin, Teicoplanin, Linezolid, Ceftaroline)
     if (inputs.suspectMrsa) {
       addOns.push({
-        name: 'Vancomycin (hoặc Linezolid)',
-        dose: 'Vancomycin 15-20mg/kg TTM mỗi 8-12h (kèm liều nạp 25-30mg/kg ở BN nặng) HOẶC Linezolid 600mg TTM mỗi 12h',
+        name: 'Vancomycin (hoặc Teicoplanin / Linezolid / Ceftaroline)',
+        dose: 'Vancomycin 15-20mg/kg TTM mỗi 8-12h (nạp 25-30mg/kg) HOẶC Teicoplanin 6mg/kg (800mg) mỗi 12h x3 liều nạp rồi 6mg/kg/ngày HOẶC Linezolid 600mg TTM mỗi 12h HOẶC Ceftaroline 600mg TTM mỗi 8h (khi hết thuốc/dị ứng)',
         route: 'IV',
         role: 'Bao phủ Tụ cầu vàng kháng Methicillin (MRSA)',
-        drugClass: 'Glycopeptide / Oxazolidinone',
-        note: 'Bắt buộc đo nồng độ đáy Vancomycin mục tiêu 15-20 mcg/mL.'
+        drugClass: 'Glycopeptide / Oxazolidinone / Cephalosporin 5th gen',
+        note: 'Bắt buộc đo nồng độ đáy Vancomycin mục tiêu 15-20 mcg/mL trước liều thứ 4.'
       });
     }
 
+    // Corticosteroids early within 24h of ICU (only if viral test negative)
     let cortico: string | undefined;
-    if (inputs.within24hIcu) {
-      cortico = 'Corticosteroid sớm (trong 24h đầu nhập ICU): Hydrocortisone 200mg/ngày (50mg tiêm TM mỗi 6h hoặc truyền liên tục) trong 4-7 ngày cho bệnh nhân sốc nhiễm khuẩn hoặc PaO2/FiO2 < 200.';
+    if (inputs.within24hIcu && !inputs.viralTestPositive) {
+      cortico = 'Corticosteroid sớm (trong 24h đầu nhập ICU, khi test virus âm tính): Hydrocortisone hemisuccinate 200mg/ngày (50mg tiêm TM mỗi 6h hoặc truyền liên tục) HOẶC Methylprednisolone 0.5 mg/kg mỗi 12 giờ trong 4-7 ngày cho bệnh nhân sốc nhiễm khuẩn hoặc PaO2/FiO2 < 200.';
     }
 
-    const respSupport = 'Hỗ trợ hô hấp: Liệu pháp Oxy dòng cao qua canun mũi (HFNC) hoặc Thở máy không xâm nhập (NIV/BiPAP). Đặt nội khí quản và thở máy xâm nhập chiến lược bảo vệ phổi (Vt 6mL/kg PBW, Pplat < 30 cmH2O) nếu suy hô hấp tiến triển.';
+    const respSupport = 'Hỗ trợ hô hấp: Khi SpO2 < 90%, chỉ định ngay Liệu pháp Oxy dòng cao qua canun mũi (HFNC) hoặc Thở máy không xâm nhập (NIV/BiPAP). Đặt nội khí quản thở máy xâm nhập chiến lược bảo vệ phổi (Vt 6mL/kg PBW, Pplat < 30 cmH2O) nếu suy hô hấp tiến triển.';
 
     return {
       careSetting: 'Hồi sức Tích cực (ICU)',

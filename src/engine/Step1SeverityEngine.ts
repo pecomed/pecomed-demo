@@ -310,42 +310,42 @@ export class Step1SeverityEngine {
     const majorCriteria: string[] = [];
     const minorCriteria: string[] = [];
 
-    // Major criteria
-    if (img.septicShockVasopressors || v.onAggressiveFluidResuscitation) {
+    // 1. Major Criteria (Bắt buộc phải là Sốc cần vận mạch hoặc Thở máy xâm nhập)
+    if (img.septicShockVasopressors) {
       majorCriteria.push('Sốc nhiễm khuẩn cần sử dụng thuốc vận mạch');
     }
     if (img.mechanicalVentilation) {
       majorCriteria.push('Suy hô hấp cấp tiến triển cần thở máy xâm nhập');
     }
 
-    // Minor criteria
+    // 2. Minor Criteria (9 tiêu chuẩn phụ)
     if ((v.respiratoryRate ?? 0) >= 30) {
-      minorCriteria.push(`Tần số thở >= 30 lần/phút (${v.respiratoryRate} l/p)`);
+      minorCriteria.push(`1. Tần số thở >= 30 lần/phút (${v.respiratoryRate} l/p)`);
     }
     if (l.pao2Fio2Ratio !== undefined && l.pao2Fio2Ratio <= 250) {
-      minorCriteria.push(`Tỉ lệ PaO2/FiO2 <= 250 (${l.pao2Fio2Ratio})`);
+      minorCriteria.push(`2. Tỉ lệ PaO2/FiO2 <= 250 (${l.pao2Fio2Ratio})`);
     }
     if (img.multilobarInfiltrates) {
-      minorCriteria.push('Tổn thương thâm nhiễm nhiều thùy phổi trên X-quang/CT');
+      minorCriteria.push('3. Tổn thương thâm nhiễm nhiều thùy phổi trên X-quang/CT');
     }
     if (v.alteredMentalStatus) {
-      minorCriteria.push('Lú lẫn / Rối loạn ý thức cấp tính');
+      minorCriteria.push('4. Lú lẫn / Rối loạn ý thức cấp tính');
     }
     const bunUreaElevated = (l.bunMgDl !== undefined && l.bunMgDl >= 20.0) || (l.ureaMmolL !== undefined && l.ureaMmolL >= 7.14);
     if (bunUreaElevated) {
-      minorCriteria.push(`Tăng Ure/BUN máu (Ure >= 7.14 mmol/L hoặc BUN >= 20 mg/dL)`);
+      minorCriteria.push(`5. Tăng Ure/BUN máu (Ure >= 7.14 mmol/L hoặc BUN >= 20 mg/dL)`);
     }
     if (l.wbcGL !== undefined && l.wbcGL < 4.0) {
-      minorCriteria.push(`Bạch cầu máu giảm < 4.0 G/L (${l.wbcGL} G/L)`);
+      minorCriteria.push(`6. Bạch cầu máu giảm < 4.0 G/L (${l.wbcGL} G/L)`);
     }
     if (l.plateletsGL !== undefined && l.plateletsGL < 100.0) {
-      minorCriteria.push(`Giảm tiểu cầu < 100 G/L (${l.plateletsGL} G/L)`);
+      minorCriteria.push(`7. Giảm tiểu cầu < 100 G/L (${l.plateletsGL} G/L)`);
     }
     if (v.temperature !== undefined && v.temperature < 36.0) {
-      minorCriteria.push(`Hạ thân nhiệt trung tâm < 36.0°C (${v.temperature}°C)`);
+      minorCriteria.push(`8. Hạ thân nhiệt trung tâm < 36.0°C (${v.temperature}°C)`);
     }
-    if (v.systolicBp !== undefined && v.systolicBp < 90) {
-      minorCriteria.push(`Tụt huyết áp cần bù dịch tích cực (HA tâm thu < 90 mmHg)`);
+    if ((v.systolicBp !== undefined && v.systolicBp < 90) || v.onAggressiveFluidResuscitation) {
+      minorCriteria.push(`9. Tụt huyết áp cần bù dịch tích cực (HA tâm thu < 90 mmHg hoặc đang bù dịch)`);
     }
 
     const isSevereCap = majorCriteria.length >= 1 || minorCriteria.length >= 3;
@@ -374,7 +374,7 @@ export class Step1SeverityEngine {
     const smartCop = this.calculateSmartCop(age, vitals, labs, imaging);
     const ats = this.calculateAtsIdsa(vitals, labs, imaging);
 
-    // Triage logic
+    // Triage Logic aligned with XMind Spec
     let recommendedCareSetting: string;
     let severityLevel: string;
     const clinicalNotes: string[] = [];
@@ -382,15 +382,19 @@ export class Step1SeverityEngine {
     if (ats.isSevereCap) {
       recommendedCareSetting = 'ICU (Rất nặng / Nguy kịch)';
       severityLevel = 'Nặng (Severe) / Nguy kịch';
-      clinicalNotes.push('Bệnh nhân thỏa tiêu chuẩn Viêm phổi nặng theo ATS/IDSA 2007 (≥1 tiêu chuẩn chính hoặc ≥3 tiêu chuẩn phụ). CHỈ ĐỊNH NHẬP KHOA HỒI SỨC TÍCH CỰC (ICU).');
+      clinicalNotes.push('Bệnh nhân thỏa tiêu chuẩn Viêm phổi nặng theo ATS/IDSA 2007 (≥1 tiêu chuẩn chính hoặc ≥3 tiêu chuẩn phụ). BẮT BUỘC NHẬP KHOA HỒI SỨC TÍCH CỰC (ICU).');
     } else if (smartCop.score >= 5) {
       recommendedCareSetting = 'ICU (Rất nặng / Nguy kịch)';
       severityLevel = 'Nặng (Severe) / Nguy kịch';
-      clinicalNotes.push('Thang điểm SMART-COP ≥ 5 điểm (Nguy cơ rất cao cần hỗ trợ hô hấp chuyên sâu hoặc vận mạch: 67%). Khuyến nghị nhập ICU hoặc Đơn vị Hồi sức Cấp cứu (HDU).');
-    } else if ((curb65.score !== null && curb65.score >= 3) || crb65.score >= 3 || psi.score > 130) {
+      clinicalNotes.push('Thang điểm SMART-COP ≥ 5 điểm (Nguy cơ rất cao cần hỗ trợ hô hấp chuyên sâu hoặc vận mạch: 67%). Khuyến nghị nhập ICU / HDU.');
+    } else if ((curb65.score !== null && curb65.score >= 4) || crb65.score >= 3 || psi.score > 130) {
       recommendedCareSetting = 'ICU (Rất nặng / Nguy kịch)';
       severityLevel = 'Nặng (Severe) / Nguy kịch';
-      clinicalNotes.push('Phân tầng CURB-65 ≥ 3 điểm hoặc PSI Tầng V (>130 điểm): Tỉ lệ tử vong cao. Ưu tiên nhập ICU / HDU.');
+      clinicalNotes.push('Phân tầng CURB-65 ≥ 4 điểm hoặc PSI Tầng V (>130 điểm): Tỉ lệ tử vong cao. Ưu tiên nhập ICU.');
+    } else if ((curb65.score !== null && curb65.score === 3)) {
+      recommendedCareSetting = 'Nội trú (Trung bình - Nguy cơ cao)';
+      severityLevel = 'Trung bình (Moderate)';
+      clinicalNotes.push('CURB-65 = 3 điểm (Tỉ lệ tử vong ~17%): Chỉ định nhập viện điều trị nội trú tại Khoa Hô hấp / Nội tổng hợp, theo dõi sát diễn tiến để chuyển ICU kịp thời nếu cần.');
     } else if ((curb65.score !== null && curb65.score === 2) || crb65.score === 2 || (psi.score >= 71 && psi.score <= 130) || smartCop.score >= 3) {
       recommendedCareSetting = 'Nội trú (Trung bình)';
       severityLevel = 'Trung bình (Moderate)';
@@ -399,6 +403,18 @@ export class Step1SeverityEngine {
       recommendedCareSetting = 'Ngoại trú (Nhẹ)';
       severityLevel = 'Nhẹ (Mild)';
       clinicalNotes.push('Đủ điều kiện điều trị ngoại trú an toàn, hướng dẫn bệnh nhân tự theo dõi và tái khám sau 48-72 giờ.');
+    }
+
+    // Symptom & Fever Analysis
+    if (symptoms?.fever !== undefined) {
+      if (symptoms.fever >= 39.0) {
+        clinicalNotes.push(`Sốt cao (${symptoms.fever}°C): Thường gợi ý căn nguyên vi khuẩn điển hình (S. pneumoniae, Klebsiella, Legionella).`);
+      } else if (symptoms.fever > 37.5 && symptoms.fever < 38.5) {
+        clinicalNotes.push(`Sốt nhẹ / bán cấp (${symptoms.fever}°C): Cần cảnh giác vi khuẩn không điển hình (Mycoplasma, Chlamydia) hoặc virus.`);
+      }
+    }
+    if (comorbidities?.immunocompromised || comorbidities?.hivCd4Under200) {
+      clinicalNotes.push('LƯU Ý MIỄN DỊCH: Bệnh nhân suy giảm miễn dịch có thể không sốt hoặc hạ thân nhiệt dù nhiễm trùng nặng.');
     }
 
     const syndromeSummary = [

@@ -50,11 +50,21 @@ export class PecomedCdssMaster {
     const step2Result = this.step2.evaluate(
       careSetting,
       patient.riskProfile,
-      !!patient.imaging?.pleuralEffusion
+      !!patient.imaging?.pleuralEffusion,
+      patient.comorbidities,
+      patient.imaging,
+      step1Result.severityLevel
     );
 
-    // 3. Step 3: Exclusion & Safety
-    const step3Result = this.step3.evaluate(patient.exclusionTriggers);
+    // 3. Step 3: Exclusion, Differential Diagnoses & Renal Safety
+    const step3Result = this.step3.evaluate(
+      patient.exclusionTriggers,
+      patient.symptoms,
+      patient.comorbidities,
+      patient.imaging,
+      patient.age,
+      patient.gender
+    );
 
     // 4. Step 4: Empirical Antibiotic Regimen
     const step4Input: Step4InputData = {
@@ -66,13 +76,16 @@ export class PecomedCdssMaster {
         patient.comorbidities?.congestiveHeartFailure ||
         patient.comorbidities?.renalDisease ||
         patient.comorbidities?.liverDisease ||
-        patient.comorbidities?.neoplasm
+        patient.comorbidities?.neoplasm ||
+        patient.comorbidities?.immunocompromised ||
+        patient.comorbidities?.alcoholism
       ),
       antibioticsInPast3m: !!patient.riskProfile?.recentIvAntibiotics90d,
       suspectPseudomonas: step2Result.pseudomonasRisk,
       suspectMrsa: step2Result.mrsaRisk,
       spo2: patient.vitals?.spo2 ?? 98.0,
       within24hIcu: true,
+      viralTestPositive: false,
       hasPenicillinAllergy: !!patient.exclusionTriggers?.hasKnownPenicillinAnaphylaxis
     };
 
@@ -99,20 +112,27 @@ export class PecomedCdssMaster {
     hasArthritisAbscess: boolean = false,
     hasOsteomyelitis: boolean = false,
     cannotSwallow: boolean = false,
-    crclGt60: boolean = true
+    crclGt60: boolean = true,
+    multilobar: boolean = false,
+    isPregnant: boolean = false,
+    isCysticFibrosis: boolean = false,
+    isBetaLactamasePositive: boolean = false,
+    hasBetaLactamAllergy: boolean = false
   ): TargetedRegimenResult {
     const pId = (pathogenId || '').toLowerCase();
 
-    if (pId.includes('pneumoniae') && !pId.includes('klebsiella')) {
+    if (pId.includes('influenzae') || pId.includes('catarrhalis') || pId.includes('haemophilus') || pId.includes('moraxella')) {
+      return this.step5.getHInfluenzaeMCatarrhalisRegimen(isBetaLactamasePositive, hasBetaLactamAllergy);
+    } else if (pId.includes('pneumoniae') && !pId.includes('klebsiella')) {
       return this.step5.getSpneumoniaeRegimen(micPenicillin ?? 1.0);
     } else if (pId.includes('aureus')) {
-      return this.step5.getStaphAureusRegimen(isMrsa);
+      return this.step5.getStaphAureusRegimen(isMrsa, isBacteremia);
     } else if (pId.includes('klebsiella')) {
       return this.step5.getKlebsiellaRegimen(isEsbl, isCarbapenemResistant);
     } else if (pId.includes('pseudomonas')) {
-      return this.step5.getPseudomonasRegimen(isCarbapenemResistant);
+      return this.step5.getPseudomonasRegimen(isCarbapenemResistant, isCysticFibrosis);
     } else if (pId.includes('pseudomallei') || pId.includes('whitmore')) {
-      return this.step5.getWhitmoreRegimen(isBacteremia, hasArthritisAbscess, hasOsteomyelitis);
+      return this.step5.getWhitmoreRegimen(isBacteremia, multilobar, hasArthritisAbscess, hasOsteomyelitis, isPregnant);
     } else if (pId.includes('virus') || pId.includes('influenza') || pId.includes('cúm')) {
       return this.step5.getVirusRegimen(cannotSwallow, crclGt60);
     } else {

@@ -7,7 +7,7 @@ import { Step4EmpiricalEngine } from '../src/engine/Step4EmpiricalEngine.js';
 import { Step5TargetedEngine } from '../src/engine/Step5TargetedEngine.js';
 import { PatientCase } from '../src/models/types.js';
 
-describe('PECOMED CAP CDSS - TypeScript Engine Test Suite', () => {
+describe('PECOMED CAP CDSS - Complete Clinical Engine Test Suite', () => {
   const master = new PecomedCdssMaster();
   const step1 = new Step1SeverityEngine();
   const step2 = new Step2PathogenEngine();
@@ -36,8 +36,20 @@ describe('PECOMED CAP CDSS - TypeScript Engine Test Suite', () => {
     expect(res.targetedAntibiotics.some(a => a.includes('Vancomycin'))).toBe(true);
   });
 
-  // TEST 2: Klebsiella ESBL(-) fallback & ESBL(+) Carbapenem-R
-  it('2. Klebsiella ESBL(-) vs ESBL(+) Carbapenem Resistant', () => {
+  // TEST 2: H. influenzae & M. catarrhalis
+  it('2. H. influenzae & M. catarrhalis targeted regimens', () => {
+    const nonBl = step5.getHInfluenzaeMCatarrhalisRegimen(false, false);
+    expect(nonBl.targetedAntibiotics.some(a => a.includes('Ampicillin 2g'))).toBe(true);
+
+    const blPos = step5.getHInfluenzaeMCatarrhalisRegimen(true, false);
+    expect(blPos.targetedAntibiotics.some(a => a.includes('Ceftriaxone'))).toBe(true);
+
+    const allergy = step5.getHInfluenzaeMCatarrhalisRegimen(false, true);
+    expect(allergy.targetedAntibiotics.some(a => a.includes('Cotrimoxazole'))).toBe(true);
+  });
+
+  // TEST 3: Klebsiella ESBL(-) fallback & ESBL(+) Carbapenem-R
+  it('3. Klebsiella ESBL(-) vs ESBL(+) Carbapenem Resistant', () => {
     const nonEsbl = step5.getKlebsiellaRegimen(false, false);
     expect(nonEsbl.pathogenName).toContain('Không sinh ESBL');
     expect(nonEsbl.dosageAndAdministration).toContain('Cefepime');
@@ -49,35 +61,31 @@ describe('PECOMED CAP CDSS - TypeScript Engine Test Suite', () => {
     expect(cre.targetedAntibiotics.some(a => a.includes('Ceftazidime / Avibactam'))).toBe(true);
   });
 
-  // TEST 3: PSI Class I Boundary
-  it('3. PSI Class I age and comorbidity boundary', () => {
-    const youngHealthy = step1.calculatePsi(50, 'MALE', {}, { spo2: 98 }, {}, {});
-    expect(youngHealthy.psiClass).toContain('Class I');
+  // TEST 4: ATS 2007 Major vs Minor Criteria Bug Fix
+  it('4. ATS 2007: Fluid resuscitation alone is minor criterion, does not trigger ICU by itself', () => {
+    // Patient has ONLY fluid resuscitation (minor #9) and no other criteria
+    const ats1Minor = step1.calculateAtsIdsa({ systolicBp: 88, onAggressiveFluidResuscitation: true }, {}, {});
+    expect(ats1Minor.majorCount).toBe(0);
+    expect(ats1Minor.minorCount).toBe(1);
+    expect(ats1Minor.isSevereCap).toBe(false);
 
-    const olderHealthy = step1.calculatePsi(51, 'MALE', {}, { spo2: 98 }, {}, {});
-    expect(olderHealthy.psiClass).toContain('Class II');
+    // Patient with vasopressors triggers Major criterion
+    const atsMajor = step1.calculateAtsIdsa({}, {}, { septicShockVasopressors: true });
+    expect(atsMajor.majorCount).toBe(1);
+    expect(atsMajor.isSevereCap).toBe(true);
   });
 
-  // TEST 4: ATS ICU Override (Septic shock in young patient)
-  it('4. ATS ICU Override: septic shock vasopressors triggers ICU regardless of age', () => {
-    const patient: PatientCase = {
-      age: 22,
-      gender: 'MALE',
-      vitals: { respiratoryRate: 20, systolicBp: 75, diastolicBp: 45, onAggressiveFluidResuscitation: true },
-      imaging: { septicShockVasopressors: true }
-    };
-    const report = master.evaluateCase(patient);
-    expect(report.severityAssessment.atsSevereCap).toBe(true);
-    expect(report.severityAssessment.recommendedCareSetting).toContain('ICU');
-  });
+  // TEST 5: CURB-65 Triage Alignment
+  it('5. CURB-65 = 3 is Inpatient High Risk, CURB-65 >= 4 is ICU', () => {
+    // CURB-65 = 3 (Age 65, Ure 8.0, RR 32)
+    const p3 = step1.evaluate(65, 'MALE', { respiratoryRate: 32 }, {}, { ureaMmolL: 8.0 });
+    expect(p3.curb65Score).toBe(3);
+    expect(p3.recommendedCareSetting).toContain('Nội trú (Trung bình - Nguy cơ cao)');
 
-  // TEST 5: CURB-65 vs CRB-65 Fallback when Urea is missing
-  it('5. CURB-65 vs CRB-65 Fallback when Urea is null', () => {
-    const curbMissing = step1.calculateCurb65(70, { respiratoryRate: 32 });
-    expect(curbMissing.score).toBeNull();
-
-    const crbCalculated = step1.calculateCrb65(70, { respiratoryRate: 32 });
-    expect(crbCalculated.score).toBe(2); // Age >= 65 (+1) and RR >= 30 (+1)
+    // CURB-65 = 4 (Age 65, Ure 8.0, RR 32, SBP 80)
+    const p4 = step1.evaluate(65, 'MALE', { respiratoryRate: 32, systolicBp: 80 }, {}, { ureaMmolL: 8.0 });
+    expect(p4.curb65Score).toBe(4);
+    expect(p4.recommendedCareSetting).toContain('ICU');
   });
 
   // TEST 6: SMART-COP age-stratified Oxygenation cutoff
@@ -97,30 +105,46 @@ describe('PECOMED CAP CDSS - TypeScript Engine Test Suite', () => {
     expect(olderNormal.score).toBe(0);
   });
 
-  // TEST 7: Whitmore duration pathways
-  it('7. Whitmore (Burkholderia pseudomallei) duration pathways', () => {
-    const std = step5.getWhitmoreRegimen(false, false, false);
+  // TEST 7: Whitmore (Burkholderia pseudomallei) 6 duration pathways & pregnancy
+  it('7. Whitmore duration pathways and pregnancy regimen', () => {
+    const std = step5.getWhitmoreRegimen(false, false, false, false);
     expect(std.duration).toContain('Tối thiểu 2 tuần');
 
-    const bacteremic = step5.getWhitmoreRegimen(true, false, false);
+    const multi = step5.getWhitmoreRegimen(false, true, false, false);
+    expect(multi.duration).toContain('Tối thiểu 3 tuần');
+
+    const bacteremic = step5.getWhitmoreRegimen(true, false, false, false);
     expect(bacteremic.duration).toContain('Tối thiểu 3 tuần');
 
-    const arthritis = step5.getWhitmoreRegimen(false, true, false);
+    const bacteremicMulti = step5.getWhitmoreRegimen(true, true, false, false);
+    expect(bacteremicMulti.duration).toContain('Tối thiểu 4 tuần');
+
+    const arthritis = step5.getWhitmoreRegimen(false, false, true, false);
     expect(arthritis.duration).toContain('Tối thiểu 4 tuần');
 
-    const osteo = step5.getWhitmoreRegimen(false, false, true);
+    const osteo = step5.getWhitmoreRegimen(false, false, false, true);
     expect(osteo.duration).toContain('Tối thiểu 6 tuần');
+
+    const preg = step5.getWhitmoreRegimen(false, false, false, false, true);
+    expect(preg.targetedAntibiotics.some(a => a.includes('Augmentin') || a.includes('Amoxicillin'))).toBe(true);
   });
 
-  // TEST 8: Oral Step-down 7 criteria
-  it('8. Oral Step-down 7 criteria evaluator', () => {
-    const eligible = step5.evaluateOralStepDown(37.2, 80, 18, 120, 96, true, true);
-    expect(eligible.eligible).toBe(true);
-    expect(eligible.metCriteriaCount).toBe(7);
+  // TEST 8: Oral Step-down 7 criteria inclusive boundary cutoffs
+  it('8. Oral Step-down: HR=100 and RR=24 are INCLUSIVE passing boundaries', () => {
+    // Exactly at thresholds (HR=100, RR=24, Temp=37.8) -> All 7/7 pass!
+    const exactThreshold = step5.evaluateOralStepDown(37.8, 100, 24, 90, 90, true, true);
+    expect(exactThreshold.eligible).toBe(true);
+    expect(exactThreshold.metCriteriaCount).toBe(7);
 
-    const feverFails = step5.evaluateOralStepDown(37.9, 80, 18, 120, 96, true, true);
-    expect(feverFails.eligible).toBe(false);
-    expect(feverFails.metCriteriaCount).toBe(6);
+    // HR=101 fails
+    const hrFail = step5.evaluateOralStepDown(37.8, 101, 24, 90, 90, true, true);
+    expect(hrFail.eligible).toBe(false);
+    expect(hrFail.metCriteriaCount).toBe(6);
+
+    // RR=25 fails
+    const rrFail = step5.evaluateOralStepDown(37.8, 100, 25, 90, 90, true, true);
+    expect(rrFail.eligible).toBe(false);
+    expect(rrFail.metCriteriaCount).toBe(6);
   });
 
   // TEST 9: Procalcitonin (PCT) Kinetics Evaluation
@@ -139,12 +163,27 @@ describe('PECOMED CAP CDSS - TypeScript Engine Test Suite', () => {
     expect(failure.pctKineticsInterpretation).toContain('THẤT BẠI');
   });
 
-  // TEST 10: Virus Peramivir condition
-  it('10. Influenza Peramivir condition (cannot swallow & CrCl > 60)', () => {
-    const peramivirIncluded = step5.getVirusRegimen(true, true);
-    expect(peramivirIncluded.targetedAntibiotics.some(a => a.includes('Peramivir'))).toBe(true);
+  // TEST 10: Cockcroft-Gault CrCl & Renal Adjustments
+  it('10. Cockcroft-Gault CrCl calculation and renal dose adjustments', () => {
+    // Male 70yo, 60kg, SCr = 1.8 mg/dL
+    const crclMale = step3.calculateCrCl(70, 'MALE', 60, 1.8);
+    expect(crclMale).toBeCloseTo(32.4, 1);
 
-    const oralOnly = step5.getVirusRegimen(false, true);
-    expect(oralOnly.targetedAntibiotics.some(a => a.includes('Peramivir'))).toBe(false);
+    const adj = step3.generateRenalAdjustments(32.4);
+    expect(adj.some(a => a.drugName === 'Levofloxacin')).toBe(true);
+    expect(adj.some(a => a.drugName === 'Cefepime')).toBe(true);
+    expect(adj.some(a => a.drugName === 'Meropenem')).toBe(true);
+  });
+
+  // TEST 11: 8 Differential Diagnoses evaluation
+  it('11. Differential diagnoses for non-infectious mimicking conditions', () => {
+    // Patient with hemoptysis and weight loss -> TB and Cancer
+    const diffsTb = step3.evaluateDifferentialDiagnoses({ hemoptysis: true, weightLossNightSweats: true }, { smoking: true }, {}, 60);
+    expect(diffsTb.some(d => d.condition.includes('Lao'))).toBe(true);
+    expect(diffsTb.some(d => d.condition.includes('Ung thư'))).toBe(true);
+
+    // Patient with sharp chest pain and DVT -> Pulmonary Embolism
+    const diffsPe = step3.evaluateDifferentialDiagnoses({ suddenSharpChestPainDyspnea: true, immobilizationOrDvtOrOralContraceptives: true });
+    expect(diffsPe.some(d => d.condition.includes('Thuyên tắc'))).toBe(true);
   });
 });

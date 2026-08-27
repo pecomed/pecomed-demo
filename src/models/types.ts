@@ -15,6 +15,9 @@ export interface PatientVitals {
 }
 
 export interface PatientLabs {
+  serumCreatinineMgDl?: number;
+  serumCreatinineUmolL?: number;
+  weightKg?: number;
   ureaMmolL?: number;
   bunMgDl?: number;
   arterialPh?: number;
@@ -23,9 +26,13 @@ export interface PatientLabs {
   hematocritPct?: number;
   pao2Mmhg?: number;
   wbcGL?: number;
+  neutrophilsPct?: number;
   plateletsGL?: number;
   pao2Fio2Ratio?: number;
   albuminGDl?: number;
+  pctD0?: number;
+  pctD3?: number;
+  pctD5D7?: number;
 }
 
 export interface PatientComorbidities {
@@ -38,6 +45,11 @@ export interface PatientComorbidities {
   diabetes?: boolean;
   immunocompromised?: boolean;
   nursingHomeResident?: boolean;
+  alcoholism?: boolean;
+  smoking?: boolean;
+  hivCd4Under200?: boolean;
+  neutropenia?: boolean;
+  recentInfluenzaOrMeasles?: boolean;
 }
 
 export interface PatientImagingAndIntervention {
@@ -45,6 +57,10 @@ export interface PatientImagingAndIntervention {
   pleuralEffusion?: boolean;
   mechanicalVentilation?: boolean;
   septicShockVasopressors?: boolean;
+  lungCavityOrNecrosis?: boolean;
+  recurrentPneumonia?: boolean;
+  unclearInfiltrateHighSuspicion?: boolean;
+  suspectUnderlyingMassOrTb?: boolean;
 }
 
 export interface ClinicalSymptoms {
@@ -54,6 +70,14 @@ export interface ClinicalSymptoms {
   pleuriticChestPain?: boolean;
   dyspnea?: boolean;
   cracklesRales?: boolean;
+  hemoptysis?: boolean;
+  weightLossNightSweats?: boolean;
+  suddenSharpChestPainDyspnea?: boolean;
+  immobilizationOrDvtOrOralContraceptives?: boolean;
+  chronicCopiousPurulentSputum?: boolean;
+  amiodaroneOrMethotrexateUse?: boolean;
+  swallowingDifficultyOrSedation?: boolean;
+  asthmaHistoryOrParasiteExposure?: boolean;
 }
 
 export interface ClinicalRiskProfile {
@@ -75,11 +99,16 @@ export interface ClinicalRiskProfile {
   recentTravelEndemicMelioidosis?: boolean;
   atypicalEpidemicContext?: boolean;
   birdBatExposurePsittacosis?: boolean;
+  postInfluenzaSuperinfection?: boolean;
+  neutropeniaRisk?: boolean;
 }
 
 export interface ExclusionRiskTriggers {
   hasSevereRenalFailure?: boolean;
   crclMlMin?: number;
+  serumCreatinineMgDl?: number;
+  serumCreatinineUmolL?: number;
+  weightKg?: number;
   hasLongQtSyndrome?: boolean;
   hasMyastheniaGravis?: boolean;
   hasTendinitisOrFluoroquinoloneAllergy?: boolean;
@@ -127,15 +156,34 @@ export interface PathogenEngineResult {
   atypicalRisk: boolean;
   anaerobeRisk: boolean;
   melioidosisRisk: boolean;
+  pjpRisk: boolean;
   indicatedDiagnosticTests: string[];
+  chestCtScanIndications: string[];
   riskWarnings: string[];
+}
+
+export interface DifferentialDiagnosisItem {
+  condition: string;
+  probability: 'Cao (High)' | 'Nghi ngờ (Moderate)' | 'Thấp (Low)';
+  keyClues: string[];
+  suggestedExclusionTests: string[];
+  clinicalAction: string;
+}
+
+export interface RenalDoseAdjustmentItem {
+  drugName: string;
+  normalDose: string;
+  adjustedDose: string;
+  monitoringNote: string;
 }
 
 export interface ExclusionAssessmentResult {
   contraindicatedDrugs: string[];
   cautionDrugs: string[];
   renalDoseAdjustmentRequired: boolean;
-  crclMlMin?: number;
+  calculatedCrCl?: number;
+  renalDoseAdjustments: RenalDoseAdjustmentItem[];
+  differentialDiagnoses: DifferentialDiagnosisItem[];
   warnings: string[];
 }
 
@@ -167,6 +215,7 @@ export interface TargetedRegimenResult {
   dosageAndAdministration: string;
   duration: string;
   monitoringAndWarnings: string[];
+  aerosolProphylaxis?: string[];
 }
 
 export interface OralStepDownResult {
