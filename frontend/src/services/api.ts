@@ -354,6 +354,7 @@ function fallbackCalculateStep2(req: Step2Request): PathogenEngineResult {
     atypicalRisk: atyp,
     anaerobeRisk: anaerobe,
     melioidosisRisk: melioid,
+    pjpRisk: false,
     indicatedDiagnosticTests: [
       'Nhuộm Gram và cấy đờm tìm vi khuẩn gây bệnh + Kháng sinh đồ.',
       'Cấy máu 2 vị trí trước khi dùng liều kháng sinh đầu tiên.',
