@@ -239,6 +239,18 @@ export const Step2Pathogen: React.FC<Step2Props> = ({
             </div>
           )}
 
+          {/* Chest CT Scan Indications */}
+          {result?.chestCtScanIndications && result.chestCtScanIndications.length > 0 && (
+            <div className="bg-amber-50/80 p-5 rounded-2xl border border-amber-200 text-xs space-y-2">
+              <div className="font-bold text-amber-950">Chỉ Định Chụp Cắt Lớp Vi Tính Lồng Ngực (Chest CT Scan):</div>
+              <ul className="space-y-1 text-amber-900 list-disc list-inside">
+                {result.chestCtScanIndications.map((ct, idx) => (
+                  <li key={idx}>{ct}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
         </div>
 
       </div>
