@@ -1,5 +1,6 @@
 package vn.pecomed.cdss.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -22,8 +23,20 @@ public enum PathogenCategory {
         return description;
     }
 
+    @JsonCreator
+    public static PathogenCategory fromValue(String value) {
+        if (value == null || value.trim().isEmpty()) return BACTERIA;
+        for (PathogenCategory cat : values()) {
+            if (cat.name().equalsIgnoreCase(value) || cat.description.equalsIgnoreCase(value)) {
+                return cat;
+            }
+        }
+        return BACTERIA;
+    }
+
     @Override
     public String toString() {
         return description;
     }
 }
+

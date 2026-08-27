@@ -1,5 +1,6 @@
 package vn.pecomed.cdss.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -22,8 +23,20 @@ public enum CareSetting {
         return description;
     }
 
+    @JsonCreator
+    public static CareSetting fromValue(String value) {
+        if (value == null || value.trim().isEmpty()) return OUTPATIENT;
+        for (CareSetting setting : values()) {
+            if (setting.name().equalsIgnoreCase(value) || setting.description.equalsIgnoreCase(value)) {
+                return setting;
+            }
+        }
+        return OUTPATIENT;
+    }
+
     @Override
     public String toString() {
         return description;
     }
 }
+

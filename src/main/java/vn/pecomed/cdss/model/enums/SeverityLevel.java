@@ -1,5 +1,6 @@
 package vn.pecomed.cdss.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -22,8 +23,20 @@ public enum SeverityLevel {
         return description;
     }
 
+    @JsonCreator
+    public static SeverityLevel fromValue(String value) {
+        if (value == null || value.trim().isEmpty()) return MILD;
+        for (SeverityLevel lvl : values()) {
+            if (lvl.name().equalsIgnoreCase(value) || lvl.description.equalsIgnoreCase(value)) {
+                return lvl;
+            }
+        }
+        return MILD;
+    }
+
     @Override
     public String toString() {
         return description;
     }
 }
+

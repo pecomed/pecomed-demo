@@ -8,10 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Offline Local Tailwind CSS & Lucide Icons -->
+    <script src="vendor/tailwindcss.js"></script>
+    <script src="vendor/lucide.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -1579,34 +1578,34 @@
                 if (!res.ok) throw new Error('Network error');
                 const data = await res.json();
 
-                const settingMap = {
-                    'OUTPATIENT': 'OUTPATIENT_1',
-                    'SHORT_TERM_INPATIENT': 'OUTPATIENT_2',  
-                    'INPATIENT': 'INPATIENT',
-                    'ICU': 'ICU'
-                };
-                const labelMap = {
-                    'OUTPATIENT': 'Điều trị Ngoại Trú (Nhóm 1)',
-                    'SHORT_TERM_INPATIENT': 'Điều trị Ngoại Trú (Nhóm 2 / Theo dõi ngắn)',
-                    'INPATIENT': 'Nhập viện Nội Trú',
-                    'ICU': 'Nhập ICU Khẩn cấp'
-                };
-                
-                state.scores.curb65 = data.curb65?.score ?? 0;
-                state.scores.crb65 = data.crb65?.score ?? 0;
-                state.scores.psi = data.psiFine?.score ?? 50;
-                state.scores.psiClass = data.psiFine?.psiClass ?? 'II';
-                state.scores.atsMajor = data.atsIdsa?.majorCount ?? 0;
-                state.scores.atsMinor = data.atsIdsa?.minorCount ?? 0;
-                state.scores.smartCop = data.smartCop?.score ?? 0;
-                state.scores.smartCopRisk = data.smartCop?.riskLevel ?? '';
-                
-                const triage = settingMap[data.recommendedCareSetting] ?? 'INPATIENT';
-                const triageLabel = labelMap[data.recommendedCareSetting] ?? 'Nhập viện Nội Trú';
-                const triageDesc = data.triageRecommendation?.rationale ?? '';
+                const settingRaw = data.recommendedCareSetting ? data.recommendedCareSetting.toString() : 'INPATIENT';
+                let triage = 'INPATIENT';
+                let triageLabel = 'Nhập Viện Nội Trú';
+
+                if (settingRaw.includes('ICU') || settingRaw.includes('Rất nặng')) {
+                    triage = 'ICU';
+                    triageLabel = 'Nhập ICU Khẩn Cấp';
+                } else if (settingRaw.includes('SHORT_TERM') || settingRaw.includes('Theo dõi')) {
+                    triage = 'OUTPATIENT_2';
+                    triageLabel = 'Điều Trị Ngoại Trú (Nhóm 2 / Theo dõi ngắn)';
+                } else if (settingRaw.includes('OUTPATIENT') || settingRaw.includes('Ngoại trú')) {
+                    triage = 'OUTPATIENT_1';
+                    triageLabel = 'Điều Trị Ngoại Trú (Nhóm 1)';
+                }
+
+                state.scores.curb65 = data.curb65Score ?? (data.curb65?.score ?? 0);
+                state.scores.crb65 = data.crb65Score ?? (data.crb65?.score ?? 0);
+                state.scores.psi = data.psiScore ?? (data.psiFine?.score ?? 50);
+                state.scores.psiClass = (data.psiClass ?? (data.psiFine?.psiClass ?? 'II')).replace(/^Tầng\s+[IVXLCDM]+\s+\(Class\s+([IVXLCDM]+).*\)$/i, '$1');
+                state.scores.atsMajor = data.atsMajorCount ?? (data.atsIdsa?.majorCount ?? 0);
+                state.scores.atsMinor = data.atsMinorCount ?? (data.atsIdsa?.minorCount ?? 0);
+                state.scores.smartCop = data.smartCopScore ?? (data.smartCop?.score ?? 0);
+                state.scores.smartCopRisk = data.smartCopRisk ?? (data.smartCop?.riskLevel ?? '');
 
                 state.scores.triageSetting = triage;
                 state.scores.triageLabel = triageLabel;
+
+                const triageDesc = (data.clinicalNotes && data.clinicalNotes.length > 0) ? data.clinicalNotes[0] : (data.triageRecommendation?.rationale ?? '');
 
                 const curbInterpEl = document.getElementById('curb65-interp');
                 if (curbInterpEl) curbInterpEl.innerText = data.curb65?.interpretation ?? '';

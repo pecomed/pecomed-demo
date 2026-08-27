@@ -1,5 +1,6 @@
 package vn.pecomed.cdss.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -21,8 +22,20 @@ public enum AdminRoute {
         return description;
     }
 
+    @JsonCreator
+    public static AdminRoute fromValue(String value) {
+        if (value == null || value.trim().isEmpty()) return ORAL;
+        for (AdminRoute route : values()) {
+            if (route.name().equalsIgnoreCase(value) || route.description.equalsIgnoreCase(value)) {
+                return route;
+            }
+        }
+        return ORAL;
+    }
+
     @Override
     public String toString() {
         return description;
     }
 }
+

@@ -1,5 +1,6 @@
 package vn.pecomed.cdss.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -20,8 +21,19 @@ public enum Gender {
         return description;
     }
 
+    @JsonCreator
+    public static Gender fromValue(String value) {
+        if (value == null || value.trim().isEmpty()) return MALE;
+        String v = value.trim().toUpperCase();
+        if (v.equals("FEMALE") || v.equals("NỮ") || v.equals("NU") || v.equals("F")) {
+            return FEMALE;
+        }
+        return MALE;
+    }
+
     @Override
     public String toString() {
         return description;
     }
 }
+
