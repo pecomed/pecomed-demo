@@ -1,0 +1,8 @@
+target/
+.git/
+.gitignore
+*.md
+start.sh
+design_specs/
+diagrams/
+tài liệu thiết kế/

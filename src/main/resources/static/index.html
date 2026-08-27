@@ -1377,7 +1377,7 @@
     <!-- JAVASCRIPT ENGINE & CLINICAL LOGIC -->
     <!-- ========================================================================= -->
     <script>
-        const API_BASE = 'http://localhost:8080';
+        const API_BASE = window.location.origin;
         // Helper for safe number parsing (prevents NaN values)
         function parseNum(val, def = 0) {
             if (val === null || val === undefined || val === '') return def;
