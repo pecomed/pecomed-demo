@@ -1569,13 +1569,13 @@
                     body: JSON.stringify({
                         age, gender: gender.toUpperCase(),
                         vitals: { respiratoryRate: rr, systolicBp: sbp, diastolicBp: dbp, heartRate: hr, temperature: temp, spo2, alteredMentalStatus: confusion, onAggressiveFluidResuscitation: vasopressor },
-                        comorbidities: { neoplasm: cancer, liverDisease: liver, congestiveHeartFailure: chf, cerebrovascularDisease: cvd, renalDisease: renal, copdChronicLung: copd, diabetes, immunocompromised: immuno },
-                        labs: { ureaMmolL: bun, arterialPh: ph, sodiumMmolL: na, glucoseMmolL: glucose, hematocritPct: hct, wbcGl: wbc, plateletsGl: plt, pao2Fio2Ratio: pf, albumin },
+                        comorbidities: { neoplasm: cancer, liverDisease: liver, congestiveHeartFailure: chf, cerebrovascularDisease: cvd, renalDisease: renal, copdChronicLung: copd, diabetes, immunocompromised: immuno, nursingHomeResident: residence === 'nursing_home' },
+                        labs: { ureaMmolL: bun, arterialPh: ph, sodiumMmolL: na, glucoseMmolL: glucose, hematocritPct: hct, wbcGL: wbc, plateletsGL: plt, pao2Fio2Ratio: pf, albuminGDl: albumin },
                         imaging: { multilobarInfiltrates: multilobar, pleuralEffusion: effusion, mechanicalVentilation: mech_vent, septicShockVasopressors: vasopressor },
-                        symptoms: { fever: temp >= 38.0 }
+                        symptoms: { fever: temp }
                     })
                 });
-                if (!res.ok) throw new Error('Network error');
+                if (!res.ok) throw new Error('API response status: ' + res.status);
                 const data = await res.json();
 
                 const settingRaw = data.recommendedCareSetting ? data.recommendedCareSetting.toString() : 'INPATIENT';
@@ -1608,22 +1608,114 @@
                 const triageDesc = (data.clinicalNotes && data.clinicalNotes.length > 0) ? data.clinicalNotes[0] : (data.triageRecommendation?.rationale ?? '');
 
                 const curbInterpEl = document.getElementById('curb65-interp');
-                if (curbInterpEl) curbInterpEl.innerText = data.curb65?.interpretation ?? '';
+                if (curbInterpEl) curbInterpEl.innerText = data.curb65?.interpretation ?? `${state.scores.curb65 <= 1 ? 'Tử vong thấp (0.6-2.7%) • Ngoại trú an toàn' : state.scores.curb65 === 2 ? 'Tử vong TB (9.2%) • Nhập viện nội trú ngắn' : 'Tử vong cao (14.5-30%) • Nhập viện / ICU'}`;
                 const crbInterpEl = document.getElementById('crb65-interp');
-                if (crbInterpEl) crbInterpEl.innerText = data.crb65?.interpretation ?? '';
+                if (crbInterpEl) crbInterpEl.innerText = data.crb65?.interpretation ?? `${state.scores.crb65 === 0 ? 'Ngoại trú an toàn (<1% tử vong)' : state.scores.crb65 <= 2 ? 'Nguy cơ TB (1-8%) • Theo dõi sát' : 'Nguy cơ rất cao (>12%) • Nhập viện'}`;
                 const psiInterpEl = document.getElementById('psi-interp');
-                if (psiInterpEl) psiInterpEl.innerText = data.psiFine?.mortalityRisk ?? '';
+                if (psiInterpEl) psiInterpEl.innerText = data.psiFine?.mortalityRisk ?? `Nguy cơ tử vong theo Class ${state.scores.psiClass}`;
 
-                let atsMajor = state.scores.atsMajor;
-                let atsMinor = state.scores.atsMinor;
-                let curb = state.scores.curb65;
-                let crb = state.scores.crb65;
-                let psi = state.scores.psi;
-                let psiClass = state.scores.psiClass;
-                let smartCop = state.scores.smartCop;
+                renderStep1Dom(state.scores.curb65, state.scores.crb65, state.scores.psi, state.scores.psiClass, state.scores.smartCop, state.scores.atsMajor, state.scores.atsMinor, triage, triageLabel, triageDesc);
+            } catch (err) {
+                console.warn('Backend API evaluation failed, using client-side engine fallback:', err);
+                
+                // Client-side fallback calculation
+                let curb = 0;
+                if (confusion) curb += 1;
+                if (bun > 7) curb += 1;
+                if (rr >= 30) curb += 1;
+                if (sbp < 90 || dbp <= 60) curb += 1;
+                if (age >= 65) curb += 1;
+                state.scores.curb65 = curb;
 
+                let crb = 0;
+                if (confusion) crb += 1;
+                if (rr >= 30) crb += 1;
+                if (sbp < 90 || dbp <= 60) crb += 1;
+                if (age >= 65) crb += 1;
+                state.scores.crb65 = crb;
 
-            // Render Step 1 UI Elements
+                let psi = (gender === 'female') ? Math.max(0, age - 10) : age;
+                if (residence === 'nursing_home') psi += 10;
+                if (cancer) psi += 30;
+                if (liver) psi += 20;
+                if (chf) psi += 10;
+                if (cvd) psi += 10;
+                if (renal) psi += 10;
+                if (confusion) psi += 20;
+                if (rr >= 30) psi += 20;
+                if (sbp < 90) psi += 20;
+                if (temp < 35 || temp >= 40) psi += 15;
+                if (hr >= 125) psi += 10;
+                if (ph < 7.35) psi += 30;
+                if (bun >= 11) psi += 20;
+                if (na < 130) psi += 20;
+                if (glucose >= 14) psi += 10;
+                if (hct < 30) psi += 10;
+                if (spo2 < 90 || pf < 300) psi += 10;
+                if (effusion) psi += 10;
+                state.scores.psi = psi;
+
+                let psiClass = 'I';
+                if (psi <= 70) psiClass = 'II';
+                else if (psi <= 90) psiClass = 'III';
+                else if (psi <= 130) psiClass = 'IV';
+                else psiClass = 'V';
+                state.scores.psiClass = psiClass;
+
+                let smartCop = 0;
+                if (sbp < 90) smartCop += 2;
+                if (multilobar) smartCop += 1;
+                if (albumin < 3.5) smartCop += 1;
+                if (age <= 50 ? rr >= 25 : rr >= 30) smartCop += 1;
+                if (hr >= 125) smartCop += 1;
+                if (confusion) smartCop += 1;
+                if (age <= 50 ? (spo2 <= 93 || pf < 333) : (spo2 <= 90 || pf < 250)) smartCop += 2;
+                if (ph < 7.35) smartCop += 2;
+                state.scores.smartCop = smartCop;
+
+                let atsMajor = 0;
+                if (mech_vent) atsMajor += 1;
+                if (vasopressor) atsMajor += 1;
+                state.scores.atsMajor = atsMajor;
+
+                let atsMinor = 0;
+                if (rr >= 30) atsMinor += 1;
+                if (pf <= 250) atsMinor += 1;
+                if (multilobar) atsMinor += 1;
+                if (confusion) atsMinor += 1;
+                if (bun > 7) atsMinor += 1;
+                if (wbc < 4.0) atsMinor += 1;
+                if (plt < 100) atsMinor += 1;
+                if (temp < 36.0) atsMinor += 1;
+                if (sbp < 90) atsMinor += 1;
+                state.scores.atsMinor = atsMinor;
+
+                let triage = 'OUTPATIENT_1';
+                let triageLabel = 'Điều Trị Ngoại Trú (Nhóm 1)';
+                let triageDesc = 'Bệnh nhân trẻ tuổi, không bệnh đồng mắc, nguy cơ tử vong thấp (<1%).';
+
+                if (atsMajor >= 1 || atsMinor >= 3 || smartCop >= 5) {
+                    triage = 'ICU';
+                    triageLabel = 'Nhập ICU Khẩn Cấp';
+                    triageDesc = 'Thỏa tiêu chuẩn ATS/IDSA hoặc SMART-COP điểm cao -> Nguy cơ suy hô hấp/sốc cần hỗ trợ tích cực.';
+                } else if (curb >= 2 || crb >= 2 || psi > 90 || smartCop >= 3) {
+                    triage = 'INPATIENT';
+                    triageLabel = 'Nhập Viện Nội Trú';
+                    triageDesc = 'Điểm CURB-65/PSI mức độ trung bình -> Cần nhập viện điều trị và theo dõi sát.';
+                } else if (age >= 65 || cancer || liver || chf || cvd || renal || copd || diabetes || immuno || prior_ab) {
+                    triage = 'OUTPATIENT_2';
+                    triageLabel = 'Điều Trị Ngoại Trú (Nhóm 2 / Theo dõi ngắn)';
+                    triageDesc = 'Bệnh nhân >=65 tuổi hoặc có bệnh đồng mắc -> Ngoại trú nhóm 2 có phối hợp kháng sinh.';
+                }
+
+                state.scores.triageSetting = triage;
+                state.scores.triageLabel = triageLabel;
+
+                renderStep1Dom(curb, crb, psi, psiClass, smartCop, atsMajor, atsMinor, triage, triageLabel, triageDesc);
+            }
+        }
+
+        function renderStep1Dom(curb, crb, psi, psiClass, smartCop, atsMajor, atsMinor, triage, triageLabel, triageDesc) {
             document.getElementById('curb65-score').innerText = curb;
             document.getElementById('crb65-score').innerText = crb;
             document.getElementById('psi-score').innerText = psi;
@@ -1632,7 +1724,6 @@
             document.getElementById('ats-major-count').innerText = `${atsMajor}/2`;
             document.getElementById('ats-minor-count').innerText = `${atsMinor}/9`;
 
-            // ATS Badge
             const atsBadge = document.getElementById('ats-icu-badge');
             if (atsMajor >= 1 || atsMinor >= 3) {
                 atsBadge.className = 'px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40';
@@ -1642,7 +1733,6 @@
                 atsBadge.innerText = 'Không Đạt';
             }
 
-            // Top Header Badge & Result Card
             const topBadge = document.getElementById('step1-triage-badge');
             const triageTitle = document.getElementById('triage-title');
             const triageDescEl = document.getElementById('triage-desc');
@@ -1665,20 +1755,16 @@
                 triageCard.className = 'p-3 rounded-xl bg-gradient-to-r from-emerald-950/80 to-slate-900 border border-emerald-500/40 text-xs';
             }
 
-            // ABG check logic
             const abgCheckbox = document.getElementById('s1_order_abg');
             if (abgCheckbox) {
+                const spo2 = parseNum(document.getElementById('s1_spo2')?.value, 98);
                 if (spo2 < 92) {
                     abgCheckbox.checked = true;
                 }
             }
 
-            // Sync with Step 4 risk options
             syncStep4RiskOptions();
-            } catch (err) {
-                console.error(err);
-                alert('Không thể kết nối đến máy chủ PECOMED. Vui lòng khởi động lại server.');
-            }
+        }
         }
 
         // ==========================================
