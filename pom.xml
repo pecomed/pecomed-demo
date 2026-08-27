@@ -119,7 +119,7 @@
                             <goal>launch4j</goal>
                         </goals>
                         <configuration>
-                            <headerType>console</headerType>
+                            <headerType>gui</headerType>
                             <outfile>${project.build.directory}/pecomed-cdss.exe</outfile>
                             <jar>${project.build.directory}/${project.build.finalName}.jar</jar>
                             <errTitle>PECOMED CAP CDSS</errTitle>
