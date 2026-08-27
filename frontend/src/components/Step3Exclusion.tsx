@@ -1,0 +1,241 @@
+import React from 'react';
+import { ExclusionRiskTriggers, ExclusionAssessmentResult } from '../types/cdss';
+import { ShieldAlert, AlertTriangle, ChevronRight, ChevronLeft, HeartCrack, Activity, Ban, CheckCircle } from 'lucide-react';
+
+interface Step3Props {
+  triggers: ExclusionRiskTriggers;
+  result: ExclusionAssessmentResult | null;
+  onUpdateTriggers: (updated: ExclusionRiskTriggers) => void;
+  onNext: () => void;
+  onBack: () => void;
+}
+
+export const Step3Exclusion: React.FC<Step3Props> = ({
+  triggers,
+  result,
+  onUpdateTriggers,
+  onNext,
+  onBack
+}) => {
+  const toggle = (key: keyof ExclusionRiskTriggers) => {
+    onUpdateTriggers({
+      ...triggers,
+      [key]: !triggers[key]
+    });
+  };
+
+  return (
+    <div className="space-y-6">
+      
+      {/* Step Header */}
+      <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+            <ShieldAlert className="w-6 h-6 text-rose-600" />
+            Bước 3: Rà Soát Chống Chỉ Định, Độc Tính & Hiệu Chỉnh Liều
+          </h2>
+          <p className="text-xs text-slate-500 mt-1">
+            Loại trừ các nguy cơ kéo dài khoảng QT (xoắn đỉnh), nhược cơ, tổn thương gân do Quinolone, dị ứng Beta-lactam và suy giảm chức năng thận (CrCl).
+          </p>
+        </div>
+        <div className="flex items-center space-x-2 shrink-0">
+          <button
+            onClick={onBack}
+            className="flex items-center space-x-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm px-4 py-2.5 rounded-xl transition"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            <span>Quay lại</span>
+          </button>
+          <button
+            onClick={onNext}
+            className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-md transition active:scale-95"
+          >
+            <span>Sang Bước 4: Kháng Sinh Kinh Nghiệm</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Grid: Triggers on Left (7 cols), Exclusions on Right (5 cols) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        {/* LEFT COLUMN: Clinical Contraindication Checkboxes */}
+        <div className="lg:col-span-7 space-y-5">
+          
+          {/* Renal Function Assessment */}
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+            <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2 border-b pb-2">
+              <Activity className="w-4 h-4 text-blue-600" />
+              1. Chức Năng Thận & Độ Thanh Thải Creatinine (CrCl)
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Ước tính CrCl theo Cockcroft-Gault (mL/phút)
+                </label>
+                <input
+                  type="number"
+                  value={triggers.crclMlMin ?? ''}
+                  onChange={(e) => onUpdateTriggers({ ...triggers, crclMlMin: parseFloat(e.target.value) || undefined })}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  placeholder="VD: 45 (Bình thường > 60)"
+                />
+              </div>
+
+              <div className="flex items-end">
+                <label className="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100 w-full text-xs">
+                  <input
+                    type="checkbox"
+                    checked={!!triggers.hasSevereRenalFailure}
+                    onChange={() => toggle('hasSevereRenalFailure')}
+                    className="w-4 h-4 text-blue-600 rounded"
+                  />
+                  <span className="font-medium text-slate-800">Suy thận nặng / Lọc máu chu kỳ (HD/CRRT)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          {/* Cardiac, Neuromuscular & Tendon Risks */}
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2 border-b pb-2">
+              <HeartCrack className="w-4 h-4 text-rose-600" />
+              2. Nguy Cơ Tim Mạch, Thần Kinh Cơ & Viêm Gân
+            </h3>
+
+            <div className="space-y-2 text-xs">
+              <label className="flex items-center space-x-3 bg-rose-50/50 p-3 rounded-xl border border-rose-200 cursor-pointer hover:bg-rose-100/50">
+                <input type="checkbox" checked={!!triggers.hasLongQtSyndrome} onChange={() => toggle('hasLongQtSyndrome')} className="w-4 h-4 text-rose-600 rounded" />
+                <div>
+                  <span className="font-bold text-rose-950">Hội chứng QT kéo dài (Long QT / QTc &gt; 450ms) / Đang dùng thuốc kéo dài QT</span>
+                  <span className="block text-[11px] text-rose-800">Chống chỉ định Quinolone (Moxifloxacin, Levofloxacin) & Macrolide</span>
+                </div>
+              </label>
+
+              <label className="flex items-center space-x-3 bg-rose-50/50 p-3 rounded-xl border border-rose-200 cursor-pointer hover:bg-rose-100/50">
+                <input type="checkbox" checked={!!triggers.hasMyastheniaGravis} onChange={() => toggle('hasMyastheniaGravis')} className="w-4 h-4 text-rose-600 rounded" />
+                <div>
+                  <span className="font-bold text-rose-950">Bệnh Nhược cơ (Myasthenia Gravis)</span>
+                  <span className="block text-[11px] text-rose-800">Chống chỉ định Quinolone & Aminoglycoside do nguy cơ ức chế thần kinh cơ cấp</span>
+                </div>
+              </label>
+
+              <label className="flex items-center space-x-3 bg-rose-50/50 p-3 rounded-xl border border-rose-200 cursor-pointer hover:bg-rose-100/50">
+                <input type="checkbox" checked={!!triggers.hasTendinitisOrFluoroquinoloneAllergy} onChange={() => toggle('hasTendinitisOrFluoroquinoloneAllergy')} className="w-4 h-4 text-rose-600 rounded" />
+                <div>
+                  <span className="font-bold text-rose-950">Tiền sử viêm gân / đứt gân gót Achilles hoặc dị ứng Quinolone</span>
+                  <span className="block text-[11px] text-rose-800">Chống chỉ định tuyệt đối toàn bộ nhóm Fluoroquinolones</span>
+                </div>
+              </label>
+
+              <label className="flex items-center space-x-3 bg-slate-50 p-3 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100">
+                <input type="checkbox" checked={!!triggers.isPregnantOrNursing} onChange={() => toggle('isPregnantOrNursing')} className="w-4 h-4 text-blue-600 rounded" />
+                <div>
+                  <span className="font-semibold text-slate-800">Phụ nữ có thai hoặc đang cho con bú</span>
+                  <span className="block text-[11px] text-slate-500">Tránh Fluoroquinolones, Tetracyclines, Aminoglycosides</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          {/* Drug Allergy History */}
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2 border-b pb-2">
+              <Ban className="w-4 h-4 text-amber-600" />
+              3. Tiền Sử Dị Ứng Kháng Sinh
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <label className="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100">
+                <input type="checkbox" checked={!!triggers.hasKnownPenicillinAnaphylaxis} onChange={() => toggle('hasKnownPenicillinAnaphylaxis')} className="w-4 h-4 text-rose-600 rounded" />
+                <span className="font-semibold text-rose-900">Sốc phản vệ Penicillin</span>
+              </label>
+
+              <label className="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100">
+                <input type="checkbox" checked={!!triggers.hasKnownCephalosporinAnaphylaxis} onChange={() => toggle('hasKnownCephalosporinAnaphylaxis')} className="w-4 h-4 text-rose-600 rounded" />
+                <span className="font-semibold text-rose-900">Dị ứng Cephalosporin</span>
+              </label>
+
+              <label className="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100">
+                <input type="checkbox" checked={!!triggers.hasKnownMacrolideAllergy} onChange={() => toggle('hasKnownMacrolideAllergy')} className="w-4 h-4 text-blue-600 rounded" />
+                <span>Dị ứng Macrolide (Azithro, Clarithro)</span>
+              </label>
+
+              <label className="flex items-center space-x-2 bg-slate-50 p-2.5 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100">
+                <input type="checkbox" checked={!!triggers.hasKnownDoxycyclineAllergy} onChange={() => toggle('hasKnownDoxycyclineAllergy')} className="w-4 h-4 text-blue-600 rounded" />
+                <span>Dị ứng Doxycycline / Tetracycline</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        {/* RIGHT COLUMN: Exclusion Safety Verdict */}
+        <div className="lg:col-span-5 space-y-6">
+          
+          {/* Contraindicated Antibiotics */}
+          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 border-b pb-2">
+              <Ban className="w-4 h-4 text-rose-600" />
+              Kháng Sinh BỊ CHỐNG CHỈ ĐỊNH
+            </h4>
+
+            {result?.contraindicatedDrugs && result.contraindicatedDrugs.length > 0 ? (
+              <div className="space-y-1.5 text-xs">
+                {result.contraindicatedDrugs.map((drug, idx) => (
+                  <div key={idx} className="flex items-center space-x-2 p-2.5 bg-rose-50 border border-rose-200 rounded-lg text-rose-900 font-bold">
+                    <span className="w-2 h-2 rounded-full bg-rose-600 shrink-0" />
+                    <span>{drug}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 text-xs flex items-center space-x-2">
+                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Không có chống chỉ định tuyệt đối nào được phát hiện.</span>
+              </div>
+            )}
+          </div>
+
+          {/* Renal Dose Adjustment Requirement */}
+          <div className={`p-5 rounded-2xl border shadow-sm ${
+            result?.renalDoseAdjustmentRequired
+              ? 'bg-amber-50 border-amber-300 text-amber-950'
+              : 'bg-slate-50 border-slate-200 text-slate-700'
+          }`}>
+            <h4 className="text-xs font-bold uppercase tracking-wider">
+              Yêu Cầu Hiệu Chỉnh Liều Theo Độ Thanh Thải Thận (CrCl)
+            </h4>
+            <div className="text-sm font-black mt-1">
+              {result?.renalDoseAdjustmentRequired ? 'BẮT BUỘC HIỆU CHỈNH LIỀU' : 'Dùng liều chuẩn (CrCl ≥ 50 mL/phút)'}
+            </div>
+            {result?.crclMlMin !== undefined && (
+              <div className="text-xs font-medium mt-1">
+                Độ thanh thải CrCl hiện tại: <strong>{result.crclMlMin} mL/phút</strong>
+              </div>
+            )}
+          </div>
+
+          {/* Clinical Safety Warnings */}
+          {result?.warnings && result.warnings.length > 0 && (
+            <div className="bg-rose-50/70 p-5 rounded-2xl border border-rose-200 text-xs space-y-2">
+              <div className="font-bold text-rose-900 flex items-center gap-1.5">
+                <AlertTriangle className="w-4 h-4 text-rose-600" />
+                Cảnh Báo Lâm Sàng & An Toàn Thuốc
+              </div>
+              <ul className="space-y-1.5 text-rose-950 list-disc list-inside leading-relaxed">
+                {result.warnings.map((w, idx) => (
+                  <li key={idx}>{w}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+};
