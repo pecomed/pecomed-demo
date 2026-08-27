@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm run build:server && cd frontend && npm run build",
+  "outputDirectory": "src/main/resources/static",
+  "installCommand": "npm install && cd frontend && npm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" }
+  ]
+}
