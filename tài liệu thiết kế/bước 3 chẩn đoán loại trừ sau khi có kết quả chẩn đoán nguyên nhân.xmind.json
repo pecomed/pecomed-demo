@@ -1,0 +1,526 @@
+[
+  {
+    "title": "Logic Chart",
+    "topic": {
+      "id": "f1f43bd0-a3b5-4933-9087-e612a067e5b2",
+      "title": "bước 3 chẩn đoán loại trừ sau khi có kết quả chẩn đoán nguyên nhân",
+      "topics": [
+        {
+          "id": "318d2070-d9ab-4e8b-931d-56d130781ab1",
+          "title": "không tìm ra nguyên nhân",
+          "topics": [
+            {
+              "id": "b996f922-a939-4243-a44c-dbe5e70a3b09",
+              "title": "check yếu tố nguy cơ",
+              "topics": [
+                {
+                  "id": "cba42db3-506e-4ad3-b5a3-4815aa3c55d7",
+                  "title": "thuốc đang điều trị",
+                  "topics": [
+                    {
+                      "id": "f3e8fa29-f03e-4472-b78d-6fea0394f3da",
+                      "title": "amiodaron"
+                    },
+                    {
+                      "id": "86421bd1-f9e8-4ab9-9b03-f4845b0b9cea",
+                      "title": " thuốc lợi tiểu"
+                    },
+                    {
+                      "id": "6615ecda-d0f5-4cd8-a6ce-8c0295121c2e",
+                      "title": "corticoid"
+                    },
+                    {
+                      "id": "8e840ed2-8281-4ca0-a1f4-5117b5404b84",
+                      "title": "dùng thuốc tránh thai"
+                    },
+                    {
+                      "id": "448f40b8-318a-4f16-b965-fae9c3b3f193",
+                      "title": "dùng thuốc nhỏ mũi có tinh dầu"
+                    }
+                  ]
+                },
+                {
+                  "id": "b442f3ce-5ff9-46f1-94f4-ed675e4e3226",
+                  "title": "biểu hiện lâm sàng",
+                  "topics": [
+                    {
+                      "id": "6b41f47d-e76e-4087-a570-bddf95aa8699",
+                      "title": "cơ năng",
+                      "topics": [
+                        {
+                          "id": "57d65360-ad71-4a90-9d91-add9f4125606",
+                          "title": "Ho khạc đờm lẫn máu, sút cân."
+                        },
+                        {
+                          "id": "ab0a7ce0-8519-4bba-893d-dc8a52d6a80a",
+                          "title": "Đau ngực dữ dội, ho ra máu, khó thở, có thể có dấu hiệu sốc"
+                        },
+                        {
+                          "id": "55365e19-9450-4dad-9aa4-7cec271cda92",
+                          "title": "sốt rất cao 39 – 40⁰C kéo dài 1 – 2 tuần lễ, đau ngực dữdội, ho sặc sụa. Sau vài ngày ho khạc đờm có máu và mủ."
+                        },
+                        {
+                          "id": "989c7f48-4e94-4b8b-a66c-edf30093df5d",
+                          "title": "Ho khạc đờm kéo dài, có thể ho máu, sốt nhẹ về chiều, gầy sút cân."
+                        },
+                        {
+                          "id": "619d5e6a-3aab-4e9c-ac08-01e9bf3e6392",
+                          "title": "ho khạc đờm mủ kéo dài, sốt"
+                        },
+                        {
+                          "id": "56f08f6e-e79b-41e0-9f11-88cd5aba8a64",
+                          "title": "khó thở, ho, khò khè, sốt. trong thời gian ngắn"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "0fc0563d-691b-4369-a842-b9e068b8bb36",
+                      "title": "thực thể",
+                      "topics": [
+                        {
+                          "id": "da963e15-a517-4318-8640-c1cd56fd7f09",
+                          "title": "hội chứng đông đặc,"
+                        },
+                        {
+                          "id": "1239b304-06ca-491e-8cdc-7a500d78aac1",
+                          "title": " tiếng cọ màng phổi"
+                        },
+                        {
+                          "id": "3a0ccb74-b812-428f-9bbf-79cdb052304e",
+                          "title": "rì rào phế nang giảm/ tiếng thổi hang ở đỉnh phổi"
+                        },
+                        {
+                          "id": "27506b34-6e6d-4785-9db1-1944bb788160",
+                          "title": "Có ran ẩm, ran nổ cố định."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "0902ed76-b219-4ed8-b63e-379515ec8cc1",
+                  "title": "bệnh đồng mắc",
+                  "topics": [
+                    {
+                      "id": "402a9280-dbbe-4d61-b71c-a652afdf1e13",
+                      "title": "sau đẻ, phẫu thuật vùng tiểu khung,gãy xương, bất động lâu ngày, viêm tắc tĩnh mạch chi dưới"
+                    },
+                    {
+                      "id": "c4452b01-c8a1-4947-a04a-e53584b145b0",
+                      "title": "nhiễm giun đũa"
+                    },
+                    {
+                      "id": "30ed484d-f9b7-445b-9a59-a30f6cc9d23f",
+                      "title": "tiếp xúc với người bị lao"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "floating_topics": [
+      {
+        "id": "27f8c86c-e21f-4ef7-bb11-85f0351089bc",
+        "title": "Lao phổi",
+        "topics": [
+          {
+            "id": "8cb2b8c9-a7a6-4a2d-86e9-322ff7141a08",
+            "title": "chỉ định",
+            "topics": [
+              {
+                "id": "f5266dd3-4ebc-409f-bf5f-67463db1d9f8",
+                "title": "X-quang ngực ",
+                "topics": [
+                  {
+                    "id": "157afbe9-4c5e-4765-a85c-34ed2f02aae9",
+                    "title": "nốt, thâm nhiễm, hang xơ"
+                  }
+                ]
+              },
+              {
+                "id": "16c5662d-2f59-41fc-9942-d2f4b860e4b0",
+                "title": "AFB, PCR (Gene Xpert,\nHain test…), nuôi cấy tìm\nvi khuẩn lao",
+                "topics": [
+                  {
+                    "id": "6c33ac91-ed88-4233-bad4-88ffbf27e11e",
+                    "title": "Tìm thấy trực khuẩn kháng cồn - toan "
+                  },
+                  {
+                    "id": "7d30c53f-9830-4a2e-ba68-377f0e9592ee",
+                    "title": "enExpert MTB dương tính"
+                  },
+                  {
+                    "id": "dcfa8c7b-605b-44c3-9c14-011588c61f4a",
+                    "title": "nuôi cấy MGIT\ndương tính MTB."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "429cc9d6-a33c-46d9-bb1b-413af68e0a21",
+        "title": "Tắc động mạch phổi",
+        "topics": [
+          {
+            "id": "d1fb4ab1-3bed-4e25-aa58-fdd5976fab69",
+            "title": "chỉ định",
+            "topics": [
+              {
+                "id": "fe4ece8e-7cac-4d0a-9c55-db64a2c51733",
+                "title": "Điện tâm đồ",
+                "topics": [
+                  {
+                    "id": "0c9a590f-46e2-425b-9a0c-3d7b76154e55",
+                    "title": "S sâu ở D1, Q sâu ở D3,"
+                  },
+                  {
+                    "id": "ae30346c-59c6-493d-b393-6b69631a628f",
+                    "title": "trục phải"
+                  },
+                  {
+                    "id": "bb33083c-bb44-454c-886d-25df1f452a6f",
+                    "title": "block nhánh phải."
+                  }
+                ]
+              },
+              {
+                "id": "32f78f8b-dac7-43bc-ba66-ede54542738f",
+                "title": "Khí máu ",
+                "topics": [
+                  {
+                    "id": "b8bd162f-b8c4-4994-84c1-9e32f9b4031e",
+                    "title": "PaO2 giảm và PaCO2 giảm"
+                  }
+                ]
+              },
+              {
+                "id": "e2b59468-ccd9-4004-90e6-b192fbc734a9",
+                "title": "D-dimer",
+                "topics": [
+                  {
+                    "id": "3d7099d6-0e8b-414d-9a68-a150a890090b",
+                    "title": "tăng"
+                  }
+                ]
+              },
+              {
+                "id": "40b8c554-58d0-4f1c-b091-04e77f72bac4",
+                "title": "Chụp cắt lớp vi tính có tiêm thuốc cản quang tĩnh mạch",
+                "topics": [
+                  {
+                    "id": "7dbae96a-c1e6-4879-9f1b-79fe8dd658cb",
+                    "title": "mạch phổi bị tắc"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "562b1635-4caf-464e-ab4b-3339dc5a2fff",
+        "title": "Ung thư phổi",
+        "topics": [
+          {
+            "id": "b27fc6e7-c423-4bc5-99be-1fdf30f7a841",
+            "title": "chỉ định",
+            "summaries": [
+              {
+                "id": "07c8b768-544a-4f0a-8827-a4f4fc1653b0",
+                "range": "(1,2)",
+                "topicId": "d50b116e-6dae-43f8-b024-fbdf23f98d09"
+              }
+            ],
+            "topics": [
+              {
+                "id": "ae4b8b9d-c2af-4c15-ba2d-1dff4aa47757",
+                "title": "X-quang ",
+                "topics": [
+                  {
+                    "id": "b9a1eb2b-4179-4921-a86c-e88c1784ef4d",
+                    "title": "hình mờ"
+                  },
+                  {
+                    "id": "126dd99d-a8ed-4cda-b973-daae0511afef",
+                    "title": "hình thả bóng"
+                  }
+                ]
+              },
+              {
+                "id": "0b050c27-de21-4c44-a5a2-3f1a0117651d",
+                "title": "Chụp cắt lớp vi tính ngực"
+              },
+              {
+                "id": "3d1fd3b8-8787-4414-9287-ec85f8b2ecbf",
+                "title": "soi phế quản và sinh thiết "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "348f25c2-1157-45bb-bfe1-3c37861d071e",
+        "title": "Giãn phế quản bội nhiễm",
+        "topics": [
+          {
+            "id": "e48b0e4c-2964-4d71-aa6b-1f274c555e8c",
+            "title": "chỉ định",
+            "topics": [
+              {
+                "id": "a964987d-ae6f-4713-b5fc-2a2d6489b472",
+                "title": "cắt lớp vi tính lồng ngực lớp mỏng 1mm độ phân giải cao"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "a20bc41f-53de-4b32-aa26-28108b0dba78",
+        "title": "Viêm phổi với cơ chế tự miễn do dùng thuốc",
+        "topics": [
+          {
+            "id": "20fc0fcd-8d70-4744-9d4f-f3640896921e",
+            "title": "ngừng thuốc"
+          }
+        ]
+      },
+      {
+        "id": "320532b2-ef4a-4b99-ba4b-10a5b97ff295",
+        "title": "Phù phổi bán cấp không điển hình",
+        "topics": [
+          {
+            "id": "c3eae46b-fb7a-404b-a214-8a2eb2b32d37",
+            "title": "Chụp lại phim X quang",
+            "topics": [
+              {
+                "id": "fd925a9a-7376-4ccc-b9ff-d8728a2de8c9",
+                "title": "xuất hiện đường kerley A, B"
+              },
+              {
+                "id": "327792b4-86f5-4589-843c-3c84f8045b46",
+                "title": "hình ảnh tái phân bố tuần hoàn phổi"
+              },
+              {
+                "id": "544541ab-96e9-4958-a854-f266ca8416ac",
+                "title": "mờ lan tỏa từ rốn phổi sang 2 bên"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "0cedb0c1-52df-4876-b55d-63c028b3bf7c",
+        "title": "Viêm phổi do hít",
+        "topics": [
+          {
+            "id": "e656ebeb-b596-4bb0-8e0b-70ab40ff9143",
+            "title": "chỉ định",
+            "topics": [
+              {
+                "id": "a786e2cd-d3bf-446c-8d90-b62591889b39",
+                "title": "X-quang phổi",
+                "topics": [
+                  {
+                    "id": "b67c0752-9ec4-410e-bdb9-7d4f80718a89",
+                    "title": "mờ đều thuỳ dưới hoặc một bên phổi"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "47746bb7-b6aa-4d9b-9800-9ac4516d8dc1",
+        "title": "Hội chứng Loeffler phổi",
+        "topics": [
+          {
+            "id": "214956e2-dc82-4218-890b-a48bcc66c2e9",
+            "title": "chỉ định",
+            "topics": [
+              {
+                "id": "76eda969-31f4-449d-9bd8-461bbbbc1230",
+                "title": "xét nghiệm máu+ soi đờm",
+                "topics": [
+                  {
+                    "id": "42cae04c-21e6-46f9-8996-367535cf7bab",
+                    "title": "Tăng bạch cầu ái toan trong máu và trong đờm"
+                  }
+                ]
+              },
+              {
+                "id": "fcd2edba-10f8-4acc-824f-042f20ad3a04",
+                "title": "Xquang ngực",
+                "topics": [
+                  {
+                    "id": "12b7a3c3-2ce8-4334-9dc1-16397ba3b565",
+                    "title": "có nhiều dải mờ đa dạng và biến mất sau một tuần lễ"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "id": "a3800465-1e92-4eb0-bd90-eeac60ee9b14",
+        "end1Id": "6615ecda-d0f5-4cd8-a6ce-8c0295121c2e",
+        "end2Id": "27f8c86c-e21f-4ef7-bb11-85f0351089bc",
+        "end1Title": "corticoid",
+        "end2Title": "Lao phổi",
+        "title": ""
+      },
+      {
+        "id": "c18bee04-2634-4bdd-96ca-3eb4ef75e444",
+        "end1Id": "8e840ed2-8281-4ca0-a1f4-5117b5404b84",
+        "end2Id": "429cc9d6-a33c-46d9-bb1b-413af68e0a21",
+        "end1Title": "dùng thuốc tránh thai",
+        "end2Title": "Tắc động mạch phổi",
+        "title": ""
+      },
+      {
+        "id": "2ee6e5fc-d2ab-46dc-ba4c-b225851ab8e1",
+        "end1Id": "f3e8fa29-f03e-4472-b78d-6fea0394f3da",
+        "end2Id": "a20bc41f-53de-4b32-aa26-28108b0dba78",
+        "end1Title": "amiodaron",
+        "end2Title": "Viêm phổi với cơ chế tự miễn do dùng thuốc",
+        "title": ""
+      },
+      {
+        "id": "b9664a34-4788-4e38-bd1f-28df4b759eeb",
+        "end1Id": "86421bd1-f9e8-4ab9-9b03-f4845b0b9cea",
+        "end2Id": "320532b2-ef4a-4b99-ba4b-10a5b97ff295",
+        "end1Title": " thuốc lợi tiểu",
+        "end2Title": "Phù phổi bán cấp không điển hình",
+        "title": ""
+      },
+      {
+        "id": "2fc36ff4-27db-457e-9dea-cd74c3a334b2",
+        "end1Id": "448f40b8-318a-4f16-b965-fae9c3b3f193",
+        "end2Id": "0cedb0c1-52df-4876-b55d-63c028b3bf7c",
+        "end1Title": "dùng thuốc nhỏ mũi có tinh dầu",
+        "end2Title": "Viêm phổi do hít",
+        "title": ""
+      },
+      {
+        "id": "5f27a655-ffff-4689-998b-47e5146b09b2",
+        "end1Id": "ab0a7ce0-8519-4bba-893d-dc8a52d6a80a",
+        "end2Id": "429cc9d6-a33c-46d9-bb1b-413af68e0a21",
+        "end1Title": "Đau ngực dữ dội, ho ra máu, khó thở, có thể có dấu hiệu sốc",
+        "end2Title": "Tắc động mạch phổi",
+        "title": ""
+      },
+      {
+        "id": "f68137fe-5ba0-48fd-b577-00e9a0f4574b",
+        "end1Id": "619d5e6a-3aab-4e9c-ac08-01e9bf3e6392",
+        "end2Id": "348f25c2-1157-45bb-bfe1-3c37861d071e",
+        "end1Title": "ho khạc đờm mủ kéo dài, sốt",
+        "end2Title": "Giãn phế quản bội nhiễm",
+        "title": ""
+      },
+      {
+        "id": "ce2df7d0-0973-4e82-af10-d7a2e933da8d",
+        "end1Id": "989c7f48-4e94-4b8b-a66c-edf30093df5d",
+        "end2Id": "27f8c86c-e21f-4ef7-bb11-85f0351089bc",
+        "end1Title": "Ho khạc đờm kéo dài, có thể ho máu, sốt nhẹ về chiều, gầy sút cân.",
+        "end2Title": "Lao phổi",
+        "title": ""
+      },
+      {
+        "id": "3f5500cd-4c7a-4981-b40d-6f8031388682",
+        "end1Id": "55365e19-9450-4dad-9aa4-7cec271cda92",
+        "end2Id": "0cedb0c1-52df-4876-b55d-63c028b3bf7c",
+        "end1Title": "sốt rất cao 39 – 40⁰C kéo dài 1 – 2 tuần lễ, đau ngực dữdội, ho sặc sụa. Sau vài ngày ho khạc đờm có máu và mủ.",
+        "end2Title": "Viêm phổi do hít",
+        "title": ""
+      },
+      {
+        "id": "c1c7c3b6-4a5f-466d-ade1-ae1d0a8e1fe2",
+        "end1Id": "57d65360-ad71-4a90-9d91-add9f4125606",
+        "end2Id": "562b1635-4caf-464e-ab4b-3339dc5a2fff",
+        "end1Title": "Ho khạc đờm lẫn máu, sút cân.",
+        "end2Title": "Ung thư phổi",
+        "title": ""
+      },
+      {
+        "id": "93ec2ba2-d97d-4b8a-a265-26abd76d7ebf",
+        "end1Id": "56f08f6e-e79b-41e0-9f11-88cd5aba8a64",
+        "end2Id": "47746bb7-b6aa-4d9b-9800-9ac4516d8dc1",
+        "end1Title": "khó thở, ho, khò khè, sốt. trong thời gian ngắn",
+        "end2Title": "Hội chứng Loeffler phổi",
+        "title": ""
+      },
+      {
+        "id": "fbaeca63-0b32-47a5-a9b6-7de440cd3b96",
+        "end1Id": "1239b304-06ca-491e-8cdc-7a500d78aac1",
+        "end2Id": "47746bb7-b6aa-4d9b-9800-9ac4516d8dc1",
+        "end1Title": " tiếng cọ màng phổi",
+        "end2Title": "Hội chứng Loeffler phổi",
+        "title": ""
+      },
+      {
+        "id": "a07685f8-191b-4c5f-9314-101a1ae75b6f",
+        "end1Id": "27506b34-6e6d-4785-9db1-1944bb788160",
+        "end2Id": "348f25c2-1157-45bb-bfe1-3c37861d071e",
+        "end1Title": "Có ran ẩm, ran nổ cố định.",
+        "end2Title": "Giãn phế quản bội nhiễm",
+        "title": ""
+      },
+      {
+        "id": "3899b374-c1e7-439a-832f-d6a39ce927bf",
+        "end1Id": "3a0ccb74-b812-428f-9bbf-79cdb052304e",
+        "end2Id": "27f8c86c-e21f-4ef7-bb11-85f0351089bc",
+        "end1Title": "rì rào phế nang giảm/ tiếng thổi hang ở đỉnh phổi",
+        "end2Title": "Lao phổi",
+        "title": ""
+      },
+      {
+        "id": "0c2d9a59-0ca0-47d7-a5b0-2ba82ad3e34a",
+        "end1Id": "c4452b01-c8a1-4947-a04a-e53584b145b0",
+        "end2Id": "47746bb7-b6aa-4d9b-9800-9ac4516d8dc1",
+        "end1Title": "nhiễm giun đũa",
+        "end2Title": "Hội chứng Loeffler phổi",
+        "title": ""
+      },
+      {
+        "id": "80586d3d-bc58-41fc-b1af-92282eed6c47",
+        "end1Id": "30ed484d-f9b7-445b-9a59-a30f6cc9d23f",
+        "end2Id": "27f8c86c-e21f-4ef7-bb11-85f0351089bc",
+        "end1Title": "tiếp xúc với người bị lao",
+        "end2Title": "Lao phổi",
+        "title": ""
+      },
+      {
+        "id": "9d485e48-c9dd-4c0d-8c15-660628122099",
+        "end1Id": "402a9280-dbbe-4d61-b71c-a652afdf1e13",
+        "end2Id": "429cc9d6-a33c-46d9-bb1b-413af68e0a21",
+        "end1Title": "sau đẻ, phẫu thuật vùng tiểu khung,gãy xương, bất động lâu ngày, viêm tắc tĩnh mạch chi dưới",
+        "end2Title": "Tắc động mạch phổi",
+        "title": ""
+      },
+      {
+        "id": "f5e87b18-a3a5-4d17-bcac-bf53f2290ab0",
+        "end1Id": "da963e15-a517-4318-8640-c1cd56fd7f09",
+        "end2Id": "47746bb7-b6aa-4d9b-9800-9ac4516d8dc1",
+        "end1Title": "hội chứng đông đặc,",
+        "end2Title": "Hội chứng Loeffler phổi",
+        "title": ""
+      },
+      {
+        "id": "9cfd5d55-eb0a-4f69-b33e-e583ae09e600",
+        "end1Id": "da963e15-a517-4318-8640-c1cd56fd7f09",
+        "end2Id": "0cedb0c1-52df-4876-b55d-63c028b3bf7c",
+        "end1Title": "hội chứng đông đặc,",
+        "end2Title": "Viêm phổi do hít",
+        "title": ""
+      }
+    ]
+  }
+]

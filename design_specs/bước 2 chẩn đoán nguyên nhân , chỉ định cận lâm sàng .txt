@@ -1,0 +1,139 @@
+=== Sheet 0: Org Chart ===
+- chẩn đoán nguyên nhân , chỉ định cận lâm sàng
+  - luôn hiện: Streptococcus pneumoniae, Mycoplasma pneumoniae, virut hô hấp
+  - lọc bước 1 = phân loại mức độ nặng
+    - điều trị ngoại trú ( nhẹ)
+      - loại legion, gram âm đường ruột
+    - điều trị nội trú ( tb, nặng)
+      - thêm vi khuẩn kỵ khí , nhiễm trùng phối hợp , bordetella pertussis
+    - điều trị icu( nặng)
+      - thêm pseudomonas aeruginosa , staphylococus aureus
+--- Floating Topic ---
+- hiện  sẵn :Streptococcus pneumoniae Mycoplasma pneumoniae Chlamydia pneumoniae Haemophilus influenzae Vi khuẩn gram âm đường ruột Legionella spp. Virus hô hấp
+  - : Influenza virus, Parainfluenza virus, Respiratory syncytial virus (RSV), Enterovirus, Rhinovirus, Adenovirus, Coronavirus, SARS-CoV2, Metapneumovirus, Human metapneumovirus (HMPV), Cytomegalovirus (CMV), Epstein-Barr virus, Bocavirus
+--- Floating Topic ---
+- tệp vi khuẩn vi rút nghi ngờ A
+--- Floating Topic ---
+- lọc bước 2
+  - XQUANG
+    - bệnh nhân chưa có CLVT
+      - vi khuẩn
+        - 1 CHECK THÓI QUEN
+          - HÚT THUỐC LÁ
+            - S.pneumoniae + H.I
+          - nghiện rượu
+            - S.pneumoniae + H.I + klebsiella+ acinertobacter baumani
+        - 2 CHECK bệnh đồng mắc
+          - HIV
+            - S.pneumoniae + H.I +p jirovecii
+          - tâm thần, tb mmn
+            - KLEBSIELLA PNEUMONIAE
+          - nội khoa mạn tính :, gan , suy tim ứ huyết
+            - S.pneumoniae
+          - bệnh phổi cấu trúc: COPD , XƠ NANG, GIÃN PHẾ QUẢN có FEV1<30%
+            - speudomonas aeruginosa
+          - BỆNH PHỔI nặng : K PHỔI .giãn phế quản , viêm phổi hít , nhồi máu phổi ,+ nhiễm khuẩn kỵ khí hầu họng
+            - vi khuẩn kỵ khí
+          - nhiễm virut influenza + sởi
+          - viêm nội tâm mạc nhiễm khuẩn
+          - suy giảm miễn dịch
+            - + ghép tạng
+              - S.pneumoniae +
+            - giảm NEU
+              - p aeruginosa+  s aureus
+            - TCD4 <200/ML
+              - P. JIROVECII
+            - Gamma globulin giảm
+              - S.pneumoniae + H.I
+          - mùa mưa
+            - burkholderia pseudomallei
+          - Đái tháo đường
+            - burkholderia pseudomallei
+            - s. aureus
+            - KLEBSIELLA PNEUMONIAE
+          - bệnh thận mạn , SUY THẬN
+            - burkholderia pseudomallei
+            - s. aureus
+          - từng nhiễm MRSA
+            - MRSA
+          - suy dinh dưỡng
+            - S pneumoniae
+          - nhiễm trung ngoài da
+            - s. aureus
+          - BỆNH PHỔI MẠN TÍNH
+            - COPD
+              - S.pneumoniae
+            - xơ phổi
+            - bụi phổi
+            - giãn phế quản
+            - hen phế quản mạn tính
+        - 3 bệnh nhân đang điều trị
+          - TIÊM CHÍCH NHIỀU LẦN
+            - s. aureus
+          - dùng kháng sinh đường tĩnh mạch >90 ngày
+          - ĐẶT NỘI KHÍ QUẢN
+            - KLEBSIELLA PNEUMONIAE
+          - gây mê
+            - KLEBSIELLA PNEUMONIAE
+          - đã điều trị kháng sinh trước đó
+            - KLEBSIELLA PNEUMONIAE
+      - virut
+        - check lịch
+          - mùa đông
+        - bệnh  đồng mắc
+          - suy giảm miễn dịch
+            - parainfluenza virus
+            - RSV
+        - tiền sử điều trị
+          - dùng thuốc ức chế miễn dịch
+            - CMV
+          - GHÉP TỦY
+            - RSV
+        - tuổi >65 hoặc <10
+          - HMPV
+        - dùng kit test nhanh
+          - covid
+    - Bệnh nhân có X quang mới
+      - Viêm phổi nặng ( dựa theo thang điểm  fine)  curb65
+      - +suy giảm miễn dịch.
+      - Viêm phổi tái phát
+      - X quang ngực không rõ tổn thương.
+      - Nghi ngờ các bệnh lý khác: u phổi, lao phổi, dị vật đường thở, …
+--- Floating Topic ---
+- không đáp ứng với các điều kiện
+  - căn nguyên nấm
+--- Floating Topic ---
+- Tệp vi khuẩn virut B
+  - chỉ định xét nghiệm đặc hiệu tương ứng theo vi khuẩn virut nghi ngờ
+    - tràn dịch màng phổi
+    - bệnh nhân điều trị nội trú
+    - legionella
+    - nấm
+      - SOI TÌM NẤM
+    - Influenza virus A, B
+    - RSV
+      - test nhanh
+    - SARS-CoV-2
+      - test nhanh
+    - M.pneu C pneu
+    - Parainfluenza virus
+      - test nhanh
+    - Adenovirus
+    - Humanmetapneumovirus
+    - Coronavirus khác
+    - Rhinovirus
+    - Entero virus
+    - S. aureus
+    - H. influenzae
+    - Enterobacterales
+    - P. aeruginosae
+--- Floating Topic ---
+- TÌM HIỆU GIÁ IGM , IGG HUYẾT THANH
+--- Floating Topic ---
+- PCR
+--- Floating Topic ---
+- PHÁT HIỆN KHÁNG NGUYÊN NƯỚC TIỂU
+--- Floating Topic ---
+- NUÔI CẤY
+--- Floating Topic ---
+- NHUỘM GRAM

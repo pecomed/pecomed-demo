@@ -1,0 +1,85 @@
+=== Sheet 0: Mind Map ===
+- ĐIỀU TRỊ THEO KINH NGHIỆM ( ÁP DỤNG CHO TUYẾN TỈNH) TRONG THỜI GIAN CHỜ KẾT QUẢ KHÁNG SINH ĐỒ
+  - nhập viện
+    - chỉ định
+      - pct
+        - chưa có
+          - CRT
+    - SPO2 <90
+      - thở HFNC / NIV
+    - test nhanh virut
+  - VIÊM PHỔI nhẹ , ngoại trú
+    - check tuổi ,  bệnh đồng mắc , điều trị
+      - nhóm 1
+        - < 65 tuổi
+        - không dùng kháng sinh trong 3 tháng
+        - không có bệnh đi kèm,
+      - nhóm 2
+        - > 65 tuổi
+        - bệnh tim, phổi, bệnh gan, bệnh thận mạn tính, đái tháo đường, nghiện rượu, ung thư
+        - suy giảm miễn dịch
+        - đã dùng kháng sinh 3 tháng trước
+          - nguy cơ S. pneumoniae kháng thuốc
+    - test virut +
+      - dùng thuốc kháng virut kèm
+        - Oseltamivir (75mg uống 2 lần/ngày x 5 ngày)
+  - viêm phổi mức độ nặng theo thang điểm curb65 ,ATS và fine NHẬP VIỆN ICU
+    - trong 24h đầu
+      - test virut -
+        - corticoid
+          - hydrocortisone hemisucccinate 200mg/ngày
+          - hoặc methylprednisolone 0.5mg/kg mỗi 12 giờ
+    - đã loại trừ  P. aeruginosa ở bước 2
+      - carbapenem thế hệ 1
+        - Imipenem
+          - 500 mg mỗi 6h (trường họp nặng cân nhắc 1 g mỗi 8 h, tối đa 1 g mỗi 6 h)
+        - Ertapenem
+          - 1 g mỗi 24h
+    - nghi P.aeruginosa
+      - Beta-lactam  phối hợp với ức  chế beta lactamase
+        - Hoặc Piperacillin/tazobactam 3,375g - 4,5 g liều tải TTM trong 30 phút, lặp  lại mỗi 6h
+      - carbapenem
+        - Meropenem
+          - 1 g mỗi 8h (trường hợp nặng, nhiễm Pseudomonas aeruginosae  giảm nhạy cảm, cân nhắc 2 g mỗi 8 h)
+        - doripenem
+      - cephalosporin
+        - hoặc ceftazidim
+          - 2 g mỗi 8h ttm
+        - hoặc cefepim
+          - 2 g mỗi 8h ttm
+      - Quinolon
+        - Hoặc ciprofloxacin
+          - 500mg TTM mỗi 12h
+        - Hoặc levofloxacin
+          - 750mg mỗi 24h
+          - (hoặc 500 mg  mỗi 12 h)
+    - nghi nhiễm Saureus kháng methicilin MRSA
+      - THÊM THUỐC
+        - Vancomycin 15-20mg/kg TTM mỗi 8-12h
+        - Hoặc Teicoplanin 6 mg/kg (hoặc 800 mg) mỗi12h
+          - dùng 3 liều
+            - 6mg/kg (hoặc 800 mg) mỗi 24 h TTM.
+        - Hoặc linezolid 600mg uống/TTM mỗi 12h.
+          - hêt thuốc , chống chỉ định, dị ứng
+            - Ceftarolin 600mg TM mỗi 8h
+  - viêm phổi mức độ trung bình NHẬP VIỆN NỘI TRÚ theo thang điểm curb65 và fine
+    - phối hợp beta lactam +/- ức chế beta-lactamase
+      - Ampicillin 2g truyền tm
+        - mỗi 6h
+          - đáp ứng chuyển đường uống
+            - Amoxicillin 1000 mg mỗi 8 giờ
+            - Hoặc amoxicillin/acid clavulanic 875 mg/125 mg mỗi 8-12 giờ
+    - quinolon hô hấp đơn trị
+      - Moxifloxacin 400mg mỗi 24 giờ
+      - Hoặc levofloxacin
+        - 750mg mỗi 24h
+        - (hoặc 500 mg  mỗi 12 h)
+    - chỉ định xét nghiệm chẩn đoán lao
+    - NGHI NGỜ vi khuẩn gram âm đường ruột, P. aeruginosa
+      - Beta-lactam  phối hợp với ức  chế beta lactamase
+        - Hoặc Piperacillin/tazobactam 3,375g - 4,5 g liều tải TTM trong 30 phút, lặp  lại mỗi 6h
+      - cephalosporin
+        - ceftazidim
+          - 2 g mỗi 8h ttm
+        - cefepim
+          - 2 g mỗi 8h ttm

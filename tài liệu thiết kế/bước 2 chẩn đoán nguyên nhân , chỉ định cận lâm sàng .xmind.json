@@ -1,0 +1,810 @@
+[
+  {
+    "title": "Org Chart",
+    "topic": {
+      "id": "3b1d3a81-c964-4b43-93de-0107de5409df",
+      "title": "chẩn đoán nguyên nhân , chỉ định cận lâm sàng ",
+      "topics": [
+        {
+          "id": "e6399661-4b0d-4e1d-9473-47af07669f7f",
+          "title": "luôn hiện: Streptococcus pneumoniae,\nMycoplasma pneumoniae, virut hô hấp\n"
+        },
+        {
+          "id": "852bf232-9de0-49da-a351-3235174cb74f",
+          "title": "lọc bước 1 = phân loại mức độ nặng",
+          "topics": [
+            {
+              "id": "f5c8d853-5d62-46d4-8486-6359d99110f3",
+              "title": "điều trị ngoại trú ( nhẹ)",
+              "topics": [
+                {
+                  "id": "43d30fbb-8c67-4a5e-b858-7a7730340f03",
+                  "title": "loại legion, gram âm đường ruột"
+                }
+              ]
+            },
+            {
+              "id": "7a31c718-bfd1-45b7-b203-6711daeb08a5",
+              "title": "điều trị nội trú ( tb, nặng)",
+              "topics": [
+                {
+                  "id": "f91ef425-90c2-4714-bdaf-fc46241ede1b",
+                  "title": "thêm vi khuẩn kỵ khí , nhiễm trùng phối hợp , bordetella pertussis"
+                }
+              ]
+            },
+            {
+              "id": "9f486a5c-d818-4e87-8022-caa1aa7eb019",
+              "title": "điều trị icu( nặng)",
+              "topics": [
+                {
+                  "id": "a8898b97-e5f4-4090-aa97-bca0a8772949",
+                  "title": "thêm pseudomonas aeruginosa , staphylococus aureus"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "floating_topics": [
+      {
+        "id": "6735a494-69f3-4b68-9dec-b3b63277d219",
+        "title": "hiện  sẵn :Streptococcus pneumoniae\nMycoplasma pneumoniae\nChlamydia pneumoniae\nHaemophilus influenzae\nVi khuẩn gram âm đường ruột\nLegionella spp.\nVirus hô hấp\n",
+        "topics": [
+          {
+            "id": "cf3bdc4f-7caa-455b-b267-03f8b477fe1d",
+            "title": " : Influenza virus, Parainfluenza virus, Respiratory syncytial virus (RSV),\nEnterovirus, Rhinovirus, Adenovirus, Coronavirus, SARS-CoV2, Metapneumovirus,\nHuman metapneumovirus (HMPV), Cytomegalovirus (CMV), Epstein-Barr virus,\nBocavirus"
+          }
+        ]
+      },
+      {
+        "id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "title": "tệp vi khuẩn vi rút nghi ngờ A"
+      },
+      {
+        "id": "c63b1542-0757-4433-9002-c3287b895d96",
+        "title": "lọc bước 2",
+        "topics": [
+          {
+            "id": "387713ad-b279-45be-a1ce-bc99113b3a60",
+            "title": "XQUANG",
+            "summaries": [
+              {
+                "id": "4555c608-6b75-4ee2-8dbf-4927b48f1d8d",
+                "range": "(0,0)",
+                "topicId": "cf6be074-a5bd-4cd2-ba06-fa76da85b8fd"
+              }
+            ],
+            "topics": [
+              {
+                "id": "549bf01b-3f17-4057-a293-c70c79a4cd01",
+                "title": "bệnh nhân chưa có CLVT",
+                "topics": [
+                  {
+                    "id": "40b55f8f-5ef0-4836-9122-e4924850f1a4",
+                    "title": " vi khuẩn",
+                    "topics": [
+                      {
+                        "id": "66ee40ee-bb36-40b0-8ecf-16ca98fce2e4",
+                        "title": "1 CHECK THÓI QUEN ",
+                        "topics": [
+                          {
+                            "id": "8b2bf7d4-ca57-49f5-8d26-0758e8a11863",
+                            "title": " HÚT THUỐC LÁ",
+                            "topics": [
+                              {
+                                "id": "3a68f56a-fb21-4d35-929f-29c6b5fb307c",
+                                "title": "S.pneumoniae + H.I"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "4d559461-b3b6-4c5f-9bab-b611b4948dca",
+                            "title": "nghiện rượu",
+                            "topics": [
+                              {
+                                "id": "ff81478a-579b-4fd7-8593-16a977246c2f",
+                                "title": "S.pneumoniae + H.I + klebsiella+ acinertobacter baumani"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "0590a176-5cde-4bf5-b8d3-a2592dac2d89",
+                        "title": "2 CHECK bệnh đồng mắc",
+                        "summaries": [
+                          {
+                            "id": "8993ab3a-d719-43b0-8130-27ed40248a9b",
+                            "range": "(5,6)",
+                            "topicId": "c1069b2c-05cc-42e1-a607-0813fad1fc5e"
+                          }
+                        ],
+                        "topics": [
+                          {
+                            "id": "3b363fc6-7218-4667-a0d9-5abfb3017ce0",
+                            "title": "HIV",
+                            "topics": [
+                              {
+                                "id": "97b18475-3669-4c79-b6df-8dea6b1a0783",
+                                "title": "S.pneumoniae + H.I +p jirovecii"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "e4a5f8f2-80fb-4799-bee4-c1b85fd0781a",
+                            "title": "tâm thần, tb mmn",
+                            "topics": [
+                              {
+                                "id": "7e1a2030-bb99-4007-9c0e-0d2e351b87df",
+                                "title": "KLEBSIELLA PNEUMONIAE"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "5fc484a9-2047-4634-8b27-7d1a193927ae",
+                            "title": "nội khoa mạn tính :, gan , suy tim ứ huyết",
+                            "topics": [
+                              {
+                                "id": "554d5375-bdfe-4a24-8fcc-58330d956db1",
+                                "title": "S.pneumoniae "
+                              }
+                            ]
+                          },
+                          {
+                            "id": "ff77a706-6434-447e-a428-403f32e4ea82",
+                            "title": "bệnh phổi cấu trúc: COPD , XƠ NANG, GIÃN PHẾ QUẢN có FEV1<30%",
+                            "topics": [
+                              {
+                                "id": "39b53a02-2e10-4750-8c62-f7c707513182",
+                                "title": "speudomonas aeruginosa"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "b7441c9b-955c-489a-b30f-2161d37f9ee8",
+                            "title": "BỆNH PHỔI nặng : K PHỔI .giãn phế quản , viêm phổi hít , nhồi máu phổi ,+ nhiễm khuẩn kỵ khí hầu họng",
+                            "topics": [
+                              {
+                                "id": "b944ca24-883f-45a7-94fa-d9a4adfcb873",
+                                "title": "vi khuẩn kỵ khí"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "686bcd87-472d-49db-835d-ed877dfcbfb3",
+                            "title": "nhiễm virut influenza + sởi"
+                          },
+                          {
+                            "id": "8c175fe2-6743-44b9-a56a-b60831a94756",
+                            "title": "viêm nội tâm mạc nhiễm khuẩn"
+                          },
+                          {
+                            "id": "ac91f878-12d4-4588-bd12-4eb55eaedeb7",
+                            "title": "suy giảm miễn dịch ",
+                            "topics": [
+                              {
+                                "id": "c71625fd-263e-478d-a1a9-df0370032372",
+                                "title": "+ ghép tạng",
+                                "topics": [
+                                  {
+                                    "id": "9faa7b35-1441-4a48-9681-43d136e1d01a",
+                                    "title": "S.pneumoniae + "
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "2f6dc2fd-e2ef-4214-aec9-9c09c0dc978d",
+                                "title": "giảm NEU ",
+                                "topics": [
+                                  {
+                                    "id": "37411d40-07e0-4d23-8e90-54dc564a47c9",
+                                    "title": "p aeruginosa+  s aureus"
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "f58f6288-67cc-484e-9fed-53613bc773f5",
+                                "title": "TCD4 <200/ML",
+                                "topics": [
+                                  {
+                                    "id": "fc707294-fcda-4b39-836f-c79395624f0e",
+                                    "title": "P. JIROVECII"
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "6865c029-4fc2-4544-8189-32fe6e7531e3",
+                                "title": "Gamma globulin giảm",
+                                "topics": [
+                                  {
+                                    "id": "b8b8a87f-b98e-434a-b79d-fea15a906739",
+                                    "title": "S.pneumoniae + H.I"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "id": "946b4192-74b9-4a5b-971e-34b18cf7d97f",
+                            "title": "mùa mưa",
+                            "topics": [
+                              {
+                                "id": "e5078e38-af2d-448e-8f71-f7f368aa951c",
+                                "title": "burkholderia pseudomallei"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "32836a93-df28-4968-b54d-6d2569f9e494",
+                            "title": "Đái tháo đường",
+                            "topics": [
+                              {
+                                "id": "6aef05fd-b748-4052-bd05-4864e9568e33",
+                                "title": "burkholderia pseudomallei"
+                              },
+                              {
+                                "id": "b665be13-9fa0-4ea1-b260-ae174b6e5c8d",
+                                "title": "s. aureus"
+                              },
+                              {
+                                "id": "7a2ae460-8b2b-468d-a25c-9f2bfaf3d510",
+                                "title": "KLEBSIELLA PNEUMONIAE"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "71556c1b-7cb2-41fe-8cea-aa5ec12b4d19",
+                            "title": "bệnh thận mạn , SUY THẬN",
+                            "topics": [
+                              {
+                                "id": "0f7d261f-eb2d-4ce8-b4bf-197261ad228f",
+                                "title": "burkholderia pseudomallei"
+                              },
+                              {
+                                "id": "dd8b289d-ae27-4049-b68b-e93cd1144409",
+                                "title": "s. aureus"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "95c33eaf-5bf6-4ba7-ba13-4cf2d042bfec",
+                            "title": "từng nhiễm MRSA",
+                            "topics": [
+                              {
+                                "id": "cdc36867-cb73-4d7e-b4bb-a96d4140c9b4",
+                                "title": "MRSA"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "3851e4ae-df8c-4a02-92a3-92498954c76a",
+                            "title": "suy dinh dưỡng",
+                            "topics": [
+                              {
+                                "id": "ea641188-5bc0-4d3a-85a0-360c87ce899b",
+                                "title": "S pneumoniae"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "859eb4a2-788e-4ced-9d81-771d05face07",
+                            "title": "nhiễm trung ngoài da ",
+                            "topics": [
+                              {
+                                "id": "1ea4ac37-a13a-4a0e-b145-9bab7cf3eda8",
+                                "title": "s. aureus"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "32215781-ab4d-4884-998c-d0bd030b0657",
+                            "title": "BỆNH PHỔI MẠN TÍNH",
+                            "summaries": [
+                              {
+                                "id": "3565f284-d05e-4701-8c35-665b932aba5d",
+                                "range": "(1,4)",
+                                "topicId": "8eb73a92-6408-4ce0-a56d-872789de51cb"
+                              }
+                            ],
+                            "topics": [
+                              {
+                                "id": "22e1247b-2e3f-4eae-b14e-cc589d115d08",
+                                "title": "COPD ",
+                                "topics": [
+                                  {
+                                    "id": "5f0e9e8f-c56d-409a-9d37-baadf6190781",
+                                    "title": "S.pneumoniae "
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "c121cf3f-cb1d-49fb-b81e-6ba59bbb5f17",
+                                "title": "xơ phổi"
+                              },
+                              {
+                                "id": "19555839-75cd-47e5-93d1-8b467ea37182",
+                                "title": "bụi phổi"
+                              },
+                              {
+                                "id": "7658174d-10a3-4fbf-9914-855e3ebaf5c8",
+                                "title": "giãn phế quản"
+                              },
+                              {
+                                "id": "d0e93ad6-ce78-43c0-8e49-00307ba98151",
+                                "title": "hen phế quản mạn tính"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "4dcb7f57-df4a-42d3-9164-048da81ab02d",
+                        "title": "3 bệnh nhân đang điều trị",
+                        "topics": [
+                          {
+                            "id": "992a5a85-847d-49e6-bfc7-f77a124e989c",
+                            "title": "TIÊM CHÍCH NHIỀU LẦN",
+                            "topics": [
+                              {
+                                "id": "5294a73f-edef-4050-a917-996ac17f746e",
+                                "title": "s. aureus"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "0dad385e-3c47-4511-8644-2f554c218b2f",
+                            "title": "dùng kháng sinh đường tĩnh mạch >90 ngày"
+                          },
+                          {
+                            "id": "5ecafb60-fdc9-489e-81d2-b5840bbb09ef",
+                            "title": "ĐẶT NỘI KHÍ QUẢN",
+                            "topics": [
+                              {
+                                "id": "cb8543a5-5576-438f-83d6-897e6fb34e59",
+                                "title": "KLEBSIELLA PNEUMONIAE"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "240f16ac-c95d-444c-b673-4795c937079e",
+                            "title": "gây mê",
+                            "topics": [
+                              {
+                                "id": "713b369f-5815-43ca-b487-9e65de380f43",
+                                "title": "KLEBSIELLA PNEUMONIAE"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "630832c4-abfa-49a1-ba9a-fa11046f5af2",
+                            "title": "đã điều trị kháng sinh trước đó",
+                            "topics": [
+                              {
+                                "id": "6cd2fe82-e123-4bec-b272-3d47dc3ca3e9",
+                                "title": "KLEBSIELLA PNEUMONIAE"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "0866c57d-8930-4900-bbf3-afe5067dcc9f",
+                    "title": " virut",
+                    "topics": [
+                      {
+                        "id": "325a6cac-c4eb-49b4-bb93-35c2a8db716b",
+                        "title": "check lịch",
+                        "topics": [
+                          {
+                            "id": "567664d3-99a7-41c1-9e3f-915a25062c2a",
+                            "title": "mùa đông"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "56ef1b2f-3eca-4964-9a58-83bde14e12a5",
+                        "title": "bệnh  đồng mắc",
+                        "topics": [
+                          {
+                            "id": "cee17c69-ce65-4887-b836-50f3654a7906",
+                            "title": "suy giảm miễn dịch",
+                            "topics": [
+                              {
+                                "id": "8384b7b1-aa02-483d-97d7-e58b99c1ab25",
+                                "title": "parainfluenza virus "
+                              },
+                              {
+                                "id": "98c65e76-38f6-435d-ab42-694f758b383f",
+                                "title": "RSV"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "05a6edc6-c823-4dca-b650-33d81d55678b",
+                        "title": "tiền sử điều trị",
+                        "topics": [
+                          {
+                            "id": "5f9adc70-51ba-4fb9-8154-a31913ed5fe8",
+                            "title": "dùng thuốc ức chế miễn dịch",
+                            "topics": [
+                              {
+                                "id": "26ba13d1-0c31-4b8c-a73a-1fa42eda97d0",
+                                "title": "CMV"
+                              }
+                            ]
+                          },
+                          {
+                            "id": "e9f45f08-fee8-48bb-bc76-d00a47e9469d",
+                            "title": "GHÉP TỦY",
+                            "topics": [
+                              {
+                                "id": "17a8c7a8-d7f1-4477-98ae-c8bdc40d098a",
+                                "title": "RSV"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "930ec26e-6b3c-4e1f-8307-74d19a40d21b",
+                        "title": "tuổi >65 hoặc <10",
+                        "topics": [
+                          {
+                            "id": "2e87e349-f243-401c-8494-39df27132a6b",
+                            "title": "HMPV"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "9e25f931-cebc-46e0-8ee1-e0ed3177e084",
+                        "title": "dùng kit test nhanh",
+                        "topics": [
+                          {
+                            "id": "0a4bd155-75e5-4370-a30c-a6c2eaddb849",
+                            "title": "covid"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "9a3a227b-9f75-47a3-ac69-0d5bb7ff0659",
+                "title": "Bệnh nhân có X quang mới",
+                "summaries": [
+                  {
+                    "id": "0500249f-d51a-4c23-a9db-acdc52f89790",
+                    "range": "(0,4)",
+                    "topicId": "57233dc0-2c06-48a3-9bac-9b1cfede4eec"
+                  }
+                ],
+                "topics": [
+                  {
+                    "id": "64a281b3-aa64-416a-9be7-6aa3ff4da00d",
+                    "title": "Viêm phổi nặng ( dựa theo thang điểm  fine)  curb65"
+                  },
+                  {
+                    "id": "bf92d8df-6d82-4f2b-b980-1cb8cefa8ad8",
+                    "title": "+suy giảm miễn dịch."
+                  },
+                  {
+                    "id": "ac71dfa4-20b2-4ade-b034-5f8f46235617",
+                    "title": "Viêm phổi tái phát "
+                  },
+                  {
+                    "id": "a09828c5-4d56-41aa-b1ae-1aefbbe49b16",
+                    "title": " X quang ngực\nkhông rõ tổn thương."
+                  },
+                  {
+                    "id": "2dc130e0-c1db-4d92-a858-ab29b055eb31",
+                    "title": "Nghi ngờ các bệnh lý khác: u phổi, lao phổi, dị vật đường thở, …"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "7ea8adb3-9050-4f8c-88a8-71872679ae27",
+        "title": "không đáp ứng với các điều kiện ",
+        "topics": [
+          {
+            "id": "06004805-acc1-49a5-8deb-87a4d8ab8a22",
+            "title": "căn nguyên nấm"
+          }
+        ]
+      },
+      {
+        "id": "dc29e1ef-81f8-4129-b216-998d6fda0d9b",
+        "title": "Tệp vi khuẩn virut B",
+        "topics": [
+          {
+            "id": "785d4db4-4009-4e17-aab0-3e9af4cced30",
+            "title": "chỉ định xét nghiệm đặc hiệu tương ứng theo vi khuẩn virut nghi ngờ",
+            "summaries": [
+              {
+                "id": "af520c22-4bf1-4dd6-a06f-3dcd9972dd43",
+                "range": "(8,13)",
+                "topicId": "012f9043-0476-4bad-87b5-19ee1face9b0"
+              },
+              {
+                "id": "5cc8151f-9a61-4018-bd21-bb5262976e13",
+                "range": "(4,6)",
+                "topicId": "72811c46-ff93-4e3e-b1d4-caf4756f9cbc"
+              },
+              {
+                "id": "c9585cdb-4052-4f62-9252-20132aa6cce5",
+                "range": "(14,17)",
+                "topicId": "27e4920e-6bf6-4df9-bf61-c4403aff417f"
+              }
+            ],
+            "topics": [
+              {
+                "id": "b52c552e-bda7-4478-91bc-3ee5ffa56cf5",
+                "title": "tràn dịch màng phổi"
+              },
+              {
+                "id": "02a5b18d-99cc-4d8c-b2ed-a402596a8289",
+                "title": "bệnh nhân điều trị nội trú"
+              },
+              {
+                "id": "d17581ad-39f9-4dd9-84ea-371cf7f7a053",
+                "title": "legionella"
+              },
+              {
+                "id": "9ee3ce80-eb36-4902-bd6d-e1a06add6f0b",
+                "title": "nấm",
+                "topics": [
+                  {
+                    "id": "76ddf388-ddbd-4458-9fb5-df1df7130592",
+                    "title": "SOI TÌM NẤM "
+                  }
+                ]
+              },
+              {
+                "id": "61dc5568-3eb8-4d92-823b-d5c14896017c",
+                "title": "Influenza virus A, B"
+              },
+              {
+                "id": "179dad3a-e157-4e62-a814-378aaecd88ac",
+                "title": "RSV",
+                "topics": [
+                  {
+                    "id": "a8f5105e-e67c-46c6-bca2-6b26c352b77f",
+                    "title": "test nhanh"
+                  }
+                ]
+              },
+              {
+                "id": "645cd9ea-6af9-47d9-8e22-5bddfb99663f",
+                "title": "SARS-CoV-2",
+                "topics": [
+                  {
+                    "id": "a865ee91-3ee5-49b9-bece-445ada888548",
+                    "title": "test nhanh"
+                  }
+                ]
+              },
+              {
+                "id": "520aeb26-f3e3-4570-8c2a-205d7382aae3",
+                "title": "M.pneu C pneu"
+              },
+              {
+                "id": "518f5575-fe8b-483a-9761-3503a9777648",
+                "title": "Parainfluenza virus",
+                "topics": [
+                  {
+                    "id": "f2d9df80-f924-4e12-b372-208d496b828d",
+                    "title": "test nhanh"
+                  }
+                ]
+              },
+              {
+                "id": "05e54b7b-baab-4d38-afe5-923eff94f109",
+                "title": "Adenovirus"
+              },
+              {
+                "id": "755a1e03-5f97-4e38-ab8c-e61a33d2b901",
+                "title": "Humanmetapneumovirus"
+              },
+              {
+                "id": "bcdb0a3c-3194-4bbc-87b8-66bcda4f2458",
+                "title": "Coronavirus khác"
+              },
+              {
+                "id": "36c9dae2-ee75-41eb-a81a-7fc3451daa8a",
+                "title": "Rhinovirus"
+              },
+              {
+                "id": "16df9470-7c1d-4df8-a78f-d7192e6a3bd7",
+                "title": "Entero virus"
+              },
+              {
+                "id": "77534679-124a-413e-98e5-f8eb87ebe4c5",
+                "title": "S. aureus"
+              },
+              {
+                "id": "d3a4b201-62e3-488e-9f29-3df9630011d7",
+                "title": "H. influenzae"
+              },
+              {
+                "id": "8a188541-407b-4d22-865a-d151bf41e8a3",
+                "title": "Enterobacterales"
+              },
+              {
+                "id": "7be68aee-5e05-46b7-966f-4b71a52278fb",
+                "title": "P. aeruginosae"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cbbfe846-b313-415a-a951-4d2ff8472472",
+        "title": "TÌM HIỆU GIÁ IGM , IGG HUYẾT THANH"
+      },
+      {
+        "id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "title": "PCR "
+      },
+      {
+        "id": "5dcc5d3e-2873-4ae4-8f4d-19f19e16c95b",
+        "title": "PHÁT HIỆN KHÁNG NGUYÊN NƯỚC TIỂU"
+      },
+      {
+        "id": "88ed02cc-348c-442b-bddd-b22e7679c44b",
+        "title": "NUÔI CẤY"
+      },
+      {
+        "id": "3d0a7886-a217-4210-a725-072af1e303e1",
+        "title": "NHUỘM GRAM"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "6b28ad71-37c2-4605-a1ac-a0ed3345183a",
+        "end1Id": "6735a494-69f3-4b68-9dec-b3b63277d219",
+        "end2Id": "e6399661-4b0d-4e1d-9473-47af07669f7f",
+        "end1Title": "hiện  sẵn :Streptococcus pneumoniae\nMycoplasma pneumoniae\nChlamydia pneumoniae\nHaemophilus influenzae\nVi khuẩn gram âm đường ruột\nLegionella spp.\nVirus hô hấp\n",
+        "end2Title": "luôn hiện: Streptococcus pneumoniae,\nMycoplasma pneumoniae, virut hô hấp\n",
+        "title": ""
+      },
+      {
+        "id": "9e17792e-a124-48f1-aef1-42b5b581d4ea",
+        "end1Id": "e6399661-4b0d-4e1d-9473-47af07669f7f",
+        "end2Id": "852bf232-9de0-49da-a351-3235174cb74f",
+        "end1Title": "luôn hiện: Streptococcus pneumoniae,\nMycoplasma pneumoniae, virut hô hấp\n",
+        "end2Title": "lọc bước 1 = phân loại mức độ nặng",
+        "title": ""
+      },
+      {
+        "id": "f0db7259-2a15-4c63-83e7-255fc6ce4cf4",
+        "end1Id": "f91ef425-90c2-4714-bdaf-fc46241ede1b",
+        "end2Id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "end1Title": "thêm vi khuẩn kỵ khí , nhiễm trùng phối hợp , bordetella pertussis",
+        "end2Title": "tệp vi khuẩn vi rút nghi ngờ A",
+        "title": ""
+      },
+      {
+        "id": "d6429799-bf1c-44ee-a591-06df649970e7",
+        "end1Id": "a8898b97-e5f4-4090-aa97-bca0a8772949",
+        "end2Id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "end1Title": "thêm pseudomonas aeruginosa , staphylococus aureus",
+        "end2Title": "tệp vi khuẩn vi rút nghi ngờ A",
+        "title": ""
+      },
+      {
+        "id": "e2dc1f1f-072c-4778-8d0f-b523db8e1d82",
+        "end1Id": "43d30fbb-8c67-4a5e-b858-7a7730340f03",
+        "end2Id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "end1Title": "loại legion, gram âm đường ruột",
+        "end2Title": "tệp vi khuẩn vi rút nghi ngờ A",
+        "title": ""
+      },
+      {
+        "id": "1f72b6eb-7351-479e-ae41-414b76b8e3e9",
+        "end1Id": "0d6c890e-e9d8-49d9-aa9b-9bc781225841",
+        "end2Id": "c63b1542-0757-4433-9002-c3287b895d96",
+        "end1Title": "tệp vi khuẩn vi rút nghi ngờ A",
+        "end2Title": "lọc bước 2",
+        "title": ""
+      },
+      {
+        "id": "ebffbb5f-0d1d-4801-aedf-fad31920dc30",
+        "end1Id": "cf6be074-a5bd-4cd2-ba06-fa76da85b8fd",
+        "end2Id": "dc29e1ef-81f8-4129-b216-998d6fda0d9b",
+        "end1Title": "GHI HẾT NHỮNG VI KHUẨN VI RÚT ĐÁP ỨNG ĐIỀU KIỆN , XẾP THỨ TỰ THEO SỐ YẾU TỐ TRÙNG LẶP",
+        "end2Title": "Tệp vi khuẩn virut B",
+        "title": ""
+      },
+      {
+        "id": "dbbc3d57-dbb3-4661-8d4e-e3ca8b4ab0e6",
+        "end1Id": "de2f4102-a44b-446b-b1d7-34cc33c49cdd",
+        "end2Id": "dc29e1ef-81f8-4129-b216-998d6fda0d9b",
+        "end1Title": "tổng hợp lại vi khuẩn vi rut theo key word",
+        "end2Title": "Tệp vi khuẩn virut B",
+        "title": ""
+      },
+      {
+        "id": "c1e47d2e-7051-4d47-b6d2-1edcd6c7c9fc",
+        "end1Id": "02a5b18d-99cc-4d8c-b2ed-a402596a8289",
+        "end2Id": "3d0a7886-a217-4210-a725-072af1e303e1",
+        "end1Title": "bệnh nhân điều trị nội trú",
+        "end2Title": "NHUỘM GRAM",
+        "title": ""
+      },
+      {
+        "id": "42cad207-4437-4dbe-95da-f57df8d11053",
+        "end1Id": "b52c552e-bda7-4478-91bc-3ee5ffa56cf5",
+        "end2Id": "88ed02cc-348c-442b-bddd-b22e7679c44b",
+        "end1Title": "tràn dịch màng phổi",
+        "end2Title": "NUÔI CẤY",
+        "title": ""
+      },
+      {
+        "id": "1fd635a3-7247-4b94-9e2e-f12f242906fd",
+        "end1Id": "d17581ad-39f9-4dd9-84ea-371cf7f7a053",
+        "end2Id": "5dcc5d3e-2873-4ae4-8f4d-19f19e16c95b",
+        "end1Title": "legionella",
+        "end2Title": "PHÁT HIỆN KHÁNG NGUYÊN NƯỚC TIỂU",
+        "title": ""
+      },
+      {
+        "id": "55bda8f8-cb1a-40b0-b741-81c198bb9436",
+        "end1Id": "d17581ad-39f9-4dd9-84ea-371cf7f7a053",
+        "end2Id": "88ed02cc-348c-442b-bddd-b22e7679c44b",
+        "end1Title": "legionella",
+        "end2Title": "NUÔI CẤY",
+        "title": ""
+      },
+      {
+        "id": "12564435-607b-4235-8953-30361cb6f531",
+        "end1Id": "d17581ad-39f9-4dd9-84ea-371cf7f7a053",
+        "end2Id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "end1Title": "legionella",
+        "end2Title": "PCR ",
+        "title": ""
+      },
+      {
+        "id": "f9b20232-71e7-4770-a485-b187db1e314c",
+        "end1Id": "520aeb26-f3e3-4570-8c2a-205d7382aae3",
+        "end2Id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "end1Title": "M.pneu C pneu",
+        "end2Title": "PCR ",
+        "title": ""
+      },
+      {
+        "id": "89403304-0b7c-4ceb-83de-d51115073ecd",
+        "end1Id": "520aeb26-f3e3-4570-8c2a-205d7382aae3",
+        "end2Id": "cbbfe846-b313-415a-a951-4d2ff8472472",
+        "end1Title": "M.pneu C pneu",
+        "end2Title": "TÌM HIỆU GIÁ IGM , IGG HUYẾT THANH",
+        "title": ""
+      },
+      {
+        "id": "3f5776a2-2e49-4742-93a9-d62bc01e4293",
+        "end1Id": "012f9043-0476-4bad-87b5-19ee1face9b0",
+        "end2Id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "end1Title": "Summary",
+        "end2Title": "PCR ",
+        "title": ""
+      },
+      {
+        "id": "57436290-5007-4051-95fd-5a1ad700a25e",
+        "end1Id": "27e4920e-6bf6-4df9-bf61-c4403aff417f",
+        "end2Id": "07ade136-2a42-42b3-afac-a91a32838e16",
+        "end1Title": "Summary",
+        "end2Title": "PCR ",
+        "title": ""
+      }
+    ]
+  }
+]

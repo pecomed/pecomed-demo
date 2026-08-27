@@ -1,0 +1,104 @@
+=== Sheet 0: Mind Map ===
+- bước 1 chẩn đoán sơ bộ , chỉ định thương quy + phân loại mức độ nặng của bệnh
+--- Floating Topic ---
+- khám
+  - chỉ số sinh tồn
+    - nhịp thở
+      - >30
+        - 20
+    - huyết áp
+      - TÂM THU<90
+        - 20
+      - đang bù dịch tích cực
+    - thay đổi tri giác
+      - 20
+    - thân nhiệt
+      - <35 hoặc >=40
+        - 15
+      - <36
+    - mạch
+      - >125l/p
+        - 10
+    - SPO2
+      - <90
+        - 10
+  - Triệu chứng cơ năng
+    - sốt
+      - >39
+        - vi khuẩn điển hình
+      - nhẹ
+        - nghi ngờ
+          - vi khuẩn không điển hình
+    - ho
+      - khan
+      - có đờm
+    - đau ngực kiểu màng phổi
+      - parapleural pneumonia
+  - Triệu chứng thực thể
+    - toàn trạng
+      - môi khô
+      - hơi thở hôi
+      - lưỡi bẩn
+    - hô hấp
+      - rung thanh tăng
+      - gõ đục
+        - rì rào phế nang giảm
+      - ran nổ
+--- Floating Topic ---
+- tuổi
+  - >65
+  - nam
+  - nữ
+    - -10
+--- Floating Topic ---
+- bệnh đồng mắc
+  - suy giảm miễn dịch
+    - skip khám trch cơ năng
+  - ung thư
+    - +30
+  - gan
+    - 20
+  - suy tim ứ huyết
+    - 10
+  - mạch máu não
+    - 10
+  - thận
+    - 19
+  - suy hô hấp cần thông khí cơ học
+    - thở máy , đặt nội khí quản
+  - SỐc nhiễm khuẩn đang dùng vận mạch
+    - dobutamin , noradrenalin
+--- Floating Topic ---
+- curb 65
+  - 0-1 yếu tố
+  - 2 điểm
+  - 3 điểm
+  - 4-5 điểm
+--- Floating Topic ---
+- nội trú
+--- Floating Topic ---
+- điều trị nội trú ngắn hạn
+--- Floating Topic ---
+- Điều trị ngoại trú
+--- Floating Topic ---
+- ICU
+--- Floating Topic ---
+- nơi sinh sống
+  - viện dưỡng lão , nhà điều dưỡng
+    - +10
+--- Floating Topic ---
+- fine
+  - <=70
+    - I-II
+  - 71-90
+    - III
+  - 91-130
+    - IV
+  - >130
+    - V
+--- Floating Topic ---
+- ATS
+--- Floating Topic ---
+- 3/9TIÊU CHUẨN PHỤ
+--- Floating Topic ---
+- Hỏi bệnh

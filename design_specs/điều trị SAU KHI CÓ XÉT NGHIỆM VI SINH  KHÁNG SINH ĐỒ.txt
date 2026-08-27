@@ -1,0 +1,192 @@
+=== Sheet 0: Mind Map ===
+- điều trị SAU KHI CÓ XÉT NGHIỆM VI SINH / KHÁNG SINH ĐỒ
+  - H. influenzae + M.catarrhalis
+    - đầu tay
+      - Nhạy cảm với  Ampicillin,  Amoxicillin (beta lactamase âm  tính)
+        - Ampicillin 2g truyền tm
+          - mỗi 6h
+            - đáp ứng chuyển đường uống
+              - Amoxicillin 1000 mg mỗi 8 giờ
+              - Hoặc amoxicillin/acid clavulanic 875 mg/125 mg mỗi 8-12 giờ
+      - (beta lactamase  dương tính)
+        - Ceftriaxon 1g TTM mỗi 12h
+          - đáp ứng chuyển đường uống
+            - Amoxicilin 1000 mg mỗi 8 giờ
+            - Hoặc amoxicillin/acid clavulanic 875 mg/125 mg mỗi 8-12 giờ
+            - Hoặc cephalosporin thế hệ 3 đường uống (cefpodoxim 200 mg mỗi 12 giờ hoặc cefditoren 400 mg mỗi 12 giờ)
+    - dị ứng, chống chỉ định , thay thế thuốc
+      - Cotrimoxazol (TMP-SMX) 5 10mg/kg (liều dựa trên trimethoprim,  TMP) TTM/uống mỗi 12h
+      - Hoặc doxycyclin 100mg uống
+        - 2 lần/ngày
+      - Hoặc azithromycin 500mg x 1 lần vào  ngày 1
+        - 250mg lần/ngày x 4 ngày
+        - hoặc 500 mg/ngày trong 3 ngày
+      - Hoặc ciprofloxacin 400mg TM mỗi
+        - 12h
+          - đáp ứng chuyển đường uống
+            - 500mg uống 2 lần/ngày
+      - Hoặc levofloxacin 750mg uống/TM
+        - mỗi 24h
+  - S. aureus
+    - thơi gian điều trị
+      - check tình trạng bệnh  nhân
+        - bình thường
+          - cấy máu sau 2-4 ngày âm tính và người bệnh hết sốt trong 72 giờ
+          - không có viêm nội tâm mạc (được đánh giá với siêu âm tim qua thực quản);
+          - không có các thiết bị cấy ghép trên cơ thể;
+          - không có ổ nhiễm trùng di bệnh khác
+        - nhiễm khuẩn huyết
+          - 4 tuần
+    - thuốc
+      - check loại nhạy cảm kháng sinh
+        - MSSA
+          - oxacillin 2g TTM mỗi 4h.+ Ceftarolin: 600mg mỗi 12 giờ TTM
+          - hoặc theo kháng sinh đồ
+        - MRSA
+          - Vancomycin 15-20mg/kg TTM mỗi 8-12h
+          - Hoặc Teicoplanin 6 mg/kg (hoặc 800 mg) mỗi12h
+            - dùng 3 liều
+              - 6mg/kg (hoặc 800 mg) mỗi 24 h TTM.
+          - Hoặc linezolid 600mg uống/TTM mỗi 12h.
+            - hêt thuốc , chống chỉ định, dị ứng
+              - Ceftarolin 600mg TM mỗi 8h
+  - đáp ứng chuyển đường uống
+    - ● Nhiệt độ ≤ 37,8ºC
+    - ● Nhịp tim ≤ 100 lần/phút
+    - ● Nhịp thở ≤ 24 lần/phút
+    - ● Huyết áp tâm thu ≥ 90 mmHg
+    - ● Bão hòa oxy máu động mạch (SaO2) ≥ 90% hoặc PO2 ≥ 60 mmHg ở điều kiện khí phòng
+    - ● Có khả năng ăn uống
+    - ● Sức khỏe tâm thần bình thường
+  - THEO DÕI ĐÁP ỨNG ĐIỀU TRỊ
+    - 72h sau điều trị
+      - huyết động
+        - mạch
+          - >33 ở người lớn
+        - Huyết áp
+          - <90/60
+      - chuẩn đoán hình ảnh
+        - tăng kích thước tổn thương cũ
+        - xuất hiện tổn thương mới
+      - thay đổi mức độ
+        - tăng thang điểm ATS
+      - hoặc suy giảm chức năng hô hấp
+        - PaO2 <8 kPa (60mmHg)
+        - SpO2 < 90% với FiO2 21%)
+    - CHỈ ĐỊNH PCT HOẶC CRT
+      - khi nhập viện, sau 48-72 giờ và sau 5-7 ngày
+        - đánh giá còn viêm hay không
+          - còn nhiễm trùng hay không
+  - vi khuẩn không điển hình
+    - Chlamydia pneumoniae, Legionella  pneumophila, Mycoplasma pneumoniae
+      - Chlamydia  pneumoniae
+        - Doxycyclin 100mg U/TTM 2 lần/ngày  x 14 ngày
+        - Hoặc azithromycin 500mg U/TTM  vào ngày 1
+          - 250mg U mỗi ngày
+            - x 4 ngày
+          - hoặc 500 mg/ngày x 3 ngày
+        - Hoặc clarithromycin 500mg   U 2 lần/ngày x 10 ngày.
+      - Legionella  pneumophila
+        - Levofloxacin 750mg U/TTM mỗi 24h
+        - Hoặc azithromycin 500mg U/TTM  mỗi 24h.
+        - Hoặc moxifloxacin 400mg U/TTM  mỗi 24h
+      - Mycoplasma  pneumoniae
+        - Doxycycline 100mg U/TTM 2  lần/ngày
+          - x 7-10 ngày
+        - Hoặc Minocycline 200mg U/TTM  x 1 liều,
+          - 100mg U/TTM 2  lần/ngày.
+  - klebsiella
+    - hạy cảm với 1  trong các nhóm  KS:
+      - Cephalosporin  thế hệ 3(ESBL  âm tính)
+        - ceftriaxon 1g TTM mỗi 12h
+      - Beta-lactam  phối hợp với ức  chế beta lactamase
+        - Hoặc Piperacillin/tazobactam 3,375g - 4,5 g liều tải TTM trong 30 phút, lặp  lại mỗi 6h
+      - Quinolon
+        - Hoặc ciprofloxacin 400mg TTM mỗi  12h
+        - Hoặc levofloxacin 750mg TTM mỗi  24h (hoặc 500 mg TTM mỗi 12 h)
+    - kháng hết thuốc ở trên VÀ nhạy cảm với  carbapenem
+      - Vi khuẩn ESBL (-):
+        - Cefepim 1-2g TTM mỗi 8h
+      - Vi khuẩn ESBL (+):
+        - Ertapenem 1g TTM mỗi 24h Hoặc
+        - imipenem 0,5g TTM mỗi 6h
+        - Hoặc Meropenem 1g TTM mỗi 8h
+  - virut hô hấp
+    - check mức độ
+      - ngoại trú
+        - Zanamivir: phun khí dung
+        - Oseltamivir (75mg uống 2 lần/ngày x 5 ngày)
+      - nội trú
+        - Oseltamivir (75mg uống 2 lần/ngày x 5 ngày)
+          - check mức độ và bệnh nền
+            - nặng , nguy kịch
+            - suy giảm miễn dịch
+        - người bệnh không thể uống
+          - check chức năng thận
+            - CrCL >60ml/phút
+              - peramivir 600mg TM một lần
+  - mediosis
+    - Burkholderia pseudomallei
+      - Điều trị tấn công
+        - thuốc
+          - Ceftazidim 2g TTM mỗi 6h
+          - Hoặc meropenem 1-2g TTM trong 3h,
+            - lặp lại mỗi 8h
+          - TMP-SMX 6-8mg/kg uống (theo liều TMP)
+            - 2 lần/ngày
+          - Hoặc doxycyclin 100mg uống
+            - 2 lần/ngày
+          - Đối với phụ nữ có thai
+            - Amoxicillin/acid clavulanic 20mg/5mg/kg
+              - uống 3 lần/ngày.
+        - thời gian
+          - check bệnh nền
+            - bình thường
+              - check kết quả X quang
+                - mờ 1 thuỳ phổi
+                  - 2 tuần
+                - mờ nhiều thuỳ
+                  - 3 tuần
+            - có nhiễm khuẩn huyết
+              - check kết quả X quang
+                - mờ 1 thuỳ phổi
+                  - 3 tuần
+                - mờ nhiều thuỳ
+                  - 4 tuần
+            - viêm khớp + áp xe
+              - 4 tuần
+            - viêm xương
+              - 6 tuần
+  - Pseudomonas aeruginosa
+    - Nhạy cảm với  nhiều nhóm  kháng sinh
+      - piperacillin/tazobactam 4,5g TTM
+        - sau đó 4h
+          - 4,5g TTM mỗi  6h
+      - Hoặc cefepim 2g TTM mỗi 12h
+      - Hoặc meropenem 1- 2 g TTM mỗi
+        - 8h.
+      - Hoặc ceftazidim 2g TTM mỗi 8h
+    - Kháng với  ceftazidime,  cefepime
+      - Hoặc ceftazidim/avibactam 2,5g  TTM mỗi 8h
+      - Meropenem 1-2 g TTM mỗi 8h
+    - người bệnh xơ nang
+      - khí dung tự phòng
+        - Tobramycin 300mg, 2 lần/ngày
+        - Colistin 50-75mg (1,5-2,25 MUI), 2 lần/ngày
+        - Aztreonam 75mg, 3 lần/ngày
+  - S.pneumoniae
+    - MIC  ≤ 2µg/ml
+      - Nhạy cảm Penicillin
+        - Kháng sinh tĩnh mạch
+          - Penicillin G 2MIU truyền tĩnh mạch (TTM) mỗi 4h
+          - Hoặc ceftriaxon 1-2g TTM mỗi 24h
+          - Hoặc cefotaxim 2g TTM mỗi 8h
+        - ▪ Kháng sinh uống
+          - Amoxicillin 1g uống 3 lần/ngày
+          - Hoặc doxycyclin 100mg uống 2 lần/ngày
+    - MIC  > 4µg/m
+      - Trung gian hoặc đề kháng với Penicillin
+        - MIC Penicillin ≥ 8 µg/m
+          - Vancomycin 15-20mg/kg TTM 8-12h .
+        - 4<MIC Penicillin < 8 µg/m
+          - Hoặc ceftarolin 600mg TTM mỗi 12h

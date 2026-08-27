@@ -1,0 +1,1073 @@
+[
+  {
+    "title": "Mind Map",
+    "topic": {
+      "id": "a81aaf27-912e-45dd-ae58-e1afe91a4a62",
+      "title": "điều trị SAU KHI CÓ XÉT NGHIỆM VI SINH / KHÁNG SINH ĐỒ",
+      "topics": [
+        {
+          "id": "119843e5-9cfc-4373-9191-c98ef33dbd53",
+          "title": " H. influenzae + M.catarrhalis",
+          "summaries": [
+            {
+              "id": "418c92a4-7cca-457e-b212-07465b1bee60",
+              "range": "(0,1)",
+              "topicId": "2de9e51b-ec45-42d1-b57b-99546dd6bcad"
+            }
+          ],
+          "topics": [
+            {
+              "id": "663f74ca-ef27-4c59-9d68-3f78e365708d",
+              "title": "đầu tay",
+              "topics": [
+                {
+                  "id": "0362899a-eeab-4e21-a1be-2d2d41e3c16b",
+                  "title": "Nhạy cảm với \nAmpicillin, \nAmoxicillin (beta\nlactamase âm \ntính) ",
+                  "topics": [
+                    {
+                      "id": "d0379d0f-d726-446d-a0f2-a6649c228e8e",
+                      "title": "Ampicillin 2g truyền tm",
+                      "topics": [
+                        {
+                          "id": "826be5ef-7c8b-42e4-b628-e28e44a0446e",
+                          "title": " mỗi 6h ",
+                          "topics": [
+                            {
+                              "id": "e0c0125d-b419-4b2e-9ad6-769eb4079114",
+                              "title": "đáp ứng chuyển đường uống",
+                              "topics": [
+                                {
+                                  "id": "efe6043b-c9a0-4eb0-8962-c0d7c59a51d8",
+                                  "title": "Amoxicillin 1000 mg\r\nmỗi 8 giờ"
+                                },
+                                {
+                                  "id": "8c9eb0f8-585d-44d2-8176-d9ebe5a0b052",
+                                  "title": "Hoặc amoxicillin/acid clavulanic 875 mg/125 mg\r\nmỗi 8-12 giờ"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "8ef3d02a-6bba-42cd-be1e-80912e3f4845",
+                  "title": "(beta\nlactamase \ndương tính)",
+                  "topics": [
+                    {
+                      "id": "c8cca971-df20-44ec-ab31-3209662e8e2e",
+                      "title": "Ceftriaxon 1g TTM mỗi 12h",
+                      "topics": [
+                        {
+                          "id": "55e44347-37c0-46b7-b4e4-1143f6b71f0e",
+                          "title": "đáp ứng chuyển đường uống",
+                          "topics": [
+                            {
+                              "id": "da6d24b3-7acd-405b-a672-926f101b4fbf",
+                              "title": "Amoxicilin 1000 mg\r\nmỗi 8 giờ"
+                            },
+                            {
+                              "id": "f5914093-6c38-412d-a525-9f902deee023",
+                              "title": "Hoặc amoxicillin/acid\r\nclavulanic 875 mg/125 mg mỗi 8-12 giờ"
+                            },
+                            {
+                              "id": "7c6d990e-a79b-406f-a7a7-9408b572a528",
+                              "title": "Hoặc cephalosporin thế hệ 3 đường uống\r\n(cefpodoxim 200 mg mỗi 12 giờ hoặc cefditoren 400 mg mỗi 12 giờ)"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "fdde767d-c36a-4345-96b9-ba9bf3d3a156",
+              "title": "dị ứng, chống chỉ định , thay thế thuốc",
+              "topics": [
+                {
+                  "id": "6f4846b9-d901-44e6-b2ac-9f736bc0adcc",
+                  "title": "Cotrimoxazol (TMP-SMX) 5\n10mg/kg (liều dựa trên trimethoprim, \nTMP) TTM/uống mỗi 12h "
+                },
+                {
+                  "id": "99d96238-1383-4a4e-88cf-20a4ae63d8c9",
+                  "title": "Hoặc doxycyclin 100mg uống  ",
+                  "topics": [
+                    {
+                      "id": "6010d6e5-cb9a-495c-bafe-cf2013b68456",
+                      "title": "2 lần/ngày"
+                    }
+                  ]
+                },
+                {
+                  "id": "9c9a3785-eecb-4d4e-955b-2208068e977f",
+                  "title": "Hoặc azithromycin 500mg x 1 lần vào \nngày 1",
+                  "topics": [
+                    {
+                      "id": "0cf6db9e-cc74-47d3-aa4b-baff4ff44ac5",
+                      "title": "250mg lần/ngày x 4 ngày"
+                    },
+                    {
+                      "id": "c6f8cd73-a614-4b38-9ad2-3c60cf95cd16",
+                      "title": "hoặc 500 mg/ngày trong 3 ngày"
+                    }
+                  ]
+                },
+                {
+                  "id": "4d26e50e-7759-4010-a359-5f8796f9fdc7",
+                  "title": "Hoặc ciprofloxacin 400mg TM mỗi ",
+                  "topics": [
+                    {
+                      "id": "07c4366f-cf58-433b-826e-9de68a43950f",
+                      "title": "12h   ",
+                      "topics": [
+                        {
+                          "id": "ecf03081-adaa-42af-8e5b-79178fa7cc3d",
+                          "title": "đáp ứng chuyển đường uống",
+                          "topics": [
+                            {
+                              "id": "3de87c75-57f1-46c8-9fbf-5bce41ff81e0",
+                              "title": "500mg uống 2 lần/ngày"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "97519acf-5912-4fa1-b1ff-9badbdd1bb9e",
+                  "title": "Hoặc levofloxacin 750mg uống/TM ",
+                  "topics": [
+                    {
+                      "id": "7b49fdc3-8814-4f7c-ab06-70840776368a",
+                      "title": "mỗi 24h "
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "7503587e-cc27-4d3c-9b81-e94d926ff69e",
+          "title": "S. aureus",
+          "topics": [
+            {
+              "id": "ded5c4e7-a5e6-4841-bccf-3d39a4860e94",
+              "title": "thơi gian điều trị",
+              "topics": [
+                {
+                  "id": "c6641bba-62e1-4b83-96d5-c5db509c462b",
+                  "title": "check tình trạng bệnh  nhân",
+                  "topics": [
+                    {
+                      "id": "33982f57-6d17-44cf-b199-9932f1be8948",
+                      "title": "bình thường",
+                      "summaries": [
+                        {
+                          "id": "95a0980b-e39a-4eac-b97f-afdd7bfee1cc",
+                          "range": "(0,3)",
+                          "topicId": "5d73eb79-d75f-45c2-b792-efa6908d2878"
+                        }
+                      ],
+                      "topics": [
+                        {
+                          "id": "ccd574cb-b179-4f3c-8252-de3f6041ec50",
+                          "title": "cấy máu sau 2-4 ngày âm tính và người bệnh hết sốt trong 72 giờ"
+                        },
+                        {
+                          "id": "3bdbd457-41ae-4b2e-b608-e25ee0d1bd81",
+                          "title": "không có viêm nội tâm mạc (được đánh giá với siêu âm tim qua thực quản);"
+                        },
+                        {
+                          "id": "d657a98a-127e-4ecd-9e3f-d86abe238265",
+                          "title": "không có các thiết bị cấy ghép trên cơ thể;"
+                        },
+                        {
+                          "id": "caed598d-ff16-4fab-9297-5bc0d8dd2570",
+                          "title": "không có ổ nhiễm trùng di bệnh khác"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "6a30e55d-a82c-49af-8f69-8d0aaeb4e6c4",
+                      "title": "nhiễm khuẩn huyết",
+                      "topics": [
+                        {
+                          "id": "b383e857-a768-4e9a-84c9-1ad3056f6795",
+                          "title": "4 tuần"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "0ba569cd-929f-468d-bf9c-5f0a816c5f2f",
+              "title": "thuốc",
+              "topics": [
+                {
+                  "id": "130d0366-5ae2-44c0-871b-99ac520e77c9",
+                  "title": "check loại nhạy cảm kháng sinh",
+                  "summaries": [
+                    {
+                      "id": "884d5861-ecc5-409b-af7c-4ffea40213e2",
+                      "range": "(0,0)",
+                      "topicId": "e99b8d85-fc05-4d2e-9035-2cf2607892f6"
+                    }
+                  ],
+                  "topics": [
+                    {
+                      "id": "872ec9d4-0059-4052-abea-7b40f7f6373a",
+                      "title": "MSSA",
+                      "topics": [
+                        {
+                          "id": "d0b98198-5f49-41bc-89d1-346839a5b212",
+                          "title": "oxacillin 2g TTM mỗi 4h.+ Ceftarolin: 600mg mỗi 12 giờ TTM\n"
+                        },
+                        {
+                          "id": "c33528ee-3577-4465-ae95-9adf2575c88d",
+                          "title": "hoặc theo kháng sinh đồ"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "0d522723-99b9-4edc-be99-7853675de7bb",
+                      "title": "MRSA",
+                      "topics": [
+                        {
+                          "id": "fdf7bc94-a4f2-459c-b136-af7c70b20e6c",
+                          "title": "Vancomycin 15-20mg/kg TTM mỗi 8-12h "
+                        },
+                        {
+                          "id": "8b4f1a00-184a-4cf1-8215-49522f873cba",
+                          "title": "Hoặc Teicoplanin 6 mg/kg (hoặc 800 mg) mỗi12h",
+                          "topics": [
+                            {
+                              "id": "54d97feb-1608-41bd-95fb-e1e886d70c67",
+                              "title": "dùng 3 liều ",
+                              "topics": [
+                                {
+                                  "id": "615241f3-dd59-4fcf-b187-8abb8a45b8b8",
+                                  "title": "6mg/kg (hoặc 800 mg) mỗi 24 h TTM."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "84b0691b-62db-4091-868e-0695c527c9ec",
+                          "title": "Hoặc linezolid 600mg uống/TTM mỗi 12h.",
+                          "topics": [
+                            {
+                              "id": "8c26feb0-c6eb-4b65-8e19-89963a1c55f7",
+                              "title": "hêt thuốc , chống chỉ định, dị ứng",
+                              "topics": [
+                                {
+                                  "id": "b1a437ba-79b5-45de-b5c3-6ba56728d0a6",
+                                  "title": "Ceftarolin 600mg TM mỗi 8h "
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "19143c1a-6d46-43c2-bdf2-9d507a096632",
+          "title": "đáp ứng chuyển đường uống",
+          "topics": [
+            {
+              "id": "3c4c1296-574d-4164-bcdd-4e4e92ae8796",
+              "title": "● Nhiệt độ ≤ 37,8ºC"
+            },
+            {
+              "id": "75a190e4-540e-4509-bedf-2955af041bd3",
+              "title": "● Nhịp tim ≤ 100 lần/phút"
+            },
+            {
+              "id": "7e388ec7-b5c0-4509-acff-8a5685fdb0ee",
+              "title": "● Nhịp thở ≤ 24 lần/phút"
+            },
+            {
+              "id": "a545167b-7d58-49fb-8bb5-0419f402cf86",
+              "title": "● Huyết áp tâm thu ≥ 90 mmHg"
+            },
+            {
+              "id": "f964c90c-182e-4a5f-ba8e-6f7092fa6033",
+              "title": "● Bão hòa oxy máu động mạch (SaO2) ≥\r\n90% hoặc PO2 ≥ 60 mmHg ở điều kiện khí phòng"
+            },
+            {
+              "id": "de739375-07df-4201-9071-77d65acfe524",
+              "title": "● Có khả năng ăn uống"
+            },
+            {
+              "id": "8a303512-1c0b-479d-a2db-771d2710d6f3",
+              "title": "● Sức khỏe tâm thần bình thường"
+            }
+          ]
+        },
+        {
+          "id": "432ff229-78d3-4268-947d-ac37c3727e60",
+          "title": "THEO DÕI ĐÁP ỨNG ĐIỀU TRỊ ",
+          "topics": [
+            {
+              "id": "7515c829-5172-45af-9548-730cac964ac4",
+              "title": "72h sau điều trị",
+              "summaries": [
+                {
+                  "id": "fa3a6ba6-8357-4690-8064-337cac9eae70",
+                  "range": "(0,3)",
+                  "topicId": "23fd4b6d-829b-422f-a86c-947b605b6525"
+                }
+              ],
+              "topics": [
+                {
+                  "id": "0c6acbef-35c6-4c3d-90c6-be2651b75325",
+                  "title": "huyết động",
+                  "topics": [
+                    {
+                      "id": "1f22f88d-7710-47c6-8e7e-5e77ce01bcd0",
+                      "title": "mạch",
+                      "topics": [
+                        {
+                          "id": "f7b683df-356c-4b00-b1b5-8370b3ba2d16",
+                          "title": ">33 ở người lớn"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "8afe764b-afa2-4624-9765-5a096896cfee",
+                      "title": "Huyết áp",
+                      "topics": [
+                        {
+                          "id": "682070c5-4efa-4dde-a527-7f9e2e946555",
+                          "title": "<90/60"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "a1dc0932-dcd4-48e8-9760-889df43af117",
+                  "title": "chuẩn đoán hình ảnh",
+                  "topics": [
+                    {
+                      "id": "729930a5-aa88-4d03-be47-5a8aedad206b",
+                      "title": "tăng kích thước tổn thương cũ"
+                    },
+                    {
+                      "id": "1cf24e12-7ac2-4ebf-8526-65998c982a2a",
+                      "title": "xuất hiện tổn thương mới"
+                    }
+                  ]
+                },
+                {
+                  "id": "70586e0b-3142-4e1a-9e82-48cab3352538",
+                  "title": "thay đổi mức độ",
+                  "topics": [
+                    {
+                      "id": "a114bfa8-5388-4404-8a80-8915823df4f9",
+                      "title": "tăng thang điểm ATS"
+                    }
+                  ]
+                },
+                {
+                  "id": "d0da4d29-5c00-4680-8a71-dca6d2380120",
+                  "title": "hoặc suy giảm chức năng hô hấp ",
+                  "topics": [
+                    {
+                      "id": "2bc1ed32-d2f9-4e4a-a1d2-231b2b33b68e",
+                      "title": "PaO2 <8 kPa (60mmHg) "
+                    },
+                    {
+                      "id": "5dcd5793-b1cc-4ceb-90e7-fdb1758ae160",
+                      "title": "SpO2 < 90% với FiO2 21%)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "52002507-069f-4db3-aa9a-f3ecc30a697b",
+              "title": "CHỈ ĐỊNH PCT HOẶC CRT",
+              "topics": [
+                {
+                  "id": "2cc522f2-820d-4f55-b3f5-2475cf894d3c",
+                  "title": "khi nhập viện, sau 48-72 giờ và sau 5-7 ngày",
+                  "topics": [
+                    {
+                      "id": "742dfa20-1745-4e5e-bb31-0bddd88e32cb",
+                      "title": "đánh giá còn viêm hay không ",
+                      "topics": [
+                        {
+                          "id": "8046d91f-7c8e-4d5e-be1a-26ef441057cb",
+                          "title": "còn nhiễm trùng hay không"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "72d8f6b8-1972-4588-87c3-7ad9e58586cd",
+          "title": "vi khuẩn không điển hình",
+          "topics": [
+            {
+              "id": "9d228f8c-d663-4624-bb42-c9294e5a1373",
+              "title": "Chlamydia pneumoniae, Legionella \npneumophila, Mycoplasma pneumoniae",
+              "summaries": [
+                {
+                  "id": "2ecdb46b-da20-406e-b57f-8844f3bb91db",
+                  "range": "(0,0)",
+                  "topicId": "c289ae29-27de-4b0e-9c1a-bff21aedc57a"
+                },
+                {
+                  "id": "6c7459ce-261e-4e6b-8c94-8573834ad008",
+                  "range": "(1,1)",
+                  "topicId": "41b7b356-d42c-4504-b8ec-391af018be41"
+                },
+                {
+                  "id": "37c75b01-7195-4a21-a539-e6da659cb54f",
+                  "range": "(2,2)",
+                  "topicId": "d45987c2-5931-4a76-84a9-0bd0895f7b57"
+                }
+              ],
+              "topics": [
+                {
+                  "id": "2f7c9367-7e5f-455c-9379-9dcdb710cdf3",
+                  "title": "Chlamydia \npneumoniae",
+                  "topics": [
+                    {
+                      "id": "ac61af1f-9f37-4f10-81e9-52fb49e34d87",
+                      "title": "Doxycyclin 100mg U/TTM 2 lần/ngày \nx 14 ngày  \n "
+                    },
+                    {
+                      "id": "718d1124-6593-47ed-8488-ceaf4d4c30d1",
+                      "title": "Hoặc azithromycin 500mg U/TTM \nvào ngày 1",
+                      "topics": [
+                        {
+                          "id": "181eb6d0-6317-4ab3-ace4-ff745111a5e0",
+                          "title": "250mg U mỗi ngày ",
+                          "topics": [
+                            {
+                              "id": "47bb99a3-5850-4823-a4cb-428f9b367237",
+                              "title": "x 4 ngày"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "16ef5274-bd5a-4570-8aca-cd7486ff8ec1",
+                          "title": " hoặc 500 mg/ngày x 3 ngày"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "5b841368-1c36-48e8-9595-547da658d043",
+                      "title": "Hoặc clarithromycin 500mg  \nU 2 lần/ngày x 10 ngày."
+                    }
+                  ]
+                },
+                {
+                  "id": "57d24d88-cb40-40bc-8eb5-26deaf956a77",
+                  "title": "Legionella \npneumophila ",
+                  "topics": [
+                    {
+                      "id": "a7da9d00-ac96-43ac-a299-9f753f53a2fc",
+                      "title": "Levofloxacin 750mg U/TTM mỗi 24h \n"
+                    },
+                    {
+                      "id": "047bd1cb-63c2-4563-adbe-59c153f1788b",
+                      "title": "Hoặc azithromycin 500mg U/TTM \nmỗi 24h. "
+                    },
+                    {
+                      "id": "a467634b-a016-473e-bcef-f8a0f2e84e4d",
+                      "title": "Hoặc moxifloxacin 400mg U/TTM \nmỗi 24h \n"
+                    }
+                  ]
+                },
+                {
+                  "id": "b59c62d1-c7c6-4510-b1a7-cb5b92e3f147",
+                  "title": "Mycoplasma \npneumoniae",
+                  "topics": [
+                    {
+                      "id": "93ab259f-642b-49ae-8857-def6aa3838c7",
+                      "title": "Doxycycline 100mg U/TTM 2 \nlần/ngày ",
+                      "topics": [
+                        {
+                          "id": "65d5ff7c-e0d5-46a6-b053-c0f8e04fdf72",
+                          "title": "x 7-10 ngày "
+                        }
+                      ]
+                    },
+                    {
+                      "id": "dad7dc62-5e4d-4c9d-bc71-d30fb6b79c77",
+                      "title": "Hoặc Minocycline 200mg U/TTM \nx 1 liều, ",
+                      "topics": [
+                        {
+                          "id": "76720f9b-33ed-4d4e-a37f-74dc27e41f43",
+                          "title": " 100mg U/TTM 2 \nlần/ngày. "
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "531f499d-f50e-4900-84a0-1be687a85ca8",
+          "title": "klebsiella",
+          "summaries": [
+            {
+              "id": "ed904928-2c6f-488d-a117-e6f7f4e0dd89",
+              "range": "(0,0)",
+              "topicId": "283c162a-8f11-422a-b03f-d6e24688605e"
+            }
+          ],
+          "topics": [
+            {
+              "id": "ec2cb17e-60d1-41f5-be96-4e359ac442fc",
+              "title": "hạy cảm với 1 \ntrong các nhóm \nKS:",
+              "topics": [
+                {
+                  "id": "0202755a-f8e4-4749-9145-81fba31f3d32",
+                  "title": "Cephalosporin\n thế hệ 3(ESBL \nâm tính)",
+                  "topics": [
+                    {
+                      "id": "53b1b933-a8fd-45cf-bd20-2f54c5ecfb69",
+                      "title": "ceftriaxon 1g TTM mỗi 12h  \n \n"
+                    }
+                  ]
+                },
+                {
+                  "id": "1aa742a4-a62d-47c1-a158-8ccef38821b2",
+                  "title": "Beta-lactam \nphối hợp với ức \nchế beta\nlactamase \n",
+                  "topics": [
+                    {
+                      "id": "c57e64ab-625e-486f-92a4-3c82b7912695",
+                      "title": "Hoặc Piperacillin/tazobactam 3,375g - 4,5 g liều tải TTM trong 30 phút, lặp \nlại mỗi 6h \n"
+                    }
+                  ]
+                },
+                {
+                  "id": "53271d1f-eed8-42f6-99bf-50106dee18cb",
+                  "title": "Quinolon",
+                  "topics": [
+                    {
+                      "id": "3f9cfdb9-b65b-426a-885a-4aab0f061f84",
+                      "title": "Hoặc ciprofloxacin 400mg TTM mỗi \n12h  \n"
+                    },
+                    {
+                      "id": "881bb425-2bd7-45c9-b46c-a9b6b28fe51d",
+                      "title": "Hoặc levofloxacin 750mg TTM mỗi \n24h (hoặc 500 mg TTM mỗi 12 h) "
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "9ec1a5ec-c02a-4903-9b34-ce7d17a83b14",
+              "title": "kháng hết thuốc ở trên VÀ nhạy cảm với \ncarbapenem",
+              "topics": [
+                {
+                  "id": "310d60cb-0079-4249-b96b-1a4becb7c847",
+                  "title": "Vi khuẩn ESBL (-):",
+                  "topics": [
+                    {
+                      "id": "aee310f7-0dea-4457-8354-aaeb1508bd4d",
+                      "title": "Cefepim 1-2g TTM mỗi 8h"
+                    }
+                  ]
+                },
+                {
+                  "id": "c67d69ac-ac53-44ff-96ce-82de8372b192",
+                  "title": "Vi khuẩn ESBL (+): ",
+                  "topics": [
+                    {
+                      "id": "e623f737-acfc-4cee-86dd-d2474f5ba5bc",
+                      "title": "Ertapenem 1g TTM mỗi 24h Hoặc "
+                    },
+                    {
+                      "id": "9feebd83-8c37-4634-ae5d-d8a80f328a2a",
+                      "title": "imipenem 0,5g TTM mỗi 6h  "
+                    },
+                    {
+                      "id": "d252b05b-2cf9-4a54-a3b1-6e2ebc4fe5c0",
+                      "title": "Hoặc Meropenem 1g TTM mỗi 8h   "
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "43889b73-7653-4033-88bc-6651cd01bf1d",
+          "title": "virut hô hấp",
+          "topics": [
+            {
+              "id": "166fa3a5-468a-44b6-a1ec-8cd4c1fde28c",
+              "title": "check mức độ",
+              "topics": [
+                {
+                  "id": "e2c38496-27da-49f4-a01c-10c93e1d7119",
+                  "title": "ngoại trú",
+                  "topics": [
+                    {
+                      "id": "76cb6490-bbfc-4be6-9eb9-814fcbb815f5",
+                      "title": "Zanamivir: phun khí dung "
+                    },
+                    {
+                      "id": "84af3e3c-ccdd-49f4-b7ff-49f7560e5446",
+                      "title": "Oseltamivir (75mg uống 2 lần/ngày x 5 ngày) "
+                    }
+                  ]
+                },
+                {
+                  "id": "0e0cc71e-4e1c-467c-8fe0-ad11b5ee15ef",
+                  "title": " nội trú",
+                  "topics": [
+                    {
+                      "id": "029b3c53-946c-4c98-a032-385f3b741d53",
+                      "title": "Oseltamivir (75mg uống 2 lần/ngày x 5 ngày) ",
+                      "summaries": [
+                        {
+                          "id": "9ee13fca-313d-4582-958a-eaa8c4b69ad3",
+                          "range": "(0,0)",
+                          "topicId": "4ecbe55c-bea4-4a9a-9fbc-201d6d9b686e"
+                        }
+                      ],
+                      "topics": [
+                        {
+                          "id": "9f51e932-4743-460e-9251-3da71e832a8e",
+                          "title": "check mức độ và bệnh nền ",
+                          "topics": [
+                            {
+                              "id": "0c934a1e-6be0-4c67-bac6-1974d84834f1",
+                              "title": "nặng , nguy kịch"
+                            },
+                            {
+                              "id": "4dd052ba-c326-490f-b7f2-672602a58388",
+                              "title": "suy giảm miễn dịch"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "d1393fa4-6bf7-4f5e-b903-86741f5b8762",
+                      "title": "người bệnh không thể uống",
+                      "topics": [
+                        {
+                          "id": "fb42fd9f-6659-488b-9567-4d06f516f295",
+                          "title": "check chức năng thận",
+                          "topics": [
+                            {
+                              "id": "c9167069-758b-48c8-8de2-73bb2a3e5e26",
+                              "title": "CrCL >60ml/phút",
+                              "topics": [
+                                {
+                                  "id": "b24e0ac7-f9d7-4d93-afd6-8e0353547575",
+                                  "title": "peramivir 600mg TM một lần"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d9a6c798-006d-4b77-9537-06f89004f148",
+          "title": "mediosis",
+          "topics": [
+            {
+              "id": "93c174f4-b49d-4d6a-aa75-d597b16741f4",
+              "title": "Burkholderia pseudomallei",
+              "topics": [
+                {
+                  "id": "505bd284-ec95-4c18-8b66-58645dd4bad5",
+                  "title": "Điều trị tấn công ",
+                  "summaries": [
+                    {
+                      "id": "12173582-d865-4e99-811e-c1760c9ceb81",
+                      "range": "(0,1)",
+                      "topicId": "dd833146-e929-4d3b-945c-82007cec7a2e"
+                    }
+                  ],
+                  "topics": [
+                    {
+                      "id": "7d230825-a538-446a-b23b-8e8022221a93",
+                      "title": "thuốc",
+                      "topics": [
+                        {
+                          "id": "a86bf528-d886-414e-9935-e0e5699a43cb",
+                          "title": "Ceftazidim 2g TTM mỗi 6h"
+                        },
+                        {
+                          "id": "ba9b5d20-e5df-48f7-9ae1-ecc6883cd3a3",
+                          "title": "Hoặc meropenem 1-2g TTM trong 3h,",
+                          "topics": [
+                            {
+                              "id": "037ad25e-2ba3-4b93-8b31-3dfaf8fc9bb8",
+                              "title": " lặp lại mỗi 8h"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ea030fec-12cc-47a0-82d8-8eb25d08f363",
+                          "title": "TMP-SMX 6-8mg/kg uống (theo liều\nTMP) ",
+                          "topics": [
+                            {
+                              "id": "1a9f7dd1-a460-4f6f-834a-d0f96af92c18",
+                              "title": "2 lần/ngày"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "de097efd-4cea-4db4-a61a-ae786b26ae3a",
+                          "title": "Hoặc doxycyclin 100mg uống ",
+                          "topics": [
+                            {
+                              "id": "b0ad087f-b8d0-41bd-be4c-eb331a0ae5ab",
+                              "title": "2 lần/ngày"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "c98d4f5e-bc2e-4da6-89df-87f2d06e1fc4",
+                          "title": "Đối với phụ nữ có thai",
+                          "topics": [
+                            {
+                              "id": "348651fd-c57c-4d61-8546-476e4b5cdcbd",
+                              "title": "Amoxicillin/acid clavulanic 20mg/5mg/kg",
+                              "topics": [
+                                {
+                                  "id": "3221b106-646a-4999-a6c4-ca9be42af574",
+                                  "title": "uống 3 lần/ngày."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "c45c825d-358c-4e17-b637-98cc3dce86c7",
+                      "title": "thời gian  ",
+                      "topics": [
+                        {
+                          "id": "8f5f94d5-4d3f-465b-b3ca-b2a89cd7ad37",
+                          "title": "check bệnh nền ",
+                          "topics": [
+                            {
+                              "id": "67143156-35e0-4352-a9de-0aa56641e8f8",
+                              "title": "bình thường",
+                              "topics": [
+                                {
+                                  "id": "d3810e4d-25d2-4149-81f1-e3c59121be7e",
+                                  "title": "check kết quả X quang",
+                                  "topics": [
+                                    {
+                                      "id": "8b006f7c-3996-4ee0-b1fe-2eb2835ae832",
+                                      "title": "mờ 1 thuỳ phổi",
+                                      "topics": [
+                                        {
+                                          "id": "2acdfeb6-57c2-404b-a6c0-aadd2c3c5285",
+                                          "title": "2 tuần"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "5b1c5993-2fbc-4768-956c-672614bc87a7",
+                                      "title": "mờ nhiều thuỳ",
+                                      "topics": [
+                                        {
+                                          "id": "ab323c82-13ad-4790-81f4-ca9c065566b9",
+                                          "title": "3 tuần"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "a57df844-126f-4f7b-a572-48ea5324cb98",
+                              "title": "có nhiễm khuẩn huyết",
+                              "topics": [
+                                {
+                                  "id": "b1220624-6956-47fb-a53d-86cf1eb95087",
+                                  "title": "check kết quả X quang",
+                                  "topics": [
+                                    {
+                                      "id": "fa9a25b0-0807-429d-b419-d1bc87b78d5b",
+                                      "title": "mờ 1 thuỳ phổi",
+                                      "topics": [
+                                        {
+                                          "id": "08f51fc9-c67d-4d0f-930a-444058ce77ca",
+                                          "title": "3 tuần"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "0e0c24f6-8a21-491b-b607-302d4a252ee8",
+                                      "title": "mờ nhiều thuỳ",
+                                      "topics": [
+                                        {
+                                          "id": "43de018d-2e53-40d4-9269-2607c75e3e6f",
+                                          "title": "4 tuần"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "f4389225-da2e-4a71-8076-7a7485cdffbb",
+                              "title": "viêm khớp + áp xe",
+                              "topics": [
+                                {
+                                  "id": "47635061-ed51-47da-9d5c-a7127f2a0df4",
+                                  "title": "4 tuần"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "0a81fe9a-bd79-447f-89c3-6277e82b0368",
+                              "title": "viêm xương",
+                              "topics": [
+                                {
+                                  "id": "d227e07c-1584-4996-840b-408e1d527ef9",
+                                  "title": "6 tuần"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b1f41347-f680-4a52-ab0f-70f09a682a92",
+          "title": "Pseudomonas aeruginosa ",
+          "summaries": [
+            {
+              "id": "341fa54e-952c-41bc-8f1c-047aceeb6460",
+              "range": "(1,1)",
+              "topicId": "fe44ccea-6231-4f90-be26-7238a9d7d1c1"
+            },
+            {
+              "id": "716e3b65-7de4-4314-8dae-619ab7994688",
+              "range": "(0,1)",
+              "topicId": "0eb9e090-ec02-4b83-8033-c1bc69192b77"
+            }
+          ],
+          "topics": [
+            {
+              "id": "abcd1182-0d21-4614-98d7-4611f0cbc50f",
+              "title": "Nhạy cảm với \nnhiều nhóm \nkháng sinh",
+              "summaries": [
+                {
+                  "id": "9ca427ea-6460-4b14-8d49-e7e9d94153f0",
+                  "range": "(0,3)",
+                  "topicId": "bf2a8ee8-211d-46f7-98a6-7d9e2c4d7a7c"
+                }
+              ],
+              "topics": [
+                {
+                  "id": "c8633300-59b1-4537-ae6d-4595a386de18",
+                  "title": "piperacillin/tazobactam 4,5g TTM \n",
+                  "topics": [
+                    {
+                      "id": "2c174ee5-b0fe-4f64-803b-c533f8be63be",
+                      "title": "sau đó 4h",
+                      "topics": [
+                        {
+                          "id": "99def7bd-83e4-466b-a98d-6b4239080ab7",
+                          "title": "4,5g TTM mỗi \n6h "
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "9e2899ed-d1fd-4092-be50-0a3238b612f8",
+                  "title": "Hoặc cefepim 2g TTM mỗi 12h  "
+                },
+                {
+                  "id": "5cc7f59a-aca9-4228-8c21-9565cfbd5900",
+                  "title": "Hoặc meropenem 1- 2 g TTM mỗi ",
+                  "topics": [
+                    {
+                      "id": "9e538c6b-f618-4360-a435-a98dea4439fc",
+                      "title": "8h."
+                    }
+                  ]
+                },
+                {
+                  "id": "952d519b-6ea9-4bf6-817c-046b977bef4c",
+                  "title": "Hoặc ceftazidim 2g TTM mỗi 8h  "
+                }
+              ]
+            },
+            {
+              "id": "29ed52bf-4dc2-4fe3-adc6-7655b31c01af",
+              "title": "Kháng với \nceftazidime, \ncefepime",
+              "topics": [
+                {
+                  "id": "2079e562-22fa-4fd6-8847-e76c1fa6cd35",
+                  "title": "Hoặc ceftazidim/avibactam 2,5g \nTTM mỗi 8h "
+                },
+                {
+                  "id": "8791d776-6098-48ae-bbc8-08574d896490",
+                  "title": "Meropenem 1-2 g TTM mỗi 8h "
+                }
+              ]
+            },
+            {
+              "id": "544e25b8-c906-40b8-9fd5-431fd6ffad6e",
+              "title": "người bệnh xơ nang",
+              "topics": [
+                {
+                  "id": "5548cd16-92f8-43b7-af66-9a36d6d620a0",
+                  "title": "khí dung tự phòng",
+                  "topics": [
+                    {
+                      "id": "0d61bdb1-2f03-4b26-a375-af4cd6368e40",
+                      "title": "Tobramycin 300mg, 2 lần/ngày"
+                    },
+                    {
+                      "id": "57e7ab0a-258a-4b87-a8ff-dbae18eca824",
+                      "title": "Colistin 50-75mg (1,5-2,25 MUI), 2 lần/ngày"
+                    },
+                    {
+                      "id": "828b66f2-5696-43da-a982-4ee3a8ed5c4e",
+                      "title": "Aztreonam 75mg, 3 lần/ngày"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b85ea3d8-94c3-48cb-a1f0-a2907be0e24e",
+          "title": "S.pneumoniae",
+          "topics": [
+            {
+              "id": "4a9182e6-7dbd-4e45-b893-1c61b3857a54",
+              "title": "MIC  ≤ 2µg/ml",
+              "summaries": [
+                {
+                  "id": "42baab0b-a558-440d-b3ed-9e3a610210b3",
+                  "range": "(0,0)",
+                  "topicId": "7c875a02-d4b5-4ea6-a663-5fb50f69decc"
+                }
+              ],
+              "topics": [
+                {
+                  "id": "e74f705b-4b16-47d8-a663-1e38f5d38203",
+                  "title": "Nhạy cảm Penicillin ",
+                  "topics": [
+                    {
+                      "id": "594acef6-9f29-4706-a648-7f61e8214312",
+                      "title": "Kháng sinh tĩnh mạch",
+                      "topics": [
+                        {
+                          "id": "daa6da2c-a07c-4e97-8368-ca301e9adbfb",
+                          "title": "Penicillin G 2MIU truyền tĩnh mạch (TTM) mỗi 4h"
+                        },
+                        {
+                          "id": "15342d1f-83c2-427d-8dda-a76019cd032c",
+                          "title": "Hoặc ceftriaxon 1-2g TTM mỗi 24h"
+                        },
+                        {
+                          "id": "a670069d-ea96-4602-821d-bbb90663ccb0",
+                          "title": "Hoặc cefotaxim 2g TTM mỗi 8h"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "d9428248-d40c-47da-ba96-e1b4fd6e5871",
+                      "title": "▪ Kháng sinh uống",
+                      "topics": [
+                        {
+                          "id": "8787804d-3f40-4f78-8309-8eea28a6139a",
+                          "title": "Amoxicillin 1g uống 3 lần/ngày"
+                        },
+                        {
+                          "id": "44589e80-b28e-45ff-ad85-9c511f564479",
+                          "title": "Hoặc doxycyclin 100mg uống 2 lần/ngày"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c4d2af96-4984-4798-9c0a-485112db7a10",
+              "title": "MIC  > 4µg/m",
+              "topics": [
+                {
+                  "id": "9bb86f03-5143-408b-b78c-fe5659d4b1ab",
+                  "title": "Trung gian hoặc đề kháng với Penicillin ",
+                  "topics": [
+                    {
+                      "id": "38a978eb-fc4c-45a3-9f30-548a2930da8d",
+                      "title": " MIC Penicillin ≥ 8 µg/m",
+                      "topics": [
+                        {
+                          "id": "97ecba74-615d-430d-9fbf-e9c65abe1595",
+                          "title": "Vancomycin 15-20mg/kg TTM 8-12h ."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "eb37340d-b8ec-4078-8595-e0b59e84966c",
+                      "title": "4<MIC Penicillin < 8 µg/m",
+                      "topics": [
+                        {
+                          "id": "e0d29913-6ac6-490c-a625-fb831959afc8",
+                          "title": "Hoặc ceftarolin 600mg TTM mỗi 12h"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,82 @@
+=== Sheet 0: Logic Chart ===
+- bước 3 chẩn đoán loại trừ sau khi có kết quả chẩn đoán nguyên nhân
+  - không tìm ra nguyên nhân
+    - check yếu tố nguy cơ
+      - thuốc đang điều trị
+        - amiodaron
+        - thuốc lợi tiểu
+        - corticoid
+        - dùng thuốc tránh thai
+        - dùng thuốc nhỏ mũi có tinh dầu
+      - biểu hiện lâm sàng
+        - cơ năng
+          - Ho khạc đờm lẫn máu, sút cân.
+          - Đau ngực dữ dội, ho ra máu, khó thở, có thể có dấu hiệu sốc
+          - sốt rất cao 39 – 40⁰C kéo dài 1 – 2 tuần lễ, đau ngực dữdội, ho sặc sụa. Sau vài ngày ho khạc đờm có máu và mủ.
+          - Ho khạc đờm kéo dài, có thể ho máu, sốt nhẹ về chiều, gầy sút cân.
+          - ho khạc đờm mủ kéo dài, sốt
+          - khó thở, ho, khò khè, sốt. trong thời gian ngắn
+        - thực thể
+          - hội chứng đông đặc,
+          - tiếng cọ màng phổi
+          - rì rào phế nang giảm/ tiếng thổi hang ở đỉnh phổi
+          - Có ran ẩm, ran nổ cố định.
+      - bệnh đồng mắc
+        - sau đẻ, phẫu thuật vùng tiểu khung,gãy xương, bất động lâu ngày, viêm tắc tĩnh mạch chi dưới
+        - nhiễm giun đũa
+        - tiếp xúc với người bị lao
+--- Floating Topic ---
+- Lao phổi
+  - chỉ định
+    - X-quang ngực
+      - nốt, thâm nhiễm, hang xơ
+    - AFB, PCR (Gene Xpert, Hain test…), nuôi cấy tìm vi khuẩn lao
+      - Tìm thấy trực khuẩn kháng cồn - toan
+      - enExpert MTB dương tính
+      - nuôi cấy MGIT dương tính MTB.
+--- Floating Topic ---
+- Tắc động mạch phổi
+  - chỉ định
+    - Điện tâm đồ
+      - S sâu ở D1, Q sâu ở D3,
+      - trục phải
+      - block nhánh phải.
+    - Khí máu
+      - PaO2 giảm và PaCO2 giảm
+    - D-dimer
+      - tăng
+    - Chụp cắt lớp vi tính có tiêm thuốc cản quang tĩnh mạch
+      - mạch phổi bị tắc
+--- Floating Topic ---
+- Ung thư phổi
+  - chỉ định
+    - X-quang
+      - hình mờ
+      - hình thả bóng
+    - Chụp cắt lớp vi tính ngực
+    - soi phế quản và sinh thiết
+--- Floating Topic ---
+- Giãn phế quản bội nhiễm
+  - chỉ định
+    - cắt lớp vi tính lồng ngực lớp mỏng 1mm độ phân giải cao
+--- Floating Topic ---
+- Viêm phổi với cơ chế tự miễn do dùng thuốc
+  - ngừng thuốc
+--- Floating Topic ---
+- Phù phổi bán cấp không điển hình
+  - Chụp lại phim X quang
+    - xuất hiện đường kerley A, B
+    - hình ảnh tái phân bố tuần hoàn phổi
+    - mờ lan tỏa từ rốn phổi sang 2 bên
+--- Floating Topic ---
+- Viêm phổi do hít
+  - chỉ định
+    - X-quang phổi
+      - mờ đều thuỳ dưới hoặc một bên phổi
+--- Floating Topic ---
+- Hội chứng Loeffler phổi
+  - chỉ định
+    - xét nghiệm máu+ soi đờm
+      - Tăng bạch cầu ái toan trong máu và trong đờm
+    - Xquang ngực
+      - có nhiều dải mờ đa dạng và biến mất sau một tuần lễ

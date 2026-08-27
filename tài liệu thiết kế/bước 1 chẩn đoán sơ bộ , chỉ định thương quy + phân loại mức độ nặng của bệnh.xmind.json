@@ -1,0 +1,770 @@
+[
+  {
+    "title": "Mind Map",
+    "topic": {
+      "id": "a81aaf27-912e-45dd-ae58-e1afe91a4a62",
+      "title": "bước 1 chẩn đoán sơ bộ , chỉ định thương quy + phân loại mức độ nặng của bệnh"
+    },
+    "floating_topics": [
+      {
+        "id": "45a1a912-fefd-4351-beb8-05a4ce646171",
+        "title": "khám",
+        "summaries": [
+          {
+            "id": "c16d3921-e0c4-455f-b03a-13b97b1d49f9",
+            "range": "(1,2)",
+            "topicId": "6787f48d-18c0-480e-896e-595904d91d21"
+          },
+          {
+            "id": "9cbcdcea-0b36-4d02-ac0e-5ee328de76c7",
+            "range": "(0,0)",
+            "topicId": "847f7bb8-f2c4-4072-8393-5565392ea602"
+          }
+        ],
+        "topics": [
+          {
+            "id": "81ddb189-5a58-4dbf-acaf-c2cb2d1e3e91",
+            "title": "chỉ số sinh tồn",
+            "topics": [
+              {
+                "id": "2ef21be2-e8bb-4a03-a918-1c1e9af8e850",
+                "title": "nhịp thở",
+                "topics": [
+                  {
+                    "id": "e121de2e-b6ae-47ed-ae91-85d6f8edd483",
+                    "title": ">30",
+                    "topics": [
+                      {
+                        "id": "b0292dac-c694-4f9d-a6b6-4da4c08b596a",
+                        "title": "20"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "2f5befe4-ece2-428e-ace6-a0b13be993ad",
+                "title": "huyết áp",
+                "topics": [
+                  {
+                    "id": "007530aa-a025-42b3-bfbd-8e0aacbac9fd",
+                    "title": "TÂM THU<90",
+                    "topics": [
+                      {
+                        "id": "63f023f8-3928-4b3d-85a4-c86dbc11a599",
+                        "title": "20"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "60a27172-b079-4d54-9438-85bcf50e976d",
+                    "title": "đang bù dịch tích cực"
+                  }
+                ]
+              },
+              {
+                "id": "523948f7-8ee0-4fff-83f9-5252c75748d8",
+                "title": "thay đổi tri giác",
+                "topics": [
+                  {
+                    "id": "3c6aeafe-6633-43fa-a095-4d8bc57e8bb6",
+                    "title": "20"
+                  }
+                ]
+              },
+              {
+                "id": "188cad85-4d62-42b5-ae55-650db555d586",
+                "title": "thân nhiệt",
+                "topics": [
+                  {
+                    "id": "4febd9a9-65b7-4668-960c-5ebadb0059f6",
+                    "title": "<35 hoặc >=40",
+                    "topics": [
+                      {
+                        "id": "8d3d58d4-556c-4c75-a4d1-8cc9960791f2",
+                        "title": "15"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "f5a667a5-b0d7-4afe-8b84-3bca930a8b43",
+                    "title": "<36"
+                  }
+                ]
+              },
+              {
+                "id": "9e3ed260-715e-4a4a-9261-44f2ce9d49b1",
+                "title": "mạch",
+                "topics": [
+                  {
+                    "id": "da643909-ecc8-4ab0-9028-dd6451c58f18",
+                    "title": ">125l/p",
+                    "topics": [
+                      {
+                        "id": "cc209c76-5eb0-4021-9082-59879e3aa960",
+                        "title": "10"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "55cc75c8-2286-460e-931a-82bfaf41d74d",
+                "title": "SPO2 ",
+                "topics": [
+                  {
+                    "id": "c3bf9aec-fa5f-40cf-b4ec-f03a106e37c5",
+                    "title": "<90",
+                    "topics": [
+                      {
+                        "id": "50a55e04-956d-49ee-b714-5798e71a9008",
+                        "title": "10"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "78575ae8-9e90-466c-8e6f-43484f6d474a",
+            "title": "Triệu chứng cơ năng",
+            "topics": [
+              {
+                "id": "90b12e0f-d7fd-4040-9f48-3292893b3621",
+                "title": "sốt",
+                "topics": [
+                  {
+                    "id": "6ed78e96-b87d-46d7-b259-3de812d85aa7",
+                    "title": ">39",
+                    "topics": [
+                      {
+                        "id": "8ece7fc2-dfdb-4533-affd-46fc95121275",
+                        "title": "vi khuẩn điển hình"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "59b63e79-b4d7-462b-98c8-812932d4f8fa",
+                    "title": "nhẹ ",
+                    "topics": [
+                      {
+                        "id": "2d060bb2-5d32-4d5e-88d2-7be0ea08804e",
+                        "title": "nghi ngờ",
+                        "topics": [
+                          {
+                            "id": "642c0f60-dfe9-496e-a2f5-0ffe1a165132",
+                            "title": "vi khuẩn không điển hình"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "f5c38d86-3bbd-40b7-bae4-d6e266704aa6",
+                "title": "ho ",
+                "topics": [
+                  {
+                    "id": "f5e49a75-c480-4a69-a2cd-3dad82149896",
+                    "title": "khan"
+                  },
+                  {
+                    "id": "161eba05-6dba-4065-a38d-cfa44b372ce8",
+                    "title": "có đờm"
+                  }
+                ]
+              },
+              {
+                "id": "2c334b41-b56d-4c3f-953c-ee34f631aaff",
+                "title": "đau ngực kiểu màng phổi",
+                "topics": [
+                  {
+                    "id": "78dc0579-74b2-4ec6-a33b-c6009ac80c87",
+                    "title": "parapleural pneumonia"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "db2f579b-305f-41cd-9bbd-7b224216627a",
+            "title": "Triệu chứng thực thể",
+            "summaries": [
+              {
+                "id": "05860d6c-7155-44cd-97f8-2628656c90a1",
+                "range": "(1,1)",
+                "topicId": "29803cab-f981-4c25-b327-20d14ae6bb42"
+              },
+              {
+                "id": "3a297d2d-5aae-4f73-9dd6-efbf63c4b0d2",
+                "range": "(0,0)",
+                "topicId": "b285b715-b550-434d-9087-975d4aacc2b8"
+              }
+            ],
+            "topics": [
+              {
+                "id": "2c42eb6e-642d-4a8c-a47d-c2324581d7ac",
+                "title": "toàn trạng ",
+                "topics": [
+                  {
+                    "id": "892bae79-56ab-44bd-99ca-dcd52c4149ad",
+                    "title": "môi khô"
+                  },
+                  {
+                    "id": "3b1574b7-d2bc-4329-bca8-f54df979e878",
+                    "title": "hơi thở hôi"
+                  },
+                  {
+                    "id": "dab0118c-3e15-44bd-81e3-d356b4d33db2",
+                    "title": "lưỡi bẩn"
+                  }
+                ]
+              },
+              {
+                "id": "2a59a761-8764-4c1e-a909-45a5e9f5bb12",
+                "title": "hô hấp",
+                "topics": [
+                  {
+                    "id": "6c331097-c5cb-4025-a428-f3b90fa70ef4",
+                    "title": "rung thanh tăng"
+                  },
+                  {
+                    "id": "08487d62-b773-442c-9325-c76c3a469a98",
+                    "title": "gõ đục",
+                    "topics": [
+                      {
+                        "id": "4b9ddd47-434d-4926-b957-9d392af5e687",
+                        "title": "rì rào phế nang giảm"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "0a18f49a-fdc3-4b02-a530-53666e31aab2",
+                    "title": "ran nổ"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "22c6c570-41fb-47cb-ba38-f6603dc29451",
+        "title": "tuổi",
+        "summaries": [
+          {
+            "id": "15735f9d-6e96-4e6b-b755-0b7dce41d98a",
+            "range": "(1,2)",
+            "topicId": "0a9412aa-87b1-4eec-8009-79c4657044a2"
+          }
+        ],
+        "topics": [
+          {
+            "id": "1972f56a-dcf3-42f1-afc8-ee669ba17659",
+            "title": ">65"
+          },
+          {
+            "id": "2322a240-bd1e-4809-9f0e-e17743df5739",
+            "title": "nam"
+          },
+          {
+            "id": "a40f518b-0291-4d88-944e-d4cd76eadac6",
+            "title": "nữ",
+            "topics": [
+              {
+                "id": "e9819060-e176-4279-8325-33ab425ab754",
+                "title": "-10"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "01552e21-240b-4196-8f7b-eed133f540a6",
+        "title": "bệnh đồng mắc",
+        "summaries": [
+          {
+            "id": "67081f7f-80e4-448d-8705-dd2aa510509a",
+            "range": "(1,5)",
+            "topicId": "918d4f70-4771-40d2-9164-832771742f27"
+          },
+          {
+            "id": "891ef590-8803-438f-aa95-8eacce8d9dab",
+            "range": "(6,7)",
+            "topicId": "aa238d7e-2b25-40b8-913e-11934b3d2475"
+          }
+        ],
+        "topics": [
+          {
+            "id": "ca1d7c57-16f8-4390-949f-df0609cca2ae",
+            "title": "suy giảm miễn dịch",
+            "topics": [
+              {
+                "id": "f808303e-92e5-4d01-84cb-db3ad7b21714",
+                "title": "skip khám trch cơ năng"
+              }
+            ]
+          },
+          {
+            "id": "67900753-6352-4308-83c0-d18a90eee980",
+            "title": "ung thư",
+            "topics": [
+              {
+                "id": "98e92e34-288f-4a62-a48d-617d31643a07",
+                "title": "+30"
+              }
+            ]
+          },
+          {
+            "id": "c83e6544-a648-4f51-82af-1008d98b6a6b",
+            "title": "gan",
+            "topics": [
+              {
+                "id": "3af0bf0e-6cd6-4117-939a-9d4b174fc3b6",
+                "title": "20"
+              }
+            ]
+          },
+          {
+            "id": "90383da0-5b13-4079-adea-69ac94551cb5",
+            "title": "suy tim ứ huyết",
+            "topics": [
+              {
+                "id": "a2cd3de8-3250-4ff3-863b-32712cf26b3b",
+                "title": "10"
+              }
+            ]
+          },
+          {
+            "id": "792d7b06-ef97-4189-a0cc-38512d101e3f",
+            "title": "mạch máu não",
+            "topics": [
+              {
+                "id": "5050a0c2-5ecb-4505-9775-6df516beb2ae",
+                "title": "10"
+              }
+            ]
+          },
+          {
+            "id": "5b3f80b4-51a1-4a38-9c6c-c9d33aca99e8",
+            "title": "thận",
+            "topics": [
+              {
+                "id": "b7200de3-b9b8-4c6d-b8f0-c88b6e5595de",
+                "title": "19"
+              }
+            ]
+          },
+          {
+            "id": "4cd1eb8c-3cb9-4e46-925b-a18a71a3ba19",
+            "title": "suy hô hấp cần thông khí cơ học",
+            "topics": [
+              {
+                "id": "cd03be99-43b0-4dc7-9c1a-e165fe3e76b9",
+                "title": "thở máy , đặt nội khí quản"
+              }
+            ]
+          },
+          {
+            "id": "b913bf6d-b61f-42a7-b15d-1f50e006025e",
+            "title": "SỐc nhiễm khuẩn đang dùng vận mạch",
+            "topics": [
+              {
+                "id": "1debe03c-66df-4692-bb5e-a45e4dcd717f",
+                "title": "dobutamin , noradrenalin"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "title": "curb 65",
+        "topics": [
+          {
+            "id": "acd093de-c92c-4184-bd2c-e637b2683d2f",
+            "title": "0-1 yếu tố"
+          },
+          {
+            "id": "b8b14a9c-5c13-4363-aaeb-77e5672b2efa",
+            "title": "2 điểm"
+          },
+          {
+            "id": "b2c971e0-2a41-4c8f-b826-1c343c62c76e",
+            "title": "3 điểm"
+          },
+          {
+            "id": "636e8b6a-627e-4aa1-82f9-7dc0cabdad0e",
+            "title": "4-5 điểm"
+          }
+        ]
+      },
+      {
+        "id": "2634a5e1-c5b9-4818-a81e-c4c2c6f2da17",
+        "title": "nội trú"
+      },
+      {
+        "id": "2ff870ee-a15b-494f-8afa-2f3c19125cd7",
+        "title": "điều trị nội trú ngắn hạn"
+      },
+      {
+        "id": "37051bde-b8cc-4aa9-9067-f172586cc27d",
+        "title": "Điều trị ngoại trú"
+      },
+      {
+        "id": "4a05860b-ab46-4feb-9e13-fb893168421c",
+        "title": "ICU"
+      },
+      {
+        "id": "9affc82c-cc08-4184-bb7e-a4089189858b",
+        "title": "nơi sinh sống ",
+        "topics": [
+          {
+            "id": "676d45a1-fc0d-4573-9881-94c5d89f72e9",
+            "title": "viện dưỡng lão , nhà điều dưỡng",
+            "topics": [
+              {
+                "id": "0d82c0e2-7579-4792-a7e5-9c97ab7e8b8d",
+                "title": "+10"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "title": "fine",
+        "topics": [
+          {
+            "id": "09c4a47b-7976-4323-96f4-10a05d40ba65",
+            "title": "<=70",
+            "topics": [
+              {
+                "id": "6a835f7c-7fb2-47cb-bfda-1b6f20f6901e",
+                "title": "I-II"
+              }
+            ]
+          },
+          {
+            "id": "e7aa6d5d-9f6b-4ac4-a157-880b3368dd97",
+            "title": "71-90",
+            "topics": [
+              {
+                "id": "6991f703-6a5b-45ff-9c69-e82f492c70c4",
+                "title": "III"
+              }
+            ]
+          },
+          {
+            "id": "c223776b-3b5c-4581-b16e-edf16fccf5b0",
+            "title": "91-130",
+            "topics": [
+              {
+                "id": "054aa428-fab3-4bfb-a80a-514ba7d20be6",
+                "title": "IV"
+              }
+            ]
+          },
+          {
+            "id": "14e03bd2-4d12-4be7-b185-dc10ff869a4f",
+            "title": ">130",
+            "topics": [
+              {
+                "id": "7daf63ce-2d55-4fd2-b80a-cdb722695761",
+                "title": "V"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fe8be591-0476-40d8-8690-8dc4e28cc953",
+        "title": "ATS"
+      },
+      {
+        "id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "title": "3/9TIÊU CHUẨN PHỤ"
+      },
+      {
+        "id": "89d198a5-d8dd-4c9e-82b5-a03fe0e16bcc",
+        "title": "Hỏi bệnh"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "d3c17c2e-7b4d-4587-a93c-f34ac8afab63",
+        "end1Id": "acd093de-c92c-4184-bd2c-e637b2683d2f",
+        "end2Id": "37051bde-b8cc-4aa9-9067-f172586cc27d",
+        "end1Title": "0-1 yếu tố",
+        "end2Title": "Điều trị ngoại trú",
+        "title": ""
+      },
+      {
+        "id": "56a1e090-30ed-4bfe-9a47-b953e00f41d2",
+        "end1Id": "b8b14a9c-5c13-4363-aaeb-77e5672b2efa",
+        "end2Id": "2ff870ee-a15b-494f-8afa-2f3c19125cd7",
+        "end1Title": "2 điểm",
+        "end2Title": "điều trị nội trú ngắn hạn",
+        "title": ""
+      },
+      {
+        "id": "a36d9c72-6a67-4bfe-826f-3410fe48403e",
+        "end1Id": "b2c971e0-2a41-4c8f-b826-1c343c62c76e",
+        "end2Id": "2634a5e1-c5b9-4818-a81e-c4c2c6f2da17",
+        "end1Title": "3 điểm",
+        "end2Title": "nội trú",
+        "title": ""
+      },
+      {
+        "id": "a8407950-1481-45e1-a330-1bb8176207a7",
+        "end1Id": "636e8b6a-627e-4aa1-82f9-7dc0cabdad0e",
+        "end2Id": "4a05860b-ab46-4feb-9e13-fb893168421c",
+        "end1Title": "4-5 điểm",
+        "end2Title": "ICU",
+        "title": ""
+      },
+      {
+        "id": "45d10929-4119-40ba-9781-641cfc840524",
+        "end1Id": "63323f46-5390-48e2-8eec-fedbc0ada3fa",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": "ure >7",
+        "end2Title": "curb 65",
+        "title": ""
+      },
+      {
+        "id": "45b49ef2-d8c5-4f9b-a359-1f5a0d1414c9",
+        "end1Id": "e121de2e-b6ae-47ed-ae91-85d6f8edd483",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": ">30",
+        "end2Title": "curb 65",
+        "title": ""
+      },
+      {
+        "id": "8c5c730c-b1e5-46b8-81e5-0d32f35942d0",
+        "end1Id": "007530aa-a025-42b3-bfbd-8e0aacbac9fd",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": "TÂM THU<90",
+        "end2Title": "curb 65",
+        "title": ""
+      },
+      {
+        "id": "2498571e-167b-4fc9-a54a-0bf41f988cdd",
+        "end1Id": "1972f56a-dcf3-42f1-afc8-ee669ba17659",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": ">65",
+        "end2Title": "curb 65",
+        "title": ""
+      },
+      {
+        "id": "f3696dee-4c56-4576-82be-6c42c5f45656",
+        "end1Id": "523948f7-8ee0-4fff-83f9-5252c75748d8",
+        "end2Id": "e28dc3b3-4392-45c0-a1a5-c7ea8d038c98",
+        "end1Title": "thay đổi tri giác",
+        "end2Title": "curb 65",
+        "title": ""
+      },
+      {
+        "id": "f946408f-2f44-4d55-80d6-bf86228736be",
+        "end1Id": "847f7bb8-f2c4-4072-8393-5565392ea602",
+        "end2Id": "9affc82c-cc08-4184-bb7e-a4089189858b",
+        "end1Title": "cộng điểm",
+        "end2Title": "nơi sinh sống ",
+        "title": ""
+      },
+      {
+        "id": "a1ce886c-8e2e-4f76-a857-00f569851c68",
+        "end1Id": "918d4f70-4771-40d2-9164-832771742f27",
+        "end2Id": "9affc82c-cc08-4184-bb7e-a4089189858b",
+        "end1Title": "cộng điểm",
+        "end2Title": "nơi sinh sống ",
+        "title": ""
+      },
+      {
+        "id": "7c7310ea-1ef8-4d53-a639-c58d252ef0ad",
+        "end1Id": "0a9412aa-87b1-4eec-8009-79c4657044a2",
+        "end2Id": "9affc82c-cc08-4184-bb7e-a4089189858b",
+        "end1Title": "cộng điểm",
+        "end2Title": "nơi sinh sống ",
+        "title": ""
+      },
+      {
+        "id": "6ab78740-328e-43e7-9a13-f337ec261e05",
+        "end1Id": "48d56fe3-ac45-46ee-bd6c-b5b58863b627",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "cộng điểm",
+        "end2Title": "fine",
+        "title": ""
+      },
+      {
+        "id": "fabf72a5-0204-483c-94e9-c24d385d52aa",
+        "end1Id": "0d82c0e2-7579-4792-a7e5-9c97ab7e8b8d",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "+10",
+        "end2Title": "fine",
+        "title": ""
+      },
+      {
+        "id": "123b383e-283d-42a2-9ba0-0f07ff828050",
+        "end1Id": "6fc27b60-92d1-443f-a2e3-64707f0d2ad0",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "cộng điểm",
+        "end2Title": "fine",
+        "title": ""
+      },
+      {
+        "id": "e0fc33e4-bda4-4f64-89bd-daef52f0c0e0",
+        "end1Id": "63d18e02-507f-43ff-8bd9-33888c88f123",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "+10",
+        "end2Title": "fine",
+        "title": ""
+      },
+      {
+        "id": "4d845195-2262-4926-94dd-d66f4437590d",
+        "end1Id": "e4e0ec1e-65c6-4d63-938f-124aa8dd8fb8",
+        "end2Id": "a73e2575-ddf1-4e37-abd4-e6796ba48174",
+        "end1Title": "cộng điểm",
+        "end2Title": "fine",
+        "title": ""
+      },
+      {
+        "id": "88be4e5b-621f-437a-8133-29762cad0711",
+        "end1Id": "08f8c45a-5471-46de-a66a-bdfad6fcf6d5",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "PLT <100",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ",
+        "title": ""
+      },
+      {
+        "id": "8074d190-c67d-461b-bac5-ca661f9d5b7b",
+        "end1Id": "cbb51573-191f-4c0c-a306-7dfe49b3dbbb",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "wbc <4 g/l",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ",
+        "title": ""
+      },
+      {
+        "id": "cbc9f452-0437-4678-9e07-f0712326654d",
+        "end1Id": "55b7305e-2ab0-4b1f-8b64-b71b14beac02",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "PaO2/FIO2<250",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ",
+        "title": ""
+      },
+      {
+        "id": "8dee7977-a509-445a-87d5-ac18ed9532d8",
+        "end1Id": "f133c09a-7011-46a6-90c1-33575ba6f30d",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "tổn thương nhiều thùy phổi",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ",
+        "title": ""
+      },
+      {
+        "id": "86371208-5822-492c-9f15-1a7adc4f4d0d",
+        "end1Id": "e121de2e-b6ae-47ed-ae91-85d6f8edd483",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": ">30",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ",
+        "title": ""
+      },
+      {
+        "id": "0330d86a-1d09-411b-9e64-ce06545f5d35",
+        "end1Id": "523948f7-8ee0-4fff-83f9-5252c75748d8",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "thay đổi tri giác",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ",
+        "title": ""
+      },
+      {
+        "id": "68ed21d8-f783-45a0-a28d-c93e79cc1b7f",
+        "end1Id": "f5a667a5-b0d7-4afe-8b84-3bca930a8b43",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "<36",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ",
+        "title": ""
+      },
+      {
+        "id": "9b7b1f04-50fe-4d09-bc32-deb148b2c411",
+        "end1Id": "60a27172-b079-4d54-9438-85bcf50e976d",
+        "end2Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end1Title": "đang bù dịch tích cực",
+        "end2Title": "3/9TIÊU CHUẨN PHỤ",
+        "title": ""
+      },
+      {
+        "id": "5a87f4c6-526a-4d7f-a9f9-c3f30cb7466e",
+        "end1Id": "aa238d7e-2b25-40b8-913e-11934b3d2475",
+        "end2Id": "fe8be591-0476-40d8-8690-8dc4e28cc953",
+        "end1Title": "1/2 tiêu chuẩn chính",
+        "end2Title": "ATS",
+        "title": ""
+      },
+      {
+        "id": "0566ef59-778d-4ff9-854c-7de3fc317523",
+        "end1Id": "da54b637-4134-4dcc-b898-2ab89628acae",
+        "end2Id": "fe8be591-0476-40d8-8690-8dc4e28cc953",
+        "end1Title": "3/9TIÊU CHUẨN PHỤ",
+        "end2Title": "ATS",
+        "title": ""
+      },
+      {
+        "id": "5b53f9c0-207f-405b-ac94-ad1ab9350983",
+        "end1Id": "89d198a5-d8dd-4c9e-82b5-a03fe0e16bcc",
+        "end2Id": "22c6c570-41fb-47cb-ba38-f6603dc29451",
+        "end1Title": "Hỏi bệnh",
+        "end2Title": "tuổi",
+        "title": ""
+      },
+      {
+        "id": "3352ec70-b126-4f88-ae47-f2d861056e76",
+        "end1Id": "89d198a5-d8dd-4c9e-82b5-a03fe0e16bcc",
+        "end2Id": "01552e21-240b-4196-8f7b-eed133f540a6",
+        "end1Title": "Hỏi bệnh",
+        "end2Title": "bệnh đồng mắc",
+        "title": ""
+      },
+      {
+        "id": "d6fdb6dd-970c-49bf-b13d-826102bbcaea",
+        "end1Id": "fe8be591-0476-40d8-8690-8dc4e28cc953",
+        "end2Id": "4a05860b-ab46-4feb-9e13-fb893168421c",
+        "end1Title": "ATS",
+        "end2Title": "ICU",
+        "title": ""
+      },
+      {
+        "id": "4ab331f2-afbc-4bcc-a050-d1bb42619e2c",
+        "end1Id": "6a835f7c-7fb2-47cb-bfda-1b6f20f6901e",
+        "end2Id": "37051bde-b8cc-4aa9-9067-f172586cc27d",
+        "end1Title": "I-II",
+        "end2Title": "Điều trị ngoại trú",
+        "title": ""
+      },
+      {
+        "id": "d0ee259b-a338-4c9a-98db-772ca9f2d526",
+        "end1Id": "6991f703-6a5b-45ff-9c69-e82f492c70c4",
+        "end2Id": "2ff870ee-a15b-494f-8afa-2f3c19125cd7",
+        "end1Title": "III",
+        "end2Title": "điều trị nội trú ngắn hạn",
+        "title": ""
+      },
+      {
+        "id": "ef22e3bd-4657-4533-aebb-487a58f10dab",
+        "end1Id": "054aa428-fab3-4bfb-a80a-514ba7d20be6",
+        "end2Id": "2634a5e1-c5b9-4818-a81e-c4c2c6f2da17",
+        "end1Title": "IV",
+        "end2Title": "nội trú",
+        "title": ""
+      },
+      {
+        "id": "b664ff11-4bbc-4906-9558-2a6761135369",
+        "end1Id": "7daf63ce-2d55-4fd2-b80a-cdb722695761",
+        "end2Id": "4a05860b-ab46-4feb-9e13-fb893168421c",
+        "end1Title": "V",
+        "end2Title": "ICU",
+        "title": ""
+      }
+    ]
+  }
+]
