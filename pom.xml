@@ -123,11 +123,8 @@
                             <outfile>${project.build.directory}/pecomed-cdss.exe</outfile>
                             <jar>${project.build.directory}/${project.build.finalName}.jar</jar>
                             <errTitle>PECOMED CAP CDSS</errTitle>
-                            <classPath>
-                                <mainClass>vn.pecomed.cdss.PecomedApplication</mainClass>
-                            </classPath>
                             <jre>
-                                <path>%JAVA_HOME%;%PATH%</path>
+                                <path>jre;%JAVA_HOME%;%PATH%</path>
                                 <minVersion>17</minVersion>
                                 <opts>
                                     <opt>--enable-native-access=ALL-UNNAMED</opt>
