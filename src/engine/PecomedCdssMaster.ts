@@ -53,7 +53,8 @@ export class PecomedCdssMaster {
       !!patient.imaging?.pleuralEffusion,
       patient.comorbidities,
       patient.imaging,
-      step1Result.severityLevel
+      step1Result.severityLevel,
+      patient.age
     );
 
     // 3. Step 3: Exclusion, Differential Diagnoses & Renal Safety

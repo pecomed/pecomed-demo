@@ -126,19 +126,27 @@ export class Step3ExclusionEngine {
     }
 
     // 5. Viêm phổi do thuốc / Tự miễn (Drug-induced / Autoimmune Pneumonitis)
-    if (s.amiodaroneOrMethotrexateUse) {
+    const drugInducedRisk = s.amiodaroneOrMethotrexateUse || s.diureticUse || s.corticoidUse || s.nasalOilDropUse;
+    if (drugInducedRisk) {
+      const triggerDrugs: string[] = [];
+      if (s.amiodaroneOrMethotrexateUse) triggerDrugs.push('Amiodarone / Methotrexate / Bleomycin / Nitrofurantoin');
+      if (s.diureticUse) triggerDrugs.push('Thuốc lợi tiểu');
+      if (s.corticoidUse) triggerDrugs.push('Corticosteroid dùng kéo dài');
+      if (s.nasalOilDropUse) triggerDrugs.push('Thuốc nhỏ mũi có tinh dầu (lipoid pneumonia)');
       diffs.push({
-        condition: 'Viêm phổi kẽ do thuốc (Amiodarone / Methotrexate Toxicity)',
-        probability: 'Cao (High)',
+        condition: 'Viêm phổi kẽ / Viêm phổi lipoid do thuốc (Drug-induced Pneumonitis)',
+        probability: s.amiodaroneOrMethotrexateUse ? 'Cao (High)' : 'Nghi ngờ (Moderate)',
         keyClues: [
-          'Bệnh nhân đang điều trị Amiodarone (loạn nhịp), Methotrexate (viêm khớp), Bleomycin hoặc Nitrofurantoin.',
-          'Khó thở tăng dần, ho khan, hình ảnh thâm nhiễm kẽ hai bên không đáp ứng kháng sinh.'
+          `Bệnh nhân đang sử dụng: ${triggerDrugs.join('; ')}.`,
+          'Khó thở tăng dần, ho khan, hình ảnh thâm nhiễm kẽ hai bên không đáp ứng kháng sinh.',
+          'Thuốc nhỏ mũi tinh dầu: viêm phổi lipoid ngoại sinh (dầu hít vào phế quản gây phản ứng viêm mạn).'
         ],
         suggestedExclusionTests: [
           'Đo chức năng thông khí phổi (DLCO giảm).',
-          'Rửa phế quản phế nang (BAL) loại trừ nhiễm trùng cơ hội.'
+          'Rửa phế quản phế nang (BAL) loại trừ nhiễm trùng cơ hội.',
+          'Nếu nghi viêm phổi lipoid: BAL tìm đại thực bào nhuộm Oil Red O dương tính.'
         ],
-        clinicalAction: 'Ngừng ngay thuốc nghi ngờ, xem xét liệu pháp Corticosteroid liều cao.'
+        clinicalAction: 'Ngừng ngay thuốc nghi ngờ, xem xét liệu pháp Corticosteroid liều cao. Đối với thuốc nhỏ mũi tinh dầu: ngừng vĩnh viễn.'
       });
     }
 

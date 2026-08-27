@@ -179,6 +179,8 @@ export interface PathogenEngineResult {
   indicatedDiagnosticTests?: string[];
   chestCtScanIndications?: string[];
   riskWarnings?: string[];
+  predictedVirusSubtypes?: string[];
+  fungalFallback?: boolean;
 }
 
 export interface DifferentialDiagnosisItem {

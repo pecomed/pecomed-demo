@@ -313,6 +313,7 @@ export class Step5TargetedEngine {
       // Mycoplasma / General
       meds.push('Azithromycin 500mg ngày 1, sau đó 250mg/ngày từ ngày 2-5 (hoặc 500mg/ngày x 3 ngày)');
       meds.push('Doxycycline 100mg uống 2 lần/ngày trong 7-10 ngày');
+      meds.push('Minocycline 200mg uống/TTM x 1 liều nạp, sau đó 100mg uống/TTM 2 lần/ngày');
       meds.push('Levofloxacin 750mg uống 1 lần/ngày HOẶC Moxifloxacin 400mg uống 1 lần/ngày');
     }
 

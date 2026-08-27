@@ -186,4 +186,88 @@ describe('PECOMED CAP CDSS - Complete Clinical Engine Test Suite', () => {
     const diffsPe = step3.evaluateDifferentialDiagnoses({ suddenSharpChestPainDyspnea: true, immobilizationOrDvtOrOralContraceptives: true });
     expect(diffsPe.some(d => d.condition.includes('Thuyên tắc'))).toBe(true);
   });
+
+  // TEST 12: Virus subtype prediction based on risk factors (spec lines 80-93)
+  it('12. Virus subtype prediction: winter=Influenza, immunosuppressed=CMV+RSV+Parainfluenza, marrow transplant=RSV, age>65=HMPV', () => {
+    // Winter season -> Influenza
+    const r1 = step2.evaluate('INPATIENT_WARD', { winterSeason: true }, false, {}, {}, undefined, 45);
+    expect(r1.predictedVirusSubtypes).toBeDefined();
+    expect(r1.predictedVirusSubtypes!.some(v => v.includes('Influenza'))).toBe(true);
+
+    // Immunosuppressive therapy -> CMV
+    const r2 = step2.evaluate('ICU', { immunosuppressiveTherapy: true }, false, { immunocompromised: true }, {}, undefined, 50);
+    expect(r2.predictedVirusSubtypes!.some(v => v.includes('CMV'))).toBe(true);
+    expect(r2.predictedVirusSubtypes!.some(v => v.includes('Parainfluenza'))).toBe(true);
+
+    // Bone marrow transplant -> RSV
+    const r3 = step2.evaluate('INPATIENT_WARD', { boneMarrowTransplant: true }, false, {}, {}, undefined, 40);
+    expect(r3.predictedVirusSubtypes!.some(v => v.includes('RSV'))).toBe(true);
+
+    // Age >65 -> HMPV
+    const r4 = step2.evaluate('OUTPATIENT', {}, false, {}, {}, undefined, 70);
+    expect(r4.predictedVirusSubtypes!.some(v => v.includes('HMPV'))).toBe(true);
+
+    // Age <10 -> HMPV
+    const r5 = step2.evaluate('OUTPATIENT', {}, false, {}, {}, undefined, 5);
+    expect(r5.predictedVirusSubtypes!.some(v => v.includes('HMPV'))).toBe(true);
+  });
+
+  // TEST 13: Fungal fallback when no specific risk factors
+  it('13. Fungal fallback warning when no bacterial risk factors found', () => {
+    // Patient with no special risk factors -> fungal fallback should trigger
+    const r = step2.evaluate('OUTPATIENT', {}, false, {}, {}, undefined, 45);
+    expect(r.fungalFallback).toBe(true);
+    expect(r.riskWarnings.some(w => w.includes('NẤM'))).toBe(true);
+
+    // Patient WITH risk factors -> no fungal fallback
+    const r2 = step2.evaluate('ICU', { priorPseudomonasIsolation: true }, false, {}, {}, undefined, 45);
+    expect(r2.fungalFallback).toBe(false);
+  });
+
+  // TEST 14: Minocycline in Mycoplasma atypical regimen
+  it('14. Minocycline included in Mycoplasma pneumoniae targeted regimen', () => {
+    const r = step5.getAtypicalRegimen('Mycoplasma pneumoniae');
+    expect(r.targetedAntibiotics.some(a => a.includes('Minocycline'))).toBe(true);
+    expect(r.targetedAntibiotics.some(a => a.includes('200mg'))).toBe(true);
+
+    // Legionella should NOT have Minocycline
+    const rL = step5.getAtypicalRegimen('Legionella pneumophila');
+    expect(rL.targetedAntibiotics.some(a => a.includes('Minocycline'))).toBe(false);
+  });
+
+  // TEST 15: Psychiatric illness -> Klebsiella risk mapping (spec line 29)
+  it('15. Psychiatric illness maps to Klebsiella pneumoniae risk', () => {
+    // Outpatient: Klebsiella not in default list, so psychiatric adds it explicitly
+    const r = step2.evaluate('OUTPATIENT', {}, false, { psychiatricIllness: true }, {}, undefined, 50);
+    expect(r.likelyPathogens.some(p => p.includes('Klebsiella') && p.includes('tâm thần'))).toBe(true);
+    expect(r.esblRisk).toBe(true);
+
+    // Inpatient: Klebsiella already in default list, esblRisk still elevated
+    const r2 = step2.evaluate('INPATIENT_WARD', {}, false, { psychiatricIllness: true }, {}, undefined, 50);
+    expect(r2.esblRisk).toBe(true);
+    expect(r2.likelyPathogens.some(p => p.includes('Klebsiella'))).toBe(true);
+  });
+
+  // TEST 16: Gamma globulin deficiency -> S. pneumoniae + H. influenzae (spec line 46-47)
+  it('16. Gamma globulin deficiency maps to S. pneumoniae + H. influenzae', () => {
+    const r = step2.evaluate('INPATIENT_WARD', {}, false, { gammaGlobulinDeficiency: true }, {}, undefined, 45);
+    expect(r.likelyPathogens.some(p => p.includes('Gamma globulin'))).toBe(true);
+  });
+
+  // TEST 17: Drug-induced pneumonitis with expanded triggers (spec lines 5-10)
+  it('17. Drug-induced pneumonitis triggers: diuretic, corticoid, nasal oil drops', () => {
+    // Diuretic use -> drug-induced pneumonitis differential
+    const d1 = step3.evaluateDifferentialDiagnoses({ diureticUse: true });
+    expect(d1.some(d => d.condition.includes('thuốc') || d.condition.includes('Drug'))).toBe(true);
+    expect(d1[0].keyClues.some(c => c.includes('lợi tiểu'))).toBe(true);
+
+    // Nasal oil drops -> lipoid pneumonia
+    const d2 = step3.evaluateDifferentialDiagnoses({ nasalOilDropUse: true });
+    expect(d2.some(d => d.condition.includes('lipoid') || d.condition.includes('Drug'))).toBe(true);
+    expect(d2[0].keyClues.some(c => c.includes('tinh dầu'))).toBe(true);
+
+    // Corticoid use -> drug-induced
+    const d3 = step3.evaluateDifferentialDiagnoses({ corticoidUse: true });
+    expect(d3.some(d => d.condition.includes('Drug') || d.condition.includes('thuốc'))).toBe(true);
+  });
 });

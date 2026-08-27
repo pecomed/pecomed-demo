@@ -8,7 +8,8 @@ export class Step2PathogenEngine {
     pleuralEffusion: boolean = false,
     comorbidities?: PatientComorbidities,
     imaging?: PatientImagingAndIntervention,
-    severityLevel?: string
+    severityLevel?: string,
+    age?: number
   ): PathogenEngineResult {
     const r = riskProfile || {};
     const c = comorbidities || {};
@@ -39,7 +40,8 @@ export class Step2PathogenEngine {
       r.immunosuppressiveTherapy ||
       c.diabetes ||
       c.cerebrovascularDisease ||
-      c.alcoholism
+      c.alcoholism ||
+      c.psychiatricIllness
     );
 
     const atypicalRisk = !!(
@@ -101,6 +103,16 @@ export class Step2PathogenEngine {
       likelyPathogens.push('Virus đường hô hấp (Cúm A/B, Adenovirus, Rhinovirus)');
       if (c.smoking) likelyPathogens.push('H. influenzae / M. catarrhalis (Cơ địa hút thuốc)');
       if (c.alcoholism) likelyPathogens.push('Klebsiella pneumoniae (Cơ địa nghiện rượu)');
+    }
+
+    // Cross-setting comorbidity mappings (from spec)
+    if (c.psychiatricIllness) {
+      if (!likelyPathogens.some(p => p.includes('Klebsiella'))) {
+        likelyPathogens.push('Klebsiella pneumoniae (Cơ địa bệnh tâm thần / TB mạn não)');
+      }
+    }
+    if (c.gammaGlobulinDeficiency) {
+      likelyPathogens.push('S. pneumoniae + H. influenzae (Giảm Gamma globulin huyết thanh)');
     }
 
     // 3. Indicated Diagnostic Tests
@@ -176,6 +188,30 @@ export class Step2PathogenEngine {
     if (anaerobeRisk) {
       riskWarnings.push('LƯU Ý: Nguy cơ viêm phổi hít / vi khuẩn kỵ khí. Ưu tiên Beta-lactam/chất ức chế Beta-lactamase (Ampicillin/Sulbactam, Amox/Clav) hoặc bổ sung Clindamycin / Metronidazole.');
     }
+    // 6. Virus Subtype Prediction (from spec lines 80-93)
+    const predictedVirusSubtypes: string[] = [];
+    if (r.winterSeason) {
+      predictedVirusSubtypes.push('Influenza A/B (Mùa đông - dịch tễ cao)');
+    }
+    if (isImmunocompromised) {
+      predictedVirusSubtypes.push('Parainfluenza virus (Suy giảm miễn dịch)');
+      predictedVirusSubtypes.push('RSV - Respiratory Syncytial Virus (Suy giảm miễn dịch)');
+    }
+    if (r.immunosuppressiveTherapy) {
+      predictedVirusSubtypes.push('CMV - Cytomegalovirus (Đang dùng thuốc ức chế miễn dịch)');
+    }
+    if (r.boneMarrowTransplant) {
+      predictedVirusSubtypes.push('RSV - Respiratory Syncytial Virus (Sau ghép tủy xương)');
+    }
+    if ((age !== undefined && (age > 65 || age < 10)) || c.nursingHomeResident) {
+      predictedVirusSubtypes.push('HMPV - Human Metapneumovirus (Tuổi >65 hoặc <10 / Viện dưỡng lão)');
+    }
+
+    // 7. Fungal Fallback (spec: "không đáp ứng với các điều kiện → căn nguyên nấm")
+    const fungalFallback = !pseudomonasRisk && !mrsaRisk && !esblRisk && !melioidosisRisk && !pjpRisk && !anaerobeRisk && !atypicalRisk;
+    if (fungalFallback) {
+      riskWarnings.push('LƯU Ý: Khi không tìm được yếu tố nguy cơ vi khuẩn đặc hiệu nào, cần xem xét CĂN NGUYÊN NẤM (Aspergillus, Cryptococcus, Histoplasma) đặc biệt ở bệnh nhân không đáp ứng kháng sinh kinh nghiệm sau 72h.');
+    }
 
     return {
       likelyPathogens,
@@ -188,7 +224,9 @@ export class Step2PathogenEngine {
       pjpRisk,
       indicatedDiagnosticTests,
       chestCtScanIndications,
-      riskWarnings
+      riskWarnings,
+      predictedVirusSubtypes: predictedVirusSubtypes.length > 0 ? predictedVirusSubtypes : undefined,
+      fungalFallback
     };
   }
 }

@@ -50,6 +50,8 @@ export interface PatientComorbidities {
   hivCd4Under200?: boolean;
   neutropenia?: boolean;
   recentInfluenzaOrMeasles?: boolean;
+  psychiatricIllness?: boolean;
+  gammaGlobulinDeficiency?: boolean;
 }
 
 export interface PatientImagingAndIntervention {
@@ -76,6 +78,9 @@ export interface ClinicalSymptoms {
   immobilizationOrDvtOrOralContraceptives?: boolean;
   chronicCopiousPurulentSputum?: boolean;
   amiodaroneOrMethotrexateUse?: boolean;
+  diureticUse?: boolean;
+  corticoidUse?: boolean;
+  nasalOilDropUse?: boolean;
   swallowingDifficultyOrSedation?: boolean;
   asthmaHistoryOrParasiteExposure?: boolean;
 }
@@ -101,6 +106,8 @@ export interface ClinicalRiskProfile {
   birdBatExposurePsittacosis?: boolean;
   postInfluenzaSuperinfection?: boolean;
   neutropeniaRisk?: boolean;
+  boneMarrowTransplant?: boolean;
+  winterSeason?: boolean;
 }
 
 export interface ExclusionRiskTriggers {
@@ -160,6 +167,8 @@ export interface PathogenEngineResult {
   indicatedDiagnosticTests: string[];
   chestCtScanIndications: string[];
   riskWarnings: string[];
+  predictedVirusSubtypes?: string[];
+  fungalFallback?: boolean;
 }
 
 export interface DifferentialDiagnosisItem {

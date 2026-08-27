@@ -251,6 +251,25 @@ export const Step2Pathogen: React.FC<Step2Props> = ({
             </div>
           )}
 
+          {/* Predicted Virus Subtypes */}
+          {result?.predictedVirusSubtypes && result.predictedVirusSubtypes.length > 0 && (
+            <div className="bg-violet-50/80 p-5 rounded-2xl border border-violet-200 text-xs space-y-2">
+              <div className="font-bold text-violet-950">Dự Đoán Phân Type Virus Theo Yếu Tố Nguy Cơ:</div>
+              <ul className="space-y-1 text-violet-900 list-disc list-inside">
+                {result.predictedVirusSubtypes.map((v, idx) => (
+                  <li key={idx}>{v}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Fungal Fallback Warning */}
+          {result?.fungalFallback && (
+            <div className="bg-orange-50 p-4 rounded-2xl border border-orange-300 text-xs text-orange-900">
+              <span className="font-bold">⚠️ LƯU Ý CĂN NGUYÊN NẤM:</span> Không tìm thấy yếu tố nguy cơ vi khuẩn đặc hiệu. Nếu bệnh nhân không đáp ứng kháng sinh kinh nghiệm sau 72h, cần xem xét <strong>căn nguyên nấm</strong> (Aspergillus, Cryptococcus, Histoplasma) — chỉ định soi tìm nấm đờm/BAL.
+            </div>
+          )}
+
         </div>
 
       </div>

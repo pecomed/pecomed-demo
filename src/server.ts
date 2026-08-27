@@ -60,8 +60,8 @@ app.post('/api/cdss/step1/severity', (req: Request, res: Response) => {
 // -------------------------------------------------------------
 app.post('/api/cdss/step2/pathogen', (req: Request, res: Response) => {
   try {
-    const { careSetting = 'OUTPATIENT', riskProfile, pleuralEffusion = false, comorbidities, imaging, severityLevel } = req.body;
-    const result = master.step2.evaluate(careSetting, riskProfile, pleuralEffusion, comorbidities, imaging, severityLevel);
+    const { careSetting = 'OUTPATIENT', riskProfile, pleuralEffusion = false, comorbidities, imaging, severityLevel, age } = req.body;
+    const result = master.step2.evaluate(careSetting, riskProfile, pleuralEffusion, comorbidities, imaging, severityLevel, age);
     res.json(result);
   } catch (err: any) {
     res.status(400).json({ error: err.message });
