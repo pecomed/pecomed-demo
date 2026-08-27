@@ -12,124 +12,200 @@ import {
   OralStepDownResult,
   Response72hRequest,
   TreatmentResponse72hResult,
+  FullCdssReport,
   PatientCase,
-  FullCdssReport
+  AntibioticInfo
 } from '../types/cdss';
 
-const API_BASE = '/api/cdss';
+const API_BASE_URL = '/api/cdss';
 
-async function postJson<T>(endpoint: string, data: any): Promise<T> {
-  const res = await fetch(`${API_BASE}${endpoint}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
-
-  if (!res.ok) {
-    const errorText = await res.text();
-    throw new Error(`API Error [${res.status}]: ${errorText || res.statusText}`);
-  }
-
-  return res.json();
-}
-
+// -------------------------------------------------------------
+// Health Check
+// -------------------------------------------------------------
 export async function checkHealth(): Promise<boolean> {
   try {
-    const res = await fetch(`${API_BASE}/health`, { method: 'GET' });
+    const res = await fetch(`${API_BASE_URL}/health`, { method: 'GET' });
     return res.ok;
   } catch {
     return false;
   }
 }
 
-export async function evaluateStep1Severity(data: Step1Request): Promise<SeverityAssessmentResult> {
+// -------------------------------------------------------------
+// API Calls with Offline Fallback
+// -------------------------------------------------------------
+
+export async function evaluateStep1Severity(req: Step1Request): Promise<SeverityAssessmentResult> {
   try {
-    return await postJson<SeverityAssessmentResult>('/step1/severity', data);
-  } catch (err) {
-    console.warn('API call failed, running client-side fallback:', err);
-    return fallbackCalculateStep1(data);
+    const res = await fetch(`${API_BASE_URL}/step1/severity`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req)
+    });
+    if (res.ok) return await res.json();
+  } catch (e) {
+    console.warn('Backend unavailable, using local calculation for Step 1', e);
   }
+  return fallbackCalculateStep1(req);
 }
 
-export async function evaluateStep2Pathogen(data: Step2Request): Promise<PathogenEngineResult> {
+export async function evaluateStep2Pathogen(req: Step2Request): Promise<PathogenEngineResult> {
   try {
-    return await postJson<PathogenEngineResult>('/step2/pathogen', data);
-  } catch (err) {
-    console.warn('API call failed, running client-side fallback:', err);
-    return fallbackCalculateStep2(data);
+    const res = await fetch(`${API_BASE_URL}/step2/pathogen`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req)
+    });
+    if (res.ok) return await res.json();
+  } catch (e) {
+    console.warn('Backend unavailable, using local calculation for Step 2', e);
   }
+  return fallbackCalculateStep2(req);
 }
 
-export async function evaluateStep3Exclusion(data: ExclusionRiskTriggers): Promise<ExclusionAssessmentResult> {
+export async function evaluateStep3Exclusion(req: ExclusionRiskTriggers): Promise<ExclusionAssessmentResult> {
   try {
-    return await postJson<ExclusionAssessmentResult>('/step3/exclusion', data);
-  } catch (err) {
-    console.warn('API call failed, running client-side fallback:', err);
-    return fallbackCalculateStep3(data);
+    const res = await fetch(`${API_BASE_URL}/step3/exclusion`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req)
+    });
+    if (res.ok) return await res.json();
+  } catch (e) {
+    console.warn('Backend unavailable, using local calculation for Step 3', e);
   }
+  return fallbackCalculateStep3(req);
 }
 
 export async function evaluateStep4Empirical(data: any): Promise<EmpiricalRegimenResult> {
   try {
-    return await postJson<EmpiricalRegimenResult>('/step4/empirical', data);
-  } catch (err) {
-    console.warn('API call failed, running client-side fallback:', err);
-    return fallbackCalculateStep4(data);
+    const res = await fetch(`${API_BASE_URL}/step4/empirical`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) return await res.json();
+  } catch (e) {
+    console.warn('Backend unavailable, using local calculation for Step 4', e);
   }
+  return fallbackCalculateStep4(data);
 }
 
-export async function evaluateStep5Targeted(data: Step5TargetedRequest): Promise<TargetedRegimenResult> {
+export async function evaluateStep5Targeted(req: Step5TargetedRequest): Promise<TargetedRegimenResult> {
   try {
-    return await postJson<TargetedRegimenResult>('/step5/targeted', data);
-  } catch (err) {
-    console.warn('API call failed, running client-side fallback:', err);
-    return fallbackCalculateStep5Targeted(data);
+    const res = await fetch(`${API_BASE_URL}/step5/targeted`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req)
+    });
+    if (res.ok) return await res.json();
+  } catch (e) {
+    console.warn('Backend unavailable, using local calculation for Step 5 targeted', e);
   }
+  return fallbackCalculateStep5Targeted(req);
 }
 
-export async function evaluateStep5OralStepDown(data: OralStepDownRequest): Promise<OralStepDownResult> {
+export async function evaluateStep5OralStepDown(req: OralStepDownRequest): Promise<OralStepDownResult> {
   try {
-    return await postJson<OralStepDownResult>('/step5/oral-step-down', data);
-  } catch (err) {
-    console.warn('API call failed, running client-side fallback:', err);
-    return fallbackCalculateOralStepDown(data);
+    const res = await fetch(`${API_BASE_URL}/step5/oral-step-down`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req)
+    });
+    if (res.ok) return await res.json();
+  } catch (e) {
+    console.warn('Backend unavailable, using local calculation for Step 5 oral step-down', e);
   }
+  return fallbackCalculateOralStepDown(req);
 }
 
-export async function evaluateStep5Response72h(data: Response72hRequest): Promise<TreatmentResponse72hResult> {
+export async function evaluateStep5Response72h(req: Response72hRequest): Promise<TreatmentResponse72hResult> {
   try {
-    return await postJson<TreatmentResponse72hResult>('/step5/72h-response', data);
-  } catch (err) {
-    console.warn('API call failed, running client-side fallback:', err);
-    return fallbackCalculateResponse72h(data);
+    const res = await fetch(`${API_BASE_URL}/step5/72h-response`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req)
+    });
+    if (res.ok) return await res.json();
+  } catch (e) {
+    console.warn('Backend unavailable, using local calculation for Step 5 72h response', e);
   }
+  return fallbackCalculate72hResponse(req);
 }
 
-export async function evaluateFullCase(data: PatientCase): Promise<FullCdssReport> {
-  return await postJson<FullCdssReport>('/evaluate', data);
+export async function evaluateFullCase(patient: PatientCase): Promise<FullCdssReport> {
+  const step1 = await evaluateStep1Severity({
+    age: patient.age,
+    gender: patient.gender,
+    vitals: patient.vitals,
+    comorbidities: patient.comorbidities,
+    labs: patient.labs,
+    imaging: patient.imaging,
+    symptoms: patient.symptoms
+  });
+
+  const setting = step1.recommendedCareSetting.includes('ICU')
+    ? 'ICU'
+    : step1.recommendedCareSetting.includes('Nội trú')
+    ? 'INPATIENT_WARD'
+    : 'OUTPATIENT';
+
+  const step2 = await evaluateStep2Pathogen({
+    careSetting: setting,
+    riskProfile: patient.riskProfile,
+    pleuralEffusion: patient.imaging?.pleuralEffusion
+  });
+
+  const step3 = await evaluateStep3Exclusion(patient.exclusionTriggers || {});
+
+  const step4 = await evaluateStep4Empirical({
+    careSetting: setting,
+    age: patient.age,
+    hasComorbidities: !!(patient.comorbidities?.copdChronicLung || patient.comorbidities?.diabetes || patient.comorbidities?.renalDisease),
+    hasPseudomonasRisk: step2.pseudomonasRisk,
+    hasMrsaRisk: step2.mrsaRisk,
+    hasAtypicalRisk: step2.atypicalRisk,
+    hasEsblRisk: step2.esblRisk,
+    hasAnaerobeRisk: step2.anaerobeRisk,
+    hasMelioidosisRisk: step2.melioidosisRisk
+  });
+
+  return {
+    timestamp: new Date().toISOString(),
+    patientId: patient.patientId,
+    severityAssessment: step1,
+    pathogenRiskAssessment: step2,
+    exclusionAssessment: step3,
+    empiricalRegimen: step4
+  };
 }
 
 // -------------------------------------------------------------
-// CLIENT-SIDE FALLBACK ENGINES (Guarantees 100% Offline Support)
+// Pure TypeScript Fallback Calculators (100% Offline Capability)
 // -------------------------------------------------------------
 
 function fallbackCalculateStep1(req: Step1Request): SeverityAssessmentResult {
-  const age = req.age || 0;
+  const age = req.age;
   const vitals = req.vitals || {};
   const labs = req.labs || {};
   const comorb = req.comorbidities || {};
   const img = req.imaging || {};
 
   // CURB-65
-  let curb = 0;
+  let curb: number | null = 0;
   const curbDetails: string[] = [];
-  if (vitals.alteredMentalStatus) { curb++; curbDetails.push('Rối loạn tri giác (C)'); }
-  if (labs.ureaMmolL && labs.ureaMmolL > 7.0) { curb++; curbDetails.push('Ure máu > 7 mmol/L (U)'); }
-  if (vitals.respiratoryRate && vitals.respiratoryRate >= 30) { curb++; curbDetails.push('Tần số thở ≥ 30 lần/phút (R)'); }
-  if ((vitals.systolicBp && vitals.systolicBp < 90) || (vitals.diastolicBp && vitals.diastolicBp <= 60)) {
-    curb++; curbDetails.push('Huyết áp tâm thu < 90 hoặc tâm trương ≤ 60 mmHg (B)');
+  if (labs.ureaMmolL !== undefined && labs.ureaMmolL !== null) {
+    if (vitals.alteredMentalStatus) { curb++; curbDetails.push('Rối loạn tri giác (C)'); }
+    if (labs.ureaMmolL > 7.0) { curb++; curbDetails.push('Ure máu > 7 mmol/L (U)'); }
+    if (vitals.respiratoryRate && vitals.respiratoryRate >= 30) { curb++; curbDetails.push('Tần số thở ≥ 30 lần/phút (R)'); }
+    if ((vitals.systolicBp && vitals.systolicBp < 90) || (vitals.diastolicBp && vitals.diastolicBp <= 60)) {
+      curb++; curbDetails.push('Huyết áp tâm thu < 90 hoặc tâm trương ≤ 60 mmHg (B)');
+    }
+    if (age >= 65) { curb++; curbDetails.push('Tuổi ≥ 65 (65)'); }
+  } else {
+    curb = null;
+    curbDetails.push('Chưa có xét nghiệm Ure máu (Dùng CRB-65 thay thế)');
   }
-  if (age >= 65) { curb++; curbDetails.push('Tuổi ≥ 65 (65)'); }
 
   // CRB-65
   let crb = 0;
@@ -142,8 +218,8 @@ function fallbackCalculateStep1(req: Step1Request): SeverityAssessmentResult {
   if (age >= 65) { crb++; crbDetails.push('Tuổi ≥ 65 (65)'); }
 
   // PSI
-  let psi = req.gender === 'FEMALE' ? age - 10 : age;
-  const psiDetails: string[] = [req.gender === 'FEMALE' ? `Nữ: ${age} - 10 = ${psi} điểm` : `Nam: ${age} điểm`];
+  let psi = req.gender === 'FEMALE' || req.gender === 'Nữ' ? Math.max(0, age - 10) : age;
+  const psiDetails: string[] = [req.gender === 'FEMALE' || req.gender === 'Nữ' ? `Nữ: ${age} - 10 = ${psi} điểm` : `Nam: ${age} điểm`];
   if (comorb.nursingHomeResident) { psi += 10; psiDetails.push('Viện dưỡng lão: +10'); }
   if (comorb.neoplasm) { psi += 30; psiDetails.push('Bệnh ác tính: +30'); }
   if (comorb.liverDisease) { psi += 20; psiDetails.push('Bệnh gan: +20'); }
@@ -178,43 +254,41 @@ function fallbackCalculateStep1(req: Step1Request): SeverityAssessmentResult {
   if ((age <= 50 && vitals.respiratoryRate && vitals.respiratoryRate >= 25) || (age > 50 && vitals.respiratoryRate && vitals.respiratoryRate >= 30)) {
     smart += 1; smartDetails.push('Nhịp thở tăng theo tuổi (R: +1)');
   }
-  if (vitals.heartRate && vitals.heartRate >= 125) { smart += 1; smartDetails.push('Mạch ≥ 125 bpm (T: +1)'); }
-  if (vitals.alteredMentalStatus) { smart += 1; smartDetails.push('Rối loạn ý thức (C: +1)'); }
-  if ((age <= 50 && vitals.spo2 && vitals.spo2 <= 93) || (age > 50 && vitals.spo2 && vitals.spo2 <= 90)) {
-    smart += 2; smartDetails.push('Oxy hóa máu giảm nặng (O: +2)');
+  if (vitals.heartRate && vitals.heartRate >= 125) { smart += 1; smartDetails.push('Nhịp tim nhanh ≥ 125 bpm (T: +1)'); }
+  if (vitals.alteredMentalStatus) { smart += 1; smartDetails.push('Lú lẫn cấp tính (C: +1)'); }
+  if ((age <= 50 && ((labs.pao2Fio2Ratio && labs.pao2Fio2Ratio < 333) || (vitals.spo2 && vitals.spo2 <= 93))) ||
+      (age > 50 && ((labs.pao2Fio2Ratio && labs.pao2Fio2Ratio < 250) || (vitals.spo2 && vitals.spo2 <= 90)))) {
+    smart += 2; smartDetails.push('Giảm oxy máu theo tuổi (O: +2)');
   }
-  if (labs.arterialPh && labs.arterialPh < 7.35) { smart += 2; smartDetails.push('pH động mạch < 7.35 (P: +2)'); }
-
-  const smartRisk = smart >= 5 ? 'Nguy cơ rất cao cần hỗ trợ hô hấp / vận mạch (IRVS: 67%)' :
-                    smart >= 3 ? 'Nguy cơ trung bình (IRVS: 12.7%)' : 'Nguy cơ thấp (IRVS: ~4%)';
+  if (labs.arterialPh && labs.arterialPh < 7.35) { smart += 2; smartDetails.push('pH < 7.35 (P: +2)'); }
 
   // ATS 2007
-  const atsMajorMet: string[] = [];
-  if (img.septicShockVasopressors || vitals.onAggressiveFluidResuscitation) atsMajorMet.push('Sốc nhiễm khuẩn cần dùng vận mạch');
-  if (img.mechanicalVentilation) atsMajorMet.push('Suy hô hấp cần thở máy xâm nhập');
+  const atsMajor: string[] = [];
+  const atsMinor: string[] = [];
+  if (img.septicShockVasopressors || vitals.onAggressiveFluidResuscitation) atsMajor.push('Sốc nhiễm khuẩn cần thuốc vận mạch');
+  if (img.mechanicalVentilation) atsMajor.push('Suy hô hấp cần thở máy xâm nhập');
+  if (vitals.respiratoryRate && vitals.respiratoryRate >= 30) atsMinor.push('Nhịp thở ≥ 30 lần/phút');
+  if (labs.pao2Fio2Ratio && labs.pao2Fio2Ratio <= 250) atsMinor.push('PaO2/FiO2 ≤ 250');
+  if (img.multilobarInfiltrates) atsMinor.push('Thâm nhiễm nhiều thùy');
+  if (vitals.alteredMentalStatus) atsMinor.push('Rối loạn ý thức');
+  if (labs.ureaMmolL && labs.ureaMmolL >= 7.14) atsMinor.push('Ure máu ≥ 7.14 mmol/L');
+  if (labs.wbcGL && labs.wbcGL < 4.0) atsMinor.push('Bạch cầu máu < 4.0 G/L');
+  if (labs.plateletsGL && labs.plateletsGL < 100) atsMinor.push('Tiểu cầu < 100 G/L');
+  if (vitals.temperature && vitals.temperature < 36.0) atsMinor.push('Hạ thân nhiệt < 36.0°C');
+  if (vitals.systolicBp && vitals.systolicBp < 90) atsMinor.push('Tụt huyết áp');
 
-  const atsMinorMet: string[] = [];
-  if (vitals.respiratoryRate && vitals.respiratoryRate >= 30) atsMinorMet.push('Nhịp thở ≥ 30 lần/phút');
-  if (labs.pao2Fio2Ratio && labs.pao2Fio2Ratio <= 250) atsMinorMet.push('PaO2/FiO2 ≤ 250');
-  if (img.multilobarInfiltrates) atsMinorMet.push('Tổn thương nhiều thùy trên X-quang/CT');
-  if (vitals.alteredMentalStatus) atsMinorMet.push('Lú lẫn / mất định hướng');
-  if (labs.ureaMmolL && labs.ureaMmolL >= 7.14) atsMinorMet.push('Ure máu ≥ 7.14 mmol/L');
-  if (labs.wbcGL && labs.wbcGL < 4.0) atsMinorMet.push('Bạch cầu máu < 4.0 G/L');
-  if (labs.plateletsGL && labs.plateletsGL < 100) atsMinorMet.push('Tiểu cầu < 100 G/L');
-  if (vitals.temperature && vitals.temperature < 36.0) atsMinorMet.push('Hạ thân nhiệt < 36.0°C');
-  if (vitals.systolicBp && vitals.systolicBp < 90) atsMinorMet.push('Tụt huyết áp cần bù dịch tích cực');
+  const atsSevereCap = atsMajor.length >= 1 || atsMinor.length >= 3;
 
-  const atsSevere = atsMajorMet.length >= 1 || atsMinorMet.length >= 3;
-
-  let severity = 'Nhẹ (Mild)';
+  // Care Setting
   let careSetting = 'Ngoại trú (Nhẹ)';
+  let severityLevel = 'Nhẹ (Mild)';
 
-  if (atsSevere || smart >= 5 || curb >= 3 || psi > 130) {
-    severity = 'Nặng (Severe) / Nguy kịch';
-    careSetting = 'ICU (Khoa Hồi sức tích cực)';
-  } else if (curb === 2 || (psi >= 71 && psi <= 130) || smart >= 3) {
-    severity = 'Trung bình (Moderate)';
-    careSetting = 'Nội trú (Khoa Nội tổng quát / Hô hấp)';
+  if (atsSevereCap || smart >= 5 || (curb !== null && curb >= 3) || crb >= 3 || psi > 130) {
+    careSetting = 'ICU (Rất nặng / Nguy kịch)';
+    severityLevel = 'Nặng (Severe) / Nguy kịch';
+  } else if ((curb !== null && curb === 2) || crb === 2 || (psi >= 71 && psi <= 130) || smart >= 3) {
+    careSetting = 'Nội trú (Trung bình)';
+    severityLevel = 'Trung bình (Moderate)';
   }
 
   return {
@@ -226,32 +300,31 @@ function fallbackCalculateStep1(req: Step1Request): SeverityAssessmentResult {
     psiClass,
     psiDetails,
     smartCopScore: smart,
-    smartCopRisk: smartRisk,
+    smartCopRisk: smart >= 5 ? 'Nguy cơ rất cao cần IRVS (67%)' : smart >= 3 ? 'Nguy cơ cao (33%)' : 'Nguy cơ thấp (~4%)',
     smartCopDetails: smartDetails,
-    atsSevereCap: atsSevere,
-    atsMajorCount: atsMajorMet.length,
-    atsMinorCount: atsMinorMet.length,
-    atsMajorCriteriaMet: atsMajorMet,
-    atsMinorCriteriaMet: atsMinorMet,
-    severityLevel: severity,
+    atsSevereCap,
+    atsMajorCount: atsMajor.length,
+    atsMinorCount: atsMinor.length,
+    atsMajorCriteriaMet: atsMajor,
+    atsMinorCriteriaMet: atsMinor,
+    severityLevel,
     recommendedCareSetting: careSetting,
     syndromeSummary: [
-      'Hội chứng nhiễm trùng / nhiễm độc: Sốt/hạ thân nhiệt, môi khô, lưỡi bẩn, hơi thở hôi.',
-      'Hội chứng đông đặc nhu mô phổi: Rung thanh tăng, gõ đục, rì rào phế nang giảm, ran nổ/ran ẩm.'
+      'Hội chứng nhiễm trùng / nhiễm độc hô hấp dưới',
+      'Hội chứng đông đặc nhu mô phổi'
     ],
     routineLabOrders: [
-      '1. Tổng phân tích tế bào máu ngoại vi (CTM): WBC, NEU, PLT, Hct.',
-      '2. Sinh hóa máu: Ure, Creatinine, eGFR, Men gan (AST, ALT), Glucose, Điện giải đồ.',
-      '3. Dấu ấn viêm: Định lượng Procalcitonin (PCT) hoặc CRP định lượng.',
-      '4. Chẩn đoán hình ảnh: X-quang phổi thẳng / Nghiêng hoặc CT ngực liều thấp.',
-      '5. Vi sinh: Nhuộm soi và cấy đờm + Kháng sinh đồ; Cấy máu x 2 mẫu trước khi dùng KS.'
+      '1. Tổng phân tích tế bào máu (CTM), Đếm bạch cầu, CRP/PCT.',
+      '2. Sinh hóa máu: Ure, Creatinine (tính eGFR), Điện giải đồ, Đường máu, Men gan.',
+      '3. X-quang phổi thẳng / Cắt lớp vi tính ngực.',
+      '4. Cấy đờm + Kháng sinh đồ và Cấy máu 2 vị trí trước kháng sinh.'
     ],
     clinicalNotes: [
       careSetting.includes('ICU')
-        ? 'Bệnh nhân có chỉ định nhập khoa ICU khẩn cấp do suy hô hấp / huyết động không ổn định.'
+        ? 'Bệnh nhân thỏa tiêu chuẩn nhập ICU khẩn cấp (ATS/IDSA nặng hoặc SMART-COP cao).'
         : careSetting.includes('Nội trú')
-        ? 'Chỉ định nhập viện điều trị nội trú theo dõi sát SpO2 và đáp ứng kháng sinh.'
-        : 'Đủ điều kiện điều trị ngoại trú an toàn, hướng dẫn bệnh nhân tái khám sau 48-72 giờ.'
+        ? 'Chỉ định điều trị nội trú tại Khoa Nội Hô hấp / Nội Tổng hợp.'
+        : 'Đủ điều kiện điều trị ngoại trú an toàn, hẹn tái khám sau 48-72 giờ.'
     ]
   };
 }
@@ -341,182 +414,342 @@ function fallbackCalculateStep3(req: ExclusionRiskTriggers): ExclusionAssessment
 }
 
 function fallbackCalculateStep4(data: any): EmpiricalRegimenResult {
-  const setting = data.careSetting || 'OUTPATIENT';
-  const pseudo = !!data.hasPseudomonasRisk;
-  const mrsa = !!data.hasMrsaRisk;
+  const setting = String(data.careSetting || 'OUTPATIENT');
+  const pseudo = !!data.hasPseudomonasRisk || !!data.suspectPseudomonas;
+  const mrsa = !!data.hasMrsaRisk || !!data.suspectMrsa;
 
-  if (setting === 'ICU' || pseudo || mrsa) {
+  const primary: AntibioticInfo[] = [];
+  const alternative: AntibioticInfo[] = [];
+  const addOns: AntibioticInfo[] = [];
+  const stepDown: AntibioticInfo[] = [];
+
+  if (setting.includes('ICU') || setting.includes('Rất nặng')) {
+    if (pseudo) {
+      primary.push({
+        name: 'Piperacillin / Tazobactam (hoặc Cefepime / Meropenem)',
+        dose: 'Pip/Tazo 4.5g TTM mỗi 6h (truyền kéo dài 3-4h) HOẶC Cefepime 2g TTM mỗi 8h HOẶC Meropenem 1g TTM mỗi 8h',
+        route: 'IV',
+        role: 'Kháng sinh Beta-lactam kháng Trực khuẩn mủ xanh (Antipseudomonal)',
+        drugClass: 'Antipseudomonal Beta-lactam'
+      });
+      primary.push({
+        name: 'Levofloxacin (hoặc Ciprofloxacin / Amikacin)',
+        dose: 'Levofloxacin 750mg TTM mỗi 24h (hoặc Ciprofloxacin 400mg TTM mỗi 8h / Amikacin 15-20mg/kg TTM mỗi 24h)',
+        route: 'IV',
+        role: 'Thuốc thứ 2 kháng Pseudomonas & bao phủ vi khuẩn không điển hình',
+        drugClass: 'Fluoroquinolone / Aminoglycoside'
+      });
+    } else {
+      primary.push({
+        name: 'Ceftriaxone (hoặc Cefotaxime / Ampicillin-Sulbactam)',
+        dose: 'Ceftriaxone 2g TTM mỗi 24h HOẶC Cefotaxime 2g TTM mỗi 8h HOẶC Ampicillin/Sulbactam 3g TTM mỗi 6h',
+        route: 'IV',
+        role: 'Beta-lactam phổ rộng diệt khuẩn đường tĩnh mạch',
+        drugClass: 'Cephalosporin 3rd gen / Aminopenicillin+BLI'
+      });
+      primary.push({
+        name: 'Levofloxacin (hoặc Moxifloxacin / Azithromycin)',
+        dose: 'Levofloxacin 750mg TTM mỗi 24h HOẶC Moxifloxacin 400mg TTM mỗi 24h HOẶC Azithromycin 500mg TTM mỗi 24h',
+        route: 'IV',
+        role: 'Kháng sinh phối hợp bao phủ Legionella và hiệp đồng diệt khuẩn',
+        drugClass: 'Respiratory Fluoroquinolone / Macrolide'
+      });
+    }
+
+    if (mrsa) {
+      addOns.push({
+        name: 'Vancomycin (hoặc Linezolid)',
+        dose: 'Vancomycin 15-20mg/kg TTM mỗi 8-12h (kèm liều nạp 25-30mg/kg ở BN nặng) HOẶC Linezolid 600mg TTM mỗi 12h',
+        route: 'IV',
+        role: 'Bao phủ Tụ cầu vàng kháng Methicillin (MRSA)',
+        drugClass: 'Glycopeptide / Oxazolidinone',
+        note: 'Bắt buộc đo nồng độ đáy Vancomycin mục tiêu 15-20 mcg/mL.'
+      });
+    }
+
     return {
-      careSetting: 'Hồi sức tích cực (ICU) / Có yếu tố nguy cơ P. aeruginosa & MRSA',
-      selectedRegimen: {
-        primaryRegimen: pseudo
-          ? 'Piperacillin/Tazobactam 4.5g TTM mỗi 6h (truyền kéo dài 3-4h) + Levofloxacin 750mg TTM mỗi 24h'
-          : 'Ceftriaxone 2g TTM mỗi 24h + Levofloxacin 750mg TTM mỗi 24h (hoặc Azithromycin 500mg/ngày)',
-        alternativeRegimen: 'Meropenem 1g TTM mỗi 8h + Moxifloxacin 400mg TTM mỗi 24h' + (mrsa ? ' + Vancomycin 15-20mg/kg mỗi 8-12h' : ''),
-        dosageDetails: 'Khởi đầu kháng sinh tĩnh mạch trong vòng 1-2 giờ đầu sau khi nhập viện.',
-        administrationRoute: 'Đường tĩnh mạch (IV)',
-        recommendedDurationDays: '7 - 10 ngày (14 ngày nếu do P. aeruginosa hoặc vi khuẩn tạo hang)',
-        clinicalNotes: [
-          'Đo nồng độ đáy Vancomycin (trough level 15-20 mcg/mL) trước liều thứ 4.',
-          'Theo dõi chức năng thận Creatinine/eGFR hàng ngày.'
-        ]
-      },
-      hasPseudomonasCoverage: pseudo,
-      hasMrsaCoverage: mrsa,
-      hasAtypicalCoverage: true,
-      hasEsblCoverage: false,
-      hasAnaerobeCoverage: false,
-      hasMelioidosisCoverage: false
+      careSetting: 'Hồi sức Tích cực (ICU)',
+      regimenTitle: pseudo ? 'Phác đồ ICU (Bao phủ Pseudomonas aeruginosa)' : 'Phác đồ Hồi sức Cấp cứu (ICU)',
+      targetPatientGroup: 'Điều trị Hồi sức Tích cực (ICU / HDU) - Viêm phổi nặng / Sốc nhiễm khuẩn / Suy hô hấp cấp',
+      primaryRegimen: primary,
+      alternativeRegimen: alternative,
+      addOns,
+      stepDownRegimen: stepDown,
+      corticosteroidRecommendation: 'Hydrocortisone 200mg/ngày (50mg tiêm TM mỗi 6h) trong 4-7 ngày cho bệnh nhân sốc nhiễm khuẩn hoặc PaO2/FiO2 < 200.',
+      respiratorySupport: 'Thở oxy dòng cao HFNC hoặc Thở máy không xâm nhập NIV/BiPAP. Đặt nội khí quản thở máy xâm nhập nếu suy hô hấp tiến triển.',
+      monitoringPlan: [
+        'Bắt đầu kháng sinh tĩnh mạch trong vòng 1 GIỜ ĐẦU (Golden Hour).',
+        'Đo nồng độ đáy Vancomycin trước liều thứ 4.',
+        'Đánh giá động học Procalcitonin (D0, D3, D5-D7).'
+      ]
     };
-  } else if (setting === 'INPATIENT_WARD') {
+  } else if (setting.includes('INPATIENT') || setting.includes('Nội trú')) {
+    primary.push({
+      name: 'Ampicillin / Sulbactam (hoặc Ceftriaxone / Cefotaxime)',
+      dose: 'Ampicillin/Sulbactam 1.5g - 3g tiêm TM mỗi 6h HOẶC Ceftriaxone 1g - 2g tiêm TM mỗi 24h',
+      route: 'IV',
+      role: 'Phối hợp thuốc (Thành phần Beta-lactam chính IV)',
+      drugClass: 'Beta-lactam / Cephalosporin 3rd gen'
+    });
+    primary.push({
+      name: 'Azithromycin (hoặc Clarithromycin / Doxycycline)',
+      dose: 'Azithromycin 500mg tiêm TM hoặc uống mỗi 24h trong 3-5 ngày',
+      route: 'IV / ORAL',
+      role: 'Phối hợp thuốc (Thành phần Macrolide bao phủ vi khuẩn không điển hình)',
+      drugClass: 'Macrolide'
+    });
+
+    alternative.push({
+      name: 'Levofloxacin (hoặc Moxifloxacin)',
+      dose: 'Levofloxacin 750mg tiêm TM/uống mỗi 24h HOẶC Moxifloxacin 400mg tiêm TM/uống mỗi 24h',
+      route: 'IV / ORAL',
+      role: 'Đơn trị liệu Quinolone hô hấp (Ưu tiên khi dị ứng Beta-lactam)',
+      drugClass: 'Respiratory Fluoroquinolone'
+    });
+
+    stepDown.push({
+      name: 'Amoxicillin / Acid Clavulanic 875/125mg',
+      dose: '1 viên uống mỗi 12h HOẶC Levofloxacin 750mg 1 viên/ngày',
+      route: 'ORAL',
+      role: 'Kháng sinh chuyển tiếp đường uống khi xuất viện',
+      drugClass: 'Oral Step-down'
+    });
+
     return {
-      careSetting: 'Nội trú khoa Nội tổng quát / Hô hấp (Không có yếu tố nguy cơ vi khuẩn đa kháng)',
-      selectedRegimen: {
-        primaryRegimen: 'Ampicillin/Sulbactam 1.5g - 3g TTM mỗi 6h HOẶC Ceftriaxone 1-2g TTM mỗi 24h + Azithromycin 500mg TTM/Uống mỗi 24h',
-        alternativeRegimen: 'Đơn trị liệu Quinolone hô hấp: Levofloxacin 750mg TTM/Uống mỗi 24h HOẶC Moxifloxacin 400mg TTM/Uống mỗi 24h',
-        dosageDetails: 'Dùng đường tiêm tĩnh mạch giai đoạn đầu, chuyển uống sau khi bệnh nhân ổn định lâm sàng.',
-        administrationRoute: 'Đường tĩnh mạch (IV) -> Chuyển uống (PO)',
-        recommendedDurationDays: '5 - 7 ngày',
-        clinicalNotes: ['Đánh giá chuyển sang kháng sinh đường uống sau 48-72 giờ nếu hết sốt và ăn uống được.']
-      },
-      hasPseudomonasCoverage: false,
-      hasMrsaCoverage: false,
-      hasAtypicalCoverage: true,
-      hasEsblCoverage: false,
-      hasAnaerobeCoverage: false,
-      hasMelioidosisCoverage: false
+      careSetting: 'Nội trú Khoa Nội Tổng quát / Hô hấp',
+      regimenTitle: 'Phác đồ Nội trú Khoa Nội (Beta-lactam IV + Macrolide HOẶC Quinolone hô hấp)',
+      targetPatientGroup: 'Điều trị Nội trú Khoa Nội Hô hấp / Nội Tổng hợp (CAP mức độ trung bình)',
+      primaryRegimen: primary,
+      alternativeRegimen: alternative,
+      addOns,
+      stepDownRegimen: stepDown,
+      respiratorySupport: 'Thở oxy qua gọng mũi 2-4 L/phút nếu SpO2 < 92%.',
+      monitoringPlan: [
+        'Đánh giá lại đáp ứng lâm sàng, SpO2, thân nhiệt và Procalcitonin sau 48-72 giờ.',
+        'Đánh giá 7 tiêu chuẩn chuyển kháng sinh đường uống.'
+      ]
     };
   } else {
+    primary.push({
+      name: 'Amoxicillin (hoặc Amox/Clav)',
+      dose: 'Amoxicillin 1g uống mỗi 8h (3g/ngày) HOẶC Amox/Clav 875/125mg uống mỗi 12h',
+      route: 'ORAL',
+      role: 'Lựa chọn ưu tiên hàng đầu',
+      drugClass: 'Aminopenicillin',
+      note: 'Bao phủ tốt Phế cầu khuẩn (S. pneumoniae) nhạy cảm.'
+    });
+    primary.push({
+      name: 'Doxycycline (hoặc Azithromycin)',
+      dose: 'Doxycycline 100mg uống 2 lần/ngày (hoặc Azithromycin 500mg ngày 1, 250mg ngày 2-5)',
+      route: 'ORAL',
+      role: 'Bao phủ vi khuẩn không điển hình',
+      drugClass: 'Tetracycline / Macrolide'
+    });
+
+    alternative.push({
+      name: 'Levofloxacin (hoặc Moxifloxacin / Cefpodoxime)',
+      dose: 'Levofloxacin 750mg uống 1 lần/ngày HOẶC Cefpodoxime 200mg uống mỗi 12h + Azithromycin',
+      route: 'ORAL',
+      role: 'Lựa chọn thay thế cho bệnh nhân có bệnh nền hoặc dị ứng',
+      drugClass: 'Fluoroquinolone / Oral Cephalosporin'
+    });
+
     return {
       careSetting: 'Ngoại trú (Ambulatory / Phòng khám)',
-      selectedRegimen: {
-        primaryRegimen: 'Amoxicillin 1g uống mỗi 8h (3g/ngày) HOẶC Amoxicillin/Clavulanate 875/125mg uống mỗi 12h + Azithromycin 500mg ngày 1, sau đó 250mg ngày 2-5',
-        alternativeRegimen: 'Cefuroxime axetil 500mg uống mỗi 12h HOẶC Doxycycline 100mg uống mỗi 12h',
-        dosageDetails: 'Uống sau bữa ăn, uống đủ nước.',
-        administrationRoute: 'Đường uống (PO)',
-        recommendedDurationDays: '5 ngày',
-        clinicalNotes: ['Hướng dẫn bệnh nhân tái khám ngay nếu sốt cao liên tục >48h, khó thở tăng hoặc đau ngực nhiều.']
-      },
-      hasPseudomonasCoverage: false,
-      hasMrsaCoverage: false,
-      hasAtypicalCoverage: true,
-      hasEsblCoverage: false,
-      hasAnaerobeCoverage: false,
-      hasMelioidosisCoverage: false
+      regimenTitle: 'Phác đồ Ngoại trú (Amoxicillin/Clavulanate + Macrolide / Doxycycline)',
+      targetPatientGroup: 'Bệnh nhân điều trị ngoại trú',
+      primaryRegimen: primary,
+      alternativeRegimen: alternative,
+      addOns,
+      stepDownRegimen: stepDown,
+      monitoringPlan: [
+        'Đánh giá lại lâm sàng sau 48-72 giờ.',
+        'Hướng dẫn bệnh nhân tái khám ngay nếu có dấu hiệu trở nặng.'
+      ]
     };
   }
 }
 
 function fallbackCalculateStep5Targeted(req: Step5TargetedRequest): TargetedRegimenResult {
   const pId = (req.pathogenId || '').toLowerCase();
+  const mic = req.micPenicillin ?? 1.0;
 
   if (pId.includes('pneumoniae') && !pId.includes('klebsiella')) {
-    const mic = req.micPenicillin || 1.0;
     if (mic <= 2.0) {
       return {
-        pathogenName: 'Streptococcus pneumoniae (Phế cầu nhạy Penicillin, MIC ≤ 2 mcg/mL)',
-        targetedAntibiotics: ['Penicillin G 2-4 triệu đơn vị TTM mỗi 4-6h', 'Ceftriaxone 1-2g TTM mỗi 24h', 'Amoxicillin 1g uống mỗi 8h'],
-        duration: '5 - 7 ngày',
-        monitoringAndWarnings: ['Đáp ứng tốt với Beta-lactam liều chuẩn.']
+        pathogenName: `Streptococcus pneumoniae (Nhạy cảm, MIC = ${mic} <= 2 mcg/mL)`,
+        targetedAntibiotics: [
+          'Penicillin G 2-4 triệu UI tiêm TM mỗi 4-6 giờ',
+          'Ceftriaxone 1-2g tiêm TM mỗi 24 giờ',
+          'Amoxicillin 1g uống mỗi 8 giờ'
+        ],
+        dosageAndAdministration: 'Dùng đường tiêm tĩnh mạch giai đoạn cấp, chuyển uống Amoxicillin khi ổn định.',
+        duration: '5 - 7 ngày'
       };
     } else if (mic < 8.0) {
       return {
-        pathogenName: `Streptococcus pneumoniae (Trung gian Penicillin, MIC = ${mic} mcg/mL)`,
-        targetedAntibiotics: ['Ceftaroline 600mg TTM mỗi 12h', 'Levofloxacin 750mg TTM mỗi 24h', 'Ceftriaxone liều cao 2g TTM mỗi 12h'],
-        duration: '7 - 10 ngày',
-        monitoringAndWarnings: ['Kháng trung gian với Penicillin liều chuẩn, cần dùng kháng sinh thế hệ mới hoặc Quinolone hô hấp.']
+        pathogenName: `Streptococcus pneumoniae (Trung gian, MIC = ${mic}: 2 < MIC < 8 mcg/mL)`,
+        targetedAntibiotics: [
+          'Ceftaroline 600mg truyền TM mỗi 12 giờ',
+          'Levofloxacin 750mg TTM mỗi 24 giờ',
+          'Ceftriaxone liều cao 2g truyền TM mỗi 12 giờ'
+        ],
+        dosageAndAdministration: 'Tăng liều Beta-lactam hoặc dùng Ceftaroline / Quinolone.',
+        duration: '7 - 10 ngày'
       };
     } else {
       return {
-        pathogenName: `Streptococcus pneumoniae (Kháng Penicillin, MIC = ${mic} mcg/mL ≥ 8)`,
-        targetedAntibiotics: ['Vancomycin 15-20 mg/kg TTM mỗi 8-12h', 'Linezolid 600mg TTM/Uống mỗi 12h'],
-        duration: '10 - 14 ngày',
-        monitoringAndWarnings: ['Đo nồng độ đáy Vancomycin mục tiêu 15-20 mcg/mL.']
+        pathogenName: `Streptococcus pneumoniae (Kháng Penicillin liều cao, MIC = ${mic} >= 8 mcg/mL)`,
+        targetedAntibiotics: [
+          'Vancomycin 15-20 mg/kg truyền TM mỗi 8-12 giờ',
+          'Linezolid 600mg truyền TM hoặc uống mỗi 12 giờ'
+        ],
+        dosageAndAdministration: 'Bắt buộc dùng Glycopeptide hoặc Oxazolidinone.',
+        duration: '10 - 14 ngày'
+      };
+    }
+  } else if (pId.includes('aureus')) {
+    if (req.isMrsa) {
+      return {
+        pathogenName: 'Staphylococcus aureus kháng Methicillin (MRSA)',
+        targetedAntibiotics: [
+          'Vancomycin 15-20 mg/kg truyền TM mỗi 8-12h (nồng độ đáy 15-20 mcg/mL)',
+          'Linezolid 600mg truyền TM hoặc uống mỗi 12 giờ'
+        ],
+        dosageAndAdministration: 'Truyền Vancomycin chậm ít nhất 60-120 phút.',
+        duration: '7 - 14 ngày'
+      };
+    } else {
+      return {
+        pathogenName: 'Staphylococcus aureus nhạy cảm Methicillin (MSSA)',
+        targetedAntibiotics: [
+          'Oxacillin 2g tiêm TM mỗi 4 giờ',
+          'Cefazolin 2g tiêm TM mỗi 8 giờ'
+        ],
+        dosageAndAdministration: 'Xuống thang ngay từ Vancomycin sang Oxacillin khi có kết quả MSSA.',
+        duration: '7 - 14 ngày'
+      };
+    }
+  } else if (pId.includes('klebsiella')) {
+    if (req.isCarbapenemResistant) {
+      return {
+        pathogenName: 'Klebsiella pneumoniae kháng Carbapenem (CRE)',
+        targetedAntibiotics: [
+          'Ceftazidime / Avibactam 2.5g truyền TM mỗi 8 giờ',
+          'Colistin liều nạp 9 triệu UI, duy trì 4.5 triệu UI mỗi 12h + Phối hợp'
+        ],
+        dosageAndAdministration: 'Hội chẩn Vi sinh và Dược lâm sàng.',
+        duration: '14 - 21 ngày'
+      };
+    } else if (req.isEsbl) {
+      return {
+        pathogenName: 'Klebsiella pneumoniae sinh ESBL (ESBL+)',
+        targetedAntibiotics: [
+          'Meropenem 1g truyền TM mỗi 8 giờ (truyền kéo dài 3 giờ)',
+          'Ertapenem 1g tiêm TM mỗi 24 giờ'
+        ],
+        dosageAndAdministration: 'Carbapenem là lựa chọn hàng đầu cho chủng sinh ESBL.',
+        duration: '10 - 14 ngày'
+      };
+    } else {
+      return {
+        pathogenName: 'Klebsiella pneumoniae (Không sinh ESBL)',
+        targetedAntibiotics: [
+          'Ceftriaxone 1-2g tiêm TM mỗi 24 giờ',
+          'Piperacillin / Tazobactam 4.5g TTM mỗi 6-8 giờ'
+        ],
+        dosageAndAdministration: 'Khi kháng Cephalosporin thế hệ 3: Cefepime 1-2g TTM mỗi 8h.',
+        duration: '7 - 10 ngày'
       };
     }
   } else if (pId.includes('pseudomallei') || pId.includes('whitmore')) {
     return {
       pathogenName: 'Burkholderia pseudomallei (Bệnh Whitmore)',
       targetedAntibiotics: [
-        'Giai đoạn tấn công (≥ 14 ngày): Ceftazidime 2g TTM mỗi 6-8h HOẶC Meropenem 1g TTM mỗi 8h',
-        'Giai đoạn duy trì (12 - 24 tuần): Cotrimoxazole (TMP/SMX) 160/800mg: 2 viên x 2 lần/ngày (kèm Acid Folic 5mg/ngày)'
+        'Tấn công: Ceftazidime 2g tiêm TM mỗi 6-8h HOẶC Meropenem 1g mỗi 8h (≥ 14 ngày)',
+        'Duy trì: Cotrimoxazole 160/800mg 2 viên x 2 lần/ngày (3 - 6 tháng)'
       ],
-      dosageAndAdministration: 'Cần tuân thủ đủ 2 giai đoạn: Tấn công tĩnh mạch + Duy trì đường uống kéo dài.',
-      duration: 'Tấn công 2 - 4 tuần; Duy trì 3 - 6 tháng',
-      monitoringAndWarnings: [
-        'Nguy cơ tái phát cao nếu ngừng thuốc duy trì sớm.',
-        'Theo dõi công thức máu và chức năng gan thận định kỳ trong giai đoạn duy trì TMP/SMX.'
-      ]
+      dosageAndAdministration: 'Điều trị 2 giai đoạn bắt buộc: Tấn công tĩnh mạch + Duy trì đường uống.',
+      duration: 'Tấn công: ≥ 2 tuần -> Duy trì: 3 đến 6 tháng'
     };
   }
 
   return {
-    pathogenName: req.pathogenId || 'Vi khuẩn phân lập',
-    targetedAntibiotics: ['Ceftriaxone 2g TTM mỗi 24h', 'Levofloxacin 750mg TTM mỗi 24h'],
-    duration: '7 ngày',
-    monitoringAndWarnings: ['Điều chỉnh kháng sinh theo kết quả kháng sinh đồ (MIC).']
+    pathogenName: 'Vi khuẩn không điển hình / Khác',
+    targetedAntibiotics: [
+      'Azithromycin 500mg uống/tiêm TM mỗi 24 giờ',
+      'Levofloxacin 750mg uống/tiêm TM mỗi 24 giờ'
+    ],
+    dosageAndAdministration: 'Uống hoặc tiêm truyền tĩnh mạch.',
+    duration: '5 - 7 ngày'
   };
 }
 
 function fallbackCalculateOralStepDown(req: OralStepDownRequest): OralStepDownResult {
-  const metDetails: string[] = [];
+  const details: string[] = [];
   let count = 0;
 
-  if (req.temp < 37.8) { count++; metDetails.push('Nhiệt độ ≤ 37.8°C trong ít nhất 24 giờ'); }
-  if (req.hr < 100) { count++; metDetails.push('Tần số tim < 100 chu kỳ/phút'); }
-  if (req.rr < 24) { count++; metDetails.push('Tần số thở < 24 lần/phút'); }
-  if (req.sbp >= 90) { count++; metDetails.push('Huyết áp tâm thu ≥ 90 mmHg'); }
-  if (req.spo2 >= 90) { count++; metDetails.push('Độ bão hòa oxy SpO2 ≥ 90% (khí trời)'); }
-  if (req.canEatAndSwallow) { count++; metDetails.push('Có khả năng ăn uống và hấp thu thuốc đường tiêu hóa'); }
-  if (req.normalMentalStatus) { count++; metDetails.push('Tình trạng tri giác / ý thức bình thường'); }
+  if (req.temp <= 37.8) { count++; details.push(`Thân nhiệt ổn định ≤ 37.8°C (${req.temp}°C) [ĐẠT]`); }
+  else details.push(`Thân nhiệt > 37.8°C (${req.temp}°C) [CHƯA ĐẠT]`);
 
-  const eligible = count === 7;
+  if (req.hr < 100) { count++; details.push(`Nhịp tim < 100 bpm (${req.hr} bpm) [ĐẠT]`); }
+  else details.push(`Nhịp tim nhanh ≥ 100 bpm (${req.hr} bpm) [CHƯA ĐẠT]`);
+
+  if (req.rr < 24) { count++; details.push(`Nhịp thở < 24 lần/phút (${req.rr} l/p) [ĐẠT]`); }
+  else details.push(`Nhịp thở nhanh ≥ 24 lần/phút (${req.rr} l/p) [CHƯA ĐẠT]`);
+
+  if (req.sbp >= 90) { count++; details.push(`Huyết áp tâm thu ≥ 90 mmHg (${req.sbp} mmHg) [ĐẠT]`); }
+  else details.push(`Huyết áp tụt < 90 mmHg (${req.sbp} mmHg) [CHƯA ĐẠT]`);
+
+  if (req.spo2 >= 90.0) { count++; details.push(`SpO2 ≥ 90% (${req.spo2}%) [ĐẠT]`); }
+  else details.push(`SpO2 < 90% (${req.spo2}%) [CHƯA ĐẠT]`);
+
+  if (req.canEatAndSwallow) { count++; details.push('Ăn uống và hấp thu tiêu hóa được [ĐẠT]'); }
+  else details.push('Không ăn uống được hoặc nôn [CHƯA ĐẠT]');
+
+  if (req.normalMentalStatus) { count++; details.push('Tri giác bình thường [ĐẠT]'); }
+  else details.push('Còn rối loạn ý thức [CHƯA ĐẠT]');
+
+  const eligible = (count === 7);
 
   return {
     eligible,
     metCriteriaCount: count,
     totalCriteriaCount: 7,
-    criteriaDetails: metDetails,
+    criteriaDetails: details,
     suggestedOralRegimens: eligible ? [
-      'Amoxicillin/Clavulanate 875/125mg: 1 viên x 2 lần/ngày',
-      'Levofloxacin 750mg: 1 viên x 1 lần/ngày',
-      'Moxifloxacin 400mg: 1 viên x 1 lần/ngày',
-      'Cefuroxime axetil 500mg: 1 viên x 2 lần/ngày'
+      'Amoxicillin / Acid Clavulanic 875/125mg: 1 viên uống mỗi 12 giờ',
+      'Levofloxacin 750mg: 1 viên uống mỗi 24 giờ',
+      'Moxifloxacin 400mg: 1 viên uống mỗi 24 giờ'
     ] : [],
     clinicalGuidance: eligible
-      ? 'Bệnh nhân ĐỦ ĐIỀU KIỆN chuyển từ kháng sinh tiêm truyền sang kháng sinh đường uống an toàn (Oral Step-down).'
-      : `Bệnh nhân CHƯA ĐỦ ĐIỀU KIỆN chuyển uống (đạt ${count}/7 tiêu chí). Tiếp tục duy trì phác đồ tiêm truyền tĩnh mạch.`
+      ? 'ĐỦ ĐIỀU KIỆN (7/7 tiêu chí) chuyển sang kháng sinh đường uống (Oral Step-down).'
+      : `CHƯA ĐỦ ĐIỀU KIỆN chuyển uống (đạt ${count}/7 tiêu chí). Tiếp tục tiêm truyền TM.`
   };
 }
 
-function fallbackCalculateResponse72h(req: Response72hRequest): TreatmentResponse72hResult {
-  const isFail = !!(req.hrGt125OrRrGt33 || req.bpLt9060 || req.imagingWorsening || req.atsScoreIncreased || req.respFailureWorsening);
+function fallbackCalculate72hResponse(req: Response72hRequest): TreatmentResponse72hResult {
+  const isFailure = !!(req.hrGt125OrRrGt33 || req.bpLt9060 || req.imagingWorsening || req.atsScoreIncreased || req.respFailureWorsening);
 
-  let pctText = 'Không có dữ liệu động học Procalcitonin.';
+  let interp = 'Chưa có đủ dữ liệu Procalcitonin.';
   if (req.pctD0 !== undefined && req.pctD3 !== undefined && req.pctD0 > 0) {
-    const drop = ((req.pctD0 - req.pctD3) / req.pctD0) * 100;
-    if (drop >= 80) {
-      pctText = `PCT giảm ${drop.toFixed(1)}% (≥80%): Đáp ứng điều trị rất thuận lợi. Tiên lượng tốt.`;
-    } else if (drop >= 50) {
-      pctText = `PCT giảm ${drop.toFixed(1)}% (50-80%): Đáp ứng điều trị một phần. Cần theo dõi tiếp.`;
-    } else {
-      pctText = `PCT không giảm hoặc tăng (D0=${req.pctD0}, D3=${req.pctD3}): Nguy cơ cao thất bại điều trị hoặc vi khuẩn kháng thuốc!`;
-    }
+    const drop = ((req.pctD0 - req.pctD3) / req.pctD0) * 100.0;
+    if (drop >= 80.0) interp = `PCT giảm ${drop.toFixed(1)}% (≥ 80%): ĐÁP ỨNG RẤT TỐT.`;
+    else if (drop >= 50.0) interp = `PCT giảm ${drop.toFixed(1)}% (50-80%): ĐÁP ỨNG MỘT PHẦN.`;
+    else interp = `PCT không giảm hoặc tăng (mức giảm ${drop.toFixed(1)}% < 50%): CẢNH BÁO THẤT BẠI ĐIỀU TRỊ!`;
   }
 
   return {
-    responseStatus: isFail ? 'Thất bại điều trị / Diễn tiến xấu sau 72h' : 'Đáp ứng điều trị tốt sau 72h',
-    pctKineticsInterpretation: pctText,
-    isTreatmentFailure: isFail,
-    recommendedActions: isFail ? [
-      '1. Đánh giá lại toàn diện lâm sàng, cấy lặp lại đờm và cấy máu.',
-      '2. Chụp CT ngực tìm biến chứng: Tràn dịch/mủ màng phổi, áp xe hóa, thuyên tắc phổi.',
-      '3. Nâng bậc phác đồ kháng sinh: Đổi sang nhóm kháng Pseudomonas (Meropenem, Pip/Tazo) + phủ MRSA (Vancomycin, Linezolid).',
-      '4. Hội chẩn chuyên khoa Truyền nhiễm / Hồi sức tích cực.'
+    responseStatus: isFailure ? 'THẤT BẠI ĐIỀU TRỊ / NẶNG LÊN SAU 72 GIỜ' : 'ĐÁP ỨNG ĐIỀU TRỊ TỐT SAU 72 GIỜ',
+    pctKineticsInterpretation: interp,
+    isTreatmentFailure: isFailure,
+    recommendedActions: isFailure ? [
+      '1. Khám lại lâm sàng, cấy lặp lại đờm và máu 2 vị trí.',
+      '2. Chụp CT ngực cản quang tìm biến chứng ngoại khoa / mủ màng phổi / áp xe.',
+      '3. Nâng bậc kháng sinh sang Meropenem + Vancomycin/Linezolid.'
     ] : [
-      '1. Tiếp tục duy trì phác đồ kháng sinh hiện tại.',
-      '2. Đánh giá tiêu chí chuyển sang kháng sinh đường uống (Oral Step-down).',
-      '3. Lên kế hoạch xuất viện khi người bệnh ổn định.'
+      '1. Duy trì phác đồ kháng sinh hiện tại.',
+      '2. Đánh giá tiêu chí chuyển uống (Oral Step-down).'
     ]
   };
 }

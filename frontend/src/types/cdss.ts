@@ -1,6 +1,7 @@
-export type Gender = 'MALE' | 'FEMALE';
-export type CareSetting = 'OUTPATIENT' | 'INPATIENT_WARD' | 'ICU';
-export type SeverityLevel = 'MILD' | 'MODERATE' | 'SEVERE';
+export type Gender = 'MALE' | 'FEMALE' | 'Nam' | 'Nữ';
+export type CareSetting = 'OUTPATIENT' | 'INPATIENT_WARD' | 'ICU' | 'Ngoại trú (Nhẹ)' | 'Nội trú (Trung bình)' | 'ICU (Rất nặng / Nguy kịch)';
+export type SeverityLevel = 'MILD' | 'MODERATE' | 'SEVERE' | 'Nhẹ (Mild)' | 'Trung bình (Moderate)' | 'Nặng (Severe) / Nguy kịch';
+export type AdminRoute = 'ORAL' | 'IV' | 'IM' | 'INHALATION';
 
 export interface PatientVitals {
   respiratoryRate?: number;
@@ -15,10 +16,12 @@ export interface PatientVitals {
 
 export interface PatientLabs {
   ureaMmolL?: number;
+  bunMgDl?: number;
   arterialPh?: number;
   sodiumMmolL?: number;
   glucoseMmolL?: number;
   hematocritPct?: number;
+  pao2Mmhg?: number;
   wbcGL?: number;
   plateletsGL?: number;
   pao2Fio2Ratio?: number;
@@ -104,7 +107,7 @@ export interface Step1Request {
 }
 
 export interface SeverityAssessmentResult {
-  curb65Score: number;
+  curb65Score: number | null;
   curb65Details?: string[];
   crb65Score: number;
   crb65Details?: string[];
@@ -152,26 +155,26 @@ export interface ExclusionAssessmentResult {
   warnings?: string[];
 }
 
-export interface AntibioticRegimen {
-  primaryRegimen: string;
-  alternativeRegimen?: string;
-  dosageDetails?: string;
-  administrationRoute?: string;
-  recommendedDurationDays?: string;
-  clinicalNotes?: string[];
-  allergySafeAlternative?: string;
+export interface AntibioticInfo {
+  name: string;
+  dose: string;
+  route: string;
+  role: string;
+  drugClass?: string;
+  note?: string;
 }
 
 export interface EmpiricalRegimenResult {
   careSetting: string;
-  selectedRegimen: AntibioticRegimen;
-  hasPseudomonasCoverage: boolean;
-  hasMrsaCoverage: boolean;
-  hasAtypicalCoverage: boolean;
-  hasEsblCoverage: boolean;
-  hasAnaerobeCoverage: boolean;
-  hasMelioidosisCoverage: boolean;
-  specialConsiderations?: string[];
+  regimenTitle: string;
+  targetPatientGroup: string;
+  primaryRegimen: AntibioticInfo[];
+  alternativeRegimen: AntibioticInfo[];
+  addOns: AntibioticInfo[];
+  stepDownRegimen: AntibioticInfo[];
+  corticosteroidRecommendation?: string;
+  respiratorySupport?: string;
+  monitoringPlan: string[];
 }
 
 export interface Step5TargetedRequest {

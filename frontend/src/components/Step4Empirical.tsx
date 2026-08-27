@@ -1,6 +1,6 @@
 import React from 'react';
 import { EmpiricalRegimenResult, CareSetting } from '../types/cdss';
-import { Pill, ShieldCheck, ChevronRight, ChevronLeft, Clock, Route, FileCheck, CheckCircle2 } from 'lucide-react';
+import { Pill, ShieldCheck, ChevronRight, ChevronLeft, Clock, Activity, FileCheck, AlertTriangle } from 'lucide-react';
 
 interface Step4Props {
   careSetting: CareSetting;
@@ -15,8 +15,6 @@ export const Step4Empirical: React.FC<Step4Props> = ({
   onNext,
   onBack
 }) => {
-  const regimen = result?.selectedRegimen;
-
   return (
     <div className="space-y-6">
       
@@ -61,34 +59,80 @@ export const Step4Empirical: React.FC<Step4Props> = ({
               <span className="px-3 py-1 bg-blue-500/30 text-blue-200 border border-blue-400/40 rounded-full text-xs font-bold uppercase tracking-wider">
                 ⭐ Phác Đồ Ưu Tiên Hàng 1 (First-line)
               </span>
-              <span className="text-xs text-blue-200 font-medium flex items-center gap-1">
-                <Route className="w-3.5 h-3.5" />
-                {regimen?.administrationRoute || 'IV / PO'}
+              <span className="text-xs text-blue-200 font-medium">
+                {result?.careSetting || 'Ngoại trú'}
               </span>
             </div>
 
             <div>
               <h3 className="text-xl sm:text-2xl font-black text-white leading-snug">
-                {regimen?.primaryRegimen || 'Đang tải phác đồ...'}
+                {result?.regimenTitle || 'Phác đồ kháng sinh kinh nghiệm'}
               </h3>
+              {result?.targetPatientGroup && (
+                <p className="text-xs text-blue-200 mt-1">
+                  {result.targetPatientGroup}
+                </p>
+              )}
             </div>
 
-            {regimen?.dosageDetails && (
-              <div className="bg-white/10 p-3.5 rounded-xl text-xs text-blue-100 leading-relaxed border border-white/10">
-                <strong>Hướng dẫn liều & cách dùng:</strong> {regimen.dosageDetails}
-              </div>
-            )}
-
-            <div className="flex flex-wrap items-center gap-3 pt-2 border-t border-white/10 text-xs">
-              <div className="flex items-center space-x-1.5 text-blue-200">
-                <Clock className="w-4 h-4 text-blue-300" />
-                <span>Thời gian điều trị: <strong>{regimen?.recommendedDurationDays || '5-7 ngày'}</strong></span>
-              </div>
+            {/* List of Primary Antibiotics */}
+            <div className="space-y-2 pt-2">
+              {result?.primaryRegimen && result.primaryRegimen.length > 0 ? (
+                result.primaryRegimen.map((ab, idx) => (
+                  <div key={idx} className="bg-white/10 p-3.5 rounded-xl text-xs text-blue-100 border border-white/10 space-y-1">
+                    <div className="flex items-center justify-between font-bold text-white text-sm">
+                      <span>{ab.name}</span>
+                      <span className="text-xs px-2 py-0.5 bg-blue-500/40 rounded-md font-semibold text-blue-100">
+                        {ab.route}
+                      </span>
+                    </div>
+                    <div className="text-blue-100">
+                      <strong>Liều dùng:</strong> {ab.dose}
+                    </div>
+                    {ab.role && (
+                      <div className="text-blue-200 text-[11px]">
+                        <strong>Chỉ định:</strong> {ab.role}
+                      </div>
+                    )}
+                    {ab.note && (
+                      <div className="text-blue-300 text-[11px] italic">
+                        💡 {ab.note}
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <div className="text-xs text-blue-200">Đang tính toán phác đồ...</div>
+              )}
             </div>
           </div>
 
+          {/* Add-ons (MRSA, Antiviral, etc.) */}
+          {result?.addOns && result.addOns.length > 0 && (
+            <div className="bg-rose-50 p-5 rounded-2xl border border-rose-200 space-y-3">
+              <div className="flex items-center space-x-2 text-rose-900 font-bold text-xs uppercase tracking-wider">
+                <AlertTriangle className="w-4 h-4 text-rose-600" />
+                <span>Kháng Sinh / Thuốc Bổ Sung Theo Nguy Cơ Đặc Biệt</span>
+              </div>
+              <div className="space-y-2">
+                {result.addOns.map((ab, idx) => (
+                  <div key={idx} className="bg-white p-3 rounded-xl border border-rose-200 text-xs space-y-1">
+                    <div className="flex items-center justify-between font-bold text-rose-900">
+                      <span>{ab.name}</span>
+                      <span className="text-[11px] px-2 py-0.5 bg-rose-100 text-rose-800 rounded font-semibold">
+                        {ab.route}
+                      </span>
+                    </div>
+                    <div className="text-slate-700"><strong>Liều dùng:</strong> {ab.dose}</div>
+                    {ab.note && <div className="text-rose-700 text-[11px]">💡 {ab.note}</div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Alternative Regimen Card */}
-          {regimen?.alternativeRegimen && (
+          {result?.alternativeRegimen && result.alternativeRegimen.length > 0 && (
             <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
               <div className="flex items-center space-x-2">
                 <span className="px-2.5 py-0.5 bg-slate-100 text-slate-700 rounded-md text-xs font-bold uppercase tracking-wider">
@@ -99,21 +143,50 @@ export const Step4Empirical: React.FC<Step4Props> = ({
                 </span>
               </div>
 
-              <div className="text-sm font-bold text-slate-800 leading-relaxed p-3 bg-slate-50 rounded-xl border border-slate-200">
-                {regimen.alternativeRegimen}
+              <div className="space-y-2">
+                {result.alternativeRegimen.map((ab, idx) => (
+                  <div key={idx} className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs space-y-1">
+                    <div className="flex items-center justify-between font-bold text-slate-800">
+                      <span>{ab.name}</span>
+                      <span className="text-[11px] px-2 py-0.5 bg-slate-200 rounded font-semibold">
+                        {ab.route}
+                      </span>
+                    </div>
+                    <div className="text-slate-700"><strong>Liều:</strong> {ab.dose}</div>
+                    {ab.role && <div className="text-slate-500 text-[11px]"><strong>Vai trò:</strong> {ab.role}</div>}
+                    {ab.note && <div className="text-slate-500 text-[11px] italic">💡 {ab.note}</div>}
+                  </div>
+                ))}
               </div>
             </div>
           )}
 
-          {/* Clinical Regimen Notes */}
-          {regimen?.clinicalNotes && regimen.clinicalNotes.length > 0 && (
+          {/* Step-down Regimen */}
+          {result?.stepDownRegimen && result.stepDownRegimen.length > 0 && (
+            <div className="bg-emerald-50/70 p-5 rounded-2xl border border-emerald-200 space-y-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-900 block">
+                🔄 Kháng Sinh Chuyển Tiếp Đường Uống Khi Xuất Viện (Oral Step-down)
+              </span>
+              <div className="space-y-2">
+                {result.stepDownRegimen.map((ab, idx) => (
+                  <div key={idx} className="bg-white p-3 rounded-xl border border-emerald-200 text-xs space-y-1">
+                    <div className="font-bold text-emerald-950">{ab.name}</div>
+                    <div className="text-slate-700"><strong>Liều:</strong> {ab.dose}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Monitoring Plan */}
+          {result?.monitoringPlan && result.monitoringPlan.length > 0 && (
             <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2">
               <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 border-b pb-2">
                 <FileCheck className="w-4 h-4 text-blue-600" />
-                Lưu Ý Thực Hành Lâm Sàng
+                Kế Hoạch Theo Dõi Lâm Sàng
               </h4>
               <ul className="space-y-1.5 text-xs text-slate-700 list-disc list-inside leading-relaxed">
-                {regimen.clinicalNotes.map((note, idx) => (
+                {result.monitoringPlan.map((note, idx) => (
                   <li key={idx}>{note}</li>
                 ))}
               </ul>
@@ -122,63 +195,34 @@ export const Step4Empirical: React.FC<Step4Props> = ({
 
         </div>
 
-        {/* RIGHT COLUMN: Spectrum Coverage & Monitoring */}
+        {/* RIGHT COLUMN: Spectrum Coverage & Adjunctive Therapies */}
         <div className="lg:col-span-4 space-y-6">
           
-          {/* Pathogen Coverage Spectrum */}
-          <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 border-b pb-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              Phổ Kháng Khuẩn Đã Bao Phủ
-            </h4>
-
-            <div className="space-y-2 text-xs">
-              <div className="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl">
-                <span>Pseudomonas aeruginosa</span>
-                <span className={`px-2 py-0.5 text-[11px] font-bold rounded ${
-                  result?.hasPseudomonasCoverage ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'
-                }`}>
-                  {result?.hasPseudomonasCoverage ? 'ĐÃ BAO PHỦ' : 'Không'}
-                </span>
+          {/* Adjunctive Therapy: Corticosteroids */}
+          {result?.corticosteroidRecommendation && (
+            <div className="bg-indigo-50 p-5 rounded-2xl border border-indigo-200 text-xs text-indigo-950 space-y-2">
+              <div className="font-bold text-indigo-900 flex items-center gap-1.5">
+                <Activity className="w-4 h-4 text-indigo-700" />
+                Khuyến Cáo Corticosteroid Sớm
               </div>
-
-              <div className="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl">
-                <span>Tụ cầu vàng kháng Methicillin (MRSA)</span>
-                <span className={`px-2 py-0.5 text-[11px] font-bold rounded ${
-                  result?.hasMrsaCoverage ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'
-                }`}>
-                  {result?.hasMrsaCoverage ? 'ĐÃ BAO PHỦ' : 'Không'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl">
-                <span>Vi khuẩn không điển hình (Atypical)</span>
-                <span className={`px-2 py-0.5 text-[11px] font-bold rounded ${
-                  result?.hasAtypicalCoverage ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'
-                }`}>
-                  {result?.hasAtypicalCoverage ? 'ĐÃ BAO PHỦ' : 'Không'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl">
-                <span>Vi khuẩn kỵ khí (Anaerobes)</span>
-                <span className={`px-2 py-0.5 text-[11px] font-bold rounded ${
-                  result?.hasAnaerobeCoverage ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'
-                }`}>
-                  {result?.hasAnaerobeCoverage ? 'ĐÃ BAO PHỦ' : 'Không'}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between p-2.5 bg-slate-50 rounded-xl">
-                <span>Burkholderia pseudomallei (Whitmore)</span>
-                <span className={`px-2 py-0.5 text-[11px] font-bold rounded ${
-                  result?.hasMelioidosisCoverage ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'
-                }`}>
-                  {result?.hasMelioidosisCoverage ? 'ĐÃ BAO PHỦ' : 'Không'}
-                </span>
-              </div>
+              <p className="leading-relaxed">
+                {result.corticosteroidRecommendation}
+              </p>
             </div>
-          </div>
+          )}
+
+          {/* Adjunctive Therapy: Respiratory Support */}
+          {result?.respiratorySupport && (
+            <div className="bg-blue-50 p-5 rounded-2xl border border-blue-200 text-xs text-blue-950 space-y-2">
+              <div className="font-bold text-blue-900 flex items-center gap-1.5">
+                <Activity className="w-4 h-4 text-blue-700" />
+                Hỗ Trợ Hô Hấp & Thông Khí
+              </div>
+              <p className="leading-relaxed">
+                {result.respiratorySupport}
+              </p>
+            </div>
+          )}
 
           {/* Golden Hour Reminder */}
           <div className="bg-amber-50 p-5 rounded-2xl border border-amber-200 text-xs text-amber-950 space-y-2">

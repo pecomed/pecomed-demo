@@ -152,12 +152,40 @@ export const ClinicalReportModal: React.FC<ReportModalProps> = ({
             <h2 className="text-sm font-bold text-slate-900 uppercase border-b pb-1">
               4. Phác Đồ Kháng Sinh Kinh Nghiệm Khuyến Nghị (Step 4)
             </h2>
-            <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl space-y-1">
-              <div><strong>Phác đồ ưu tiên:</strong> <span className="font-bold text-blue-900">{step4Res?.selectedRegimen?.primaryRegimen}</span></div>
-              {step4Res?.selectedRegimen?.alternativeRegimen && (
-                <div><strong>Phác đồ thay thế:</strong> {step4Res.selectedRegimen.alternativeRegimen}</div>
+            <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl space-y-2">
+              <div>
+                <strong>Tiêu đề phác đồ:</strong> <span className="font-bold text-blue-900">{step4Res?.regimenTitle}</span>
+              </div>
+              {step4Res?.primaryRegimen && step4Res.primaryRegimen.length > 0 && (
+                <div>
+                  <strong>Phác đồ ưu tiên:</strong>
+                  <ul className="list-disc list-inside mt-1 space-y-0.5">
+                    {step4Res.primaryRegimen.map((ab, idx) => (
+                      <li key={idx}><strong>{ab.name}:</strong> {ab.dose} ({ab.route})</li>
+                    ))}
+                  </ul>
+                </div>
               )}
-              <div><strong>Đường dùng & Thời gian:</strong> {step4Res?.selectedRegimen?.administrationRoute} • {step4Res?.selectedRegimen?.recommendedDurationDays}</div>
+              {step4Res?.alternativeRegimen && step4Res.alternativeRegimen.length > 0 && (
+                <div>
+                  <strong>Phác đồ thay thế:</strong>
+                  <ul className="list-disc list-inside mt-1 space-y-0.5">
+                    {step4Res.alternativeRegimen.map((ab, idx) => (
+                      <li key={idx}><strong>{ab.name}:</strong> {ab.dose} ({ab.route})</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {step4Res?.addOns && step4Res.addOns.length > 0 && (
+                <div>
+                  <strong>Thuốc bổ sung (MRSA/Kháng virus):</strong>
+                  <ul className="list-disc list-inside mt-1 space-y-0.5">
+                    {step4Res.addOns.map((ab, idx) => (
+                      <li key={idx}><strong>{ab.name}:</strong> {ab.dose} ({ab.route})</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
 
