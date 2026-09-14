@@ -96,6 +96,9 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="px-2 py-0.5 text-xs font-semibold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-400/30 rounded-full">
                   CAP CDSS v1.0
                 </span>
+                <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-400/40 rounded-full">
+                  Bản dùng thử
+                </span>
               </div>
               <p className="text-xs text-blue-200/80 font-medium">
                 Hệ Thống Hỗ Trợ Quyết Định Lâm Sàng Viêm Phổi Mắc Phải Cộng Đồng
@@ -114,7 +117,7 @@ export const Header: React.FC<HeaderProps> = ({
               {isBackendConnected ? (
                 <>
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>REST API Java Online</span>
+                  <span>CDSS Engine Online</span>
                 </>
               ) : (
                 <>

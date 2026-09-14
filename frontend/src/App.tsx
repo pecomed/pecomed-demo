@@ -205,6 +205,16 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+      {/* Top Prominent Clinical Disclaimer Banner */}
+      <div className="bg-amber-500 text-slate-950 px-4 py-2 text-xs font-medium border-b border-amber-600 flex items-center justify-center space-x-2 text-center shadow-sm">
+        <span className="px-1.5 py-0.5 bg-slate-900 text-amber-300 font-bold text-[10px] rounded uppercase tracking-wider">
+          Khuyến cáo
+        </span>
+        <span>
+          Hệ thống chỉ phục vụ mục đích tham khảo / dùng thử nghiệm. <strong>Không được dùng cho quyết định lâm sàng trực tiếp</strong>.
+        </span>
+      </div>
+
       {/* Top Header Bar */}
       <Header
         isBackendConnected={isBackendConnected}
@@ -294,8 +304,10 @@ export const App: React.FC = () => {
 
       {/* Footer */}
       <footer className="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
-        <p>PECOMED Community-Acquired Pneumonia Clinical Decision Support System (CAP CDSS) • Phiên bản 1.0.0</p>
-        <p className="text-[11px] text-slate-400 mt-0.5">Dành cho bác sĩ và chuyên viên y tế tham khảo trong chẩn đoán và điều trị.</p>
+        <p className="font-semibold text-slate-700">PECOMED Community-Acquired Pneumonia Clinical Decision Support System (CAP CDSS) • Phiên bản 1.0.0 (Bản Dùng Thử)</p>
+        <p className="text-[11px] text-amber-700 font-medium mt-1">
+          ⚠️ Khuyến cáo: Hệ thống chỉ phục vụ mục đích nghiên cứu và dùng thử nghiệm, <strong>không được dùng cho quyết định lâm sàng trực tiếp</strong>.
+        </p>
       </footer>
     </div>
   );

@@ -12,8 +12,17 @@ const currentDirname = typeof __dirname !== 'undefined' ? __dirname : path.dirna
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+app.disable('x-powered-by');
 app.use(cors());
 app.use(express.json());
+
+// Security & Transport Headers
+app.use((_req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
 
 const master = new PecomedCdssMaster();
 

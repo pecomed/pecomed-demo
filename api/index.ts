@@ -4,8 +4,17 @@ import { PecomedCdssMaster } from '../src/engine/PecomedCdssMaster.js';
 import { PatientCase } from '../src/models/types.js';
 
 const app = express();
+app.disable('x-powered-by');
 app.use(cors());
 app.use(express.json());
+
+// Security & Transport Headers
+app.use((_req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
 
 const master = new PecomedCdssMaster();
 

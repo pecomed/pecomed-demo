@@ -96,7 +96,17 @@ export const ClinicalReportModal: React.FC<ReportModalProps> = ({
               HỆ THỐNG HỖ TRỢ RA QUYẾT ĐỊNH ĐIỀU TRỊ VIÊM PHỔI MẮC PHẢI CỘNG ĐỒNG
             </h1>
             <p className="text-[11px] text-slate-500">
-              PECOMED CAP CDSS v1.0 • Thời gian kết xuất: {now}
+              PECOMED CAP CDSS v1.0 (Bản Dùng Thử Nghiệm) • Thời gian kết xuất: {now}
+            </p>
+          </div>
+
+          {/* Clinical Disclaimer Banner */}
+          <div className="bg-amber-50 border border-amber-300 text-amber-900 rounded-xl p-3 text-xs leading-normal">
+            <p className="font-bold text-amber-950 uppercase text-[11px] mb-0.5 flex items-center gap-1">
+              ⚠️ Khuyến cáo pháp lý & Y khoa quan trọng:
+            </p>
+            <p>
+              Báo cáo này được kết xuất tự động từ hệ thống thử nghiệm <strong>PECOMED CAP CDSS</strong>. Kết quả và khuyến cáo chỉ mang tính chất tham khảo / dùng thử nghiệm thuật toán, <strong>không được dùng cho quyết định lâm sàng trực tiếp</strong> trên bệnh nhân. Mọi quyết định chẩn đoán và phác đồ điều trị cuối cùng thuộc trách nhiệm chuyên môn của Bác sĩ điều trị.
             </p>
           </div>
 
